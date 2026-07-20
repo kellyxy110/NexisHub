@@ -470,4 +470,5 @@ A recommended content map looks like this:
 | Cluster | Theme | Goal |
 | --- | --- | --- |
 | A | AI Software Development | Own the category |
-| B | Modern Web Engineering |  |
+| B | Modern Web Engineering | Technical authority |
+| C |  |  |
