@@ -474,4 +474,5 @@ A recommended content map looks like this:
 | C | Intelligent Business Systems | Business adoption |
 | D | AI Infrastructure & DevOps | Engineering credibility |
 | E | Growth, SEO & AI Visibility | Acquire customers |
-| R |  |  |
+| R | Original Research | Earn backlinks |
+| X |  |  |
