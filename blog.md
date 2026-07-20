@@ -199,268 +199,807 @@ Build a premium editorial platform comparable in quality to the Semrush Blog whi
 
 # Master Prompt: NexisHub Authority Blog Content Engine (2026)
 
-This section is the governing content-engine brief for scaffolding and populating the NexisHub Blog.
+Copy and paste the following into Claude Code (or another coding AI) to scaffold and populate the **NexisHub Blog**.
 
-## Task: Build the NexisHub Authority Blog
+---
 
-Work inside the existing NexisHub website repository.
+# Task: Build the NexisHub Authority Blog
+
+You are working inside the existing NexisHub website repository.
 
 NexisHub is the parent company behind:
 
-- SiteNexis (AI Visibility Intelligence)
-- TeachNexis (AI-powered Education Platform)
-- EventNexis (Event Management Platform)
-- LogicLand (Interactive Learning Platform)
-- CareBridge (Healthcare AI Platform)
+* SiteNexis (AI Visibility Intelligence)
+* TeachNexis (AI-powered Education Platform)
+* EventNexis (Event Management Platform)
+* LogicLand (Interactive Learning Platform)
+* CareBridge (Healthcare AI Platform)
 
 The goal is to build the most authoritative AI engineering and intelligent software publication on the web.
 
-This is not a company news blog. It is a knowledge platform comparable in quality to Stripe Engineering, Vercel Blog, Cloudflare Blog, OpenAI, Anthropic, Semrush, Ahrefs, Linear, and GitHub Engineering.
+This is **NOT** a company news blog.
+
+This is a knowledge platform similar in quality to:
+
+* Stripe Engineering
+* Vercel Blog
+* Cloudflare Blog
+* OpenAI
+* Anthropic
+* Semrush
+* Ahrefs
+* Linear
+* GitHub Engineering
 
 The blog should become a primary source that developers, founders, CTOs, educators, marketers, healthcare professionals, and businesses cite when discussing AI software engineering, AI visibility, intelligent automation, SaaS architecture, and modern web development.
 
-## Step 1: Discover the Existing Blog Architecture
+---
 
-Before making changes, locate the existing blog implementation. Possible locations and systems include `app/blog`, `content/blog`, `posts`, Contentlayer, Velite, MDX, Markdown, Sanity, Contentful, WordPress, Payload, and Strapi.
+# Step 1 — Discover the Existing Blog Architecture
+
+Before making any changes:
+
+1. Locate the existing blog implementation.
+
+Possible locations include:
+
+* app/blog
+* content/blog
+* posts/
+* contentlayer
+* Velite
+* MDX
+* Markdown
+* CMS integration
+* Sanity
+* Contentful
+* WordPress
+* Payload
+* Strapi
 
 Determine:
 
-- How blog posts are stored
-- Routing pattern
-- Frontmatter schema
-- Metadata fields
-- Tags and categories
-- Author model
-- Reading time
-- Related posts
-- SEO component
-- Open Graph image generation
-- Sitemap integration
-- RSS feed
-- Search indexing
-- Syntax highlighting
-- Table of contents generation
+* how blog posts are stored
+* routing pattern
+* frontmatter schema
+* metadata fields
+* tags
+* categories
+* author model
+* reading time
+* related posts
+* SEO component
+* OG image generation
+* sitemap integration
+* RSS feed
+* search indexing
+* syntax highlighting
+* TOC generation
 
-Match the existing architecture. Do not introduce a different content system if one already exists.
+Match the existing architecture.
 
-## Step 2: Build a Modern Knowledge Architecture
+Do NOT introduce a different content system if one already exists.
 
-Organize the blog into these permanent clusters:
+---
 
-- Cluster A: AI Software Development
-- Cluster B: Modern Web Engineering
-- Cluster C: Intelligent Business Systems
-- Cluster D: AI Infrastructure
-- Cluster E: AI Visibility and SEO
-- Cluster F: Education Technology
-- Cluster G: Healthcare AI
-- Cluster H: Event Technology
-- Cluster R: Original Research
-- Cluster X: Ultimate Guides
+# Step 2 — Build a Modern Knowledge Architecture
 
-## Step 3: Generate the Initial Content Library
+Organize the blog into these permanent clusters.
 
-Generate approximately 50 cornerstone posts. Each post should include:
+## Cluster A
 
-- Title
-- Slug
-- Description
-- Target keyword
-- Category
-- Cluster
-- Difficulty
-- Intent
-- Reading time
-- Author
-- Published date
-- Updated date
-- Tags
-- Featured image
-- SEO title
-- SEO description
-- Canonical URL
-- Open Graph metadata
-- Twitter Card
-- Schema
-- Internal links
-- External authority references
-- Related posts
-- Series
-- Reading level
-- Status
+AI Software Development
 
-## Step 4: Cluster A, AI Software Development
+---
 
-- A1, pillar: The Complete Guide to AI Software Development (2026)
-- A2: How AI is Changing Software Engineering Forever
-- A3: The AI Developer Glossary
-- A4: The AI Software Maturity Model
-- A5: Claude vs GPT-5 vs Gemini vs Grok for Software Development
-- A6: AI Coding Assistants Compared
-- A7: Prompt Engineering for Developers
-- A8: How to Build AI-native Products
+## Cluster B
 
-## Step 5: Cluster B, Modern Web Engineering
+Modern Web Engineering
 
-Pillar: How to Build Modern Web Applications.
+---
 
-Supporting articles include Next.js architecture, React Server Components, Server Actions, Edge Runtime, TypeScript best practices, modern authentication, microservices, monolith versus modular monolith, design systems, web performance, Core Web Vitals, accessibility, responsive design, PWAs, testing, and deployment.
+## Cluster C
 
-## Step 6: Cluster C, Intelligent Business Systems
+Intelligent Business Systems
 
-Topics include AI for schools, healthcare, SMEs, finance, government, churches, and NGOs; digital transformation; automation; knowledge management; workflow automation; internal AI; and agentic businesses.
+---
 
-Each article should naturally introduce one NexisHub product where appropriate.
+## Cluster D
 
-## Step 7: Cluster D, AI Infrastructure
+AI Infrastructure
 
-Topics include LLMs, RAG, vector databases, embeddings, knowledge graphs, inference, AI APIs, model routing, AI gateways, AI memory, AI agents, MCP, context engineering, observability, caching, scaling, GPU infrastructure, prompt pipelines, evaluation, monitoring, and deployment.
+---
 
-## Step 8: Cluster E, AI Visibility and SiteNexis
+## Cluster E
+
+AI Visibility & SEO
+
+---
+
+## Cluster F
+
+Education Technology
+
+---
+
+## Cluster G
+
+Healthcare AI
+
+---
+
+## Cluster H
+
+Event Technology
+
+---
+
+## Cluster R
+
+Original Research
+
+---
+
+## Cluster X
+
+Ultimate Guides
+
+---
+
+# Step 3 — Generate the Initial Content Library
+
+Generate approximately 50 cornerstone posts.
+
+Each post should include:
+
+Title
+
+Slug
+
+Description
+
+Target Keyword
+
+Category
+
+Cluster
+
+Difficulty
+
+Intent
+
+Reading Time
+
+Author
+
+Published Date
+
+Updated Date
+
+Tags
+
+Featured Image
+
+SEO Title
+
+SEO Description
+
+Canonical URL
+
+OpenGraph
+
+Twitter Card
+
+Schema
+
+Internal Links
+
+External Authority References
+
+Related Posts
+
+Series
+
+Reading Level
+
+Status
+
+---
+
+# Step 4 — Cluster A
+
+## AI Software Development
+
+### A1 (Pillar)
+
+The Complete Guide to AI Software Development (2026)
+
+---
+
+### A2
+
+How AI is Changing Software Engineering Forever
+
+---
+
+### A3
+
+The AI Developer Glossary
+
+---
+
+### A4
+
+The AI Software Maturity Model
+
+---
+
+### A5
+
+Claude vs GPT-5 vs Gemini vs Grok for Software Development
+
+---
+
+### A6
+
+AI Coding Assistants Compared
+
+---
+
+### A7
+
+Prompt Engineering for Developers
+
+---
+
+### A8
+
+How to Build AI-native Products
+
+---
+
+# Step 5 — Cluster B
+
+Modern Web Engineering
+
+## Pillar
+
+How to Build Modern Web Applications
+
+Supporting articles include:
+
+Next.js Architecture
+
+React Server Components
+
+Server Actions
+
+Edge Runtime
+
+TypeScript Best Practices
+
+Modern Authentication
+
+Microservices
+
+Monolith vs Modular Monolith
+
+Design Systems
+
+Web Performance
+
+Core Web Vitals
+
+Accessibility
+
+Responsive Design
+
+PWAs
+
+Testing
+
+Deployment
+
+---
+
+# Step 6 — Cluster C
+
+Intelligent Business Systems
+
+Topics include
+
+AI for Schools
+
+AI for Healthcare
+
+AI for SMEs
+
+AI for Finance
+
+AI for Government
+
+AI for Churches
+
+AI for NGOs
+
+Digital Transformation
+
+Automation
+
+Knowledge Management
+
+Workflow Automation
+
+Internal AI
+
+Agentic Businesses
+
+Each article naturally introduces one NexisHub product where appropriate.
+
+---
+
+# Step 7 — Cluster D
+
+AI Infrastructure
+
+Topics include
+
+LLMs
+
+RAG
+
+Vector Databases
+
+Embeddings
+
+Knowledge Graphs
+
+Inference
+
+AI APIs
+
+Model Routing
+
+AI Gateways
+
+AI Memory
+
+AI Agents
+
+MCP
+
+Context Engineering
+
+Observability
+
+Caching
+
+Scaling
+
+GPU Infrastructure
+
+Prompt Pipelines
+
+Evaluation
+
+Monitoring
+
+Deployment
+
+---
+
+# Step 8 — Cluster E
+
+AI Visibility (SiteNexis)
 
 This cluster establishes SiteNexis as the authority.
 
-Topics include what AI visibility is, AI SEO, GEO, entity SEO, technical SEO, schema, knowledge graphs, citations, AI crawlability, ChatGPT optimization, Claude optimization, Gemini optimization, Perplexity optimization, Search Console, AI search, semantic SEO, content engineering, programmatic SEO, internal linking, and topical authority.
+Topics include
 
-## Step 9: Cluster F, TeachNexis
+What is AI Visibility
 
-Topics include AI in education, the future of learning, teacher productivity, digital classrooms, lesson planning, question banks, CBT, student analytics, adaptive learning, educational AI, assessment systems, learning management, and school technology.
+AI SEO
 
-## Step 10: Cluster G, CareBridge
+GEO
 
-Topics include healthcare AI, HIPAA, clinical AI, nutrition AI, medical documentation, patient systems, AI safety, healthcare compliance, hospital automation, decision support, and medical knowledge systems.
+Entity SEO
 
-## Step 11: Cluster H, EventNexis
+Technical SEO
 
-Topics include modern event management, QR check-in, guest experience, digital invitations, registration systems, school events, conference technology, attendance analytics, volunteer coordination, and hybrid events.
+Schema
 
-## Step 12: Original Research
+Knowledge Graphs
 
-Create flagship research pages, including:
+Citations
 
-- State of AI Visibility 2026
-- AI Search Index
-- Future of AI Websites
-- Developer Productivity Report
-- Education Technology Report
-- Healthcare AI Adoption Report
-- AI SEO Benchmark Report
-- AI Agent Adoption Report
+AI Crawlability
 
-Do not fabricate statistics. Whenever proprietary data is unavailable, insert explicit placeholders such as:
+ChatGPT Optimization
 
-- `[Research data to be collected]`
-- `[Survey pending]`
-- `[Benchmark pending]`
+Claude Optimization
 
-## Step 13: Ultimate Guides
+Gemini Optimization
 
-Create evergreen resources, including:
+Perplexity Optimization
 
-- The Ultimate Guide to Building AI Products
-- The Ultimate Guide to SaaS
-- The Ultimate Guide to AI Visibility
-- The Ultimate Guide to Modern Web Development
-- The Ultimate Guide to AI Education
-- The Ultimate Guide to AI Agents
+Search Console
 
-These should become the highest-authority pages.
+AI Search
 
-## Step 14: Writing Style
+Semantic SEO
 
-Maintain one consistent editorial voice:
+Content Engineering
 
-- Use short paragraphs and short sentences.
-- Use no filler and no hype.
-- Do not use em dashes.
-- Explain difficult ideas simply.
-- Use examples.
-- Prefer practical advice.
-- Be technically accurate.
-- Use diagrams where helpful.
+Programmatic SEO
 
-Every article should answer: What, Why, How, Best Practices, Common Mistakes, Tools, Future Trends, Key Takeaways, and FAQs.
+Internal Linking
 
-## Step 15: SEO Standards
+Topical Authority
+
+---
+
+# Step 9 — Cluster F
+
+TeachNexis
+
+Topics
+
+AI in Education
+
+Future of Learning
+
+Teacher Productivity
+
+Digital Classrooms
+
+Lesson Planning
+
+Question Banks
+
+CBT
+
+Student Analytics
+
+Adaptive Learning
+
+Educational AI
+
+Assessment Systems
+
+Learning Management
+
+School Technology
+
+---
+
+# Step 10 — Cluster G
+
+CareBridge
+
+Topics
+
+Healthcare AI
+
+HIPAA
+
+Clinical AI
+
+Nutrition AI
+
+Medical Documentation
+
+Patient Systems
+
+AI Safety
+
+Healthcare Compliance
+
+Hospital Automation
+
+Decision Support
+
+Medical Knowledge Systems
+
+---
+
+# Step 11 — Cluster H
+
+EventNexis
+
+Topics
+
+Modern Event Management
+
+QR Check-in
+
+Guest Experience
+
+Digital Invitations
+
+Registration Systems
+
+School Events
+
+Conference Technology
+
+Attendance Analytics
+
+Volunteer Coordination
+
+Hybrid Events
+
+---
+
+# Step 12 — Original Research
+
+Create flagship research pages.
+
+Examples
+
+State of AI Visibility 2026
+
+AI Search Index
+
+Future of AI Websites
+
+Developer Productivity Report
+
+Education Technology Report
+
+Healthcare AI Adoption Report
+
+AI SEO Benchmark Report
+
+AI Agent Adoption Report
+
+Do NOT fabricate statistics.
+
+Whenever proprietary data is unavailable, insert placeholders such as:
+
+[Research data to be collected]
+
+[Survey pending]
+
+[Benchmark pending]
+
+---
+
+# Step 13 — Ultimate Guides
+
+Create evergreen resources.
+
+Examples
+
+The Ultimate Guide to Building AI Products
+
+The Ultimate Guide to SaaS
+
+The Ultimate Guide to AI Visibility
+
+The Ultimate Guide to Modern Web Development
+
+The Ultimate Guide to AI Education
+
+The Ultimate Guide to AI Agents
+
+These become the highest authority pages.
+
+---
+
+# Step 14 — Writing Style
+
+Maintain one consistent editorial voice.
+
+Writing rules
+
+Short paragraphs.
+
+Short sentences.
+
+No filler.
+
+No hype.
+
+No em dashes.
+
+Explain difficult ideas simply.
+
+Use examples.
+
+Prefer practical advice.
+
+Be technically accurate.
+
+Use diagrams where helpful.
+
+Every article should answer:
+
+What
+
+Why
+
+How
+
+Best Practices
+
+Common Mistakes
+
+Tools
+
+Future Trends
+
+Key Takeaways
+
+FAQs
+
+---
+
+# Step 15 — SEO Standards
 
 Every article must include:
 
-- Optimized title and meta description
-- Canonical URL and slug
-- JSON-LD, FAQ, Breadcrumb, and Article schemas
-- Open Graph metadata and Twitter Card
-- Table of contents
-- Estimated reading time
-- Author and last-updated date
-- Featured image and image alt text
-- Internal links and external references
-- Related articles
-- Newsletter CTA and product CTA
+Optimized Title
 
-## Step 16: Internal Linking Strategy
+Meta Description
+
+Canonical URL
+
+Slug
+
+JSON-LD Schema
+
+FAQ Schema
+
+Breadcrumb Schema
+
+Article Schema
+
+OpenGraph Metadata
+
+Twitter Card
+
+Table of Contents
+
+Estimated Reading Time
+
+Author
+
+Last Updated
+
+Featured Image
+
+Image Alt Text
+
+Internal Links
+
+External References
+
+Related Articles
+
+Newsletter CTA
+
+Product CTA
+
+---
+
+# Step 16 — Internal Linking Strategy
 
 Every article should:
 
-- Link to at least one relevant pillar page.
-- Link to the AI Software Development guide where appropriate.
-- Link naturally to related glossary entries on first mention of technical terms.
-- Include contextual links to supporting articles within the same cluster.
-- Add cross-cluster links where concepts overlap.
-- Include subtle, relevant links to NexisHub products without turning articles into advertisements.
-- Ensure every pillar receives inbound links from its supporting articles.
-- Avoid orphan pages by ensuring every published article both links to and is linked from other relevant content.
-- Validate all internal links before publishing.
+* Link to at least one relevant pillar page.
+* Link to the AI Software Development guide where appropriate.
+* Link naturally to related glossary entries on first mention of technical terms.
+* Include contextual links to supporting articles within the same cluster.
+* Add cross-cluster links when concepts overlap, such as AI Infrastructure to AI Visibility or Education Technology to AI Software Development.
+* Include subtle, relevant links to NexisHub products without turning articles into advertisements.
+* Ensure every pillar receives inbound links from its supporting articles.
+* Avoid orphan pages by verifying that every published article both links to and is linked from other relevant content.
+* Validate that all internal links resolve correctly before publishing.
 
-## Step 17: Product Integration
+---
 
-Never hard-sell. Educate first and sell second.
+# Step 17 — Product Integration
 
-- When discussing AI visibility, introduce SiteNexis.
-- When discussing education, introduce TeachNexis.
-- When discussing events, introduce EventNexis.
-- When discussing healthcare, introduce CareBridge.
-- When discussing learning, introduce LogicLand.
+Never hard-sell.
 
-## Step 18: Performance and Publication Features
+Instead:
+
+When discussing AI Visibility
+
+Introduce SiteNexis.
+
+When discussing Education
+
+Introduce TeachNexis.
+
+When discussing Events
+
+Introduce EventNexis.
+
+When discussing Healthcare
+
+Introduce CareBridge.
+
+When discussing Learning
+
+Introduce LogicLand.
+
+Always educate first.
+
+Sell second.
+
+---
+
+# Step 18 — Performance
 
 Automatically support:
 
-- RSS feed and XML sitemap
-- Search and pagination
-- Categories and tags
-- Reading progress
-- Dark mode
-- Share buttons and copy link
-- Estimated reading time
-- Author, series, and cluster pages
-- Related posts
-- Previous and next navigation
-- Search indexing
-- Image optimization
-- Code syntax highlighting
-- Math rendering with KaTeX
-- Mermaid diagrams
-- Interactive code blocks
+RSS Feed
 
-## Step 19: Accessibility and Quality
+XML Sitemap
+
+Search
+
+Pagination
+
+Categories
+
+Tags
+
+Reading Progress
+
+Dark Mode
+
+Share Buttons
+
+Copy Link
+
+Estimated Reading Time
+
+Author Pages
+
+Series Pages
+
+Cluster Pages
+
+Related Posts
+
+Previous/Next Navigation
+
+Search Indexing
+
+Image Optimization
+
+Code Syntax Highlighting
+
+Math Rendering (KaTeX)
+
+Mermaid Diagrams
+
+Interactive Code Blocks
+
+---
+
+# Step 19 — Accessibility & Quality
 
 Ensure the blog complies with:
 
-- WCAG 2.2 AA accessibility standards
-- Semantic HTML structure
-- Proper H1 to H2 to H3 heading hierarchy
-- Keyboard navigation
-- Screen reader compatibility
-- Optimized Core Web Vitals
-- Responsive mobile, tablet, and desktop layouts
-- Fast loading with lazy-loaded images and optimized assets
+* WCAG 2.2 AA accessibility standards.
+* Semantic HTML structure.
+* Proper heading hierarchy (H1 → H2 → H3).
+* Keyboard navigation.
+* Screen reader compatibility.
+* Optimized Core Web Vitals.
+* Responsive layouts for mobile, tablet, and desktop.
+* Fast loading with lazy-loaded images and optimized assets.
 
-## Final Objective
+---
 
-Build a world-class engineering and AI publication that positions NexisHub as the parent ecosystem behind SiteNexis, TeachNexis, EventNexis, LogicLand, and CareBridge.
+# Final Objective
+
+Build a world-class engineering and AI publication that positions **NexisHub** as the parent ecosystem behind **SiteNexis, TeachNexis, EventNexis, LogicLand, and CareBridge**.
 
 The blog should function as a long-term knowledge asset that attracts developers, founders, educators, healthcare professionals, enterprises, and marketers through high-quality, evergreen content. Every article should strengthen topical authority, support search visibility, and naturally guide readers toward the appropriate NexisHub product while remaining educational, trustworthy, and technically rigorous.
-
 ## Recommended Content Map
 
 NexisHub should own topics around AI development, intelligent websites, modern software infrastructure, automation, and digital transformation.
