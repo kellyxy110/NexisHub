@@ -31,6 +31,7 @@ svg { display: block; }
 .mark--small span { width: 13px; height: 2px; background: var(--ink); }
 .mark--small span:nth-child(1) { transform: translateY(-4px) rotate(25deg); }
 .mark--small span:nth-child(3) { transform: translateY(4px) rotate(25deg); }
+.mark svg { width: 88%; height: 88%; }.mark--small { background: #050509; }.mark--small svg { width: 92%; height: 92%; }.brand-name b { font-weight: inherit; background: linear-gradient(100deg, #8238ff, #286aff 55%, #00cfe4); background-clip: text; -webkit-background-clip: text; color: transparent; }
 .desktop-nav { display: flex; align-items: center; gap: clamp(22px, 2.4vw, 42px); margin-left: 9%; }
 .desktop-nav a, .text-link { font-size: 13px; color: rgba(255,255,255,.72); transition: color .2s ease; }
 .desktop-nav a:hover, .text-link:hover { color: white; }
@@ -147,6 +148,7 @@ h1, h2, h3, p { margin-top: 0; }
 
 .closing-section { padding: 150px 0; background: #f2f3f5; }.closing-inner { display: flex; flex-direction: column; align-items: center; text-align: center; }.closing-inner .mark { margin-bottom: 36px; }.closing-inner h2 { max-width: 900px; margin: 0 auto 40px; }.closing-inner .button { min-width: 220px; }
 footer { padding: 80px 0 30px; background: var(--ink); color: white; }.brand--footer .mark { background: white; }.brand--footer .mark span { background: var(--ink); }.footer-top { min-height: 280px; display: grid; grid-template-columns: 1fr 1fr; }.footer-top > div:first-child > p { max-width: 250px; margin: 25px 0 0; color: rgba(255,255,255,.4); font-size: 12px; line-height: 1.6; }.footer-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 45px; }.footer-links > div { display: flex; flex-direction: column; align-items: flex-start; gap: 15px; }.footer-links strong { margin-bottom: 8px; color: rgba(255,255,255,.35); font-size: 9px; text-transform: uppercase; letter-spacing: .13em; }.footer-links a { color: rgba(255,255,255,.72); font-size: 12px; }.footer-links a:hover { color: white; }.footer-bottom { padding-top: 25px; display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.32); font-size: 9px; text-transform: uppercase; letter-spacing: .09em; }.footer-bottom div { display: flex; gap: 25px; }
+.official-logo { width: 250px; height: 190px; display: block; overflow: hidden; }.official-logo img { width: 250px; height: auto; transform: translateY(-76px); }
 
 /* Products overview */
 .site-header--light { color: var(--ink); border-color: rgba(17,17,17,.08); background: rgba(255,255,255,.82); }
