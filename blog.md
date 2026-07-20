@@ -471,4 +471,5 @@ A recommended content map looks like this:
 | --- | --- | --- |
 | A | AI Software Development | Own the category |
 | B | Modern Web Engineering | Technical authority |
-| C |  |  |
+| C | Intelligent Business Systems | Business adoption |
+| D |  |  |
