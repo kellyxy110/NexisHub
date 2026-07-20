@@ -467,4 +467,7 @@ NexisHub should own topics around AI development, intelligent websites, modern s
 
 A recommended content map looks like this:
 
-> Cluster definitions to follow.
+| Cluster | Theme | Goal |
+| --- | --- | --- |
+| A | AI Software Development | Own the category |
+| B | Modern Web Engineering |  |
