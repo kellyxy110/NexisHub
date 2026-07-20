@@ -460,3 +460,11 @@ Ensure the blog complies with:
 Build a world-class engineering and AI publication that positions NexisHub as the parent ecosystem behind SiteNexis, TeachNexis, EventNexis, LogicLand, and CareBridge.
 
 The blog should function as a long-term knowledge asset that attracts developers, founders, educators, healthcare professionals, enterprises, and marketers through high-quality, evergreen content. Every article should strengthen topical authority, support search visibility, and naturally guide readers toward the appropriate NexisHub product while remaining educational, trustworthy, and technically rigorous.
+
+## Recommended Content Map
+
+NexisHub should own topics around AI development, intelligent websites, modern software infrastructure, automation, and digital transformation.
+
+A recommended content map looks like this:
+
+> Cluster definitions to follow.
