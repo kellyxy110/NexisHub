@@ -4,6 +4,13 @@ Format: lightweight ADR (Architecture/Product Decision Record). Add new entries 
 
 ---
 
+### DEC-019 — Canonical website URL and editorial platform
+**Context:** The NexisHub Vercel project is deployed and the founder supplied `blog.md`, defining a premium knowledge platform and research experience. No approved articles, authors, dates, or research papers were supplied.
+**Decision:** The canonical production URL is `https://nexishub.vercel.app`. Build `/blog` and `/research` now as complete discovery/landing experiences, including editorial hubs, filtering/search architecture, RSS, metadata, and honest empty publication states. Do not fabricate posts or papers; populate the archive only from approved source content.
+**Status:** Accepted.
+
+---
+
 ### DEC-018 — Live SiteNexis deployment is the public product source of truth
 **Context:** The original website PRD used provisional SiteNexis language and marked features, pricing, screenshots, and go-to-market as unknown. The live product at `https://sitenexis.vercel.app` now publishes its methodology, feature set, pricing, documentation, and self-serve audit flow.
 **Decision:** NexisHub uses the live SiteNexis product as the source of truth for public product claims. Canonical positioning is “AI Retrieval & Machine Trust Intelligence.” Public features include 16 intelligence agents, four dependency layers, 12 explainable scores, six-stage retrieval simulation, entity intelligence, citation probability, recommendation-surface mapping, and P0/P1/P2 fix planning. Pricing is Free ($0), Starter ($29/month), Pro ($79/month), and Agency ($249/month), subject to synchronization with the live pricing page. NexisHub CTAs link to the live application. AdNexis is not added to the accepted NexisHub ecosystem until its relationship to NexisHub is explicitly decided.

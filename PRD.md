@@ -128,7 +128,7 @@ The product page must cover:
 ## 7. Phasing
 
 **Phase 1 (launch-ready):** Home, Products overview, SiteNexis page, About, Contact, Legal.
-**Phase 2:** Careers, Research/Blog, Press kit.
+**Phase 2:** Careers and Press kit. Research and Blog landing platforms are implemented under DEC-019; their publication archives remain empty until approved content exists.
 **Phase 3:** Investors page (once financials are real), AI prompt-bar recommendation feature, remaining product pages as each ships.
 
 ---

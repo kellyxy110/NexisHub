@@ -14,6 +14,7 @@ Single source for unresolved work after DEC-018. Product claims and pricing must
 | Add sitemap, robots, llms.txt, structured data, canonical metadata | Unblocked |
 | Add analytics and form adapters | Implement provider-neutral boundary; provider IDs/endpoints remain [NEEDS INPUT] |
 | Add tests and Vercel deployment configuration | Unblocked locally; production project/domain access remains external |
+| Publish first Blog articles and Research papers | Landing platforms are built; actual titles/authors/dates/content remain [NEEDS INPUT] |
 
 ---
 

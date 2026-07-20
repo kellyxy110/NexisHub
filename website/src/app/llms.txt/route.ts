@@ -3,11 +3,13 @@ const content = `# NexisHub
 > NexisHub is an AI infrastructure company building connected intelligent software.
 
 ## Canonical pages
-- Home: https://nexishub.com/
-- Products: https://nexishub.com/products
-- SiteNexis: https://nexishub.com/products/sitenexis
-- About: https://nexishub.com/about
-- Contact: https://nexishub.com/contact
+- Home: https://nexishub.vercel.app/
+- Products: https://nexishub.vercel.app/products
+- SiteNexis: https://nexishub.vercel.app/products/sitenexis
+- Blog: https://nexishub.vercel.app/blog
+- Research: https://nexishub.vercel.app/research
+- About: https://nexishub.vercel.app/about
+- Contact: https://nexishub.vercel.app/contact
 
 ## Live product
 - SiteNexis application: https://sitenexis.vercel.app

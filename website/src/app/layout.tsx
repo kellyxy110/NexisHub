@@ -7,7 +7,7 @@ const geist = Geist({ variable: "--font-geist", subsets: ["latin"], display: "sw
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nexishub.com"),
+  metadataBase: new URL("https://nexishub.vercel.app"),
   title: {
     default: "NexisHub — Intelligent Software, One Ecosystem",
     template: "%s — NexisHub",

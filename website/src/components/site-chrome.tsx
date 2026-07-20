@@ -18,12 +18,12 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
       <div className="shell nav-shell">
         <Link className="brand" href="/" aria-label="NexisHub home"><Mark small /><span className="brand-name">Nexis<b>Hub</b></span></Link>
         <nav className="desktop-nav" aria-label="Primary navigation">
-          <Link href="/products">Products</Link><Link href="/#platform">Platform</Link><Link href="/#principles">Principles</Link><Link href="/about">Company</Link>
+          <Link href="/products">Products</Link><Link href="/#platform">Platform</Link><Link href="/research">Research</Link><Link href="/blog">Blog</Link><Link href="/about">Company</Link>
         </nav>
         <div className="nav-actions"><a className="text-link" href={siteNexisLinks.login}>Sign in</a><a className="button button--small" href={siteNexisLinks.audit} data-analytics="sitenexis-start-free">Run free audit <Arrow /></a></div>
         <details className="mobile-nav">
           <summary aria-label="Open navigation"><span /><span /></summary>
-          <nav aria-label="Mobile navigation"><Link href="/products">Products</Link><Link href="/#platform">Platform</Link><Link href="/#principles">Principles</Link><Link href="/about">Company</Link><a href={siteNexisLinks.audit} data-analytics="sitenexis-start-free-mobile">Run free audit</a></nav>
+          <nav aria-label="Mobile navigation"><Link href="/products">Products</Link><Link href="/#platform">Platform</Link><Link href="/research">Research</Link><Link href="/blog">Blog</Link><Link href="/about">Company</Link><a href={siteNexisLinks.audit} data-analytics="sitenexis-start-free-mobile">Run free audit</a></nav>
         </details>
       </div>
     </header>
@@ -38,7 +38,7 @@ export function SiteFooter() {
         <div className="footer-links">
           <div><strong>Products</strong><Link href="/products/sitenexis">SiteNexis</Link><Link href="/products">All products</Link></div>
           <div><strong>Company</strong><Link href="/about">About</Link><Link href="/contact">Contact</Link><Link href="/legal">Legal</Link></div>
-          <div><strong>Resources</strong><a href={siteNexisLinks.methodology}>Methodology</a><a href={siteNexisLinks.docs}>SiteNexis docs</a><a href={siteNexisLinks.pricing}>Pricing</a></div>
+          <div><strong>Resources</strong><Link href="/blog">Blog</Link><Link href="/research">Research</Link><a href={siteNexisLinks.docs}>SiteNexis docs</a></div>
         </div>
         <NewsletterForm />
       </div>
