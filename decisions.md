@@ -1,0 +1,141 @@
+# NexisHub — Decision Log
+
+Format: lightweight ADR (Architecture/Product Decision Record). Add new entries at the top. Each entry: context → decision → status.
+
+---
+
+### DEC-018 — Live SiteNexis deployment is the public product source of truth
+**Context:** The original website PRD used provisional SiteNexis language and marked features, pricing, screenshots, and go-to-market as unknown. The live product at `https://sitenexis.vercel.app` now publishes its methodology, feature set, pricing, documentation, and self-serve audit flow.
+**Decision:** NexisHub uses the live SiteNexis product as the source of truth for public product claims. Canonical positioning is “AI Retrieval & Machine Trust Intelligence.” Public features include 16 intelligence agents, four dependency layers, 12 explainable scores, six-stage retrieval simulation, entity intelligence, citation probability, recommendation-surface mapping, and P0/P1/P2 fix planning. Pricing is Free ($0), Starter ($29/month), Pro ($79/month), and Agency ($249/month), subject to synchronization with the live pricing page. NexisHub CTAs link to the live application. AdNexis is not added to the accepted NexisHub ecosystem until its relationship to NexisHub is explicitly decided.
+**Status:** Accepted. Supersedes provisional SiteNexis wording and open feature/pricing questions in the PRD.
+
+---
+
+### DEC-017 — Website ships as a single Next.js repo; monorepo restructuring deferred
+**Context:** `master-architecture.md` §5/§7 flagged monorepo-vs-multi-repo as the one remaining question gated on the tech-stack decision.
+**Decision:** Build the website as a single standard Next.js app repo. No monorepo/shared-package structure yet — there's only one deployable thing (the marketing site) right now. Revisit when a second product needs actual shared *code* (not just shared design tokens/docs), consistent with the "build infrastructure when a real product needs it" principle already applied in DEC-009 and DEC-012.
+**Status:** Accepted.
+
+---
+
+### DEC-016 — SiteNexis go-to-market motion: self-serve with free tier/trial
+**Context:** `PRD.md` §8 open question; blocked CTA design and pricing-page structure.
+**Decision:** Self-serve — visitors sign up and use the product directly. Primary CTA language: "Start Free" / "Get Started," not "Book a Demo" or "Join the Waitlist."
+**Status:** Accepted. See `PRD.md` §8.
+
+---
+
+### DEC-015 — Website content is hardcoded/MDX in the repo, not a headless CMS
+**Context:** `PRD.md` §5 flagged CMS choice as needed before content architecture could be finalized.
+**Decision:** Engineers manage content (product pages, blog/research articles, legal pages) via code + PR, using MDX where long-form content benefits from it. Revisit a headless CMS if/when content ownership shifts to non-engineering team members.
+**Status:** Accepted. See `PRD.md` §5.
+
+---
+
+### DEC-014 — Tech stack: Next.js + Vercel
+**Context:** Tech stack was the top blocking Priority 1 item in `tasks_gaps.md`, gating `master-architecture.md`'s remaining "still needs" rows, the CMS choice, and Volume III of `documentation.md`.
+**Decision:** Next.js on Vercel. Rationale: fits the design system's performance-budgeted, animation-heavy homepage (SSR/ISR for LCP, straightforward reduced-motion fallback rendering per DEC-002), and Vercel gives per-PR preview deployments without separate CI setup.
+**Status:** Accepted. See `master-architecture.md` §4, §5; `documentation.md` Volume III.
+
+---
+
+### DEC-013 — AI human-review checkpoints are a shared mechanism, per-product policy
+**Context:** `master-architecture.md` §3.3 flagged that AI output risk varies sharply by product (a SiteNexis visibility score vs. a CareBridge patient-facing suggestion) and needed a decision on how review gets enforced.
+**Decision:** NexisAI exposes a shared review/confidence-checkpoint mechanism (confidence scoring, human-sign-off flag, user-override hook). Each product configures its own bar on top of it — e.g. SiteNexis can auto-publish, CareBridge would require mandatory human sign-off before patient-facing output ships. No platform-wide review bar is hardcoded, but every product must configure one.
+**Status:** Accepted. See `master-architecture.md` §3.3.
+
+---
+
+### DEC-012 — Billing launches standalone for SiteNexis, unifies into NexisPay when product #2 needs it
+**Context:** `master-architecture.md` §3.2 flagged whether org-level billing should be unified across products from day one or built per-product first.
+**Decision:** SiteNexis launches with its own standalone billing integration. Shared NexisPay only gets built when a second paying product actually needs it — consistent with `documentation.md` Volume II's "build infrastructure when a real product needs it" recommendation. Billing data stays modeled at the Organization level (not per-user) from the start, so unification later is a backend consolidation, not a data migration.
+**Status:** Accepted. See `master-architecture.md` §3.2.
+
+---
+
+### DEC-011 — NexisHub Master Architecture drafted stack-agnostic, ahead of the stack decision
+**Context:** DEC-010 called for the Master Architecture doc before a second product starts development, but tech stack is still undecided (Priority 1 in `tasks_gaps.md`).
+**Decision:** Draft the doc now defining shared-platform *contracts and responsibilities* (identity, billing, AI core, analytics, design system, security/monitoring, deployment shape) without committing to implementations, so it doesn't block on the stack decision and doesn't need to be re-derived once the stack is chosen — only the "still needs" rows in `master-architecture.md` §4 depend on it.
+**Status:** Accepted. Reviewed — see DEC-012, DEC-013 for the two open questions it surfaced. `master-architecture.md` is now v1.0/Accepted, with monorepo-vs-multi-repo structure the only remaining item still gated on the tech-stack decision.
+
+---
+
+### DEC-010 — NexisHub Master Architecture is the next document, before a second product starts
+**Context:** Constitution recommends a Master Architecture doc (auth, billing, AI core, analytics, design system, deployment) that every product inherits from.
+**Decision:** Write it before TeachNexis/LogicLand/EventNexis/CareBridge move past "purpose defined" into active development.
+**Status:** Accepted, not started. Tracked in `tasks_gaps.md`.
+
+---
+
+### DEC-009 — Future products are shared infrastructure, not standalone verticals
+**Context:** Original future-products list (FinanceNexis, RecruitNexis, CommerceNexis, ResearchNexis, GovNexis) implied separate vertical products.
+**Decision:** Reframed as an infrastructure suite the company builds for itself first: NexisAI (shared intelligence engine), NexisCloud, NexisDeploy, NexisDocs, NexisForms, NexisCRM, NexisMail, NexisAuth, NexisPay.
+**Status:** Accepted. Supersedes the vertical-products framing in the original brainstorm.
+
+---
+
+### DEC-008 — Each core product has a defined one-line purpose
+**Context:** Products previously existed only as names.
+**Decision:** SiteNexis = AI Visibility Intelligence Platform; TeachNexis = AI-powered education platform; LogicLand = interactive learning (coding/math/logic); EventNexis = event management (invitations/registration/QR/reporting); CareBridge = healthcare provider–patient communication/workflows.
+**Status:** Accepted. See `PRD.md` §4.2 and `documentation.md` Volume II.
+
+---
+
+### DEC-007 — NexisHub is positioned as an AI Infrastructure Company, not a single-product company with a corporate wrapper
+**Context:** Original framing risked reading as "the company that owns SiteNexis."
+**Decision:** Position as an AI infrastructure company where every product shares common platform infrastructure (auth, billing, AI layer, analytics, design system) and extends it rather than reinventing it.
+**Status:** Accepted. This is now the top-level frame for `PRD.md`, `CLAUDE.md`, and Volume I of `documentation.md`.
+
+---
+
+### DEC-006 — Documentation scope is staged, not all-at-once
+**Context:** Original vision called for a single 400–600+ page master documentation set across 15 volumes, built up front.
+**Decision:** Build the skeleton now (`documentation.md`), but write each volume when the company actually reaches the stage that volume describes (e.g., Sales volume once there's a sales process), rather than pre-writing speculative content for stages that don't exist yet.
+**Status:** Accepted
+**Reasoning:** Documentation written ahead of reality tends to be fiction that has to be rewritten anyway; staged docs stay accurate and get finished faster where it matters (Foundation, Product, Design).
+
+---
+
+### DEC-005 — AI prompt bar is v2, not v1
+**Context:** Homepage concept includes a persistent "What would you like to build today?" input that routes visitors intelligently.
+**Decision:** Ship the marketing site without it first; build the backend recommendation logic before designing the frontend for it.
+**Status:** Accepted
+**Reasoning:** A prompt bar that doesn't actually respond intelligently undermines the "intelligent company" positioning it's meant to reinforce.
+
+---
+
+### DEC-004 — Product ecosystem is visualized as a network/galaxy, not a card grid
+**Context:** Homepage needs to communicate "connected ecosystem," not "list of separate products."
+**Decision:** NexisHub as center node, five products as connected satellite nodes, pulsing connections, mouse-reactive.
+**Status:** Accepted, needs performance fallback (see DEC-002).
+
+---
+
+### DEC-003 — Each product gets a dedicated accent color
+**Context:** Five products need to feel distinct while remaining part of one visual system.
+**Decision:** SiteNexis = Blue, TeachNexis = Emerald, EventNexis = Purple, LogicLand = Orange, CareBridge = Rose. Base palette stays Graphite Black / White across all products; only the accent shifts.
+**Status:** Accepted.
+
+---
+
+### DEC-002 — Heavy homepage animation requires a reduced-motion / low-power fallback
+**Context:** Animated network background + scroll-pinned morphing laptop is a real performance and accessibility risk.
+**Decision:** Build a static/simplified version first; treat the full animated version as progressive enhancement gated behind performance budget (see `PRD.md` §5) and `prefers-reduced-motion`.
+**Status:** Accepted.
+
+---
+
+### DEC-001 — SiteNexis is the flagship product for launch
+**Context:** Five products exist in the roadmap (SiteNexis, TeachNexis, EventNexis, LogicLand, CareBridge), but only one needs to be fully real at website launch.
+**Decision:** Website and PRD treat SiteNexis as the only "live" product at v1; others show as "in development" with waitlist capture.
+**Status:** Accepted.
+
+---
+
+## Open decisions (not yet made — need your input)
+
+- Whether Investors and Careers pages are public or gated at launch
+- Legal entity/registration details for Corporate Identity section
+- Real team/founder content for About page — pending consent to publish
+- Whether AdNexis is a NexisHub core product, a SiteNexis-adjacent product, or outside the NexisHub ecosystem
+- Analytics, form-delivery, and monitoring providers for the NexisHub website
