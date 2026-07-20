@@ -473,4 +473,5 @@ A recommended content map looks like this:
 | B | Modern Web Engineering | Technical authority |
 | C | Intelligent Business Systems | Business adoption |
 | D | AI Infrastructure & DevOps | Engineering credibility |
-| E |  |  |
+| E | Growth, SEO & AI Visibility | Acquire customers |
+| R |  |  |
