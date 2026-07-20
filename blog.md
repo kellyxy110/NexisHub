@@ -475,4 +475,16 @@ A recommended content map looks like this:
 | D | AI Infrastructure & DevOps | Engineering credibility |
 | E | Growth, SEO & AI Visibility | Acquire customers |
 | R | Original Research | Earn backlinks |
-| X |  |  |
+| X | Capstone | Connect every pillar and showcase the NexisHub ecosystem |
+
+### X1: The Ultimate Guide to Building AI Companies
+
+This is the flagship article that links to every pillar and showcases the NexisHub ecosystem.
+
+It naturally introduces:
+
+- SiteNexis for AI visibility and SEO.
+- TeachNexis for AI-powered education.
+- EventNexis for intelligent event management.
+- LogicLand for interactive learning.
+- CareBridge for healthcare solutions.
