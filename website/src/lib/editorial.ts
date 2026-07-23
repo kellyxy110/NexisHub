@@ -1,7 +1,9 @@
-export const editorialHubs = [
-  { name: "AI Software Development", group: "Engineering", description: "Patterns for building useful, accountable AI products." },
+type EditorialHub = { name: string; group: "Engineering" | "Intelligence" | "Domains" | "Knowledge"; description: string; href?: string; articleCount?: number };
+
+export const editorialHubs: readonly EditorialHub[] = [
+  { name: "AI Software Development", group: "Engineering", description: "Patterns for building useful, accountable AI products.", href: "/blog/complete-guide-ai-software-development", articleCount: 1 },
   { name: "Modern Web Engineering", group: "Engineering", description: "Architecture, performance, interfaces, and resilient delivery." },
-  { name: "AI Visibility", group: "Intelligence", description: "How machines retrieve, interpret, trust, and cite web content." },
+  { name: "AI Visibility", group: "Intelligence", description: "How machines retrieve, interpret, trust, and cite web content.", href: "/blog/complete-guide-ai-visibility", articleCount: 15 },
   { name: "AI Infrastructure", group: "Intelligence", description: "Shared intelligence layers, model routing, and system contracts." },
   { name: "Education Technology", group: "Domains", description: "Human-first tools for teachers, schools, and learners." },
   { name: "Healthcare AI", group: "Domains", description: "Care communication, safety boundaries, and review-aware systems." },

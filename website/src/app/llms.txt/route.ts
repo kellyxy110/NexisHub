@@ -1,3 +1,6 @@
+import { visibilityPosts } from "@/lib/posts";
+
+const visibilityGuides = visibilityPosts.map((post) => `- ${post.title}: https://nexishub.vercel.app${post.canonicalPath}`).join("\n");
 const content = `# NexisHub
 
 > NexisHub is an AI infrastructure company building connected intelligent software.
@@ -7,6 +10,9 @@ const content = `# NexisHub
 - Products: https://nexishub.vercel.app/products
 - SiteNexis: https://nexishub.vercel.app/products/sitenexis
 - Blog: https://nexishub.vercel.app/blog
+- Complete Guide to AI Software Development (2026): https://nexishub.vercel.app/blog/complete-guide-ai-software-development
+- AI Visibility and Machine Discovery guides:
+${visibilityGuides}
 - Research: https://nexishub.vercel.app/research
 - About: https://nexishub.vercel.app/about
 - Contact: https://nexishub.vercel.app/contact

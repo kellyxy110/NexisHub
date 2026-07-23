@@ -4,10 +4,17 @@ Format: lightweight ADR (Architecture/Product Decision Record). Add new entries 
 
 ---
 
+### DEC-020 — Initial AI Visibility editorial cluster is approved for implementation
+**Context:** DEC-019 established an honest empty publication state because no articles had been authorized. The founder subsequently requested an initial 15-post AI Visibility cluster, approved its topic/backlink plan, and directed implementation of the complete publishing tasks.
+**Decision:** Publish a NexisHub AI Visibility & Machine Discovery cluster consisting of one canonical pillar and 14 supporting field guides. Every guide must link to its pillar, relevant sibling guides, the AI Software Development pillar where applicable, primary authority references, and one complementary SiteNexis technical note. The content must distinguish verified documentation, observation, inference, and modeled estimates; it must not promise rankings or citations. SiteNexis reciprocal links are maintained as a separate-repository deployment task. Bulk publication remains subject to the editorial release review and production deployment gate.
+**Status:** Accepted. Supersedes DEC-019's empty blog state while preserving its evidence and content-integrity requirements.
+
+---
+
 ### DEC-019 — Canonical website URL and editorial platform
 **Context:** The NexisHub Vercel project is deployed and the founder supplied `blog.md`, defining a premium knowledge platform and research experience. No approved articles, authors, dates, or research papers were supplied.
 **Decision:** The canonical production URL is `https://nexishub.vercel.app`. Build `/blog` and `/research` now as complete discovery/landing experiences, including editorial hubs, filtering/search architecture, RSS, metadata, and honest empty publication states. Do not fabricate posts or papers; populate the archive only from approved source content.
-**Status:** Accepted.
+**Status:** Accepted. Empty-publication provision superseded by DEC-020; platform and canonical-URL decisions remain active.
 
 ---
 

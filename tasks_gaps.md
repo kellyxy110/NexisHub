@@ -1,6 +1,6 @@
 # NexisHub — Tasks & Gaps
 
-Single source for unresolved work after DEC-018. Product claims and pricing must remain synchronized with the live SiteNexis deployment.
+Single source for unresolved work after DEC-020. Product claims and pricing must remain synchronized with the live SiteNexis deployment.
 
 ---
 
@@ -8,13 +8,15 @@ Single source for unresolved work after DEC-018. Product claims and pricing must
 
 | Task | Status / dependency |
 |---|---|
-| Complete `/products/sitenexis` | Unblocked by DEC-018 and the live SiteNexis product |
-| Connect all SiteNexis CTAs | Use `https://sitenexis.vercel.app` and its public signup/login/pricing routes |
-| Complete About, Contact, and Legal routes | Structure/content can ship; real company identity and legal approval remain external inputs |
-| Add sitemap, robots, llms.txt, structured data, canonical metadata | Unblocked |
-| Add analytics and form adapters | Implement provider-neutral boundary; provider IDs/endpoints remain [NEEDS INPUT] |
-| Add tests and Vercel deployment configuration | Unblocked locally; production project/domain access remains external |
-| Publish first Blog articles and Research papers | Landing platforms are built; actual titles/authors/dates/content remain [NEEDS INPUT] |
+| Complete `/products/sitenexis` | **Complete locally** — verify claims and pricing against the live product before each release |
+| Connect all SiteNexis CTAs | **Complete locally** — centralized in `src/lib/site-links.ts` |
+| Complete About, Contact, and Legal routes | **Complete locally** — corporate identity and legal approval remain external launch gates |
+| Add sitemap, robots, llms.txt, structured data, canonical metadata | **Complete locally** — production validation remains part of deployment QA |
+| Add analytics and form adapters | **Provider-neutral boundary complete** — provider selection, credentials, rate limiting, and delivery tests remain |
+| Add tests and Vercel deployment configuration | **Complete locally** — preview/production deployment and browser-level QA remain |
+| Publish first Blog articles | **Implemented under DEC-020** — 16 total guides, including the 15-post AI Visibility cluster; editorial release gate remains |
+| Publish first Research papers | Landing platform complete; real research data, methods, authors, and approval remain [NEEDS INPUT] |
+| Add reciprocal SiteNexis backlinks | Manifest complete; requires the separate SiteNexis repository, deployment access, and rendered-link verification |
 
 ---
 
@@ -38,6 +40,16 @@ Single source for unresolved work after DEC-018. Product claims and pricing must
 - Investor-page visibility and approved financial/traction material
 - Press contact and approved media assets
 - PRDs for TeachNexis, LogicLand, EventNexis, and CareBridge
+
+---
+
+## Current release sequence
+
+1. Complete the editorial review recorded in `editorial-release-review.md`; resolve all blocking findings before production deployment.
+2. Add the 15 reciprocal SiteNexis links using `sitenexis-backlink-manifest.md` and verify them in rendered production HTML.
+3. Select and configure form delivery, analytics, and monitoring providers; update the legal drafts before enabling them.
+4. Obtain corporate identity and legal approval.
+5. Create a Vercel preview, run browser/accessibility/link/schema checks, then approve production deployment.
 
 ---
 

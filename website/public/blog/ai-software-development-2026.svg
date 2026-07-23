@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">AI software development system</title>
+  <desc id="desc">Six connected layers for building production AI software.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080a10"/><stop offset="1" stop-color="#151a2d"/></linearGradient>
+    <linearGradient id="signal" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#8b46ff"/><stop offset=".5" stop-color="#2d7ff9"/><stop offset="1" stop-color="#17d4db"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g opacity=".15" stroke="#fff"><path d="M0 150h1600M0 300h1600M0 450h1600M0 600h1600M0 750h1600"/><path d="M200 0v900M400 0v900M600 0v900M800 0v900M1000 0v900M1200 0v900M1400 0v900"/></g>
+  <text x="110" y="120" fill="#8b96aa" font-family="Arial, sans-serif" font-size="22" letter-spacing="5">NEXISHUB FIELD GUIDE · 2026</text>
+  <text x="110" y="220" fill="#fff" font-family="Arial, sans-serif" font-size="72" font-weight="700">AI software is a system.</text>
+  <text x="110" y="285" fill="#9da7ba" font-family="Arial, sans-serif" font-size="30">Models are one layer. Reliability comes from the whole stack.</text>
+  <path d="M180 590H1420" stroke="url(#signal)" stroke-width="4" filter="url(#glow)"/>
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <g transform="translate(210 590)"><circle r="52" fill="#101522" stroke="#8b46ff" stroke-width="3"/><circle r="11" fill="#8b46ff"/><text y="92" fill="#fff" font-size="22">Experience</text><text y="122" fill="#7f899d" font-size="16">Interface</text></g>
+    <g transform="translate(445 590)"><circle r="52" fill="#101522" stroke="#6d5dfc" stroke-width="3"/><circle r="11" fill="#6d5dfc"/><text y="92" fill="#fff" font-size="22">Orchestration</text><text y="122" fill="#7f899d" font-size="16">Control flow</text></g>
+    <g transform="translate(680 590)"><circle r="52" fill="#101522" stroke="#2d7ff9" stroke-width="3"/><circle r="11" fill="#2d7ff9"/><text y="92" fill="#fff" font-size="22">Intelligence</text><text y="122" fill="#7f899d" font-size="16">Models</text></g>
+    <g transform="translate(915 590)"><circle r="52" fill="#101522" stroke="#258ff0" stroke-width="3"/><circle r="11" fill="#258ff0"/><text y="92" fill="#fff" font-size="22">Knowledge</text><text y="122" fill="#7f899d" font-size="16">Context</text></g>
+    <g transform="translate(1150 590)"><circle r="52" fill="#101522" stroke="#1bb6e6" stroke-width="3"/><circle r="11" fill="#1bb6e6"/><text y="92" fill="#fff" font-size="22">Evaluation</text><text y="122" fill="#7f899d" font-size="16">Evidence</text></g>
+    <g transform="translate(1385 590)"><circle r="52" fill="#101522" stroke="#17d4db" stroke-width="3"/><circle r="11" fill="#17d4db"/><text y="92" fill="#fff" font-size="22">Operations</text><text y="122" fill="#7f899d" font-size="16">Control</text></g>
+  </g>
+  <text x="110" y="820" fill="#fff" font-family="Arial, sans-serif" font-size="26" font-weight="700">The Complete Guide to AI Software Development</text>
+</svg>
