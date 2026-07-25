@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { NewsletterForm } from "@/components/newsletter-form";
 import { Arrow, SiteFooter, SiteHeader } from "@/components/site-chrome";
-import { getPost, visibilityPosts } from "@/lib/posts";
+import { dynamicGuidePosts, getPost } from "@/lib/posts";
 import { siteNexisLinks } from "@/lib/site-links";
 import { getVisibilityGuide } from "@/lib/visibility-content";
 
@@ -16,13 +16,13 @@ const dateLabel = (value: string) => new Intl.DateTimeFormat("en", { dateStyle: 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return visibilityPosts.map((post) => ({ slug: post.slug }));
+  return dynamicGuidePosts.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = getPost(slug);
-  if (!post || post.cluster !== "E") return {};
+  if (!post || !dynamicGuidePosts.some((item) => item.slug === post.slug)) return {};
   return {
     title: post.seoTitle,
     description: post.seoDescription,
@@ -42,9 +42,25 @@ export default async function VisibilityArticlePage({ params }: { params: Promis
   const { slug } = await params;
   const post = getPost(slug);
   const guide = getVisibilityGuide(slug);
-  if (!post || post.cluster !== "E" || !guide) notFound();
+  if (!post || !dynamicGuidePosts.some((item) => item.slug === post.slug) || !guide) notFound();
 
   const related = (post.relatedSlugs ?? []).map(getPost).filter((item) => item !== undefined);
+  const isEducation = post.cluster === "F";
+  const productCta = isEducation ? {
+    label: "TeachNexis",
+    title: "Build calmer AI-supported teaching workflows.",
+    body: "TeachNexis helps teachers and schools organize lesson planning, assessment support, classroom workflows, and reviewed AI assistance around real teaching needs.",
+    href: "https://teachnexis.vercel.app",
+    button: "Explore TeachNexis",
+    analytics: `article-${post.slug}-teachnexis`,
+  } : {
+    label: "Apply the framework",
+    title: "See how machines read your website.",
+    body: "SiteNexis analyzes crawl structure, semantic clarity, retrieval readiness, entity consistency, and machine-trust signals, then exposes the findings as an explainable action plan.",
+    href: siteNexisLinks.audit,
+    button: "Run a SiteNexis audit",
+    analytics: `article-${post.slug}-sitenexis`,
+  };
   const toc = [["overview", "The operating idea"], ["principles", "Core principles"], ["workflow", "Implementation workflow"], ["pitfalls", "Common mistakes"], ["measurement", "How to measure it"], ["future", "What comes next"], ["takeaways", "Key takeaways"], ["faq", "Frequently asked questions"], ["references", "References"]] as const;
   const articleSchema = {
     "@context": "https://schema.org", "@type": "TechArticle", headline: post.title, description: post.description,
@@ -64,8 +80,8 @@ export default async function VisibilityArticlePage({ params }: { params: Promis
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json(breadcrumbSchema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json(faqSchema) }} />
     <header className="article-hero"><div className="shell article-hero-inner">
-      <nav className="article-breadcrumb" aria-label="Breadcrumb"><Link href="/">NexisHub</Link><span>/</span><Link href="/blog">Blog</Link><span>/</span><span>AI Visibility</span></nav>
-      <p className="eyebrow"><span /> Cluster E · {slug === "complete-guide-ai-visibility" ? "Pillar guide" : "Field guide"}</p>
+      <nav className="article-breadcrumb" aria-label="Breadcrumb"><Link href="/">NexisHub</Link><span>/</span><Link href="/blog">Blog</Link><span>/</span><span>{post.category}</span></nav>
+      <p className="eyebrow"><span /> Cluster {post.cluster} · {slug === "complete-guide-ai-visibility" ? "Pillar guide" : "Field guide"}</p>
       <h1>{post.title}</h1>
       <p className="article-deck">{post.description}</p>
       <div className="article-byline"><span>By {post.author}</span><span>Published <time dateTime={post.publishedDate}>{dateLabel(post.publishedDate)}</time></span><span>{post.readingTime}</span><span>Reviewed {dateLabel(post.updatedDate)}</span></div>
@@ -75,7 +91,7 @@ export default async function VisibilityArticlePage({ params }: { params: Promis
       <aside className="article-toc"><p>In this guide</p><nav aria-label="Table of contents">{toc.map(([id, label]) => <a href={`#${id}`} key={id}>{label}</a>)}</nav><div className="article-series"><span>Series</span><strong>{post.series}</strong><small>{post.cluster} · Reviewed guide</small></div></aside>
       <article className="article-body">
         <p className="article-lead">{guide.lead}</p>
-        <p>This guide is part of the <Link href="/blog/complete-guide-ai-visibility">NexisHub AI visibility pillar</Link>. For the systems behind retrieval and generation, start with the <Link href={aiDevelopmentPath}>complete guide to AI software development</Link>.</p>
+        <p>{isEducation ? <>This guide is part of the NexisHub education technology series. For the engineering discipline behind useful AI products, start with the <Link href={aiDevelopmentPath}>complete guide to AI software development</Link>.</> : <>This guide is part of the <Link href="/blog/complete-guide-ai-visibility">NexisHub AI visibility pillar</Link>. For the systems behind retrieval and generation, start with the <Link href={aiDevelopmentPath}>complete guide to AI software development</Link>.</>}</p>
 
         <section id="overview"><h2>The operating idea</h2>{guide.overview.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<div className="article-callout"><strong>Editorial boundary</strong><p>NexisHub separates verified platform documentation, repeatable observation, and inference. No optimization can guarantee selection or citation by an external system.</p></div></section>
 
@@ -93,9 +109,9 @@ export default async function VisibilityArticlePage({ params }: { params: Promis
 
         <section id="faq"><h2>Frequently asked questions</h2><div className="article-faq">{guide.faq.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div></section>
 
-        <section id="references" className="article-references"><h2>References and further reading</h2><ol>{guide.references.map((reference) => <li key={reference.url}><a href={reference.url}>{reference.label}</a></li>)}<li><a href={post.siteNexisSource}>SiteNexis technical field note related to this guide</a></li></ol></section>
+        <section id="references" className="article-references"><h2>References and further reading</h2><ol>{guide.references.map((reference) => <li key={reference.url}><a href={reference.url}>{reference.label}</a></li>)}{post.siteNexisSource && <li><a href={post.siteNexisSource}>SiteNexis technical field note related to this guide</a></li>}</ol></section>
 
-        <section className="article-product"><span>Apply the framework</span><h2>See how machines read your website.</h2><p>SiteNexis analyzes crawl structure, semantic clarity, retrieval readiness, entity consistency, and machine-trust signals, then exposes the findings as an explainable action plan.</p><a className="button button--white" href={siteNexisLinks.audit} data-analytics={`article-${post.slug}-sitenexis`}>Run a SiteNexis audit <Arrow /></a></section>
+        <section className="article-product"><span>{productCta.label}</span><h2>{productCta.title}</h2><p>{productCta.body}</p><a className="button button--white" href={productCta.href} target={productCta.href.startsWith("http") ? "_blank" : undefined} rel={productCta.href.startsWith("http") ? "noopener noreferrer" : undefined} data-analytics={productCta.analytics}>{productCta.button} <Arrow /></a></section>
 
         <section className="article-related"><p className="kicker">Continue the cluster</p><h2>Related NexisHub guides</h2><div>{related.map((item) => <Link href={item.canonicalPath} key={item.slug}><span>{item.category}</span><strong>{item.title}</strong></Link>)}</div></section>
       </article>

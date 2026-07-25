@@ -293,6 +293,10 @@ footer { padding: 80px 0 30px; background: var(--ink); color: white; }.brand--fo
 .blog-latest-card b { display: inline-flex; align-items: center; gap: 18px; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }.blog-latest-card b svg { width: 18px; fill: none; stroke: currentColor; }
 .blog-latest-card img { width: 100%; height: 100%; object-fit: cover; }
 .blog-library { padding: 130px 0; background: #f6f7f9; }
+.blog-post-section + .blog-post-section { margin-top: 78px; }
+.blog-post-section-heading { margin-bottom: 24px; display: grid; grid-template-columns: 1fr .55fr; gap: 6vw; align-items: end; }
+.blog-post-section-heading h3 { margin: 0; font: 560 clamp(30px, 3.4vw, 48px)/1.05 var(--font-geist); letter-spacing: -.052em; }
+.blog-post-section-heading p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.75; }
 .blog-library-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
 .blog-library-grid article { min-height: 330px; padding: 30px; display: flex; flex-direction: column; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: white; }
 .blog-library-grid article > span { color: #7f838b; font-size: 8px; letter-spacing: .1em; text-transform: uppercase; }
@@ -325,7 +329,7 @@ footer { padding: 80px 0 30px; background: var(--ink); color: white; }.brand--fo
 .article-newsletter { padding: 100px 0; background: #0b0d12; color: white; }.article-newsletter > .shell { max-width: 1180px; display: grid; grid-template-columns: 1fr .7fr; gap: 80px; align-items: end; }.article-newsletter h2 { margin: 0; font: 560 clamp(40px, 4.5vw, 62px)/1.03 var(--font-geist); letter-spacing: -.06em; }
 
 @media (max-width: 1050px) {
-  .blog-latest-card { grid-template-columns: 1fr; }.blog-latest-card > div { min-height: 440px; }.blog-latest-card img { max-height: 520px; }.blog-library-grid { grid-template-columns: 1fr 1fr; }.article-layout { grid-template-columns: 1fr; gap: 45px; }.article-toc { position: static; }.article-toc nav { display: grid; grid-template-columns: 1fr 1fr; }.article-series { max-width: 320px; }.article-body { max-width: 780px; }
+  .blog-latest-card { grid-template-columns: 1fr; }.blog-latest-card > div { min-height: 440px; }.blog-latest-card img { max-height: 520px; }.blog-post-section-heading { grid-template-columns: 1fr; gap: 14px; }.blog-library-grid { grid-template-columns: 1fr 1fr; }.article-layout { grid-template-columns: 1fr; gap: 45px; }.article-toc { position: static; }.article-toc nav { display: grid; grid-template-columns: 1fr 1fr; }.article-series { max-width: 320px; }.article-body { max-width: 780px; }
 }
 @media (max-width: 720px) {
   .blog-latest { padding: 80px 0 95px; }.blog-latest-heading { align-items: flex-start; flex-direction: column; gap: 12px; }.blog-latest-card > div { min-height: 420px; padding: 28px; }.blog-latest-card h2 { font-size: 40px; }.blog-library { padding: 85px 0; }.blog-library-grid { grid-template-columns: 1fr; }.blog-library-grid article { min-height: 280px; }.article-page { padding-top: 72px; }.article-hero { padding: 70px 0 65px; }.article-breadcrumb { margin-bottom: 50px; }.article-hero h1 { font-size: 52px; }.article-deck { font-size: 15px; }.article-byline { flex-direction: column; gap: 9px; }.article-visual { width: 100%; margin-top: 0; }.article-visual img { border-radius: 0; }.article-layout { padding-block: 75px 95px; }.article-toc nav { grid-template-columns: 1fr; }.article-body .article-lead { font-size: 21px; }.article-body > p, .article-body section > p { font-size: 16px; }.article-body section { padding-top: 65px; }.article-body h2 { font-size: 38px; }.article-steps li { grid-template-columns: 1fr; gap: 9px; }.article-checklist { grid-template-columns: 1fr; }.article-product { padding: 30px; }.article-product h2 { margin-top: 35px; font-size: 34px; }.article-related > div { grid-template-columns: 1fr; }.article-newsletter > .shell { grid-template-columns: 1fr; gap: 40px; }
@@ -333,4 +337,32 @@ footer { padding: 80px 0 30px; background: var(--ink); color: white; }.brand--fo
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+/* Founder and trust signals */
+.about-founder { padding: 140px 0; background: #f5f6f8; }
+.founder-grid { display: grid; grid-template-columns: minmax(280px, .72fr) 1.28fr; gap: clamp(50px, 9vw, 140px); align-items: center; max-width: 1180px; }
+.founder-portrait { max-width: 460px; overflow: hidden; border-radius: 26px; background: #0a0a0a; }
+.founder-portrait img { display: block; width: 100%; height: auto; object-fit: cover; }
+.founder-copy { max-width: 650px; }
+.founder-copy h2 { margin: 0 0 14px; font: 560 clamp(42px, 5vw, 72px)/1 var(--font-geist); letter-spacing: -.06em; }
+.founder-role { color: var(--blue); font-size: 11px; font-weight: 650; letter-spacing: .1em; text-transform: uppercase; }
+.founder-copy > p:not(.kicker):not(.founder-role) { max-width: 590px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+.founder-copy .inline-link { margin-top: 12px; color: var(--ink); border-color: #bfc2c7; }
+.trusted-section { padding: 62px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: white; }
+.trusted-section--home { border-top: 0; }
+.trusted-inner { display: flex; align-items: center; justify-content: space-between; gap: 35px; }
+.trusted-inner .kicker { margin: 0; }
+.trusted-list { display: flex; flex-wrap: wrap; align-items: center; gap: clamp(30px, 7vw, 100px); }
+.trusted-list a { color: #555960; font: 600 clamp(18px, 2vw, 27px) var(--font-geist); letter-spacing: -.04em; }
+.trusted-list a:hover { color: var(--blue); }
+.trusted-list span { color: #a2a5aa; font-weight: 450; }
+
+@media (max-width: 720px) {
+  .about-founder { padding: 90px 0; }
+  .founder-grid { grid-template-columns: 1fr; gap: 38px; }
+  .founder-portrait { max-width: 100%; }
+  .founder-copy h2 { font-size: 44px; }
+  .trusted-inner { align-items: flex-start; flex-direction: column; }
+  .trusted-list { gap: 22px 35px; }
 }

@@ -10,6 +10,12 @@ const principles = [
   ["05", "Scale", "Share the strongest foundations across the entire ecosystem."],
 ] as const;
 
+function ProductLink({ href, name }: { href: string; name: string }) {
+  const label = `Explore ${name}`;
+  if (href.startsWith("http")) return <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}><Arrow /></a>;
+  return <Link href={href} aria-label={label}><Arrow /></Link>;
+}
+
 export default function Home() {
   const schema = {
     "@context": "https://schema.org",
@@ -45,6 +51,8 @@ export default function Home() {
           <div className="shell hero-foot"><p>One foundation</p><p>Five focused products</p><p>Built to work together</p></div>
         </section>
 
+        <section className="trusted-section trusted-section--home"><div className="shell trusted-inner"><p className="kicker">Trusted by</p><div className="trusted-list"><a href="https://genshipyard.com" target="_blank" rel="noopener noreferrer">genshipyard<span>.com</span></a><a href="https://truvyx.org" target="_blank" rel="noopener noreferrer">truvyx<span>.org</span></a></div></div></section>
+
         <section className="products-section" id="products">
           <div className="shell">
             <div className="section-heading"><div><p className="kicker">The ecosystem</p><h2>Focused products.<br />Connected by design.</h2></div><p>Every product solves a distinct problem while sharing the same intelligence, design language, and quality bar.</p></div>
@@ -54,7 +62,7 @@ export default function Home() {
                   <span className="product-index">0{index + 1}</span>
                   <div className="product-title"><i /><div><h3>{product.name}</h3><p>{product.eyebrow}</p></div></div>
                   <p className="product-description">{product.description}</p>
-                  <div className="product-status"><span>{product.status}</span>{product.href ? <Link href={product.href} aria-label={`Explore ${product.name}`}><Arrow /></Link> : <span className="soon-mark" aria-hidden="true">—</span>}</div>
+                  <div className="product-status"><span>{product.status}</span>{product.href ? <ProductLink href={product.href} name={product.name} /> : <span className="soon-mark" aria-hidden="true">—</span>}</div>
                 </article>
               ))}
             </div>

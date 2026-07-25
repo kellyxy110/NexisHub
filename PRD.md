@@ -55,7 +55,7 @@ Products (SiteNexis, TeachNexis, EventNexis, LogicLand, CareBridge, and future N
 ### 4.1 Home
 - **Hero:** headline + subhead + primary CTA ("Explore Products") + secondary CTA to SiteNexis directly.
 - **Visual system:** see `designuiux.md` for the network/galaxy motif, animated hero, and scroll-driven product showcase. Full spec lives there — don't duplicate it here.
-- **Product ecosystem section:** visual map of all 5 products; only SiteNexis is clickable/live at launch, others show "In development."
+- **Product ecosystem section:** visual map of all 5 products; live products link to their product surfaces, while in-development products remain clearly labeled.
 - **About/principles teaser:** 2–3 sentences + link to `/about`.
 - **Featured product:** SiteNexis gets a full-width, high-fidelity showcase block.
 - **Footer:** standard (Products, Resources, Company, Legal, Newsletter signup).
@@ -70,9 +70,9 @@ Products (SiteNexis, TeachNexis, EventNexis, LogicLand, CareBridge, and future N
 | Product | Purpose | Status |
 |---|---|---|
 | SiteNexis | AI Visibility Intelligence Platform — discoverability across search engines and AI assistants | Live |
-| TeachNexis | AI-powered education platform for teachers and schools | In development |
+| TeachNexis | AI-powered education platform for teachers and schools | Live |
 | LogicLand | Interactive learning platform for coding, math, logic, problem solving | In development |
-| EventNexis | Modern event management — invitations, registration, QR check-in, reporting | In development |
+| EventNexis | Modern event management — invitations, registration, QR check-in, reporting | Live |
 | CareBridge | Healthcare platform improving provider–patient communication and workflows | In development |
 
 ### 4.3 SiteNexis (`/products/sitenexis`)

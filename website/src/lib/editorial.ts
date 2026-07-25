@@ -5,7 +5,7 @@ export const editorialHubs: readonly EditorialHub[] = [
   { name: "Modern Web Engineering", group: "Engineering", description: "Architecture, performance, interfaces, and resilient delivery." },
   { name: "AI Visibility", group: "Intelligence", description: "How machines retrieve, interpret, trust, and cite web content.", href: "/blog/complete-guide-ai-visibility", articleCount: 15 },
   { name: "AI Infrastructure", group: "Intelligence", description: "Shared intelligence layers, model routing, and system contracts." },
-  { name: "Education Technology", group: "Domains", description: "Human-first tools for teachers, schools, and learners." },
+  { name: "Education Technology", group: "Domains", description: "Human-first tools for teachers, schools, and learners.", href: "/blog/ai-in-education-practical-guide", articleCount: 5 },
   { name: "Healthcare AI", group: "Domains", description: "Care communication, safety boundaries, and review-aware systems." },
   { name: "Event Technology", group: "Domains", description: "Connected workflows for invitations, registration, and operations." },
   { name: "Research", group: "Knowledge", description: "Reviewed investigations from the NexisHub research agenda." },

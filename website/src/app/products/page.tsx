@@ -9,6 +9,12 @@ export const metadata: Metadata = {
   alternates: { canonical: "/products" },
 };
 
+function ProductAction({ href }: { href: string | null }) {
+  if (!href) return <span className="directory-pending">Details will be shared when ready</span>;
+  if (href.startsWith("http")) return <a href={href} target="_blank" rel="noopener noreferrer">Explore product <Arrow /></a>;
+  return <Link href={href}>Explore product <Arrow /></Link>;
+}
+
 export default function ProductsPage() {
   return (
     <>
@@ -65,7 +71,7 @@ export default function ProductsPage() {
                   <div className="directory-copy"><p>{product.description}</p><span>For {product.audience}</span></div>
                   <div className="directory-action">
                     <span className="directory-status"><i />{product.status}</span>
-                    {product.href ? <Link href={product.href}>Explore product <Arrow /></Link> : <span className="directory-pending">Details will be shared when ready</span>}
+                    <ProductAction href={product.href} />
                   </div>
                 </article>
               ))}
@@ -75,8 +81,8 @@ export default function ProductsPage() {
 
         <section className="ecosystem-cta">
           <div className="shell ecosystem-cta-inner">
-            <div><p className="kicker">Start with what is live today</p><h2>Make your business easier to find in search and AI.</h2></div>
-            <div><p>SiteNexis is the first product built on the NexisHub foundation.</p><Link className="button" href="/products/sitenexis" data-analytics="products-explore-sitenexis">Explore SiteNexis <Arrow /></Link></div>
+            <div><p className="kicker">Start with the flagship</p><h2>Make your business easier to find in search and AI.</h2></div>
+            <div><p>SiteNexis is the flagship product built on the NexisHub foundation.</p><Link className="button" href="/products/sitenexis" data-analytics="products-explore-sitenexis">Explore SiteNexis <Arrow /></Link></div>
           </div>
         </section>
       </main>

@@ -4,6 +4,20 @@ Format: lightweight ADR (Architecture/Product Decision Record). Add new entries 
 
 ---
 
+### DEC-022 — TeachNexis and EventNexis are live products
+**Context:** After public product surfaces were linked under DEC-021, the founder confirmed that EventNexis and TeachNexis are live.
+**Decision:** Mark TeachNexis and EventNexis as `Live` in the NexisHub product registry and machine-readable guidance. Keep LogicLand and CareBridge as `In development` until a separate launch-status decision is made. SiteNexis remains live and keeps its dedicated full product page.
+**Status:** Accepted.
+
+---
+
+### DEC-021 — Public in-development product surfaces are linked from NexisHub
+**Context:** The founder provided public Vercel URLs for TeachNexis, LogicLand, EventNexis, and CareBridge after the initial launch-candidate implementation.
+**Decision:** Add those URLs to the NexisHub product registry and machine-readable guidance as public in-development product surfaces: TeachNexis `https://teachnexis.vercel.app`, LogicLand `https://logicland.vercel.app`, EventNexis `https://eventnexis.vercel.app`, and CareBridge `https://carebridge-io.vercel.app`. Keep SiteNexis as the only product marked `Live` until the founder explicitly approves a launch-status change for the other products.
+**Status:** Accepted; product-status portion superseded by DEC-022 for TeachNexis and EventNexis.
+
+---
+
 ### DEC-020 — Initial AI Visibility editorial cluster is approved for implementation
 **Context:** DEC-019 established an honest empty publication state because no articles had been authorized. The founder subsequently requested an initial 15-post AI Visibility cluster, approved its topic/backlink plan, and directed implementation of the complete publishing tasks.
 **Decision:** Publish a NexisHub AI Visibility & Machine Discovery cluster consisting of one canonical pillar and 14 supporting field guides. Every guide must link to its pillar, relevant sibling guides, the AI Software Development pillar where applicable, primary authority references, and one complementary SiteNexis technical note. The content must distinguish verified documentation, observation, inference, and modeled estimates; it must not promise rankings or citations. SiteNexis reciprocal links are maintained as a separate-repository deployment task. Bulk publication remains subject to the editorial release review and production deployment gate.
@@ -142,7 +156,7 @@ Format: lightweight ADR (Architecture/Product Decision Record). Add new entries 
 ### DEC-001 — SiteNexis is the flagship product for launch
 **Context:** Five products exist in the roadmap (SiteNexis, TeachNexis, EventNexis, LogicLand, CareBridge), but only one needs to be fully real at website launch.
 **Decision:** Website and PRD treat SiteNexis as the only "live" product at v1; others show as "in development" with waitlist capture.
-**Status:** Accepted.
+**Status:** Accepted; product-status portion superseded by DEC-022 for TeachNexis and EventNexis.
 
 ---
 

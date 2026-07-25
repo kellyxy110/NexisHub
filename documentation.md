@@ -71,15 +71,17 @@ This is an org chart of *functions*, not yet a real headcount/reporting structur
 
 ## Volume II — Product Ecosystem
 
-Each product now has a defined one-line purpose. Only **SiteNexis** has a concrete PRD drafted so far (`PRD.md`, this repo). The rest are scoped in purpose but stubs in detail until each gets its own PRD.
+Each product now has a defined one-line purpose. **SiteNexis**, **TeachNexis**, and **EventNexis** are live product surfaces. Only **SiteNexis** has a concrete NexisHub-side PRD drafted so far (`PRD.md`, this repo). The rest are scoped in purpose but stubs in this documentation until each gets its own PRD.
 
-| Product | Purpose | PRD status |
-|---|---|---|
-| SiteNexis | AI Visibility Intelligence Platform — helps businesses become discoverable across search engines and AI assistants | Drafted (`PRD.md`) |
-| TeachNexis | AI-powered education platform — empowers teachers and schools with intelligent teaching tools | Purpose defined, PRD stub |
-| LogicLand | Interactive learning platform — teaches coding, math, logic, and problem solving through immersive experiences | Purpose defined, PRD stub |
-| EventNexis | Modern event management — invitations, registration, QR check-in, reporting, event operations | Purpose defined, PRD stub |
-| CareBridge | Healthcare platform — improves communication and workflows between providers and patients | Purpose defined, PRD stub |
+| Product | Purpose | Public surface | PRD status |
+|---|---|---|---|
+| SiteNexis | AI Visibility Intelligence Platform — helps businesses become discoverable across search engines and AI assistants | `https://sitenexis.vercel.app` | Drafted (`PRD.md`) |
+| TeachNexis | AI-powered education platform — empowers teachers and schools with intelligent teaching tools | `https://teachnexis.vercel.app` | Live surface; PRD stub in this documentation |
+| LogicLand | Interactive learning platform — teaches coding, math, logic, and problem solving through immersive experiences | `https://logicland.vercel.app` | Purpose defined, PRD stub |
+| EventNexis | Modern event management — invitations, registration, QR check-in, reporting, event operations | `https://eventnexis.vercel.app` | Live surface; PRD stub in this documentation |
+| CareBridge | Healthcare platform — improves communication and workflows between providers and patients | `https://carebridge-io.vercel.app` | Purpose defined, PRD stub |
+
+TeachNexis and EventNexis are marked live under DEC-022. LogicLand and CareBridge remain in development until a separate launch decision is logged.
 
 ### Future infrastructure suite (reserved names, not yet scoped)
 Unlike the earlier reserved list, the Constitution reframes future products as **shared infrastructure NexisHub builds for itself and eventually exposes**, not standalone verticals:

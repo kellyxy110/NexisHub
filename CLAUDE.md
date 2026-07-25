@@ -14,11 +14,13 @@ Every product shares common platform infrastructure (auth, billing, AI layer, an
 
 Core products, each with a defined purpose:
 
-- **SiteNexis** (flagship, only live product at launch) — AI Visibility Intelligence Platform; helps businesses become discoverable across search engines and AI assistants. Accent: Blue `#2D7FF9`
-- **TeachNexis** — AI-powered education platform for teachers and schools. Accent: Emerald `#00C896`
+- **SiteNexis** (flagship, live) — AI Visibility Intelligence Platform; helps businesses become discoverable across search engines and AI assistants. Accent: Blue `#2D7FF9`
+- **TeachNexis** (live) — AI-powered education platform for teachers and schools. Accent: Emerald `#00C896`
 - **LogicLand** — interactive learning platform for coding, math, logic, problem solving. Accent: Orange `#FF8A00`
-- **EventNexis** — event management (invitations, registration, QR check-in, reporting). Accent: Purple `#6C5CE7`
+- **EventNexis** (live) — event management (invitations, registration, QR check-in, reporting). Accent: Purple `#6C5CE7`
 - **CareBridge** — healthcare provider–patient communication and workflows. Accent: Rose `#FF4D6D`
+
+Public product surfaces are linked from the product registry: TeachNexis `https://teachnexis.vercel.app`, LogicLand `https://logicland.vercel.app`, EventNexis `https://eventnexis.vercel.app`, and CareBridge `https://carebridge-io.vercel.app`. TeachNexis and EventNexis are marked `Live` under DEC-022; LogicLand and CareBridge remain `In development`.
 
 **Shared infrastructure suite** (build for internal use first, expose later): NexisAI (shared intelligence engine), NexisCloud, NexisDeploy, NexisDocs, NexisForms, NexisCRM, NexisMail, NexisAuth, NexisPay.
 
@@ -61,7 +63,7 @@ If a task requires one of these and it isn't specified, stop and ask rather than
 - NexisHub is an AI Infrastructure Company; products extend a shared platform (auth, billing, AI layer, analytics, design system) rather than each reinventing it.
 - Every core product has a defined purpose (see table above) — don't redefine these without logging why in `decisions.md`.
 - Future products (NexisAuth, NexisPay, etc.) are internal infrastructure to build for NexisHub's own products first, not standalone verticals to sell independently from day one.
-- SiteNexis is the only fully-built product page at launch; others are "in development" with waitlist capture.
+- SiteNexis, TeachNexis, and EventNexis are live; LogicLand and CareBridge remain "in development" with public product surfaces linked under DEC-021.
 - Homepage ecosystem visualization is a connected network/galaxy, not a card grid.
 - The animated hero (network background, scroll-pinned device mockup) ships with a static/reduced-motion fallback first; full animation is progressive enhancement.
 - The "AI prompt bar" concept on the homepage is v2 — don't build the frontend for it before the backend recommendation logic exists.

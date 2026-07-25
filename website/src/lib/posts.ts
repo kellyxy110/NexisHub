@@ -43,6 +43,25 @@ const visibilityPost = (post: Omit<BlogPost, keyof typeof shared | "canonicalPat
   featuredImage: `/blog/${post.slug}/opengraph-image`,
 });
 
+const educationShared = {
+  category: "Education Technology",
+  cluster: "F",
+  intent: "Informational" as const,
+  author: "NexisHub Editorial",
+  publishedDate: "2026-07-25",
+  updatedDate: "2026-07-25",
+  series: "Education Technology & TeachNexis",
+  readingLevel: "Education leader",
+  status: "Published" as const,
+};
+
+const educationPost = (post: Omit<BlogPost, keyof typeof educationShared | "canonicalPath" | "featuredImage">): BlogPost => ({
+  ...educationShared,
+  ...post,
+  canonicalPath: `/blog/${post.slug}`,
+  featuredImage: `/blog/${post.slug}/opengraph-image`,
+});
+
 export const blogPosts: readonly BlogPost[] = [
   {
     slug: "complete-guide-ai-software-development",
@@ -210,10 +229,52 @@ export const blogPosts: readonly BlogPost[] = [
     relatedSlugs: ["complete-guide-ai-visibility", "technical-ai-crawlability-checklist", "practical-geo-strategy"],
     siteNexisSource: "https://sitenexis.vercel.app/blog/dom-heading-hierarchy-extraction",
   }),
+  educationPost({
+    slug: "ai-in-education-practical-guide", title: "AI in Education: A Practical Guide for Schools and Teachers",
+    description: "A practical framework for using AI in schools without replacing teacher judgment, weakening privacy, or adding unnecessary complexity.",
+    targetKeyword: "AI in education", difficulty: "Beginner", readingTime: "11 min read",
+    tags: ["AI in education", "TeachNexis", "school technology", "teacher productivity"], featuredImageAlt: "A teacher using an AI planning workspace beside lesson materials and student needs.",
+    seoTitle: "AI in Education: A Practical Guide for Schools", seoDescription: "Learn how schools can use AI for planning, assessment, feedback, and administration while keeping teachers accountable and students protected.",
+    relatedSlugs: ["teacher-productivity-ai-tools", "digital-classroom-ai-workflows", "adaptive-learning-student-analytics"],
+  }),
+  educationPost({
+    slug: "teacher-productivity-ai-tools", title: "Teacher Productivity with AI: Planning, Feedback, and Admin Workflows",
+    description: "Use AI to reduce repetitive teaching workload while preserving professional review, classroom context, and student-specific judgment.",
+    targetKeyword: "teacher productivity AI", difficulty: "Beginner", readingTime: "9 min read",
+    tags: ["teacher productivity", "lesson planning", "AI tools", "TeachNexis"], featuredImageAlt: "A weekly teaching plan organized into lessons, feedback, and administrative tasks.",
+    seoTitle: "Teacher Productivity with AI Tools", seoDescription: "See where AI can help teachers plan lessons, draft feedback, organize materials, and reduce administrative work without automating judgment.",
+    relatedSlugs: ["ai-in-education-practical-guide", "lesson-planning-question-banks-ai", "digital-classroom-ai-workflows"],
+  }),
+  educationPost({
+    slug: "digital-classroom-ai-workflows", title: "Digital Classroom Workflows: How AI Can Support Everyday Teaching",
+    description: "Design classroom workflows where AI helps organize resources, questions, feedback, and follow-up without becoming the center of the lesson.",
+    targetKeyword: "digital classroom AI", difficulty: "Intermediate", readingTime: "10 min read",
+    tags: ["digital classroom", "AI workflows", "school systems", "education technology"], featuredImageAlt: "A digital classroom workflow linking lesson resources, assessment, feedback, and revision.",
+    seoTitle: "Digital Classroom AI Workflows", seoDescription: "Build practical AI-supported classroom workflows for lesson resources, question practice, feedback loops, and teacher review.",
+    relatedSlugs: ["ai-in-education-practical-guide", "teacher-productivity-ai-tools", "adaptive-learning-student-analytics"],
+  }),
+  educationPost({
+    slug: "lesson-planning-question-banks-ai", title: "AI Lesson Planning and Question Banks: A Safe Operating Model",
+    description: "Create lesson plans and question banks with AI while keeping curriculum alignment, difficulty, bias review, and teacher approval explicit.",
+    targetKeyword: "AI lesson planning", difficulty: "Intermediate", readingTime: "10 min read",
+    tags: ["lesson planning", "question banks", "assessment", "TeachNexis"], featuredImageAlt: "A lesson plan and question bank passing through curriculum, difficulty, and review checks.",
+    seoTitle: "AI Lesson Planning and Question Banks", seoDescription: "Use AI for lesson plans and question banks with clear curriculum mapping, difficulty checks, teacher review, and student-appropriate safeguards.",
+    relatedSlugs: ["teacher-productivity-ai-tools", "ai-in-education-practical-guide", "adaptive-learning-student-analytics"],
+  }),
+  educationPost({
+    slug: "adaptive-learning-student-analytics", title: "Adaptive Learning and Student Analytics Without Losing the Human Context",
+    description: "Use student analytics to support intervention and personalization while avoiding surveillance, over-scoring, and unsupported conclusions.",
+    targetKeyword: "adaptive learning student analytics", difficulty: "Advanced", readingTime: "11 min read",
+    tags: ["adaptive learning", "student analytics", "education AI", "learning data"], featuredImageAlt: "A student learning dashboard separating evidence, recommendations, and teacher decisions.",
+    seoTitle: "Adaptive Learning and Student Analytics", seoDescription: "Design adaptive learning and student analytics workflows that support teachers with evidence while preserving context, privacy, and human review.",
+    relatedSlugs: ["digital-classroom-ai-workflows", "lesson-planning-question-banks-ai", "ai-in-education-practical-guide"],
+  }),
 ] as const;
 
 export const firstPost = blogPosts[0];
 export const visibilityPosts = blogPosts.filter((post) => post.cluster === "E");
+export const educationPosts = blogPosts.filter((post) => post.cluster === "F");
+export const dynamicGuidePosts = blogPosts.filter((post) => post.cluster === "E" || post.cluster === "F");
 export const featuredVisibilityPost = visibilityPosts[0];
 
 export function getPost(slug: string) {
