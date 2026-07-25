@@ -22,7 +22,7 @@ export default function Home() {
     "@type": "Organization",
     name: "NexisHub",
     description: "NexisHub builds intelligent software that helps people work, learn, create, organize, and make better decisions through AI.",
-    url: "https://nexishub.com",
+    url: "https://nexishub.vercel.app",
   };
 
   return (
