@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { test } from "node:test";
 
-const routes = ["src/app/page.tsx", "src/app/products/page.tsx", "src/app/products/sitenexis/page.tsx", "src/app/about/page.tsx", "src/app/blog/page.tsx", "src/app/blog/complete-guide-ai-software-development/page.tsx", "src/app/research/page.tsx", "src/app/contact/page.tsx", "src/app/legal/page.tsx", "src/app/legal/privacy/page.tsx", "src/app/legal/terms/page.tsx", "src/app/legal/cookies/page.tsx"];
+const routes = ["src/app/page.tsx", "src/app/products/page.tsx", "src/app/products/sitenexis/page.tsx", "src/app/studio/page.tsx", "src/app/about/page.tsx", "src/app/blog/page.tsx", "src/app/blog/complete-guide-ai-software-development/page.tsx", "src/app/research/page.tsx", "src/app/contact/page.tsx", "src/app/legal/page.tsx", "src/app/legal/privacy/page.tsx", "src/app/legal/terms/page.tsx", "src/app/legal/cookies/page.tsx"];
 
 test("all launch routes have page modules", () => { for (const route of routes) assert.ok(existsSync(route), `${route} is missing`); });
 test("discovery endpoints are implemented", () => { for (const file of ["src/app/sitemap.ts", "src/app/robots.ts", "src/app/llms.txt/route.ts", "src/app/manifest.ts", "src/app/feed.xml/route.ts"]) assert.ok(existsSync(file), `${file} is missing`); });
