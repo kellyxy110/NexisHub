@@ -35,13 +35,15 @@ The latest blog expansion is committed and deployed. The legal pages remain draf
 
 ## Phase 3: first research programmes
 
-- [ ] AI Visibility Index: define the construct, dimensions, sampling frame, scoring limits, and validation plan.
+- [x] AI Visibility Index: define the construct, dimensions, sampling frame, scoring limits, and validation plan.
 - [ ] Citation Intelligence Framework: define citation, source selection, representation accuracy, and observation protocol.
 - [ ] Machine Trust Score: define measurable signals, assumptions, validation boundaries, and misuse risks.
 - [ ] Future of AI Search: prepare a literature and platform documentation review before making forecasts.
 - [ ] Evaluation Frameworks for AI Agents: define task success, reliability, safety, cost, latency, and human review metrics.
 - [ ] Responsible AI in African Education: define context, participating stakeholders, privacy boundaries, and evidence requirements.
 - [ ] Digital Health Readiness Index: confirm clinical, regulatory, privacy, and data governance expertise before research begins.
+- [x] Create the AI Visibility Index research question document and pilot dataset protocol.
+- [x] Create the AI Visibility Index annotation guide and reviewer disagreement process.
 - [ ] For every active programme, create a decision log, research question document, dataset plan, and publication target.
 
 ## Phase 4: published NexisHub content and launch readiness
@@ -98,4 +100,3 @@ A publication is ready only when:
 4. Send the legal pages for professional review.
 5. Configure production form and analytics providers.
 6. Define the NRI route and content model before implementation begins.
-
