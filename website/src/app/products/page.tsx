@@ -42,7 +42,7 @@ export default function ProductsPage() {
               <p>Products remain focused while the platform handles what should never be rebuilt five times.</p>
             </div>
 
-            <div className="ecosystem-map" aria-label="Five products connected to the NexisHub platform">
+            <div className="ecosystem-map" aria-label="Six products connected to the NexisHub platform">
               <div className="map-ring map-ring--one" /><div className="map-ring map-ring--two" />
               <div className="map-spokes" aria-hidden="true"><i /><i /><i /><i /><i /></div>
               <div className="map-core"><Mark /><strong>NexisHub</strong><small>Platform core</small></div>
@@ -62,7 +62,7 @@ export default function ProductsPage() {
 
         <section className="product-directory">
           <div className="shell">
-            <div className="directory-heading"><p className="kicker">Five focused products</p><h2>Built around the people<br />who use them.</h2></div>
+            <div className="directory-heading"><p className="kicker">Six products across the NexisHub ecosystem</p><h2>Built around the people<br />who use them.</h2></div>
             <div className="directory-list">
               {products.map((product, index) => (
                 <article className={`directory-item accent-${product.accent}`} key={product.name} data-product={product.name}>
@@ -81,8 +81,8 @@ export default function ProductsPage() {
 
         <section className="ecosystem-cta">
           <div className="shell ecosystem-cta-inner">
-            <div><p className="kicker">Start with the flagship</p><h2>Make your business easier to find in search and AI.</h2></div>
-            <div><p>SiteNexis is the flagship product built on the NexisHub foundation.</p><Link className="button" href="/products/sitenexis" data-analytics="products-explore-sitenexis">Explore SiteNexis <Arrow /></Link></div>
+            <div><p className="kicker">Start with a flagship</p><h2>Explore the products shaping the NexisHub ecosystem.</h2></div>
+            <div><p>SiteNexis and Pnyx are flagship products built on the NexisHub foundation.</p><Link className="button" href="/products/sitenexis" data-analytics="products-explore-sitenexis">Explore SiteNexis <Arrow /></Link></div>
           </div>
         </section>
       </main>
