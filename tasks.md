@@ -236,4 +236,4 @@ A publication is ready only when:
 - [ ] Request and click the real founder sign-in link for `FOUNDER_EMAIL`.
 - [ ] Run `/admin/bootstrap` from the verified founder session.
 - [ ] Record security-check evidence, then enable `NEXIS_ADMIN_AUTH_READY`, `NEXIS_ADMIN_SECURITY_CHECKS_PASSED`, `NEXIS_ADMIN_FOUNDER_VERIFIED`, `ADMIN_ENABLED`, and `FOUNDER_ADMIN_ENABLED`.
-- [ ] Re-run the production build locally if the environment permits completion within the available execution window.
+- [ ] Re-run the production build locally if the environment permits completion within the available execution window.`n`n## Founder administration UI update — 2026-07-29`n`n- [x] Replaced scaffold article layouts with a responsive administration workspace, status cards, navigation, gated-module states, and founder bootstrap confirmation UI.`n- [x] Preserved server-side Auth.js session checks and founder bootstrap transaction.`n- [ ] Complete visual review on real mobile and desktop devices.`n
