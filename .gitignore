@@ -4,3 +4,4 @@ Thumbs.db
 website/.dev-server.log
 website/.dev-server.error.log
 /website/src/generated/prisma
+.vercel
