@@ -87,3 +87,7 @@ The inspected production architecture currently consists of Next.js on Vercel, G
 ### Staged administration
 
 Administration uses staged activation. Founder-safe administration becomes eligible only after real authentication, server-side RBAC, migrations, security checks, founder verification, and infrastructure configuration are recorded. Reviewer, pilot, consent, legal-document, email, and public Version 1.0 capabilities remain independently gated.
+
+### Founder-safe administration readiness
+
+The repository now has the requested staged feature-flag vocabulary and a fail-closed server-side authorization primitive. Safe activation still requires real authentication, RBAC, migrations, security evidence, and founder verification. No credentials, founder account, reviewer record, participant record, or legal approval was fabricated.

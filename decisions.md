@@ -233,3 +233,11 @@ The implementation now uses modular feature flags rather than treating the entir
 **Status:** Accepted
 
 Administration will not wait for every governance process before safe capabilities become eligible. The repository now supports staged activation. `founderSafeAdminEnabled` requires explicit production evidence for authentication readiness, migrations, security checks, founder verification, infrastructure configuration, and the top-level admin flag. Higher-risk modules retain independent flags and remain gated until their specific legal, privacy, research, or operational requirements are complete.
+
+## DEC-034 — Founder-admin activation requires real evidence
+
+**Status:** Accepted
+
+The staged configuration now includes `ADMIN_ENABLED`, `FOUNDER_ADMIN_ENABLED`, `NRI_PUBLICATION_ADMIN_ENABLED`, `NRI_REVIEW_ADMIN_ENABLED`, `NRI_CONSENT_ADMIN_ENABLED`, `NRI_PILOT_ADMIN_ENABLED`, `STUDIO_OPERATIONS_ENABLED`, `EMAIL_INVITATIONS_ENABLED`, and `PUBLICATION_V1_ENABLED`. Founder-safe activation requires infrastructure configuration, authentication readiness, migration readiness, security checks, founder verification, and both top-level admin flags. Sensitive modules remain independently gated.
+
+A provider-neutral server-side authorization primitive now denies access when the staged admin state is off, the principal is unverified, or the principal lacks the requested permission.

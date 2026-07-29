@@ -182,3 +182,12 @@ A publication is ready only when:
 - [ ] Verify real authentication and founder identity.
 - [ ] Verify database migrations and security checks in production.
 - [ ] Enable founder-safe modules after evidence is recorded.
+
+## Founder-safe administration implementation update — 2026-07-29
+
+- [x] Add requested staged flag names and fail-closed evaluation.
+- [x] Add server-side authorization primitive requiring verified principal and permission.
+- [x] Add provider decision record based on inspected repository and Vercel configuration.
+- [ ] Connect the selected real authentication provider.
+- [ ] Connect the selected real database and migrations.
+- [ ] Enable founder-safe dashboard after evidence gates pass.

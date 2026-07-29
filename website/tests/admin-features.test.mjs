@@ -7,6 +7,7 @@ const source = readFileSync(new URL("../src/lib/admin-features.ts", import.meta.
 test("admin feature flags require infrastructure and authentication readiness", () => {
   assert.match(source, /ADMIN_ENABLED/);
   assert.match(source, /NEXIS_ADMIN_AUTH_READY/);
+  assert.match(source, /FOUNDER_ADMIN_ENABLED/);
   assert.match(source, /infrastructure\.status === "CONFIGURED"/);
   assert.match(source, /authenticationReady/);
   assert.match(source, /NEXIS_ADMIN_MIGRATIONS_READY/);
@@ -16,6 +17,6 @@ test("admin feature flags require infrastructure and authentication readiness", 
 });
 
 test("sensitive modules are independently gated", () => {
-  for (const name of ["NRI_CONSENT_ADMIN_ENABLED", "NRI_PILOT_ADMIN_ENABLED", "ADMIN_EMAIL_SENDING_ENABLED"]) assert.match(source, new RegExp(name));
+  for (const name of ["NRI_CONSENT_ADMIN_ENABLED", "NRI_PILOT_ADMIN_ENABLED", "EMAIL_INVITATIONS_ENABLED"]) assert.match(source, new RegExp(name));
   assert.match(source, /moduleEnabled/);
 });
