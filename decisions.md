@@ -213,3 +213,9 @@ NRI and Studio administration will remain disabled until a real database, authen
 **Status:** Accepted
 
 The provider-neutral `AdminStore` contract is implemented with a `DisabledAdminStore` until a real persistence, identity, and audit implementation is configured. Every administrative read or write currently fails closed. No in-memory substitute is used for production administration.
+
+## DEC-031 — Provider selection remains explicit
+
+**Status:** Pending Founder Decision
+
+The repository now contains a provider-selection checklist and non-secret environment contract. No database, authentication, audit, file-storage, or email provider is selected by code. Administration remains disabled until the founder approves the provider architecture and the required legal, privacy, security, migration, backup, and rollback evidence exists.

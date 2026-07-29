@@ -75,3 +75,7 @@ The repository now includes a provider-neutral administration boundary. Administ
 ### Administration store
 
 The repository now defines a provider-neutral `AdminStore` contract with a fail-closed implementation. Until a real provider is selected and configured, administrative reads and writes remain disabled; public file-backed content remains unchanged.
+
+### Provider selection status
+
+The provider-selection checklist is documented in `admin-provider-selection.md`. The example environment file contains only blank, provider-neutral administration markers. No credentials or provider assumptions were added, and administration remains disabled pending approval and evidence.
