@@ -1,14 +1,6 @@
 import type { AuditEvent } from "@/lib/workflows";
 
-export type AdminPublicationRecord = {
-  id: string;
-  slug: string;
-  title: string;
-  status: string;
-  version: string;
-  updatedAt: string;
-};
-
+export type AdminPublicationRecord = { id: string; slug: string; title: string; status: string; version: string; updatedAt: string };
 export type AdminStore = {
   getPublication(id: string): Promise<AdminPublicationRecord | null>;
   savePublicationDraft(record: AdminPublicationRecord): Promise<AdminPublicationRecord>;
@@ -23,19 +15,9 @@ export class AdminInfrastructureDisabledError extends Error {
 }
 
 export class DisabledAdminStore implements AdminStore {
-  async getPublication(_id: string): Promise<never> {
-    throw new AdminInfrastructureDisabledError();
-  }
-
-  async savePublicationDraft(_record: AdminPublicationRecord): Promise<never> {
-    throw new AdminInfrastructureDisabledError();
-  }
-
-  async appendAuditEvent(_event: AuditEvent): Promise<never> {
-    throw new AdminInfrastructureDisabledError();
-  }
+  async getPublication(id: string): Promise<never> { void id; throw new AdminInfrastructureDisabledError(); }
+  async savePublicationDraft(record: AdminPublicationRecord): Promise<never> { void record; throw new AdminInfrastructureDisabledError(); }
+  async appendAuditEvent(event: AuditEvent): Promise<never> { void event; throw new AdminInfrastructureDisabledError(); }
 }
 
-export function createAdminStore(): AdminStore {
-  return new DisabledAdminStore();
-}
+export function createAdminStore(): AdminStore { return new DisabledAdminStore(); }

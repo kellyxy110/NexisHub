@@ -91,3 +91,7 @@ Administration uses staged activation. Founder-safe administration becomes eligi
 ### Founder-safe administration readiness
 
 The repository now has the requested staged feature-flag vocabulary and a fail-closed server-side authorization primitive. Safe activation still requires real authentication, RBAC, migrations, security evidence, and founder verification. No credentials, founder account, reviewer record, participant record, or legal approval was fabricated.
+
+### Selected administration stack
+
+The repository now implements the approved Auth.js + Supabase PostgreSQL + Prisma + Supabase Storage + Vercel + Sentry + Resend stack. Auth.js and Prisma routes are present, the initial migration is generated and validated, and Resend sending remains disabled. Production database migration and founder bootstrap require Supabase credentials and Vercel configuration.

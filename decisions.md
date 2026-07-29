@@ -241,3 +241,11 @@ Administration will not wait for every governance process before safe capabiliti
 The staged configuration now includes `ADMIN_ENABLED`, `FOUNDER_ADMIN_ENABLED`, `NRI_PUBLICATION_ADMIN_ENABLED`, `NRI_REVIEW_ADMIN_ENABLED`, `NRI_CONSENT_ADMIN_ENABLED`, `NRI_PILOT_ADMIN_ENABLED`, `STUDIO_OPERATIONS_ENABLED`, `EMAIL_INVITATIONS_ENABLED`, and `PUBLICATION_V1_ENABLED`. Founder-safe activation requires infrastructure configuration, authentication readiness, migration readiness, security checks, founder verification, and both top-level admin flags. Sensitive modules remain independently gated.
 
 A provider-neutral server-side authorization primitive now denies access when the staged admin state is off, the principal is unverified, or the principal lacks the requested permission.
+
+## DEC-035 — Approved production administration stack implemented
+
+**Status:** Implemented in code; production configuration pending
+
+Use Auth.js with passwordless email verification, Supabase PostgreSQL through Prisma 7 and the PostgreSQL adapter, Supabase Storage, Vercel encrypted environment variables, Sentry, Resend with sending disabled, and PostgreSQL audit persistence. Do not introduce a second authentication or database system.
+
+The supplied `db.prisma.io` credential is Prisma Postgres, not Supabase, and was deliberately not stored or used under the Supabase `DATABASE_URL` contract. A Supabase project connection string remains required.

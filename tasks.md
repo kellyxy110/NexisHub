@@ -191,3 +191,18 @@ A publication is ready only when:
 - [ ] Connect the selected real authentication provider.
 - [ ] Connect the selected real database and migrations.
 - [ ] Enable founder-safe dashboard after evidence gates pass.
+
+## Approved provider stack implementation — 2026-07-29
+
+- [x] Add Auth.js App Router route and passwordless email provider boundary.
+- [x] Add Prisma 7 schema, PostgreSQL adapter, generated client, and initial migration SQL.
+- [x] Add founder bootstrap transaction keyed by `FOUNDER_EMAIL`.
+- [x] Add persisted role/audit/feature-flag schema.
+- [x] Add protected admin and founder-bootstrap routes.
+- [x] Add Sentry and Supabase Storage boundaries.
+- [x] Configure Vercel `FOUNDER_EMAIL`, encrypted `RESEND_API_KEY`, generated `AUTH_SECRET`, `NEXTAUTH_URL`, and disabled auth email sending.
+- [ ] Add Supabase `DATABASE_URL` and apply production migration.
+- [ ] Configure `AUTH_EMAIL_FROM` with a verified Resend sender.
+- [ ] Verify Auth.js sign-in and founder bootstrap in production.
+- [ ] Configure Sentry and Supabase Storage secrets.
+- [ ] Keep reviewer, participant, consent, pilot, legal, invitation, and Version 1.0 modules disabled.
