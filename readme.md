@@ -99,3 +99,7 @@ The repository now implements the approved Auth.js + Supabase PostgreSQL + Prism
 ### Supabase migration status
 
 The Supabase database URL is configured in Vercel, but the initial migration could not be applied from the current environment because the supplied database host was unreachable on port 5432. Administration readiness remains disabled until the migration is successfully applied and verified.
+
+### Supavisor migration status
+
+Supabase administration tables are now migrated through the Session Pooler. Runtime traffic is configured for the Transaction Pooler. The database contains only default role/permission metadata, disabled feature flags, and an audit verification marker; no users or research records were created. Authentication and founder-admin readiness remain gated.

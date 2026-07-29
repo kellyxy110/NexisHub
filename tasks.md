@@ -214,3 +214,15 @@ A publication is ready only when:
 - [ ] Retry Prisma migration from a network that can reach the Supabase database.
 - [ ] Verify schema, indexes, foreign keys, and Prisma migration history.
 - [ ] Only then set `NEXIS_ADMIN_MIGRATIONS_READY=true`.
+
+## Supavisor migration completion — 2026-07-29
+
+- [x] Validate Session Pooler connectivity on port 5432.
+- [x] Apply `20260729120000_init_admin` through Supavisor.
+- [x] Confirm Prisma migration status is up to date.
+- [x] Verify administration tables and indexes through the Prisma smoke test.
+- [x] Seed only default SUPER_ADMIN role metadata, minimal permissions, disabled flags, and an audit marker.
+- [x] Configure Transaction Pooler runtime and Session Pooler migration URLs in Vercel.
+- [x] Set `NEXIS_ADMIN_MIGRATIONS_READY=true`.
+- [ ] Rotate the shared Supabase password and update both pooler variables.
+- [ ] Verify Auth.js with a configured Resend sender and founder bootstrap.

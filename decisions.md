@@ -255,3 +255,11 @@ The supplied `db.prisma.io` credential is Prisma Postgres, not Supabase, and was
 **Status:** Blocked by network reachability; not applied
 
 The supplied Supabase `DATABASE_URL` was added to Vercel as an encrypted Production variable. `prisma migrate deploy` was attempted locally and returned Prisma `P1001` because `db.hjrgpeznkydaakifwghw.supabase.co:5432` was unreachable from the execution environment. Migration readiness remains false. No claim of production migration success is made.
+
+## DEC-037 — Supavisor pooler separation verified
+
+**Status:** Migration and smoke verification passed
+
+Use Supavisor Session Pooler `aws-0-eu-central-1.pooler.supabase.com:5432` for Prisma migrations and Transaction Pooler `aws-0-eu-central-1.pooler.supabase.com:6543` for runtime traffic. The direct Supabase hostname was not used because the execution environment could not reach its IPv6 endpoint.
+
+`prisma validate`, `prisma generate`, `prisma migrate status`, and `prisma migrate deploy` passed through the Session Pooler. The database smoke test verified zero users, the SUPER_ADMIN role definition, seven disabled feature flags, and a persisted audit smoke-test record. Authentication and founder-admin readiness remain false.

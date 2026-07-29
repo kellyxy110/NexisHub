@@ -41,3 +41,11 @@ Add these as encrypted Vercel Production variables. Do not commit values.
 - `SUPABASE_STORAGE_BUCKET` — private bucket name
 
 The existing encrypted `FORM_WEBHOOK_URL` and `NEXT_PUBLIC_FORMS_ENABLED` variables remain unchanged.
+
+## Supavisor pooler separation
+
+- `DATABASE_URL` uses the validated Transaction Pooler on port `6543` for runtime traffic.
+- `MIGRATION_DATABASE_URL` uses the validated Session Pooler on port `5432` for Prisma migrations.
+- Both use `sslmode=require` and the explicit `uselibpqcompat=true` parameter required by the current PostgreSQL adapter in this environment.
+- Do not revert to the direct `db.<project-ref>.supabase.co:5432` hostname from the unreachable IPv6 path.
+- Rotate the database password after connection setup, then update both encrypted Vercel variables and rerun connectivity checks.
