@@ -71,3 +71,7 @@ The repository now includes a report-only editorial link monitor at `website/scr
 ### Administration infrastructure status
 
 The repository now includes a provider-neutral administration boundary. Administrative writes remain disabled until database, authentication, and audit persistence are configured through the documented environment contract and validated with migration, security, privacy, backup, and rollback evidence.
+
+### Administration store
+
+The repository now defines a provider-neutral `AdminStore` contract with a fail-closed implementation. Until a real provider is selected and configured, administrative reads and writes remain disabled; public file-backed content remains unchanged.

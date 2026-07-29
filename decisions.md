@@ -207,3 +207,9 @@ Editorial link monitoring reads the sitemap source, records link-health classifi
 **Status:** Accepted
 
 NRI and Studio administration will remain disabled until a real database, authentication provider, audit store, migration plan, backup strategy, and privacy/security review are selected and configured. The repository now exposes a provider-neutral configuration boundary and does not claim that any provider or admin backend exists.
+
+## DEC-030 — Fail-closed administration store
+
+**Status:** Accepted
+
+The provider-neutral `AdminStore` contract is implemented with a `DisabledAdminStore` until a real persistence, identity, and audit implementation is configured. Every administrative read or write currently fails closed. No in-memory substitute is used for production administration.
