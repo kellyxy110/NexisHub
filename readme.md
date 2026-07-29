@@ -58,3 +58,8 @@ See [roadmap-status.md](roadmap-status.md), [founder-led-operating-record.md](fo
 ## Current execution rule
 
 Repository work should implement complete workflows, schemas, empty states, authorization boundaries, tests, documentation, and operational tooling around real-world actions. It must not fabricate legal approvals, reviewers, participants, findings, permissions, peer review, DOI registration, or manual QA results.
+## Delivery cadence
+
+Completed implementation slices are documented, verified, committed, pushed to the `kellyxy110` GitHub repository, and deployed to Vercel. Deployment is operational only and does not imply legal approval, peer review, pilot completion, participant consent, reviewer appointment, or client portfolio permission.
+
+The current NRI and Studio administration work includes truthful workflow scaffolding. Database persistence, authentication, server-side authorization, and audit storage are still required before privileged administration is enabled.

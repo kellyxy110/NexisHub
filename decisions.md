@@ -183,3 +183,15 @@ Format: lightweight ADR (Architecture/Product Decision Record). Add new entries 
 - Real team/founder content for About page — pending consent to publish
 - Whether AdNexis is a NexisHub core product, a SiteNexis-adjacent product, or outside the NexisHub ecosystem
 - Analytics, form-delivery, and monitoring providers for the NexisHub website
+
+## DEC-026 — Commit and deployment cadence
+
+**Status:** Accepted
+
+Completed repository implementation slices will update this decisions log and the root README, then be verified, committed, pushed to the `kellyxy110` GitHub account, and deployed to the NexisHub Vercel project. Deployment does not change truthful research, legal, reviewer, pilot, consent, or portfolio statuses.
+
+## DEC-027 — Administration foundation boundary
+
+**Status:** Accepted
+
+NRI and Studio workflow primitives may be implemented before database and authentication infrastructure exists. They remain scaffolding until server-side identity, persistence, authorization, audit storage, and operational safeguards are connected. No fake administrative records or approvals may be presented.
