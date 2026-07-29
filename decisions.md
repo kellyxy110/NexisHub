@@ -201,3 +201,9 @@ NRI and Studio workflow primitives may be implemented before database and authen
 **Status:** Accepted
 
 Editorial link monitoring reads the sitemap source, records link-health classifications, and writes a reviewable report. It does not remove, rewrite, or silently replace references. Network checks require an explicit `--check` invocation; the default mode makes no network requests.
+
+## DEC-029 — Provider-neutral administration boundary
+
+**Status:** Accepted
+
+NRI and Studio administration will remain disabled until a real database, authentication provider, audit store, migration plan, backup strategy, and privacy/security review are selected and configured. The repository now exposes a provider-neutral configuration boundary and does not claim that any provider or admin backend exists.

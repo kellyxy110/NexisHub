@@ -67,3 +67,7 @@ The current NRI and Studio administration work includes truthful workflow scaffo
 ### Editorial maintenance
 
 The repository now includes a report-only editorial link monitor at `website/scripts/editorial-link-monitor.mjs`. It can generate a link-health report from the sitemap source and classify redirects, broken links, blocked responses, timeouts, and unknown results. References remain unchanged until an editorial decision is made.
+
+### Administration infrastructure status
+
+The repository now includes a provider-neutral administration boundary. Administrative writes remain disabled until database, authentication, and audit persistence are configured through the documented environment contract and validated with migration, security, privacy, backup, and rollback evidence.
