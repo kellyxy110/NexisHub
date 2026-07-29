@@ -9,6 +9,10 @@ test("admin feature flags require infrastructure and authentication readiness", 
   assert.match(source, /NEXIS_ADMIN_AUTH_READY/);
   assert.match(source, /infrastructure\.status === "CONFIGURED"/);
   assert.match(source, /authenticationReady/);
+  assert.match(source, /NEXIS_ADMIN_MIGRATIONS_READY/);
+  assert.match(source, /NEXIS_ADMIN_SECURITY_CHECKS_PASSED/);
+  assert.match(source, /NEXIS_ADMIN_FOUNDER_VERIFIED/);
+  assert.match(source, /founderSafeAdminEnabled/);
 });
 
 test("sensitive modules are independently gated", () => {

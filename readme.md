@@ -83,3 +83,7 @@ The provider-selection checklist is documented in `admin-provider-selection.md`.
 ### Provider discovery and administration gates
 
 The inspected production architecture currently consists of Next.js on Vercel, GitHub source control, and an encrypted Vercel form webhook. No authentication, database, storage, email, monitoring, or backup provider was found in the repository configuration. Administration now uses independent feature flags, all defaulting to disabled, so safe founder-only enablement can be introduced after real authentication and infrastructure evidence exists without opening higher-risk research or commercial modules.
+
+### Staged administration
+
+Administration uses staged activation. Founder-safe administration becomes eligible only after real authentication, server-side RBAC, migrations, security checks, founder verification, and infrastructure configuration are recorded. Reviewer, pilot, consent, legal-document, email, and public Version 1.0 capabilities remain independently gated.

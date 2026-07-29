@@ -173,3 +173,12 @@ A publication is ready only when:
 - [ ] Configure and verify a real database, storage, monitoring, email, and backup strategy.
 - [ ] Enable founder-only administration after identity, migrations, security tests, and backup evidence pass.
 - [ ] Keep pilot, consent, reviewer, legal, email, and Version 1.0 publication modules gated until their external requirements are satisfied.
+
+## Staged activation update — 2026-07-29
+
+- [x] Add explicit migration, security, and founder-verification gates.
+- [x] Add `founderSafeAdminEnabled` effective flag.
+- [x] Keep sensitive research, consent, reviewer, email, and Version 1.0 modules independently gated.
+- [ ] Verify real authentication and founder identity.
+- [ ] Verify database migrations and security checks in production.
+- [ ] Enable founder-safe modules after evidence is recorded.
