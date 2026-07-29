@@ -195,3 +195,9 @@ Completed repository implementation slices will update this decisions log and th
 **Status:** Accepted
 
 NRI and Studio workflow primitives may be implemented before database and authentication infrastructure exists. They remain scaffolding until server-side identity, persistence, authorization, audit storage, and operational safeguards are connected. No fake administrative records or approvals may be presented.
+
+## DEC-028 — Editorial monitoring is report-only by default
+
+**Status:** Accepted
+
+Editorial link monitoring reads the sitemap source, records link-health classifications, and writes a reviewable report. It does not remove, rewrite, or silently replace references. Network checks require an explicit `--check` invocation; the default mode makes no network requests.

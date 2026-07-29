@@ -63,3 +63,7 @@ Repository work should implement complete workflows, schemas, empty states, auth
 Completed implementation slices are documented, verified, committed, pushed to the `kellyxy110` GitHub repository, and deployed to Vercel. Deployment is operational only and does not imply legal approval, peer review, pilot completion, participant consent, reviewer appointment, or client portfolio permission.
 
 The current NRI and Studio administration work includes truthful workflow scaffolding. Database persistence, authentication, server-side authorization, and audit storage are still required before privileged administration is enabled.
+
+### Editorial maintenance
+
+The repository now includes a report-only editorial link monitor at `website/scripts/editorial-link-monitor.mjs`. It can generate a link-health report from the sitemap source and classify redirects, broken links, blocked responses, timeouts, and unknown results. References remain unchanged until an editorial decision is made.
