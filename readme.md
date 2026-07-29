@@ -79,3 +79,7 @@ The repository now defines a provider-neutral `AdminStore` contract with a fail-
 ### Provider selection status
 
 The provider-selection checklist is documented in `admin-provider-selection.md`. The example environment file contains only blank, provider-neutral administration markers. No credentials or provider assumptions were added, and administration remains disabled pending approval and evidence.
+
+### Provider discovery and administration gates
+
+The inspected production architecture currently consists of Next.js on Vercel, GitHub source control, and an encrypted Vercel form webhook. No authentication, database, storage, email, monitoring, or backup provider was found in the repository configuration. Administration now uses independent feature flags, all defaulting to disabled, so safe founder-only enablement can be introduced after real authentication and infrastructure evidence exists without opening higher-risk research or commercial modules.

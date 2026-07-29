@@ -162,3 +162,14 @@ A publication is ready only when:
 4. Send the legal pages for professional review.
 5. Configure production form and analytics providers.
 6. Define the NRI route and content model before implementation begins.
+
+## Provider discovery update — 2026-07-29
+
+- [x] Inspect existing repository providers and Vercel production variable names.
+- [x] Confirm Vercel deployment and GitHub remote for `kellyxy110`.
+- [x] Add provider decision evidence and production safeguards documentation.
+- [x] Add modular administration feature flags with safe false defaults.
+- [ ] Configure and verify a real authentication provider.
+- [ ] Configure and verify a real database, storage, monitoring, email, and backup strategy.
+- [ ] Enable founder-only administration after identity, migrations, security tests, and backup evidence pass.
+- [ ] Keep pilot, consent, reviewer, legal, email, and Version 1.0 publication modules gated until their external requirements are satisfied.

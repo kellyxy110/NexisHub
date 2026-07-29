@@ -219,3 +219,11 @@ The provider-neutral `AdminStore` contract is implemented with a `DisabledAdminS
 **Status:** Pending Founder Decision
 
 The repository now contains a provider-selection checklist and non-secret environment contract. No database, authentication, audit, file-storage, or email provider is selected by code. Administration remains disabled until the founder approves the provider architecture and the required legal, privacy, security, migration, backup, and rollback evidence exists.
+
+## DEC-032 — Reuse discovered production architecture; gate administration by feature
+
+**Status:** Accepted
+
+Repository inspection confirmed Vercel deployment, GitHub source control, and an encrypted Vercel form webhook configuration. No authentication provider, database/ORM, storage provider, email provider, monitoring provider, or backup/restore system was found in the NexisHub repository or Vercel production environment variable listing.
+
+The implementation now uses modular feature flags rather than treating the entire administration surface as one switch. All flags default to false. Founder-only administration can become eligible only when real server-side authentication, infrastructure configuration, and security evidence exist. Pilot, consent, reviewer, Studio operations, and email modules remain independently gated.
