@@ -39,3 +39,22 @@ NexisHub's Constitution (positioning, vision, mission, values, product purposes,
 ## Ground rule for anyone (human or AI) editing these files
 
 Don't invent facts to fill gaps — legal details, financials, team bios, testimonials, metrics. Mark them `[NEEDS INPUT]` and log them in `tasks_gaps.md` instead. Everything currently marked as "defined" or "decided" in these files came from an actual source document, not from filling in plausible-sounding content.
+
+## Current production state
+
+NexisHub is a Next.js application deployed to Vercel at `https://nexishub.vercel.app`.
+
+Completed platform areas include:
+
+- NexisHub corporate site, blog, legal draft pages, and product directory
+- NexisHub Studio landing page, service routes, enquiry flow, commercial templates, and operational records
+- Founder-Led Nexis Research Institute with 30 programme pages, research search, publication collections, the AI Visibility Index Version 0.1 working paper, citation exports, pilot templates, review workflows, and governance documentation
+- Pnyx as a verified Live flagship product at `https://pnyx-psi.vercel.app`
+
+NRI status remains Founder-Led Stage. The AI Visibility Index remains a Version 0.1 Pre-Review Working Paper. Legal review, reviewer appointments, pilot consent, research findings, portfolio permissions, and manual accessibility testing remain pending until evidence exists.
+
+See [roadmap-status.md](roadmap-status.md), [founder-led-operating-record.md](founder-led-operating-record.md), and [external-unblocker-pack.md](external-unblocker-pack.md).
+
+## Current execution rule
+
+Repository work should implement complete workflows, schemas, empty states, authorization boundaries, tests, documentation, and operational tooling around real-world actions. It must not fabricate legal approvals, reviewers, participants, findings, permissions, peer review, DOI registration, or manual QA results.

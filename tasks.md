@@ -1,10 +1,72 @@
 # NexisHub and Nexis Research Institute Task Register
+## Current verified implementation status
+
+Updated: 2026-07-29
+
+### Completed repository work
+
+- [x] NexisHub corporate site, blog, legal draft surfaces, product directory, and corrected production alias
+- [x] Nexis Studio landing page, enquiry flow, service routes, commercial templates, and founder-led operating record
+- [x] Pnyx flagship product profile, verified public URL, product registry entry, and sitemap entry
+- [x] Founder-Led NRI governance and appointment status
+- [x] 30 NRI programme pages and research roadmap
+- [x] AI Visibility Index Version 0.1 Pre-Review Working Paper
+- [x] Research collections, search, FAQ, ethics, print stylesheet, and discovery metadata
+- [x] Publication registry scaffold and citation exports for JSON, BibTeX, and APA
+- [x] Review, adjudication, pilot, consent, legal, Studio, portfolio, and editorial maintenance templates
+- [x] Editorial maintenance source-integrity script
+
+### Truthful current status
+
+- NRI maturity: Founder-Led Stage
+- Founding Research Lead and Executive Director: Ekeleme Kelechi David
+- Technical reviewer: Vacant / To Be Appointed
+- Methodology reviewer: Vacant / To Be Appointed
+- Ethics/privacy reviewer: Vacant / To Be Appointed
+- Legal review: Pending External Legal Review
+- AI Visibility Index: Version 0.1, Pre-Review Working Paper
+- Pilot participants, consent, data, scores, and findings: none
+- Portfolio permissions: Pending Client Approval
+
+### Remaining external actions
+
+- [ ] Qualified legal counsel review
+- [ ] NRI technical reviewer appointment
+- [ ] NRI methodology reviewer appointment
+- [ ] NRI ethics/privacy reviewer appointment where required
+- [ ] Pilot contact confirmation, invitations, and consent
+- [ ] AI Visibility Index pilot execution and analysis
+- [ ] Reviewer adjudication after real reviewers are appointed
+- [ ] Version 1.0 approval and publication
+- [ ] Client portfolio permissions
+- [ ] Studio legal IP, confidentiality, SOW, and commercial approval
+
+### Remaining repository work
+
+- [ ] Authenticated publication administration and database persistence
+- [ ] Server-side RBAC, audit log, reviewer dashboard, and adjudication UI
+- [ ] Pilot management, consent records, invitation drafts, and analysis workspace
+- [ ] Studio proposal, SOW, onboarding, change-control, invoicing, support, incident, and closure UI
+- [ ] Case-study permission administration
+- [ ] Citation export UI and IEEE/MLA formats where metadata supports them
+- [ ] Link-health and source-freshness monitoring with editorial task records
+- [ ] Editorial calendar and maintenance dashboard
+- [ ] Automated accessibility, route, metadata, structured-data, print, and secret checks
+- [ ] Manual mobile, keyboard, screen-reader, reduced-motion, print, and production performance QA
+
+### Next execution order
+
+1. Build authenticated data models and server-side authorization boundaries.
+2. Add publication, review, adjudication, pilot, consent, and Studio workflow persistence.
+3. Add public citation controls and admin empty/error/loading states.
+4. Add automated link, source-freshness, metadata, accessibility, and security checks.
+5. Run manual QA and record evidence without inventing pass results.
+6. Complete the real legal, reviewer, consent, permission, and publication gates.
+
 
 ## Current status
 
-The NexisHub website and long-form blog are deployed at `https://nexishub.vercel.app`.
-
-The latest blog expansion is committed and deployed. The legal pages remain drafts. NRI has a founding decision record in `decison.md`, but the institute website and publication workflow have not yet been implemented.
+The NexisHub website, Studio, research platform, and long-form blog are deployed at `https://nexishub.vercel.app`. The legal pages remain drafts. NRI is implemented as a Founder-Led research platform with 30 programme routes, a Version 0.1 Pre-Review Working Paper, publication infrastructure, and operational templates. External legal review, reviewer appointments, pilot consent and findings, portfolio permissions, and manual QA remain pending.
 
 ## Phase 1: establish NRI foundations
 

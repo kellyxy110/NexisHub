@@ -2,6 +2,22 @@
 
 Format: lightweight ADR (Architecture/Product Decision Record). Add new entries at the top. Each entry: context → decision → status.
 
+### DEC-025 — Production completion uses truthful operational scaffolding
+**Context:** NRI and Nexis Studio require legal review, appointments, consent, permissions, and other real-world actions that cannot be completed by repository code.
+**Decision:** Build the complete repository-side workflows, schemas, templates, status systems, empty states, authorization boundaries, exports, and documentation. Keep legal review, reviewer appointments, pilot participation, findings, permissions, and manual QA pending until evidence exists.
+**Status:** Accepted.
+
+### DEC-024 — Nexis Research Institute remains Founder-Led Stage
+**Context:** NRI has a charter, programmes, a Version 0.1 working paper, governance documents, and pilot infrastructure, but no completed external review or pilot findings.
+**Decision:** NRI operates as a founder-led initiative within NexisHub. Ekeleme Kelechi David is the Founding Research Lead and Executive Director. Technical, methodology, and ethics reviewers remain Vacant / To Be Appointed. Legal review remains Pending External Legal Review. The AI Visibility Index remains Version 0.1, Pre-Review Working Paper.
+**Status:** Accepted.
+
+### DEC-023 — Pnyx is a NexisHub flagship product
+**Context:** The founder supplied `https://pnyx-psi.vercel.app`. The public page responds successfully and identifies Pnyx as a technology knowledge network whose conversations become organised knowledge.
+**Decision:** Add Pnyx to the product registry as a Live flagship product at `https://pnyx-psi.vercel.app`. Use only the verified public positioning until a fuller product brief is approved.
+**Status:** Accepted.
+
+
 ---
 
 ### DEC-022 — TeachNexis and EventNexis are live products

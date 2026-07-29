@@ -34,3 +34,10 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+## NexisHub production status
+
+This Next.js site contains the NexisHub corporate surface, Nexis Studio, the Founder-Led Nexis Research Institute, research programme routes, publication infrastructure, citation exports, and the Pnyx flagship product profile. The canonical production URL is https://nexishub.vercel.app.
+
+Research remains truthful: the AI Visibility Index is Version 0.1, Pre-Review Working Paper. Legal review, reviewer appointments, pilot consent and findings, portfolio permissions, and manual QA remain pending.
