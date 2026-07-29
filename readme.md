@@ -70,11 +70,11 @@ The repository now includes a report-only editorial link monitor at `website/scr
 
 ### Administration infrastructure status
 
-The repository now includes a provider-neutral administration boundary. Administrative writes remain disabled until database, authentication, and audit persistence are configured through the documented environment contract and validated with migration, security, privacy, backup, and rollback evidence.
+The repository now includes a staged Auth.js, Prisma, Supabase PostgreSQL, Vercel, Sentry, Resend, and audit-persistence foundation. Database migration and smoke verification passed through Supavisor. Founder-safe administration remains gated until a real Auth.js founder session and security evidence are verified; sensitive research and operational modules remain independently disabled.
 
 ### Administration store
 
-The repository now defines a provider-neutral `AdminStore` contract with a fail-closed implementation. Until a real provider is selected and configured, administrative reads and writes remain disabled; public file-backed content remains unchanged.
+The repository now uses Prisma-backed server-side authorization and audit boundaries. Public file-backed content remains unchanged. Privileged administration is fail-closed until the staged readiness flags and verified founder identity are present.
 
 ### Provider selection status
 

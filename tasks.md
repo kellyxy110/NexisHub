@@ -226,3 +226,14 @@ A publication is ready only when:
 - [x] Set `NEXIS_ADMIN_MIGRATIONS_READY=true`.
 - [ ] Rotate the shared Supabase password and update both pooler variables.
 - [ ] Verify Auth.js with a configured Resend sender and founder bootstrap.
+## Founder-safe administration verification — 2026-07-29
+
+- [x] TypeScript verification passed with `npm run typecheck`.
+- [x] ESLint verification passed with `npm run lint`.
+- [x] Vercel production deployment for `c353030` reached READY.
+- [x] Confirm no database password or Resend secret is tracked in the repository.
+- [ ] Configure a verified `AUTH_EMAIL_FROM` sender and explicitly enable Auth.js email delivery.
+- [ ] Request and click the real founder sign-in link for `FOUNDER_EMAIL`.
+- [ ] Run `/admin/bootstrap` from the verified founder session.
+- [ ] Record security-check evidence, then enable `NEXIS_ADMIN_AUTH_READY`, `NEXIS_ADMIN_SECURITY_CHECKS_PASSED`, `NEXIS_ADMIN_FOUNDER_VERIFIED`, `ADMIN_ENABLED`, and `FOUNDER_ADMIN_ENABLED`.
+- [ ] Re-run the production build locally if the environment permits completion within the available execution window.

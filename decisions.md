@@ -263,3 +263,10 @@ The supplied Supabase `DATABASE_URL` was added to Vercel as an encrypted Product
 Use Supavisor Session Pooler `aws-0-eu-central-1.pooler.supabase.com:5432` for Prisma migrations and Transaction Pooler `aws-0-eu-central-1.pooler.supabase.com:6543` for runtime traffic. The direct Supabase hostname was not used because the execution environment could not reach its IPv6 endpoint.
 
 `prisma validate`, `prisma generate`, `prisma migrate status`, and `prisma migrate deploy` passed through the Session Pooler. The database smoke test verified zero users, the SUPER_ADMIN role definition, seven disabled feature flags, and a persisted audit smoke-test record. Authentication and founder-admin readiness remain false.
+## DEC-038 — Founder session verification remains evidence-gated
+
+**Status:** Pending external configuration and founder sign-in
+
+The Supavisor migration, Prisma smoke test, TypeScript check, ESLint check, and READY Vercel deployment were verified. A founder session has not been claimed because Auth.js email delivery remains disabled and `AUTH_EMAIL_FROM` has not been configured with a verified Resend sender. The repository will not mark the founder verified, assign the founder role through the web flow, or enable founder-safe administration until the founder receives and clicks a real sign-in link and completes `/admin/bootstrap`.
+
+The database password remains outside source control. No password rotation is performed by this decision.
