@@ -206,3 +206,11 @@ A publication is ready only when:
 - [ ] Verify Auth.js sign-in and founder bootstrap in production.
 - [ ] Configure Sentry and Supabase Storage secrets.
 - [ ] Keep reviewer, participant, consent, pilot, legal, invitation, and Version 1.0 modules disabled.
+
+## Supabase credential update — 2026-07-29
+
+- [x] Store supplied Supabase `DATABASE_URL` as encrypted Vercel Production configuration.
+- [x] Keep admin readiness flags explicitly false.
+- [ ] Retry Prisma migration from a network that can reach the Supabase database.
+- [ ] Verify schema, indexes, foreign keys, and Prisma migration history.
+- [ ] Only then set `NEXIS_ADMIN_MIGRATIONS_READY=true`.

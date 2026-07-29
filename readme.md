@@ -95,3 +95,7 @@ The repository now has the requested staged feature-flag vocabulary and a fail-c
 ### Selected administration stack
 
 The repository now implements the approved Auth.js + Supabase PostgreSQL + Prisma + Supabase Storage + Vercel + Sentry + Resend stack. Auth.js and Prisma routes are present, the initial migration is generated and validated, and Resend sending remains disabled. Production database migration and founder bootstrap require Supabase credentials and Vercel configuration.
+
+### Supabase migration status
+
+The Supabase database URL is configured in Vercel, but the initial migration could not be applied from the current environment because the supplied database host was unreachable on port 5432. Administration readiness remains disabled until the migration is successfully applied and verified.

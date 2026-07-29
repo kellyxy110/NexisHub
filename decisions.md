@@ -249,3 +249,9 @@ A provider-neutral server-side authorization primitive now denies access when th
 Use Auth.js with passwordless email verification, Supabase PostgreSQL through Prisma 7 and the PostgreSQL adapter, Supabase Storage, Vercel encrypted environment variables, Sentry, Resend with sending disabled, and PostgreSQL audit persistence. Do not introduce a second authentication or database system.
 
 The supplied `db.prisma.io` credential is Prisma Postgres, not Supabase, and was deliberately not stored or used under the Supabase `DATABASE_URL` contract. A Supabase project connection string remains required.
+
+## DEC-036 — Supabase migration attempt status
+
+**Status:** Blocked by network reachability; not applied
+
+The supplied Supabase `DATABASE_URL` was added to Vercel as an encrypted Production variable. `prisma migrate deploy` was attempted locally and returned Prisma `P1001` because `db.hjrgpeznkydaakifwghw.supabase.co:5432` was unreachable from the execution environment. Migration readiness remains false. No claim of production migration success is made.
