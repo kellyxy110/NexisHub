@@ -262,6 +262,7 @@ pm run lint`.
 - [x] Add category-specific article structures, FAQs, workflows, references, metadata, internal linking, and Studio or product CTAs.
 - [x] Keep case studies methodology-first until client permission and evidence exist.
 - [x] Expose all new editorial desks on the public blog archive.
+- [x] Include the combined editorial registry in the blog count, sitemap, and RSS feed.
 - [x] Verify 36 new guides compile and meet the 1,300-word minimum; measured minimum: 1,326 words.
 - [ ] Complete editorial fact and source review for the new desks.
 - [ ] Complete manual mobile, accessibility, print, and visual QA.

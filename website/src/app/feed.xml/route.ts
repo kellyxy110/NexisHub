@@ -1,8 +1,8 @@
-import { blogPosts } from "@/lib/posts";
+import { allEditorialPosts } from "@/lib/posts";
 
 const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://nexishub.vercel.app";
 const escapeXml = (value: string) => value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&apos;");
-const publishedPosts = blogPosts.filter((post) => post.status === "Published");
+const publishedPosts = allEditorialPosts.filter((post) => post.status === "Published");
 const items = publishedPosts.map((post) => `<item><title>${escapeXml(post.title)}</title><link>${base}${post.canonicalPath}</link><guid isPermaLink="true">${base}${post.canonicalPath}</guid><description>${escapeXml(post.description)}</description><pubDate>${new Date(post.publishedDate).toUTCString()}</pubDate><category>${escapeXml(post.category)}</category></item>`).join("");
 const lastBuildDate = publishedPosts.reduce((latest, post) => post.updatedDate > latest ? post.updatedDate : latest, "2026-07-20");
 const feed = `<?xml version="1.0" encoding="UTF-8" ?>
