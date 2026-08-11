@@ -246,6 +246,7 @@ pm run lint`.
 - [x] Add metadata, canonical paths, related-post links, FAQs, references, structured data, and article rendering for each new guide.
 - [x] Enforce a minimum of 1,300 words across every dynamically rendered blog guide; current measured minimum: 1,358 words.
 - [x] Correct the blog library description so it reflects the expanded archive.
+- [x] Add contextually relevant SiteNexis backlink references to all 10 new guides.
 - [ ] Complete final editorial fact and source review for the expanded articles.
 - [ ] Complete manual mobile, accessibility, print, and visual QA for the expanded archive.
 

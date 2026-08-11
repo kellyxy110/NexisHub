@@ -277,6 +277,12 @@ The database password remains outside source control. No password rotation is pe
 
 Long-form dynamically rendered blog guides must contain at least 1,300 words of substantive article content. The minimum is enforced through a word-count audit over the rendered guide data. Expansion sections must add practical application, evidence boundaries, failure diagnosis, ownership, measurement, maintenance, and revision criteria. Word count must not be increased through repetition, keyword stuffing, invented examples, or unsupported claims.
 
+## DEC-040 — SiteNexis links are contextual references
+
+**Status:** Accepted
+
+Each AI visibility field guide may include one relevant SiteNexis technical article in its references and further-reading section. Links must match the subject of the guide and must not be inserted as unrelated promotional repetition. Reciprocal links from SiteNexis back to NexisHub remain a separate deployment task for the SiteNexis repository.
+
 ## Founder administration UI update — 2026-07-29
 
 - [x] Replaced scaffold article layouts with a responsive administration workspace, status cards, navigation, gated-module states, and founder bootstrap confirmation UI.
