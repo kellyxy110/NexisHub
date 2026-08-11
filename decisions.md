@@ -269,4 +269,16 @@ Use Supavisor Session Pooler `aws-0-eu-central-1.pooler.supabase.com:5432` for P
 
 The Supavisor migration, Prisma smoke test, TypeScript check, ESLint check, and READY Vercel deployment were verified. A founder session has not been claimed because Auth.js email delivery remains disabled and `AUTH_EMAIL_FROM` has not been configured with a verified Resend sender. The repository will not mark the founder verified, assign the founder role through the web flow, or enable founder-safe administration until the founder receives and clicks a real sign-in link and completes `/admin/bootstrap`.
 
-The database password remains outside source control. No password rotation is performed by this decision.`n`n## Founder administration UI update — 2026-07-29`n`n- [x] Replaced scaffold article layouts with a responsive administration workspace, status cards, navigation, gated-module states, and founder bootstrap confirmation UI.`n- [x] Preserved server-side Auth.js session checks and founder bootstrap transaction.`n- [ ] Complete visual review on real mobile and desktop devices.`n
+The database password remains outside source control. No password rotation is performed by this decision.
+
+## DEC-039 — Blog guides use a 1,300-word minimum
+
+**Status:** Accepted for the NexisHub editorial library
+
+Long-form dynamically rendered blog guides must contain at least 1,300 words of substantive article content. The minimum is enforced through a word-count audit over the rendered guide data. Expansion sections must add practical application, evidence boundaries, failure diagnosis, ownership, measurement, maintenance, and revision criteria. Word count must not be increased through repetition, keyword stuffing, invented examples, or unsupported claims.
+
+## Founder administration UI update — 2026-07-29
+
+- [x] Replaced scaffold article layouts with a responsive administration workspace, status cards, navigation, gated-module states, and founder bootstrap confirmation UI.
+- [x] Preserved server-side Auth.js session checks and founder bootstrap transaction.
+- [ ] Complete visual review on real mobile and desktop devices.

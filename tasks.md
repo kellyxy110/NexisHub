@@ -228,12 +228,29 @@ A publication is ready only when:
 - [ ] Verify Auth.js with a configured Resend sender and founder bootstrap.
 ## Founder-safe administration verification — 2026-07-29
 
-- [x] TypeScript verification passed with `npm run typecheck`.
-- [x] ESLint verification passed with `npm run lint`.
+- [x] TypeScript verification passed with
+pm run typecheck`.
+- [x] ESLint verification passed with
+pm run lint`.
 - [x] Vercel production deployment for `c353030` reached READY.
 - [x] Confirm no database password or Resend secret is tracked in the repository.
 - [ ] Configure a verified `AUTH_EMAIL_FROM` sender and explicitly enable Auth.js email delivery.
 - [ ] Request and click the real founder sign-in link for `FOUNDER_EMAIL`.
 - [ ] Run `/admin/bootstrap` from the verified founder session.
 - [ ] Record security-check evidence, then enable `NEXIS_ADMIN_AUTH_READY`, `NEXIS_ADMIN_SECURITY_CHECKS_PASSED`, `NEXIS_ADMIN_FOUNDER_VERIFIED`, `ADMIN_ENABLED`, and `FOUNDER_ADMIN_ENABLED`.
-- [ ] Re-run the production build locally if the environment permits completion within the available execution window.`n`n## Founder administration UI update — 2026-07-29`n`n- [x] Replaced scaffold article layouts with a responsive administration workspace, status cards, navigation, gated-module states, and founder bootstrap confirmation UI.`n- [x] Preserved server-side Auth.js session checks and founder bootstrap transaction.`n- [ ] Complete visual review on real mobile and desktop devices.`n
+- [ ] Re-run the production build locally if the environment permits completion within the available execution window.
+
+## Blog expansion — 2026-08-11
+
+- [x] Add 10 new AI visibility and machine discovery field guides.
+- [x] Add metadata, canonical paths, related-post links, FAQs, references, structured data, and article rendering for each new guide.
+- [x] Enforce a minimum of 1,300 words across every dynamically rendered blog guide; current measured minimum: 1,358 words.
+- [x] Correct the blog library description so it reflects the expanded archive.
+- [ ] Complete final editorial fact and source review for the expanded articles.
+- [ ] Complete manual mobile, accessibility, print, and visual QA for the expanded archive.
+
+## Founder administration UI update — 2026-07-29
+
+- [x] Replaced scaffold article layouts with a responsive administration workspace, status cards, navigation, gated-module states, and founder bootstrap confirmation UI.
+- [x] Preserved server-side Auth.js session checks and founder bootstrap transaction.
+- [ ] Complete visual review on real mobile and desktop devices.

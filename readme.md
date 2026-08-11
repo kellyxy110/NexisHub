@@ -50,6 +50,7 @@ Completed platform areas include:
 - NexisHub Studio landing page, service routes, enquiry flow, commercial templates, and operational records
 - Founder-Led Nexis Research Institute with 30 programme pages, research search, publication collections, the AI Visibility Index Version 0.1 working paper, citation exports, pilot templates, review workflows, and governance documentation
 - Pnyx as a verified Live flagship product at `https://pnyx-psi.vercel.app`
+- Expanded NexisHub blog library with long-form AI visibility and machine discovery guides. Dynamically rendered guides are maintained above the 1,300-word minimum and include related reading, references, FAQs, metadata, and structured data.
 
 NRI status remains Founder-Led Stage. The AI Visibility Index remains a Version 0.1 Pre-Review Working Paper. Legal review, reviewer appointments, pilot consent, research findings, portfolio permissions, and manual accessibility testing remain pending until evidence exists.
 
@@ -102,4 +103,10 @@ The Supabase database URL is configured in Vercel, but the initial migration cou
 
 ### Supavisor migration status
 
-Supabase administration tables are now migrated through the Session Pooler. Runtime traffic is configured for the Transaction Pooler. The database contains only default role/permission metadata, disabled feature flags, and an audit verification marker; no users or research records were created. Authentication and founder-admin readiness remain gated.`n`n## Founder administration UI update — 2026-07-29`n`n- [x] Replaced scaffold article layouts with a responsive administration workspace, status cards, navigation, gated-module states, and founder bootstrap confirmation UI.`n- [x] Preserved server-side Auth.js session checks and founder bootstrap transaction.`n- [ ] Complete visual review on real mobile and desktop devices.`n
+Supabase administration tables are now migrated through the Session Pooler. Runtime traffic is configured for the Transaction Pooler. The database contains only default role/permission metadata, disabled feature flags, and an audit verification marker; no users or research records were created. Authentication and founder-admin readiness remain gated.
+
+## Founder administration UI update — 2026-07-29
+
+- [x] Replaced scaffold article layouts with a responsive administration workspace, status cards, navigation, gated-module states, and founder bootstrap confirmation UI.
+- [x] Preserved server-side Auth.js session checks and founder bootstrap transaction.
+- [ ] Complete visual review on real mobile and desktop devices.
