@@ -319,3 +319,11 @@ Future tools must be typed, permission-checked, feature-flagged, approval-first,
 **Status:** Implemented in code; database application pending
 
 NRI publication persistence is introduced additively through `Publication`, `PublicationVersion`, and `PublicationEvent` models. The existing file-backed registry remains the public source until the database migration is applied and verified. The protected administration workspace falls back to that registry when `NRI_PUBLICATION_ADMIN_ENABLED` is false. No publication is promoted, published, or represented as peer-reviewed by this migration.
+
+---
+
+### DEC-045 — Vercel project root is the `website` application
+
+**Status:** Configured in Vercel; Git deployment verification pending
+
+The GitHub repository is a workspace containing the Next.js application under `website`. The Vercel project root is therefore configured as `website`, with the Next.js framework selected. Manual CLI deployment from the repository root encountered a Vercel packaging-path error after a successful Next.js build, so the connected Git deployment path is the verification path for this project.
