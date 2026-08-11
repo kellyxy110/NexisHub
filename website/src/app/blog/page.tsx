@@ -13,6 +13,8 @@ const blogSections = [
   { title: "AI visibility foundations", description: "Start with the concepts that separate machine discovery from traditional search.", posts: visibilityPosts.slice(0, 5) },
   { title: "Retrieval, entities, and trust", description: "Strengthen the page-level signals that help AI systems extract, understand, and cite content.", posts: visibilityPosts.slice(5, 10) },
   { title: "Measurement and operating rhythm", description: "Turn AI visibility into a repeatable program with source discovery, metrics, and a practical roadmap.", posts: visibilityPosts.slice(10, 15) },
+  { title: "Evidence and machine trust", description: "Build citation-ready content, explicit evidence boundaries, and responsible trust measurements.", posts: visibilityPosts.slice(15, 20) },
+  { title: "Discovery systems and entity practice", description: "Understand discovery pipelines, machine-readable websites, and the identity signals that connect related knowledge.", posts: visibilityPosts.slice(20, 25) },
   { title: "Education technology and TeachNexis", description: "Five practical guides for schools, teachers, lesson planning, classroom workflows, and student analytics.", posts: educationPosts.slice(0, 5) },
 ] as const;
 
