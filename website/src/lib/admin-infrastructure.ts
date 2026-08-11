@@ -10,18 +10,14 @@ export type AdminInfrastructureConfig = {
 
 type Environment = Record<string, string | undefined>;
 
-const requiredDatabaseKeys = ["NEXIS_ADMIN_DATABASE_URL"];
-const requiredAuthenticationKeys = ["NEXIS_ADMIN_AUTH_SECRET"];
-const requiredAuditKeys = ["NEXIS_ADMIN_AUDIT_STORE"];
-
-function hasValues(environment: Environment, keys: string[]) {
-  return keys.every((key) => Boolean(environment[key]?.trim()));
-}
+const hasAnyValue = (environment: Environment, keys: string[]) => keys.some((key) => Boolean(environment[key]?.trim()));
 
 export function getAdminInfrastructureConfig(environment: Environment = process.env): AdminInfrastructureConfig {
-  const databaseConfigured = hasValues(environment, requiredDatabaseKeys);
-  const authenticationConfigured = hasValues(environment, requiredAuthenticationKeys);
-  const auditPersistenceConfigured = hasValues(environment, requiredAuditKeys);
+  // The approved production stack uses the provider-native variables. The
+  // NEXIS_ADMIN_* names remain accepted for older deployments and tests.
+  const databaseConfigured = hasAnyValue(environment, ["DATABASE_URL", "NEXIS_ADMIN_DATABASE_URL"]);
+  const authenticationConfigured = hasAnyValue(environment, ["AUTH_SECRET", "NEXIS_ADMIN_AUTH_SECRET"]);
+  const auditPersistenceConfigured = hasAnyValue(environment, ["DATABASE_URL", "NEXIS_ADMIN_AUDIT_STORE"]);
   const configured = databaseConfigured && authenticationConfigured && auditPersistenceConfigured;
   return {
     status: configured ? "CONFIGURED" : "DISABLED",

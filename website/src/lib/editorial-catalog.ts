@@ -72,7 +72,7 @@ const seeds = [
   ], "https://nextjs.org/docs"],
 ] as const;
 
-const seedRecords: EditorialSeed[] = seeds.flatMap(([category, categoryTitle, cluster, entries, reference]) => entries.map(([slug, title, keyword, description, audience, focus]) => ({ slug, title, category: categoryTitle, cluster, keyword, description, audience, focus, related: [], reference: { label: categoryTitle + " official reference", url: reference } })));
+const seedRecords: EditorialSeed[] = seeds.flatMap(([, categoryTitle, cluster, entries, reference]) => entries.map(([slug, title, keyword, description, audience, focus]) => ({ slug, title, category: categoryTitle, cluster, keyword, description, audience, focus, related: [], reference: { label: categoryTitle + " official reference", url: reference } })));
 
 const relatedByCategory = (seed: EditorialSeed) => seedRecords.filter((item) => item.category === seed.category && item.slug !== seed.slug).slice(0, 3).map((item) => item.slug);
 

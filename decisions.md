@@ -293,3 +293,21 @@ Each AI visibility field guide may include one relevant SiteNexis technical arti
 **Status:** Accepted
 
 NexisHub will publish the new editorial areas as structured desks with four initial guides each. Every guide uses the existing article renderer, metadata, structured data, FAQs, references, related links, and a minimum of 1,300 substantive words. Healthcare and research articles must preserve evidence and governance boundaries. Case studies remain methodology-first until written client permission and supporting evidence exist.
+
+---
+
+### DEC-042 — NexisHub Operations Copilot begins read-only and founder-only
+
+**Status:** Implemented as a guarded foundation
+
+NexisHub begins its AI automation capability with a founder-only Operations Copilot. The first release searches approved operational documentation and returns source-linked excerpts from `tasks.md`, `decisions.md`, and `readme.md`. It does not publish, send email, alter production configuration, handle participant or consent data, approve research, or perform irreversible actions.
+
+Future tools must be typed, permission-checked, feature-flagged, approval-first, rate-limited, and audit-logged. Drafting and mutation capabilities require a separate decision and evaluation evidence for prompt injection, unauthorized actions, privacy leakage, hallucination, cost, and failure recovery.
+
+---
+
+### DEC-043 — Current task register supersedes historical fragments
+
+**Status:** Accepted
+
+`tasks.md` is the canonical current register. Historical provider and activation notes remain in this decision log for traceability, but they do not override later evidence. Implemented, partial, and external actions must stay separate so stale entries cannot imply that completed repository work is still missing or that external approval has occurred.

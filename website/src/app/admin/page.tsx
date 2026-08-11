@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import { redirect } from "next/navigation";
-import { getAdminFeatureFlags } from "@/lib/admin-features";
 import { getCurrentAdminPrincipal } from "@/lib/admin-session";
 
 export const dynamic = "force-dynamic";
@@ -7,7 +7,6 @@ export const dynamic = "force-dynamic";
 export default async function AdminPage() {
   const principal = await getCurrentAdminPrincipal();
   if (!principal) redirect("/admin/sign-in");
-  const flags = getAdminFeatureFlags();
   const accountEmail = principal.email ?? "Founder account";
   const safeModules = ["Dashboard", "Publication drafts", "Research programmes", "Studio content", "Audit history"];
   const gatedModules = ["Reviewers", "Pilot data", "Consent records", "Legal workflows", "Version 1.0 release"];

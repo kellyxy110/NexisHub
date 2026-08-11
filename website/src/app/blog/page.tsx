@@ -5,7 +5,7 @@ import { EditorialExplorer } from "@/components/editorial-explorer";
 import { Arrow, SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { NewsletterForm } from "@/components/newsletter-form";
 import { siteNexisLinks } from "@/lib/site-links";
-import { allEditorialPosts, blogPosts, educationPosts, featuredVisibilityPost, visibilityPosts } from "@/lib/posts";
+import { allEditorialPosts, educationPosts, featuredVisibilityPost, visibilityPosts } from "@/lib/posts";
 
 export const metadata: Metadata = { title: "Blog", description: "NexisHub writing on AI development, machine visibility, modern web engineering, infrastructure, and human-first software.", alternates: { canonical: "/blog", types: { "application/rss+xml": "/feed.xml" } } };
 

@@ -112,3 +112,5 @@ Supabase administration tables are now migrated through the Session Pooler. Runt
 - [ ] Complete visual review on real mobile and desktop devices.
 
 Added editorial desks for Modern Web Engineering, AI Infrastructure, Healthcare AI, Event Technology, Research, Guides, Case Studies, Product Engineering, and Developer Tutorials. Case-study content remains methodology-first until permissions and evidence are available.
+
+The canonical current roadmap is [tasks.md](tasks.md). Provider and activation history is recorded in [decisions.md](decisions.md). A founder-only, read-only Operations Copilot is available at `/admin/copilot` after a verified administrative session; it searches documented project evidence and does not perform mutations.
