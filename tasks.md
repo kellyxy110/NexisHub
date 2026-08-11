@@ -16,12 +16,15 @@ This is the canonical register. Historical status fragments remain in `decisions
 - [x] Fail-closed feature flags, server-side role checks, founder bootstrap transaction, and audit-log schema
 - [x] Responsive founder administration workspace and gated-module status display
 - [x] Read-only founder Operations Copilot over `tasks.md`, `decisions.md`, and `readme.md`
+- [x] Add additive Prisma publication, version, and immutable publication-event models and migration file
+- [x] Add protected publication workspace with a truthful file-registry fallback while its feature flag is disabled
 - [x] Provider, security, privacy, backup, rollback, retention, QA, and human-action documentation
 
 ## Partially implemented repository work
 
 - [ ] Verify the real Auth.js founder session and complete `/admin/bootstrap`
 - [ ] Enable founder-safe administration after real session, security, and Vercel evidence is recorded
+- [ ] Apply the publication migration to the configured Supabase database and verify the new tables
 - [ ] Complete persisted publication/version editing, status history, correction, retraction, archive, and approval UI
 - [ ] Complete reviewer assignment, review dashboard, and adjudication interfaces
 - [ ] Complete pilot, invitation-draft, consent, and analysis workspaces; keep sensitive flags disabled

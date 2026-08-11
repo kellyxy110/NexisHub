@@ -311,3 +311,11 @@ Future tools must be typed, permission-checked, feature-flagged, approval-first,
 **Status:** Accepted
 
 `tasks.md` is the canonical current register. Historical provider and activation notes remain in this decision log for traceability, but they do not override later evidence. Implemented, partial, and external actions must stay separate so stale entries cannot imply that completed repository work is still missing or that external approval has occurred.
+
+---
+
+### DEC-044 — Publication persistence is additive and fail-safe
+
+**Status:** Implemented in code; database application pending
+
+NRI publication persistence is introduced additively through `Publication`, `PublicationVersion`, and `PublicationEvent` models. The existing file-backed registry remains the public source until the database migration is applied and verified. The protected administration workspace falls back to that registry when `NRI_PUBLICATION_ADMIN_ENABLED` is false. No publication is promoted, published, or represented as peer-reviewed by this migration.
