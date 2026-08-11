@@ -123,3 +123,66 @@ model FeatureFlag {
   createdBy   String?
   creator     User?    @relation("FlagCreator", fields: [createdBy], references: [id], onDelete: SetNull)
 }
+
+model Publication {
+  id                String               @id @default(cuid())
+  slug              String               @unique
+  title             String
+  subtitle          String?
+  abstract          String?              @db.Text
+  publicationType   String
+  status            String
+  version           String
+  publicationDate   DateTime?
+  canonicalPath     String
+  doi               String?
+  reviewLevel       String?
+  licence           String?
+  dataAvailability  String?
+  authors           Json
+  keywords          Json
+  content           String?              @db.Text
+  createdBy         String?
+  updatedBy         String?
+  createdAt         DateTime             @default(now())
+  updatedAt         DateTime             @updatedAt
+  versions          PublicationVersion[]
+  events            PublicationEvent[]
+
+  @@index([status, publicationDate])
+  @@index([publicationType, status])
+}
+
+model PublicationVersion {
+  id                    String      @id @default(cuid())
+  publicationId         String
+  versionNumber         Int
+  versionLabel          String
+  status                String
+  contentSnapshot       Json
+  metadataSnapshot      Json
+  changeSummary         String?     @db.Text
+  createdBy             String?
+  createdAt             DateTime    @default(now())
+  submittedForReviewAt  DateTime?
+  approvedAt            DateTime?
+  publishedAt           DateTime?
+  publication           Publication @relation(fields: [publicationId], references: [id], onDelete: Cascade)
+
+  @@unique([publicationId, versionNumber])
+  @@index([publicationId, status])
+}
+
+model PublicationEvent {
+  id            String      @id @default(cuid())
+  publicationId String
+  versionId     String?
+  eventType     String
+  actorId       String?
+  metadata      Json?
+  createdAt     DateTime    @default(now())
+  publication   Publication @relation(fields: [publicationId], references: [id], onDelete: Cascade)
+
+  @@index([publicationId, createdAt])
+  @@index([eventType, createdAt])
+}
