@@ -288,3 +288,8 @@ Each AI visibility field guide may include one relevant SiteNexis technical arti
 - [x] Replaced scaffold article layouts with a responsive administration workspace, status cards, navigation, gated-module states, and founder bootstrap confirmation UI.
 - [x] Preserved server-side Auth.js session checks and founder bootstrap transaction.
 - [ ] Complete visual review on real mobile and desktop devices.
+## DEC-041 — Editorial desks are structured long-form sections
+
+**Status:** Accepted
+
+NexisHub will publish the new editorial areas as structured desks with four initial guides each. Every guide uses the existing article renderer, metadata, structured data, FAQs, references, related links, and a minimum of 1,300 substantive words. Healthcare and research articles must preserve evidence and governance boundaries. Case studies remain methodology-first until written client permission and supporting evidence exist.

@@ -1,3 +1,5 @@
+import { editorialPosts } from "@/lib/editorial-catalog";
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -301,12 +303,14 @@ export const blogPosts: readonly BlogPost[] = [
   }),
 ] as const;
 
-export const firstPost = blogPosts[0];
-export const visibilityPosts = blogPosts.filter((post) => post.cluster === "E");
-export const educationPosts = blogPosts.filter((post) => post.cluster === "F");
-export const dynamicGuidePosts = blogPosts.filter((post) => post.cluster === "E" || post.cluster === "F");
+export const allEditorialPosts: readonly BlogPost[] = [...blogPosts, ...editorialPosts];
+
+export const firstPost = allEditorialPosts[0];
+export const visibilityPosts = allEditorialPosts.filter((post) => post.cluster === "E");
+export const educationPosts = allEditorialPosts.filter((post) => post.cluster === "F");
+export const dynamicGuidePosts = allEditorialPosts.filter((post) => post.cluster !== "A");
 export const featuredVisibilityPost = visibilityPosts[0];
 
 export function getPost(slug: string) {
-  return blogPosts.find((post) => post.slug === slug);
+  return allEditorialPosts.find((post) => post.slug === slug);
 }

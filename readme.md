@@ -110,3 +110,5 @@ Supabase administration tables are now migrated through the Session Pooler. Runt
 - [x] Replaced scaffold article layouts with a responsive administration workspace, status cards, navigation, gated-module states, and founder bootstrap confirmation UI.
 - [x] Preserved server-side Auth.js session checks and founder bootstrap transaction.
 - [ ] Complete visual review on real mobile and desktop devices.
+
+Added editorial desks for Modern Web Engineering, AI Infrastructure, Healthcare AI, Event Technology, Research, Guides, Case Studies, Product Engineering, and Developer Tutorials. Case-study content remains methodology-first until permissions and evidence are available.

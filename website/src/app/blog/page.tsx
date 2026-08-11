@@ -5,7 +5,7 @@ import { EditorialExplorer } from "@/components/editorial-explorer";
 import { Arrow, SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { NewsletterForm } from "@/components/newsletter-form";
 import { siteNexisLinks } from "@/lib/site-links";
-import { blogPosts, educationPosts, featuredVisibilityPost, visibilityPosts } from "@/lib/posts";
+import { allEditorialPosts, blogPosts, educationPosts, featuredVisibilityPost, visibilityPosts } from "@/lib/posts";
 
 export const metadata: Metadata = { title: "Blog", description: "NexisHub writing on AI development, machine visibility, modern web engineering, infrastructure, and human-first software.", alternates: { canonical: "/blog", types: { "application/rss+xml": "/feed.xml" } } };
 
@@ -16,6 +16,15 @@ const blogSections = [
   { title: "Evidence and machine trust", description: "Build citation-ready content, explicit evidence boundaries, and responsible trust measurements.", posts: visibilityPosts.slice(15, 20) },
   { title: "Discovery systems and entity practice", description: "Understand discovery pipelines, machine-readable websites, and the identity signals that connect related knowledge.", posts: visibilityPosts.slice(20, 25) },
   { title: "Education technology and TeachNexis", description: "Five practical guides for schools, teachers, lesson planning, classroom workflows, and student analytics.", posts: educationPosts.slice(0, 5) },
+  { title: "Modern web engineering", description: "Long-form engineering notes on performance, accessibility, resilience, and maintainable frontend systems.", posts: allEditorialPosts.filter((post) => post.category === "Modern Web Engineering") },
+  { title: "AI infrastructure", description: "Architecture and operations guidance for reliable, observable, and secure AI applications.", posts: allEditorialPosts.filter((post) => post.category === "AI Infrastructure") },
+  { title: "Healthcare AI", description: "Responsible digital health and healthcare informatics writing with clear evidence and governance boundaries.", posts: allEditorialPosts.filter((post) => post.category === "Healthcare AI") },
+  { title: "Event technology", description: "Practical systems thinking for registration, invitations, check-in, attendance, and event operations.", posts: allEditorialPosts.filter((post) => post.category === "Event Technology") },
+  { title: "Research", description: "Methods, reproducibility, limitations, evidence, and the standards behind applied research.", posts: allEditorialPosts.filter((post) => post.category === "Research") },
+  { title: "Guides", description: "Practical decision guides for founders, teams, websites, products, and technical content.", posts: allEditorialPosts.filter((post) => post.category === "Guides") },
+  { title: "Case studies", description: "Methodology-first case study writing until approved client permissions and evidence are available.", posts: allEditorialPosts.filter((post) => post.category === "Case Studies") },
+  { title: "Product engineering", description: "Product discovery, architecture, delivery, maintainability, and long-term software ownership.", posts: allEditorialPosts.filter((post) => post.category === "Product Engineering") },
+  { title: "Developer tutorials", description: "Testable implementation tutorials for Next.js, TypeScript, metadata, forms, and research tooling.", posts: allEditorialPosts.filter((post) => post.category === "Developer Tutorials") },
 ] as const;
 
 export default function BlogPage() {

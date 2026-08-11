@@ -256,3 +256,12 @@ pm run lint`.
 - [x] Replaced scaffold article layouts with a responsive administration workspace, status cards, navigation, gated-module states, and founder bootstrap confirmation UI.
 - [x] Preserved server-side Auth.js session checks and founder bootstrap transaction.
 - [ ] Complete visual review on real mobile and desktop devices.
+## Editorial desks expansion — 2026-08-11
+
+- [x] Add four long-form topics each for Modern Web Engineering, AI Infrastructure, Healthcare AI, Event Technology, Research, Guides, Case Studies, Product Engineering, and Developer Tutorials.
+- [x] Add category-specific article structures, FAQs, workflows, references, metadata, internal linking, and Studio or product CTAs.
+- [x] Keep case studies methodology-first until client permission and evidence exist.
+- [x] Expose all new editorial desks on the public blog archive.
+- [x] Verify 36 new guides compile and meet the 1,300-word minimum; measured minimum: 1,326 words.
+- [ ] Complete editorial fact and source review for the new desks.
+- [ ] Complete manual mobile, accessibility, print, and visual QA.

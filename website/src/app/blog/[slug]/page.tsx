@@ -46,20 +46,28 @@ export default async function VisibilityArticlePage({ params }: { params: Promis
 
   const related = (post.relatedSlugs ?? []).map(getPost).filter((item) => item !== undefined);
   const isEducation = post.cluster === "F";
-  const productCta = isEducation ? {
+  const isEditorial = post.cluster !== "E" && post.cluster !== "F";
+  const productCta = isEditorial ? {
+    label: "Nexis Studio",
+    title: "Turn a useful idea into a maintainable product.",
+    body: "Nexis Studio helps organisations move from problem definition to product design, engineering, launch, and long-term support with clear technical and commercial boundaries.",
+    href: "/studio",
+    button: "Explore Nexis Studio",
+    analytics: "article-" + post.slug + "-studio",
+  } : isEducation ? {
     label: "TeachNexis",
     title: "Build calmer AI-supported teaching workflows.",
     body: "TeachNexis helps teachers and schools organize lesson planning, assessment support, classroom workflows, and reviewed AI assistance around real teaching needs.",
     href: "https://teachnexis.vercel.app",
     button: "Explore TeachNexis",
-    analytics: `article-${post.slug}-teachnexis`,
+    analytics: "article-" + post.slug + "-teachnexis",
   } : {
     label: "Apply the framework",
     title: "See how machines read your website.",
     body: "SiteNexis analyzes crawl structure, semantic clarity, retrieval readiness, entity consistency, and machine-trust signals, then exposes the findings as an explainable action plan.",
     href: siteNexisLinks.audit,
     button: "Run a SiteNexis audit",
-    analytics: `article-${post.slug}-sitenexis`,
+    analytics: "article-" + post.slug + "-sitenexis",
   };
   const toc = [["overview", "The operating idea"], ["principles", "Core principles"], ["workflow", "Implementation workflow"], ["pitfalls", "Common mistakes"], ["measurement", "How to measure it"], ["future", "What comes next"], ["takeaways", "Key takeaways"], ["faq", "Frequently asked questions"], ["references", "References"]] as const;
   const articleSchema = {
@@ -91,7 +99,7 @@ export default async function VisibilityArticlePage({ params }: { params: Promis
       <aside className="article-toc"><p>In this guide</p><nav aria-label="Table of contents">{toc.map(([id, label]) => <a href={`#${id}`} key={id}>{label}</a>)}</nav><div className="article-series"><span>Series</span><strong>{post.series}</strong><small>{post.cluster} · Reviewed guide</small></div></aside>
       <article className="article-body">
         <p className="article-lead">{guide.lead}</p>
-        <p>{isEducation ? <>This guide is part of the NexisHub education technology series. For the engineering discipline behind useful AI products, start with the <Link href={aiDevelopmentPath}>complete guide to AI software development</Link>.</> : <>This guide is part of the <Link href="/blog/complete-guide-ai-visibility">NexisHub AI visibility pillar</Link>. For the systems behind retrieval and generation, start with the <Link href={aiDevelopmentPath}>complete guide to AI software development</Link>.</>}</p>
+        <p>{isEducation ? <>This guide is part of the NexisHub education technology series. For the engineering discipline behind useful AI products, start with the <Link href={aiDevelopmentPath}>complete guide to AI software development</Link>.</> : isEditorial ? <>This guide is part of the NexisHub {post.category} desk. It connects practical engineering, research, and product decisions to the wider NexisHub platform.</> : <>This guide is part of the <Link href="/blog/complete-guide-ai-visibility">NexisHub AI visibility pillar</Link>. For the systems behind retrieval and generation, start with the <Link href={aiDevelopmentPath}>complete guide to AI software development</Link>.</>}</p>
 
         <section id="overview"><h2>The operating idea</h2>{guide.overview.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<div className="article-callout"><strong>Editorial boundary</strong><p>NexisHub separates verified platform documentation, repeatable observation, and inference. No optimization can guarantee selection or citation by an external system.</p></div>{guide.deepDive?.map((section) => <div className="article-deep-dive" key={section.title}><h3>{section.title}</h3>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>)}</section>
 

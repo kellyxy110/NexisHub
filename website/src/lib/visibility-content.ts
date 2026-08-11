@@ -1,4 +1,5 @@
 import { additionalVisibilityGuides } from "@/lib/additional-guides";
+import { editorialGuides } from "@/lib/editorial-catalog";
 
 export type GuidePoint = { title: string; detail: string };
 export type GuideFaq = { question: string; answer: string };
@@ -714,6 +715,6 @@ const expandShortGuide = (guide: VisibilityGuide): VisibilityGuide => {
 };
 
 export function getVisibilityGuide(slug: string) {
-  const guide = [...visibilityGuides, ...additionalVisibilityGuides].find((item) => item.slug === slug);
+  const guide = [...visibilityGuides, ...additionalVisibilityGuides, ...editorialGuides].find((item) => item.slug === slug);
   return guide ? expandShortGuide(guide) : undefined;
 }
