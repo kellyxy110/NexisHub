@@ -15,9 +15,9 @@ const hasAnyValue = (environment: Environment, keys: string[]) => keys.some((key
 export function getAdminInfrastructureConfig(environment: Environment = process.env): AdminInfrastructureConfig {
   // The approved production stack uses the provider-native variables. The
   // NEXIS_ADMIN_* names remain accepted for older deployments and tests.
-  const databaseConfigured = hasAnyValue(environment, ["DATABASE_URL", "NEXIS_ADMIN_DATABASE_URL"]);
+  const databaseConfigured = hasAnyValue(environment, ["DATABASE_URL", "PRISMA_DATABASE_URL", "NEXIS_ADMIN_DATABASE_URL"]);
   const authenticationConfigured = hasAnyValue(environment, ["AUTH_SECRET", "NEXIS_ADMIN_AUTH_SECRET"]);
-  const auditPersistenceConfigured = hasAnyValue(environment, ["DATABASE_URL", "NEXIS_ADMIN_AUDIT_STORE"]);
+  const auditPersistenceConfigured = hasAnyValue(environment, ["DATABASE_URL", "PRISMA_DATABASE_URL", "NEXIS_ADMIN_AUDIT_STORE"]);
   const configured = databaseConfigured && authenticationConfigured && auditPersistenceConfigured;
   return {
     status: configured ? "CONFIGURED" : "DISABLED",

@@ -322,8 +322,8 @@ NRI publication persistence is introduced additively through `Publication`, `Pub
 
 ---
 
-### DEC-045 — Vercel project root is the `website` application
+### DEC-045 — Vercel deployment uses the application directory upload
 
-**Status:** Configured in Vercel; Git deployment verification pending
+**Status:** Manual production deployment verified
 
-The GitHub repository is a workspace containing the Next.js application under `website`. The Vercel project root is therefore configured as `website`, with the Next.js framework selected. Manual CLI deployment from the repository root encountered a Vercel packaging-path error after a successful Next.js build, so the connected Git deployment path is the verification path for this project.
+The GitHub repository is a workspace containing the Next.js application under `website`. The Vercel project remains rooted at `.`, and the successful production deployment is uploaded from the `website` application directory. A project-root Git deployment was not used because its post-build packaging expected `.next` at the repository root. The latest successful deployment was manually aliased to `https://nexishub.vercel.app` and its public routes were verified.

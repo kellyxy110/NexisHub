@@ -4,7 +4,7 @@ import EmailProvider from "next-auth/providers/email";
 import { getPrisma } from "@/lib/prisma";
 
 export const authOptions: NextAuthOptions = {
-  ...(process.env.DATABASE_URL ? { adapter: PrismaAdapter(getPrisma()) } : {}),
+  ...((process.env.DATABASE_URL || process.env.PRISMA_DATABASE_URL) ? { adapter: PrismaAdapter(getPrisma()) } : {}),
   secret: process.env.AUTH_SECRET,
   session: { strategy: "database" },
   providers: [
