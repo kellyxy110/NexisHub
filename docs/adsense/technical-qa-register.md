@@ -8,7 +8,7 @@ This register separates repository/runtime evidence from legal review and manual
 
 - Root public layout: `website/src/app/layout.tsx`.
 - Research search metadata layout: `website/src/app/research/search/layout.tsx`.
-- No dedicated AdSense loader exists.
+- The consent-gated loader is implemented in `website/src/components/adsense-loader.tsx` and imported only by blog, article, and research pages.
 - No CSP is currently configured in `website/next.config.ts`.
 - Admin, authentication, API, citation endpoints, sitemap, robots, feeds, and other non-HTML resources must remain outside any future advertising loader boundary.
 - If advertising is later authorized, the smallest safe integration point is a public HTML page template or explicit public-content component. It must not be placed in the root layout without route gating.
@@ -22,16 +22,16 @@ This register separates repository/runtime evidence from legal review and manual
 | Cookies | TECHNICALLY REVIEWED | LEGAL REVIEW PENDING | Describes consent local storage and optional analytics. Update provider/cookie details before enabling advertising. |
 | Contact/forms | TECHNICALLY REVIEWED | LEGAL REVIEW PENDING | Forms validate inputs and use configured webhook delivery. Production delivery and retention require operational evidence. |
 | Analytics | TECHNICALLY REVIEWED | LEGAL REVIEW PENDING | Events are gated on local consent. No third-party analytics provider is enabled by repository code alone. |
-| Advertising | IMPLEMENTED, NOT YET LIVE-VERIFIED | LEGAL REVIEW PENDING | Exact ads.txt row and consent-gated public loader are implemented; no ad units or Auto Ads account setting was changed. |
+| Advertising | TECHNICAL INTEGRATION VERIFIED | LEGAL REVIEW PENDING | Exact ads.txt row returns 200; consent-gated public loader is present in the deployed bundle; no ad units or Auto Ads account setting was changed. |
 
 ## Automated and local checks
 
 - Typecheck: passed previously for the remediation commit.
 - Lint: passed previously for the remediation commit.
-- Tests: 23 passed.
+- Tests: 24 passed, including the AdSense integration regression test.
 - Production webpack build: passed.
 - Local production server: representative robots, sitemap, search, and homepage routes returned 200; local sitemap excluded `/research/search`.
-- Live production: deployed remediation returned 200 for representative routes; robots, sitemap, search metadata, and homepage fixes passed live verification.
+- Live production: deployed remediation returned 200 for representative routes; robots, sitemap, search metadata, homepage, ads.txt, and scoped loader checks passed live verification.
 
 ## Manual QA status
 

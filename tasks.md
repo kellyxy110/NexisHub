@@ -33,6 +33,7 @@ This is the canonical register. Historical status fragments remain in `decisions
 - [ ] Complete editorial link-health, source-freshness, and maintenance-calendar interfaces
 - [ ] Add automated route, metadata, structured-data, sitemap, accessibility, print, dependency, and secret checks
 - [x] Complete initial AdSense forensic discovery baseline and record evidence-backed indexability remediation
+- [x] Implement and live-verify the authorized AdSense ads.txt record and scoped consent-gated loader
 - [ ] Add agent evaluation harness, typed tool registry, approval queue, and persistent run tracing
 
 ## External founder or professional actions

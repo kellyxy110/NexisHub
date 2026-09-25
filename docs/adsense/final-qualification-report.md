@@ -6,14 +6,14 @@ Property: `https://nexishub.vercel.app`
 
 ## Executive verdict
 
-**NOT READY TO SUBMIT.**
+**CONDITIONALLY READY.**
 
-This is an evidence-based engineering and content-readiness assessment, not a prediction of Google’s decision. The repository has a valid crawlable public site and the initial indexability contradiction is remediated and live-verified. The owner-supplied publisher identity and exact official ads.txt format are now implemented locally; live verification and account-level AdSense status remain separate. The final verdict remains pending deployment verification, legal/consent review status, trust-claim confirmation, and manual QA evidence.
+This is an evidence-based engineering and content-readiness assessment, not a prediction of Google’s decision. The repository has a valid crawlable public site, the initial indexability contradiction is remediated and live-verified, and the authorized ads.txt record and scoped loader are technically verified in production. Conditional status remains because account-level AdSense review, consent/CMP configuration, trust-claim confirmation, external legal review, and manual device/browser QA are outside or beyond the evidence collected here.
 
 ## Critical blockers
 
-- Baseline live `/ads.txt` returned 404; the repository now contains the exact owner-authorized row and requires post-deployment verification.
-- A consent-gated AdSense loader now exists on substantive public blog, article, and research pages. It is not in the root layout and does not affect admin, API, legal, product, or non-HTML surfaces.
+- Live `/ads.txt` returns 200 `text/plain` with the exact row `google.com, pub-3694194350196538, DIRECT, f08c47fec0942fa0`.
+- A consent-gated AdSense loader is present in the deployed public client bundle for blog, article, and research pages. It is not in the root layout and does not affect admin, API, legal, product, or non-HTML surfaces.
 - AdSense account review state, consent certification/CMP configuration, and Search Console state are not available to this audit.
 - Terms, privacy, and cookies pages are present but marked as drafts for legal review.
 - Production deployment is now verified through the existing `kellyxy110` GitHub account and existing Vercel `nexis-hub` project. No replacement project or domain was created.
@@ -24,8 +24,8 @@ This is an evidence-based engineering and content-readiness assessment, not a pr
 - Sitemap: live XML returns 200 with 83 production URLs and excludes the interactive research search route.
 - Crawlability: representative public routes returned 200 during the baseline crawl.
 - Canonicalization: `/research/search` had an incorrect homepage canonical in production baseline; live route metadata now supplies a self-canonical and `noindex,follow`.
-- ads.txt: local implementation ready; live verification pending deployment.
-- AdSense loader: local implementation ready; consent-gated and scoped; live/browser verification pending deployment.
+- ads.txt: technically verified in production.
+- AdSense loader: technically verified in the deployed public bundle; browser consent interaction remains to be manually verified.
 - Build: local production webpack build passed after remediation.
 
 ## Content readiness
@@ -58,7 +58,7 @@ Automated repository checks pass, but manual device, keyboard, screen-reader, re
 
 ## Monetization architecture
 
-Advertising remains disabled. This is appropriate until the owner supplies the exact authorized publisher ID, confirms account ownership, determines the consent approach, and authorizes a conservative placement plan. No ads.txt value or AdSense script was fabricated.
+Advertising remains conservative: the authorized loader is consent-gated, but no ad units or Auto Ads account setting was changed. Account-level review and CMP configuration remain owner actions.
 
 ## Deployment status
 
@@ -93,12 +93,12 @@ Use conservative, content-led ad placements only after approval. Monitor layout 
 |---|---|---|---|
 | Public crawlability | PARTIAL | Live robots, sitemap, and representative routes returned 200 | Recheck after deployment |
 | Sitemap/indexability consistency | PARTIAL | Local build excludes search utility; live baseline still predates fix | Deploy and recrawl |
-| ads.txt | FAIL | Live `/ads.txt` returned 404 | Owner supplies publisher ID; add and verify |
-| AdSense integration | NOT PROVEN | No loader or publisher ID in repository | Owner/account decision and implementation |
+| ads.txt | PASS | Live HTTP 200 `text/plain`; exact row verified | Monitor AdSense account status |
+| AdSense integration | PASS — TECHNICAL INTEGRATION VERIFIED | Exact client ID found in deployed public client bundle; no root/admin loader | Do not confuse technical integration with Google approval |
 | Original/useful content | NOT PROVEN | 67 blog URLs; overlap and factual review incomplete | Editorial review |
 | Publisher identity | PARTIAL | About page identifies NexisHub and founder | Verify claims and social proof |
 | Legal/privacy | OWNER ACTION REQUIRED | Pages are linked but marked drafts | Qualified legal review |
-| Accessibility/mobile/performance | NOT PROVEN | Automated checks/build pass; manual evidence absent | Complete manual QA and production measurement |
+| Accessibility/mobile/performance | PARTIAL | Automated checks/build pass; live request sample recorded; manual/browser evidence absent | Complete proportionate manual QA |
 | Account review | OWNER ACTION REQUIRED | No AdSense/Search Console account evidence | Owner verifies account/property state |
 
 ## Official references

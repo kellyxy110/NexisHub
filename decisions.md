@@ -355,3 +355,13 @@ The production robots response included a `Host` directive alongside the sitemap
 GitHub authentication was corrected through the official device flow to `kellyxy110`. The existing `main` history, including `9a61525`, `0061e4d`, `dc4f692`, and subsequent documentation commits, was pushed without rewriting history. The existing Vercel project `nexis-hub` under Kellyxy's projects was deployed and the existing `nexishub.vercel.app` alias was reassigned to that deployment. No new project, domain, or AdSense configuration was created.
 
 Live verification confirmed robots 200 without `Host:`, sitemap 200 with 83 URLs and no `/research/search`, search metadata `noindex, follow` with a self-canonical, homepage six-product wording, and representative public routes returning 200. `/ads.txt` remains 404 and is intentionally unresolved until the owner supplies the exact authorized publisher ID.
+
+---
+
+### DEC-049 — Loop 2 authorized AdSense integration
+
+**Status:** Technical integration deployed and live-verified; account approval pending
+
+The owner supplied and authorized publisher ID `pub-3694194350196538` and client ID `ca-pub-3694194350196538`. Official Google guidance verified the exact ads.txt row: `google.com, pub-3694194350196538, DIRECT, f08c47fec0942fa0`. The row was added as a static public file. A consent-gated loader was added only to substantive public blog, article, and research pages. It is absent from the root layout and therefore does not automatically contaminate admin, API, legal, product, or non-HTML surfaces. No CSP exists, so no CSP change was made. No ad units or Auto Ads account settings were changed.
+
+Deployment `dpl_CuzJ95LGrBgKfGdsxU5Dv2XQHbXZ` completed READY and the existing `nexishub.vercel.app` alias was reassigned. Live checks confirmed `/ads.txt` HTTP 200 `text/plain` with the exact row and found the authorized client loader in the deployed public client bundle. This is technical integration verification, not Google AdSense approval.
