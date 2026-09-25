@@ -8,7 +8,7 @@ Property: `https://nexishub.vercel.app`
 
 **NOT READY TO SUBMIT.**
 
-This is an evidence-based engineering and content-readiness assessment, not a prediction of Google’s decision. The repository has a valid crawlable public site and the initial indexability contradiction has been remediated locally. Submission is not defensible yet because the authorized publisher ID and ads.txt record are absent, AdSense account state is unavailable, legal and consent review remain pending, and several quality checks still require owner or manual evidence.
+This is an evidence-based engineering and content-readiness assessment, not a prediction of Google’s decision. The repository has a valid crawlable public site and the initial indexability contradiction is now remediated and live-verified. Submission is not defensible yet because the authorized publisher ID and ads.txt record are absent, AdSense account state is unavailable, legal and consent review remain pending, and several quality checks still require owner or manual evidence.
 
 ## Critical blockers
 
@@ -16,14 +16,14 @@ This is an evidence-based engineering and content-readiness assessment, not a pr
 - No AdSense loader or publisher ID exists in the repository.
 - AdSense ownership, account review state, consent certification, and Search Console state are not available to this audit.
 - Terms, privacy, and cookies pages are present but marked as drafts for legal review.
-- Production deployment of the bounded fixes is blocked by external credentials: GitHub push was denied to the local `luch91` identity for `kellyxy110/NexisHub`; the Vercel CLI session was not authenticated to the required team.
+- Production deployment is now verified through the existing `kellyxy110` GitHub account and existing Vercel `nexis-hub` project. No replacement project or domain was created.
 
 ## Technical readiness
 
-- Robots: baseline live response returned 200, allowed public pages, disallowed `/api/`, and exposed a valid sitemap URL. The redundant `Host` directive was removed locally; production re-verification is pending.
-- Sitemap: baseline live sitemap had 84 URLs. Local rebuilt sitemap has 83 URLs and excludes the interactive research search route. Production re-verification is pending.
+- Robots: live response returns 200, allows public pages, disallows `/api/`, exposes the canonical sitemap, and no longer contains `Host:`.
+- Sitemap: live XML returns 200 with 83 production URLs and excludes the interactive research search route.
 - Crawlability: representative public routes returned 200 during the baseline crawl.
-- Canonicalization: `/research/search` had an incorrect homepage canonical in production baseline; local route metadata now supplies a self-canonical and `noindex,follow`.
+- Canonicalization: `/research/search` had an incorrect homepage canonical in production baseline; live route metadata now supplies a self-canonical and `noindex,follow`.
 - ads.txt: not ready; live baseline 404.
 - AdSense loader: not implemented; intentionally not added without authorized publisher data.
 - Build: local production webpack build passed after remediation.

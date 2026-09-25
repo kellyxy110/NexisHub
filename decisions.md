@@ -345,3 +345,13 @@ No publisher ID, ads.txt line, AdSense account setting, consent vendor, or ad pl
 **Status:** Implemented in code; live verification pending
 
 The production robots response included a `Host` directive alongside the sitemap. The repository now emits only the wildcard crawl rule and canonical sitemap URL. The sitemap remains the authoritative discovery directive; the redundant host line added no verified value and could create ambiguity. This is a minimal crawl-configuration cleanup, not a security control.
+
+---
+
+### DEC-048 — Loop 1 production deployment and revalidation
+
+**Status:** Deployed and live-verified; AdSense qualification remains open
+
+GitHub authentication was corrected through the official device flow to `kellyxy110`. The existing `main` history, including `9a61525`, `0061e4d`, `dc4f692`, and subsequent documentation commits, was pushed without rewriting history. The existing Vercel project `nexis-hub` under Kellyxy's projects was deployed and the existing `nexishub.vercel.app` alias was reassigned to that deployment. No new project, domain, or AdSense configuration was created.
+
+Live verification confirmed robots 200 without `Host:`, sitemap 200 with 83 URLs and no `/research/search`, search metadata `noindex, follow` with a self-canonical, homepage six-product wording, and representative public routes returning 200. `/ads.txt` remains 404 and is intentionally unresolved until the owner supplies the exact authorized publisher ID.

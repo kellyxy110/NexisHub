@@ -7,9 +7,9 @@ Status as of 2026-09-25: `NOT READY TO SUBMIT`.
 | Publisher ownership | Owner can access site source and AdSense account | Repository and Vercel access verified; AdSense account not available | OWNER ACTION REQUIRED | High | Owner verifies site/property in AdSense; do not claim completion |
 | ads.txt | Valid publisher record at root | Live `/ads.txt` returned 404 | FAIL | P0 | Owner supplies exact publisher ID; add only after authorization; live verify 200/plain text |
 | AdSense loader | Correct, non-duplicated loader | No loader or publisher ID found | NOT PROVEN | P0 | Implement only after owner provides account/publisher decision |
-| robots | Public content crawlable and sitemap discoverable | Baseline live robots 200; `/api/` disallowed; local rebuilt output removes redundant `Host:` | PARTIAL | P1 | Deploy and live verify the simplified response; audit API routes independently |
-| sitemap | Contains canonical, valuable URLs | Baseline live sitemap had 84 URLs; local rebuilt sitemap has 83 and excludes search utility | PARTIAL | P1 | Deploy and re-audit; correct source-of-truth dates |
-| indexability | No contradictory sitemap/canonical/robots signals | `/research/search` contradiction fixed locally; production still serves the pre-fix response until deployment access is restored | PARTIAL | P1 | Deploy and live verify |
+| robots | Public content crawlable and sitemap discoverable | Live 200 response has wildcard allow, `/api/` disallow, and canonical sitemap without `Host:` | PASS | P1 | Continue independent API security audit |
+| sitemap | Contains canonical, valuable URLs | Live 200 XML contains 83 production URLs and excludes search utility | PASS | P1 | Review source-of-truth dates in later editorial loop |
+| indexability | No contradictory sitemap/canonical/robots signals | Live search route is self-canonical and `noindex, follow`; it is absent from the sitemap | PASS for remediated finding | P1 | Reopen only if production regresses |
 | content originality | Unique, useful, relevant material | 67 blog URLs; source and overlap audit pending | NOT PROVEN | P1 | Human review high-overlap clusters and factual claims |
 | navigation | Clear user navigation | Public hubs and internal links exist | PARTIAL | P1 | Crawl internal graph; repair orphans/broken links |
 | authorship | Accountable publisher/author identity | Founder and NexisHub visible | PARTIAL | P1 | Verify biography/experience claims and editorial ownership |
