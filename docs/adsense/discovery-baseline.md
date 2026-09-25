@@ -44,6 +44,7 @@ This is a discovery record, not an approval claim. The audit distinguishes repos
 - Four distinct `lastmod` values are present: 2026-07-20, 2026-07-23, 2026-07-25, and 2026-08-11.
 - The static core routes still use a hard-coded 2026-07-20 date in the generator. This is a P1/P2 freshness-integrity issue, not evidence of current content modification.
 - `priority` and `changefreq` are present. They are not treated as a qualification signal.
+- After the bounded local remediation, the generated sitemap contains 83 URLs and excludes `/research/search`; this is not live production evidence because deployment access was unavailable during the re-check.
 
 ## D. AdSense and ads.txt status
 
@@ -79,6 +80,7 @@ Current status: `OWNER ACTION REQUIRED` and `NOT PROVEN`.
 - No private admin URLs are included in the public sitemap.
 - No secrets were found in the repository during this baseline review.
 - AdSense, consent, publisher, and account settings were not changed.
+- The GitHub push was blocked by the local credential (`luch91`) lacking permission for `kellyxy110/NexisHub`; Vercel CLI was also not authenticated to the required team. Therefore the production property remains on the pre-remediation deployment.
 
 ## H. Initial verdict
 

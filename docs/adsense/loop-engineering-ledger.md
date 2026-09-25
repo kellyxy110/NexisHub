@@ -21,6 +21,7 @@
 - Blast radius: One research utility URL; no programme or publication pages.
 - Change: Add a route metadata layout with self-canonical and `noindex, follow`; remove the URL from the sitemap.
 - Verification required: Build, sitemap parse, live headers/HTML after deployment.
+- Local verification: production webpack build passed; local `next start` returned 200 for robots, sitemap, search, and homepage; generated sitemap had 83 URLs and excluded `/research/search`. Live verification remains open because deployment credentials are unavailable.
 
 ## Loop 2 — Product claim contradiction
 
@@ -28,6 +29,7 @@
 - Root cause: Copy was not updated when Pnyx was added.
 - Change: Update the visible count to six.
 - Verification required: Live homepage text and regression tests.
+- Local verification: production webpack build passed; local homepage contains “Six focused products”. Live verification remains open.
 
 ## Remaining uncertainty
 
