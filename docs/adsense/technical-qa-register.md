@@ -31,7 +31,7 @@ This register separates repository/runtime evidence from legal review and manual
 - Tests: 23 passed.
 - Production webpack build: passed.
 - Local production server: representative robots, sitemap, search, and homepage routes returned 200; local sitemap excluded `/research/search`.
-- Live production: remains pre-remediation until authenticated deployment and post-deployment crawl are completed.
+- Live production: deployed remediation returned 200 for representative routes; robots, sitemap, search metadata, and homepage fixes passed live verification.
 
 ## Manual QA status
 
@@ -44,3 +44,9 @@ This register separates repository/runtime evidence from legal review and manual
 | Screen reader | NOT PROVEN | Landmark, heading, label, status, and error announcements. |
 | Print | PARTIAL | Research print stylesheet exists; verify a long article has no clipping or black-background waste. |
 | Production performance | NOT PROVEN | Live LCP, CLS, INP where available, payload, fonts, images, and third-party script measurements. |
+
+## Live network sample
+
+Read-only fetches on 2026-09-25 returned HTTP 200 for the homepage, blog hub, and representative article. Approximate request timings from the audit environment were 2,663 ms, 1,148 ms, and 2,337 ms. These are request timings, not LCP, CLS, or INP measurements.
+
+Observed HTML response sizes were approximately 56.9 KB, 147.7 KB, and 82.8 KB. Each sampled page exposed one H1 and no missing `alt` attributes in server-rendered `img` elements. Browser-based performance and accessibility testing remains required.

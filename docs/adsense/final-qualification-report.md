@@ -60,6 +60,17 @@ Automated repository checks pass, but manual device, keyboard, screen-reader, re
 
 Advertising remains disabled. This is appropriate until the owner supplies the exact authorized publisher ID, confirms account ownership, determines the consent approach, and authorizes a conservative placement plan. No ads.txt value or AdSense script was fabricated.
 
+## Deployment status
+
+- GitHub account: verified as `kellyxy110`.
+- Repository: verified as `kellyxy110/NexisHub`, with administrative access.
+- GitHub push: verified through `e336104`.
+- Vercel account/team: verified as `kellyxy110` / Kellyxy's projects.
+- Vercel project: existing `nexis-hub`; no replacement project created.
+- Production deployment: `READY`; existing `https://nexishub.vercel.app` alias reassigned to the new deployment.
+- Application deployment source: the pushed remediation state through `e8f40f6`; the later `e336104` documentation commit was pushed separately and does not change application output.
+- Live route verification: passed for robots, sitemap, search, homepage, blog, representative article, products, research, About, Contact, and legal routes.
+
 ## Remaining owner actions
 
 1. Authenticate GitHub as an account with push access to `kellyxy110/NexisHub`.
