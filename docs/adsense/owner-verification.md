@@ -14,15 +14,15 @@ Required evidence:
 - authorization to add the corresponding root `ads.txt` record;
 - authorization to add the account-provided site-verification or loader code, if required.
 
-Until supplied, the repository must not contain an ads.txt publisher row, AdSense loader, Auto Ads configuration, or account-level changes.
+The publisher evidence is now supplied and implemented. This document still separates the verified publisher identifier from account-level site status, CMP configuration, ownership verification, and Google review state.
 
 ## Trusted-by claims
 
 The following questions require founder confirmation and, where applicable, written permission:
 
-1. What is the actual relationship between NexisHub and Genshipyard?
-2. What is the actual relationship between NexisHub and Truvyx?
-3. Does “Trusted by” accurately describe each relationship?
+1. What is the actual relationship between NexisHub and Genshipyard? **Founder verified genuine.**
+2. What is the actual relationship between NexisHub and Truvyx? **Founder verified genuine.**
+3. Does “Trusted by” accurately describe each relationship? **Founder verified the existing wording.**
 4. Is there evidence or owner authorization supporting public use of the names or logos?
 
 Current status: `OWNER VERIFICATION REQUIRED`.

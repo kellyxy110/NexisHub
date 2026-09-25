@@ -365,3 +365,15 @@ Live verification confirmed robots 200 without `Host:`, sitemap 200 with 83 URLs
 The owner supplied and authorized publisher ID `pub-3694194350196538` and client ID `ca-pub-3694194350196538`. Official Google guidance verified the exact ads.txt row: `google.com, pub-3694194350196538, DIRECT, f08c47fec0942fa0`. The row was added as a static public file. A consent-gated loader was added only to substantive public blog, article, and research pages. It is absent from the root layout and therefore does not automatically contaminate admin, API, legal, product, or non-HTML surfaces. No CSP exists, so no CSP change was made. No ad units or Auto Ads account settings were changed.
 
 Deployment `dpl_CuzJ95LGrBgKfGdsxU5Dv2XQHbXZ` completed READY and the existing `nexishub.vercel.app` alias was reassigned. Live checks confirmed `/ads.txt` HTTP 200 `text/plain` with the exact row and found the authorized client loader in the deployed public client bundle. This is technical integration verification, not Google AdSense approval.
+
+---
+
+### DEC-050 — Loop 3 trust closure and consent boundary
+
+**Status:** Trust gate closed; CMP/account and browser evidence remain external gates
+
+The founder explicitly verified that the existing `Trusted by` relationships for `genshipyard.com` and `truvyx.org` are genuine. The public wording remains unchanged and no customer counts, testimonials, usage statistics, case-study claims, revenue claims, or partnership claims were added.
+
+Production revalidation through `curl.exe` confirmed the homepage still displays the intended names and links. It also confirmed 83 sitemap URLs, no `/research/search` sitemap entry, healthy robots, exact ads.txt, and HTTP 200 for the selected public route sample.
+
+Google’s current AdSense guidance says personalised ads for EEA, UK, and Swiss traffic require a Google-certified TCF CMP; Google Privacy & messaging is the preferred account-native option to evaluate. NexisHub’s first-party analytics consent banner and consent-gated loader remain in place. No competing CMP was installed because repository code cannot prove the owner’s AdSense account configuration or the selected serving mode. Browser interaction, mobile, screen-reader, and Web Vitals evidence was not available in this environment and is not claimed.

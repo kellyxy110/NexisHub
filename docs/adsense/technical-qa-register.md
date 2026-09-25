@@ -19,7 +19,7 @@ This register separates repository/runtime evidence from legal review and manual
 |---|---|---|---|
 | Privacy | TECHNICALLY REVIEWED | LEGAL REVIEW PENDING | Describes forms, hosting, optional analytics, retention, rights, and pending legal details. Verify provider names and retention after configuration. |
 | Terms | TECHNICALLY REVIEWED | LEGAL REVIEW PENDING | Describes website use, products, content boundaries, links, availability, liability, and contact. Entity, jurisdiction, and final limitations remain pending. |
-| Cookies | TECHNICALLY REVIEWED | LEGAL REVIEW PENDING | Describes consent local storage and optional analytics. Update provider/cookie details before enabling advertising. |
+| Cookies | TECHNICALLY REVIEWED | LEGAL REVIEW PENDING | Describes local consent storage and optional analytics. AdSense Privacy & messaging/CMP account configuration is not present in repository evidence. |
 | Contact/forms | TECHNICALLY REVIEWED | LEGAL REVIEW PENDING | Forms validate inputs and use configured webhook delivery. Production delivery and retention require operational evidence. |
 | Analytics | TECHNICALLY REVIEWED | LEGAL REVIEW PENDING | Events are gated on local consent. No third-party analytics provider is enabled by repository code alone. |
 | Advertising | TECHNICAL INTEGRATION VERIFIED | LEGAL REVIEW PENDING | Exact ads.txt row returns 200; consent-gated public loader is present in the deployed bundle; no ad units or Auto Ads account setting was changed. |
@@ -37,13 +37,28 @@ This register separates repository/runtime evidence from legal review and manual
 
 | Area | Status | Required evidence |
 |---|---|---|
-| Mobile | NOT STARTED / NOT PROVEN | Device or browser viewport evidence for homepage, blog, article, products, research, About, Contact, and legal pages. |
-| Tablet | NOT STARTED / NOT PROVEN | Representative viewport evidence and overflow review. |
-| Desktop | PARTIAL | Local route/build evidence exists; visual review still required. |
+| Mobile | NOT PROVEN — ENVIRONMENT LIMITATION | No usable browser/device automation was available in this run. |
+| Tablet | NOT PROVEN — ENVIRONMENT LIMITATION | No usable browser/device automation was available in this run. |
+| Desktop | PARTIAL — PROGRAMMATIC PRODUCTION CHECK | Public HTML and route checks passed; visual/console inspection was not available. |
 | Keyboard | NOT PROVEN | Focus order, visible focus, menus, forms, consent controls, and article controls. |
 | Screen reader | NOT PROVEN | Landmark, heading, label, status, and error announcements. |
 | Print | PARTIAL | Research print stylesheet exists; verify a long article has no clipping or black-background waste. |
-| Production performance | NOT PROVEN | Live LCP, CLS, INP where available, payload, fonts, images, and third-party script measurements. |
+| Production performance | PARTIAL — HTTP EVIDENCE ONLY | Live HTML sizes and request checks exist; LCP, CLS, INP, and browser network traces were not measured. |
+
+## Loop 3 consent finding
+
+Google's current AdSense guidance says publishers serving personalised ads to users in the EEA, UK, or Switzerland need a Google-certified CMP integrated with the IAB TCF. Google also documents Privacy & messaging as its own publisher CMP option and documents a publisher-built consent path. NexisHub currently has a first-party analytics consent banner and a loader that waits for `allow`, but repository/live evidence does not prove AdSense Privacy & messaging configuration, TCF signals, or the owner's selected account serving mode.
+
+Result: `OWNER ACTION REQUIRED` for account/CMP configuration before personalised advertising. No second CMP was installed and no competing consent dialog was introduced.
+
+## Loop 3 live revalidation
+
+- `/ads.txt`: HTTP 200, `text/plain`, exact authorized row.
+- `/robots.txt`: HTTP 200, wildcard allow, `/api/` disallow, canonical sitemap, no `Host` directive.
+- `/sitemap.xml`: HTTP 200, valid XML, 83 production URLs, no `/research/search`.
+- Selected public routes returned HTTP 200, including products, SiteNexis, Pnyx, blog, five actual sitemap blog entries, research, About, Contact, and all legal pages.
+- Homepage HTML displayed `Trusted by`, `genshipyard.com`, and `truvyx.org` with accessible text links.
+- No real browser, screen-reader, or Web Vitals measurement was available in the execution environment. These remain residual QA evidence, not claimed passes.
 
 ## Live network sample
 

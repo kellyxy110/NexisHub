@@ -6,15 +6,15 @@ Property: `https://nexishub.vercel.app`
 
 ## Executive verdict
 
-**CONDITIONALLY READY.**
+**CONDITIONALLY READY — SITE TECHNICALLY READY FOR OWNER REVIEW; GOOGLE CMP/ACCOUNT CONFIGURATION AND BROWSER EVIDENCE REMAIN.**
 
-This is an evidence-based engineering and content-readiness assessment, not a prediction of Google’s decision. The repository has a valid crawlable public site, the initial indexability contradiction is remediated and live-verified, and the authorized ads.txt record and scoped loader are technically verified in production. Conditional status remains because account-level AdSense review, consent/CMP configuration, trust-claim confirmation, external legal review, and manual device/browser QA are outside or beyond the evidence collected here.
+This is an evidence-based engineering and content-readiness assessment, not a prediction of Google’s decision. The repository has a valid crawlable public site, the initial indexability contradiction is remediated and live-verified, and the authorized ads.txt record and scoped loader are technically verified in production. The founder has verified the Genshipyard and Truvyx relationships. Conditional status remains because Google account/CMP configuration and real-browser evidence are not available from repository evidence or the current execution environment.
 
 ## Critical blockers
 
 - Live `/ads.txt` returns 200 `text/plain` with the exact row `google.com, pub-3694194350196538, DIRECT, f08c47fec0942fa0`.
 - A consent-gated AdSense loader is present in the deployed public client bundle for blog, article, and research pages. It is not in the root layout and does not affect admin, API, legal, product, or non-HTML surfaces.
-- AdSense account review state, consent certification/CMP configuration, and Search Console state are not available to this audit.
+- AdSense account review state, Privacy & messaging/CMP configuration, consent signals, and Search Console state are not available to this audit.
 - Terms, privacy, and cookies pages are present but marked as drafts for legal review.
 - Production deployment is now verified through the existing `kellyxy110` GitHub account and existing Vercel `nexis-hub` project. No replacement project or domain was created.
 
@@ -34,11 +34,11 @@ The sitemap exposes 67 blog URLs and substantive research/product surfaces. Quan
 
 ## Trust readiness
 
-The About page identifies NexisHub and the founder. The “Trusted by” references to `genshipyard.com` and `truvyx.org` require owner verification and written-permission evidence before they should be relied on as social proof. Legal pages exist and are linked, but legal review is pending. Contact delivery was not independently proven in production.
+The About page identifies NexisHub and the founder. The founder explicitly verified the existing `genshipyard.com` and `truvyx.org` relationships; the public claim remains limited to the existing “Trusted by” names and links. Legal pages exist and are linked, but legal review is pending. Contact delivery was not independently proven in production.
 
 ## Policy risk
 
-No ad placement, Auto Ads setting, publisher account setting, or consent vendor was changed. The main unresolved risks are missing publisher/account evidence, pending legal review, and the need to verify runtime consent behaviour before advertising is enabled.
+No ad placement, Auto Ads setting, publisher account setting, or second consent vendor was changed. Google’s current guidance makes CMP/account configuration an owner gate for personalised ads in the EEA, UK, and Switzerland. The existing first-party consent UI is not proof of Google Privacy & messaging or certified TCF configuration.
 
 ## SEO readiness
 
@@ -73,13 +73,11 @@ Advertising remains conservative: the authorized loader is consent-gated, but no
 
 ## Remaining owner actions
 
-1. Authenticate GitHub as an account with push access to `kellyxy110/NexisHub`.
-2. Authenticate Vercel to the `kellyxy110` team/project and deploy the committed fixes.
-3. Supply the exact authorized AdSense publisher ID and confirm the property/account relationship.
+1. In AdSense, verify that `nexishub.vercel.app` is added as the site and inspect its review/status state.
+2. In AdSense Privacy & messaging, configure the applicable European regulations message/CMP path, or document the selected compliant alternative, before serving personalised ads.
+3. Run the bounded consent and mobile/desktop accessibility/performance checks in a real browser/device environment.
 4. Complete legal review of Terms, Privacy, and Cookies.
-5. Verify the `genshipyard.com` and `truvyx.org` relationship claims and retain written permission.
-6. Complete manual mobile, accessibility, print, and production performance QA.
-7. Complete editorial review of high-overlap article clusters and factual/source claims.
+5. Complete editorial review of high-overlap article clusters and factual/source claims.
 
 The exact trust-claim questions are recorded in [`owner-verification.md`](./owner-verification.md). Technical/legal separation and QA status are recorded in [`technical-qa-register.md`](./technical-qa-register.md).
 
@@ -96,15 +94,18 @@ Use conservative, content-led ad placements only after approval. Monitor layout 
 | ads.txt | PASS | Live HTTP 200 `text/plain`; exact row verified | Monitor AdSense account status |
 | AdSense integration | PASS — TECHNICAL INTEGRATION VERIFIED | Exact client ID found in deployed public client bundle; no root/admin loader | Do not confuse technical integration with Google approval |
 | Original/useful content | NOT PROVEN | 67 blog URLs; overlap and factual review incomplete | Editorial review |
-| Publisher identity | PARTIAL | About page identifies NexisHub and founder | Verify claims and social proof |
-| Legal/privacy | OWNER ACTION REQUIRED | Pages are linked but marked drafts | Qualified legal review |
-| Accessibility/mobile/performance | PARTIAL | Automated checks/build pass; live request sample recorded; manual/browser evidence absent | Complete proportionate manual QA |
-| Account review | OWNER ACTION REQUIRED | No AdSense/Search Console account evidence | Owner verifies account/property state |
+| Publisher identity | PASS — OWNER VERIFIED | About page identifies NexisHub and founder; founder verified existing Trusted by relationships | Do not add unsupported claims |
+| Legal/privacy | PARTIAL — TECHNICAL PASS | Pages are linked, coherent, and marked drafts | Qualified legal review |
+| Accessibility/mobile/performance | PARTIAL — RESIDUAL QA | Programmatic production checks passed; browser/device evidence unavailable | Complete proportionate manual QA |
+| Consent/CMP | OWNER ACTION REQUIRED | First-party consent gates loader; no account/CMP/TCF evidence | Configure and verify applicable AdSense consent path |
+| Account review | OWNER ACTION REQUIRED | Site status and review state unavailable | Owner verifies account/property state |
 
 ## Official references
 
 - [Google AdSense eligibility requirements](https://support.google.com/adsense/answer/9724)
 - [Google guidance for pages ready for AdSense](https://support.google.com/adsense/answer/7299563)
 - [Google ads.txt FAQs](https://support.google.com/adsense/answer/9785052)
+- [Google consent management requirements for publishers](https://support.google.com/adsense/answer/13554116)
+- [Google AdSense Privacy & messaging setup](https://support.google.com/adsense/answer/7670013)
 - [Google robots.txt guidance](https://developers.google.com/crawling/docs/robots-txt/create-robots-txt)
 - [Google robots meta-tag guidance](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag)

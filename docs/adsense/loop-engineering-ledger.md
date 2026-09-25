@@ -34,7 +34,7 @@
 ## Remaining uncertainty
 
 - Google Search Console indexing state is not available in the repository.
-- AdSense account status, publisher ID, ownership verification, consent certification, and review status are not available.
+- AdSense account status, ownership verification, consent certification, and review status are not available. The publisher ID and ads.txt record are now verified separately.
 - Manual content originality, factual accuracy, accessibility, mobile, and performance review remains incomplete.
 
 ## Loop 3 — Robots directive cleanup

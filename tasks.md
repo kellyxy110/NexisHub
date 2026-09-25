@@ -34,6 +34,10 @@ This is the canonical register. Historical status fragments remain in `decisions
 - [ ] Add automated route, metadata, structured-data, sitemap, accessibility, print, dependency, and secret checks
 - [x] Complete initial AdSense forensic discovery baseline and record evidence-backed indexability remediation
 - [x] Implement and live-verify the authorized AdSense ads.txt record and scoped consent-gated loader
+- [x] Close Genshipyard and Truvyx trust-claim verification by founder confirmation
+- [x] Revalidate Loop 3 production routes, robots, sitemap, and ads.txt
+- [ ] Configure and verify the applicable AdSense Privacy & messaging/CMP account path
+- [ ] Run real-browser consent, mobile, accessibility, print, and Web Vitals smoke checks
 - [ ] Add agent evaluation harness, typed tool registry, approval queue, and persistent run tracing
 
 ## External founder or professional actions
