@@ -8,13 +8,13 @@ Property: `https://nexishub.vercel.app`
 
 **NOT READY TO SUBMIT.**
 
-This is an evidence-based engineering and content-readiness assessment, not a prediction of Google’s decision. The repository has a valid crawlable public site and the initial indexability contradiction is now remediated and live-verified. Submission is not defensible yet because the authorized publisher ID and ads.txt record are absent, AdSense account state is unavailable, legal and consent review remain pending, and several quality checks still require owner or manual evidence.
+This is an evidence-based engineering and content-readiness assessment, not a prediction of Google’s decision. The repository has a valid crawlable public site and the initial indexability contradiction is remediated and live-verified. The owner-supplied publisher identity and exact official ads.txt format are now implemented locally; live verification and account-level AdSense status remain separate. The final verdict remains pending deployment verification, legal/consent review status, trust-claim confirmation, and manual QA evidence.
 
 ## Critical blockers
 
-- Live `/ads.txt` returned 404 during the baseline crawl. No publisher ID was available, so no record was invented.
-- No AdSense loader or publisher ID exists in the repository.
-- AdSense ownership, account review state, consent certification, and Search Console state are not available to this audit.
+- Baseline live `/ads.txt` returned 404; the repository now contains the exact owner-authorized row and requires post-deployment verification.
+- A consent-gated AdSense loader now exists on substantive public blog, article, and research pages. It is not in the root layout and does not affect admin, API, legal, product, or non-HTML surfaces.
+- AdSense account review state, consent certification/CMP configuration, and Search Console state are not available to this audit.
 - Terms, privacy, and cookies pages are present but marked as drafts for legal review.
 - Production deployment is now verified through the existing `kellyxy110` GitHub account and existing Vercel `nexis-hub` project. No replacement project or domain was created.
 
@@ -24,8 +24,8 @@ This is an evidence-based engineering and content-readiness assessment, not a pr
 - Sitemap: live XML returns 200 with 83 production URLs and excludes the interactive research search route.
 - Crawlability: representative public routes returned 200 during the baseline crawl.
 - Canonicalization: `/research/search` had an incorrect homepage canonical in production baseline; live route metadata now supplies a self-canonical and `noindex,follow`.
-- ads.txt: not ready; live baseline 404.
-- AdSense loader: not implemented; intentionally not added without authorized publisher data.
+- ads.txt: local implementation ready; live verification pending deployment.
+- AdSense loader: local implementation ready; consent-gated and scoped; live/browser verification pending deployment.
 - Build: local production webpack build passed after remediation.
 
 ## Content readiness

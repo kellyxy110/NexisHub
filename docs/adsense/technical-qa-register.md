@@ -22,7 +22,7 @@ This register separates repository/runtime evidence from legal review and manual
 | Cookies | TECHNICALLY REVIEWED | LEGAL REVIEW PENDING | Describes consent local storage and optional analytics. Update provider/cookie details before enabling advertising. |
 | Contact/forms | TECHNICALLY REVIEWED | LEGAL REVIEW PENDING | Forms validate inputs and use configured webhook delivery. Production delivery and retention require operational evidence. |
 | Analytics | TECHNICALLY REVIEWED | LEGAL REVIEW PENDING | Events are gated on local consent. No third-party analytics provider is enabled by repository code alone. |
-| Advertising | NOT CONFIGURED | LEGAL REVIEW PENDING | No AdSense loader, ads.txt, or advertising cookies are active. |
+| Advertising | IMPLEMENTED, NOT YET LIVE-VERIFIED | LEGAL REVIEW PENDING | Exact ads.txt row and consent-gated public loader are implemented; no ad units or Auto Ads account setting was changed. |
 
 ## Automated and local checks
 

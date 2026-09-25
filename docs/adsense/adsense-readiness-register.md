@@ -4,9 +4,9 @@ Status as of 2026-09-25: `NOT READY TO SUBMIT`.
 
 | Area | Requirement | Evidence | Current status | Risk | Remediation / verification |
 |---|---|---|---|---|---|
-| Publisher ownership | Owner can access site source and AdSense account | Repository and Vercel access verified; AdSense account not available | OWNER ACTION REQUIRED | High | Owner verifies site/property in AdSense; do not claim completion |
-| ads.txt | Valid publisher record at root | Live `/ads.txt` returned 404 | FAIL | P0 | Owner supplies exact publisher ID; add only after authorization; live verify 200/plain text |
-| AdSense loader | Correct, non-duplicated loader | No loader or publisher ID found | NOT PROVEN | P0 | Implement only after owner provides account/publisher decision |
+| Publisher ownership | Owner can access site source and AdSense account | Owner supplied `pub-3694194350196538`; official Google format verified | PASS — OWNER-SUPPLIED AND VERIFIED FORMAT | High | Keep account-level approval and site status separate |
+| ads.txt | Valid publisher record at root | Repository now contains the exact authorized Google row; live deployment verification pending | PARTIAL | P0 until live | Deploy and verify 200/plain text at `/ads.txt` |
+| AdSense loader | Correct, non-duplicated loader | Scoped loader uses `ca-pub-3694194350196538`, loads only after existing consent `allow`, and is absent from root layout | PARTIAL | P1 | Deploy and verify consent-gated script in representative public HTML/browser session |
 | robots | Public content crawlable and sitemap discoverable | Live 200 response has wildcard allow, `/api/` disallow, and canonical sitemap without `Host:` | PASS | P1 | Continue independent API security audit |
 | sitemap | Contains canonical, valuable URLs | Live 200 XML contains 83 production URLs and excludes search utility | PASS | P1 | Review source-of-truth dates in later editorial loop |
 | indexability | No contradictory sitemap/canonical/robots signals | Live search route is self-canonical and `noindex, follow`; it is absent from the sitemap | PASS for remediated finding | P1 | Reopen only if production regresses |
