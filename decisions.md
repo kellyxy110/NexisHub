@@ -337,3 +337,11 @@ The GitHub repository is a workspace containing the Next.js application under `w
 The live property was audited before modification. `robots.txt` returned 200 with `Allow: /`, `Disallow: /api/`, a sitemap URL without a trailing period, and a redundant `Host:` directive. `ads.txt` returned 404. No AdSense loader or publisher ID was found in the repository or rendered homepage. The sitemap contained 84 URLs, including 67 blog URLs. `/research/search` was included despite using the homepage canonical and being an interactive utility; it now has a self-canonical, `noindex, follow`, and is excluded from the sitemap. The homepage product count was corrected from five to six after comparing rendered products with the product registry.
 
 No publisher ID, ads.txt line, AdSense account setting, consent vendor, or ad placement was invented or changed. Google account-level verification and publisher data remain owner actions.
+
+---
+
+### DEC-047 — Remove redundant robots Host directive
+
+**Status:** Implemented in code; live verification pending
+
+The production robots response included a `Host` directive alongside the sitemap. The repository now emits only the wildcard crawl rule and canonical sitemap URL. The sitemap remains the authoritative discovery directive; the redundant host line added no verified value and could create ambiguity. This is a minimal crawl-configuration cleanup, not a security control.

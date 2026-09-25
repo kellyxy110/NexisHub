@@ -34,3 +34,12 @@
 - Google Search Console indexing state is not available in the repository.
 - AdSense account status, publisher ID, ownership verification, consent certification, and review status are not available.
 - Manual content originality, factual accuracy, accessibility, mobile, and performance review remains incomplete.
+
+## Loop 3 — Robots directive cleanup
+
+- Finding: The live robots response included a redundant `Host` directive.
+- Hypothesis: Removing it leaves a simpler, standards-aligned response without affecting crawl access or sitemap discovery.
+- Root cause: The metadata route emitted `host: base`.
+- Blast radius: Robots response only.
+- Change: Remove the `host` property and retain the wildcard rule plus canonical sitemap.
+- Verification required: Build and post-deployment fetch.
