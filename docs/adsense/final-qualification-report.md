@@ -70,6 +70,8 @@ Advertising remains disabled. This is appropriate until the owner supplies the e
 6. Complete manual mobile, accessibility, print, and production performance QA.
 7. Complete editorial review of high-overlap article clusters and factual/source claims.
 
+The exact trust-claim questions are recorded in [`owner-verification.md`](./owner-verification.md). Technical/legal separation and QA status are recorded in [`technical-qa-register.md`](./technical-qa-register.md).
+
 ## Post-approval recommendations
 
 Use conservative, content-led ad placements only after approval. Monitor layout stability, accidental-click risk, user experience, policy notices, and article-level performance. Do not enable ads on forms, legal pages, private routes, or thin utility surfaces without a documented reason.
