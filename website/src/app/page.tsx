@@ -48,7 +48,7 @@ export default function Home() {
               {products.map((product, index) => <div className={`orbit-node orbit-node--${index + 1} accent-${product.accent}`} key={product.name}><i /><span>{product.name}</span></div>)}
             </div>
           </div>
-          <div className="shell hero-foot"><p>One foundation</p><p>Five focused products</p><p>Built to work together</p></div>
+          <div className="shell hero-foot"><p>One foundation</p><p>Six focused products</p><p>Built to work together</p></div>
         </section>
 
         <section className="trusted-section trusted-section--home"><div className="shell trusted-inner"><p className="kicker">Trusted by</p><div className="trusted-list"><a href="https://genshipyard.com" target="_blank" rel="noopener noreferrer">genshipyard<span>.com</span></a><a href="https://truvyx.org" target="_blank" rel="noopener noreferrer">truvyx<span>.org</span></a></div></div></section>
