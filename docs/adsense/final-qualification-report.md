@@ -6,16 +6,16 @@ Property: `https://nexishub.vercel.app`
 
 ## Executive verdict
 
-**CONDITIONALLY READY — HERO FIX REQUIRES PRODUCTION VERIFICATION BEFORE FINAL READY.**
+**CONDITIONALLY READY — SITE-LEVEL P0 BLOCKERS NOT IDENTIFIED; PUBLIC LEGAL FINALIZATION AND REGIONAL CONSENT RUNTIME EVIDENCE REMAIN.**
 
-This is an evidence-based engineering and content-readiness assessment, not a prediction of Google’s decision. The founder reports that the site is added to AdSense, ownership is verified through ads.txt, the site status is `Requires review`, the request button is available, and Google Privacy & Messaging is published. The founder has also verified the Genshipyard and Truvyx relationships. Conditional status remains until the observed featured-card cropping defect is deployed and production-verified, and until the two consent surfaces are tested together in a real browser.
+This is an evidence-based engineering and content-readiness assessment, not a prediction of Google’s decision. The founder reports that the site is added to AdSense, ownership is verified through ads.txt, the site status is `Requires review`, the request button is available, and Google Privacy & Messaging is published. The founder has also verified the Genshipyard and Truvyx relationships. The owner visually verified the repaired featured hero in production and browser-tested the first-party consent layer. Conditional status remains because the public legal documents still contain unresolved company/legal details and the Google European message was not directly observed from the owner’s Nigerian browser context.
 
 ## Critical blockers
 
 - Live `/ads.txt` returns 200 `text/plain` with the exact row `google.com, pub-3694194350196538, DIRECT, f08c47fec0942fa0`.
 - A consent-gated AdSense loader is present in the deployed public client bundle for blog, article, and research pages. It is not in the root layout and does not affect admin, API, legal, product, or non-HTML surfaces.
 - AdSense review has not been requested. The owner reports Google Privacy & Messaging `NexisHub European Consent` is published with Consent, Do not consent, and Manage options.
-- Terms, privacy, and cookies pages are present but marked as drafts for legal review.
+- Terms, privacy, and cookies pages are present, technically consistent with the current implementation, and intentionally marked as drafts for legal review because company identity, jurisdiction, retention, and official legal-contact details remain unresolved.
 - Production deployment is verified through the existing `kellyxy110` GitHub account and existing Vercel `nexis-hub` project. No replacement project or domain was created.
 
 ## Technical readiness
@@ -28,7 +28,7 @@ This is an evidence-based engineering and content-readiness assessment, not a pr
 - AdSense loader: technically verified in the deployed public bundle; browser consent interaction remains to be manually verified.
 - Build: local production webpack build passed after remediation.
 - Featured blog visual: the fix changes the text-bearing featured image from cropping to containment and removes its redundant accessible announcement.
-- Featured blog visual live check: blog HTTP 200, empty decorative alt present, deployed CSS contains the scoped `object-fit: contain` rule. Browser screenshot verification remains unavailable.
+- Featured blog visual live check: blog HTTP 200, empty decorative alt present, deployed CSS contains the scoped `object-fit: contain` rule. The owner subsequently visually verified the repaired hero in production.
 
 ## Content readiness
 
@@ -40,7 +40,7 @@ The About page identifies NexisHub and the founder. The founder explicitly verif
 
 ## Policy risk
 
-No ad placement, Auto Ads setting, or second consent vendor was changed. The owner reports Google Privacy & Messaging is published. The repository still contains a first-party analytics consent banner that can appear alongside Google’s message; runtime interaction must be verified before classifying the combined consent architecture as a full pass.
+No ad placement, Auto Ads setting, or second consent vendor was changed. The owner reports Google Privacy & Messaging is published. Owner browser evidence confirms the first-party banner is an optional analytics preference layer and that Essential only persists across navigation. The code does not equate that choice with Google advertising consent. The applicable European Google message was not directly observed from the owner’s current Nigerian region, so regional runtime remains not directly observed rather than failed.
 
 ## SEO readiness
 
@@ -56,7 +56,7 @@ Baseline headers include content-type sniffing protection, referrer policy, perm
 
 ## Mobile/accessibility readiness
 
-Automated repository checks pass, but manual device, keyboard, screen-reader, reduced-motion, zoom, and print verification has not been completed. This area is not proven.
+Automated repository checks pass. Owner visual evidence closes the featured hero defect; exhaustive device, keyboard, screen-reader, reduced-motion, zoom, and print verification remains outside the available evidence. This is residual QA, not a demonstrated AdSense P0.
 
 ## Monetization architecture
 
@@ -75,11 +75,10 @@ Advertising remains conservative: the authorized loader is consent-gated, but no
 
 ## Remaining owner actions
 
-1. Deploy and live-verify the bounded featured-card hero fix.
-2. In a real browser, verify Google Privacy & Messaging and the first-party banner do not create contradictory consent or loader behavior.
-3. Manually request AdSense review only after the production fix is verified.
-4. Complete legal review of Terms, Privacy, and Cookies.
-5. Complete editorial review of high-overlap article clusters and factual/source claims.
+1. Complete qualified legal review and confirm the legal entity, jurisdiction, retention periods, and official legal-contact destination.
+2. If possible, verify Google Privacy & Messaging in an applicable EEA/UK/Switzerland browser context; the owner’s Nigerian test cannot establish that regional display.
+3. Manually request AdSense review when satisfied with the remaining owner/account evidence; review has not been requested automatically.
+4. Complete editorial review of high-overlap article clusters and factual/source claims.
 
 The exact trust-claim questions are recorded in [`owner-verification.md`](./owner-verification.md). Technical/legal separation and QA status are recorded in [`technical-qa-register.md`](./technical-qa-register.md).
 
@@ -97,10 +96,10 @@ Use conservative, content-led ad placements only after approval. Monitor layout 
 | AdSense integration | PASS — TECHNICAL INTEGRATION VERIFIED | Exact client ID found in deployed public client bundle; no root/admin loader | Do not confuse technical integration with Google approval |
 | Original/useful content | NOT PROVEN | 67 blog URLs; overlap and factual review incomplete | Editorial review |
 | Publisher identity | PASS — OWNER VERIFIED | About page identifies NexisHub and founder; founder verified existing Trusted by relationships | Do not add unsupported claims |
-| Legal/privacy | PARTIAL — TECHNICAL PASS | Pages are linked, coherent, and marked drafts | Qualified legal review |
-| Accessibility/mobile/performance | PARTIAL — RESIDUAL QA | Programmatic production checks passed; browser/device evidence unavailable | Complete proportionate manual QA |
-| Consent/CMP | PARTIAL — ACCOUNT PASS, RUNTIME PENDING | Owner reports published Google message; browser interaction with the first-party banner is unverified | Test combined flow and loader behavior |
-| Hero visual quality | P1 — FIX IN PROGRESS | Owner-observed crop traced to `object-fit: cover` on a text-bearing 1200×630 OG image | Deploy and verify |
+| Legal/privacy | PARTIAL — TECHNICAL CONSISTENCY PASS | Pages match the current implementation and owner evidence but retain an accurate draft status pending company/legal details | Qualified legal review |
+| Accessibility/mobile/performance | PARTIAL — RESIDUAL QA | Programmatic checks pass; owner verified the repaired hero; exhaustive device/screen-reader/print evidence is unavailable | Complete proportionate manual QA when available |
+| Consent/CMP | PARTIAL — FIRST-PARTY OWNER TEST PASS; REGIONAL GOOGLE RUNTIME NOT OBSERVED | Owner verified fresh banner, Essential only, persistence, content access, and Cookie Choices; Google message is reported published but not observed in applicable region | Confirm regional Google message if possible |
+| Hero visual quality | PASS — OWNER VERIFIED IN PRODUCTION | Owner visually verified the contained hero fix; HTTP and deployed CSS checks also pass | Monitor for regression |
 | Account review | OWNER ACTION — REQUEST AVAILABLE | Owner reports site added, ownership verified, status `Requires review`, request button available, not requested | Owner clicks Request review after final production verification |
 
 ## Official references

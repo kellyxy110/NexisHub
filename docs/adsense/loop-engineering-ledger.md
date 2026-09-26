@@ -55,4 +55,14 @@
 - Blast radius: Blog landing featured card only. Article H1 and article visual rendering are unchanged.
 - Change: Use `object-fit: contain` with the existing dark background; use the existing mobile stack with a bounded aspect ratio; set the duplicated visual's alt text to empty.
 - Tests: Added a regression test; it failed before the fix and passed after it. Full suite now passes 25/25; lint, typecheck, and webpack build pass.
-- Live verification: Pending deployment.
+- Live verification: Production deployment `dpl_3ks4ymg4QPNRJJZbE7asrRibried` returned the blog route successfully; deployed HTML contains the empty decorative alt and deployed CSS contains the scoped `object-fit: contain` rule. Owner then visually verified the repaired hero in production.
+- Outcome: Closed as a P1. No further hero changes are authorized without new regression evidence.
+
+## Loop 5 — Owner consent and legal-surface reconciliation
+
+- Finding: Owner supplied fresh Chrome Incognito evidence for the first-party consent layer and observed a public legal page carrying the draft-for-review presentation.
+- Evidence: Owner browser evidence confirms the first-party banner, `Essential only`, persistence across navigation, article access after rejection, and footer `Cookie choices`. Source inspection confirms the control reopens the preference interface and that the AdSense loader listens to the first-party `allow` event. Owner reports Google Privacy & Messaging `NexisHub European Consent` as published; its European geo-targeted display was not observed from Nigeria.
+- Legal assessment: The public pages are not substantively final because entity, jurisdiction, retention, and official legal-contact details remain unresolved. The draft label is therefore retained. Factual wording was updated to describe Vercel hosting, protected configurable endpoints, the consent-gated AdSense loader, and the separate Google consent layer.
+- Implementation: Updated `src/app/legal/page.tsx`, `src/app/legal/privacy/page.tsx`, `src/app/legal/cookies/page.tsx`, and `src/components/legal-document.tsx`; added a regression test for the legal consent/provider boundary.
+- Verification: Tests 26/26 and typecheck passed. Local lint/build commands did not emit completion in this environment after clean retries; the previous production deployment build passed, and this bounded change is queued for the existing Vercel build verification.
+- Outcome: Legal surface is technically consistent but remains pending qualified legal review. Final qualification remains conditional, with no demonstrated P0 from the available evidence.
