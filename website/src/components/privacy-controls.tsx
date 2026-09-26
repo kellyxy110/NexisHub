@@ -9,7 +9,7 @@ export function PrivacyControls() {
   useEffect(() => { const timer = window.setTimeout(() => setOpen(localStorage.getItem(consentKey) === null), 0); const show = () => setOpen(true); window.addEventListener("nexishub:privacy", show); return () => { window.clearTimeout(timer); window.removeEventListener("nexishub:privacy", show); }; }, []);
   function choose(value: "allow" | "reject") { localStorage.setItem(consentKey, value); window.dispatchEvent(new CustomEvent("nexishub:consent", { detail: value })); setOpen(false); }
   if (!open) return null;
-  return <aside className="privacy-banner" aria-label="Privacy choices"><div><strong>Your privacy, clearly handled.</strong><p>Essential storage remembers this choice. Optional analytics helps us understand page and CTA usage without advertising trackers.</p></div><div><button onClick={() => choose("reject")}>Essential only</button><button className="privacy-allow" onClick={() => choose("allow")}>Allow analytics</button></div></aside>;
+  return <aside className="privacy-banner" aria-label="Privacy choices"><div><strong>Your privacy, clearly handled.</strong><p>Essential storage remembers this choice. Optional analytics helps us understand page and CTA usage. Where applicable, Google Privacy &amp; Messaging handles separate advertising choices.</p></div><div><button onClick={() => choose("reject")}>Essential only</button><button className="privacy-allow" onClick={() => choose("allow")}>Allow analytics</button></div></aside>;
 }
 
 export function AnalyticsTracker() {

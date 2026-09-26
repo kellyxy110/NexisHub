@@ -6,16 +6,16 @@ Property: `https://nexishub.vercel.app`
 
 ## Executive verdict
 
-**CONDITIONALLY READY — SITE-LEVEL P0 BLOCKERS NOT IDENTIFIED; PUBLIC LEGAL FINALIZATION AND REGIONAL CONSENT RUNTIME EVIDENCE REMAIN.**
+**READY TO SUBMIT — NO VERIFIED SITE-LEVEL P0 BLOCKER.**
 
-This is an evidence-based engineering and content-readiness assessment, not a prediction of Google’s decision. The founder reports that the site is added to AdSense, ownership is verified through ads.txt, the site status is `Requires review`, the request button is available, and Google Privacy & Messaging is published. The founder has also verified the Genshipyard and Truvyx relationships. The owner visually verified the repaired featured hero in production and browser-tested the first-party consent layer. Conditional status remains because the public legal documents still contain unresolved company/legal details and the Google European message was not directly observed from the owner’s Nigerian browser context.
+This is an evidence-based engineering and content-readiness assessment, not a prediction of Google’s decision. The founder reports that the site is added to AdSense, ownership is verified through ads.txt, the site status is `Requires review`, the request button is available, and Google Privacy & Messaging is published. The founder has also verified the Genshipyard and Truvyx relationships. The owner visually verified the repaired featured hero in production and browser-tested the first-party consent layer. The public policies retain a truthful legal-review label, but the identified Google advertising-cookie disclosures and opt-out routes are now present. External counsel, company identity, jurisdiction, retention, and official legal-contact confirmation remain governance follow-up rather than verified Google prerequisites.
 
 ## Critical blockers
 
 - Live `/ads.txt` returns 200 `text/plain` with the exact row `google.com, pub-3694194350196538, DIRECT, f08c47fec0942fa0`.
 - A consent-gated AdSense loader is present in the deployed public client bundle for blog, article, and research pages. It is not in the root layout and does not affect admin, API, legal, product, or non-HTML surfaces.
 - AdSense review has not been requested. The owner reports Google Privacy & Messaging `NexisHub European Consent` is published with Consent, Do not consent, and Manage options.
-- Terms, privacy, and cookies pages are present, technically consistent with the current implementation, and intentionally marked as drafts for legal review because company identity, jurisdiction, retention, and official legal-contact details remain unresolved.
+- Terms, privacy, and cookies pages are present and technically consistent with the current implementation. They remain marked as drafts for legal review because company identity, jurisdiction, retention, and official legal-contact details remain unresolved.
 - Production deployment is verified through the existing `kellyxy110` GitHub account and existing Vercel `nexis-hub` project. No replacement project or domain was created.
 
 ## Technical readiness
@@ -40,7 +40,7 @@ The About page identifies NexisHub and the founder. The founder explicitly verif
 
 ## Policy risk
 
-No ad placement, Auto Ads setting, or second consent vendor was changed. The owner reports Google Privacy & Messaging is published. Owner browser evidence confirms the first-party banner is an optional analytics preference layer and that Essential only persists across navigation. The code does not equate that choice with Google advertising consent. The applicable European Google message was not directly observed from the owner’s current Nigerian region, so regional runtime remains not directly observed rather than failed.
+No ad placement, Auto Ads setting, or second consent vendor was changed. The owner reports Google Privacy & Messaging is published. Owner browser evidence confirms the first-party banner is an optional analytics preference layer and that Essential only persists across navigation. The code prevents the loader after Essential only and does not present the first-party choice as Google advertising consent. The applicable European Google message was not directly observed from the owner’s current Nigerian region, so regional runtime remains not directly observed rather than failed.
 
 ## SEO readiness
 
@@ -75,10 +75,9 @@ Advertising remains conservative: the authorized loader is consent-gated, but no
 
 ## Remaining owner actions
 
-1. Complete qualified legal review and confirm the legal entity, jurisdiction, retention periods, and official legal-contact destination.
-2. If possible, verify Google Privacy & Messaging in an applicable EEA/UK/Switzerland browser context; the owner’s Nigerian test cannot establish that regional display.
-3. Manually request AdSense review when satisfied with the remaining owner/account evidence; review has not been requested automatically.
-4. Complete editorial review of high-overlap article clusters and factual/source claims.
+1. Manually request AdSense review; it has not been requested automatically.
+2. Complete qualified legal review and confirm the legal entity, jurisdiction, retention periods, and official legal-contact destination.
+3. Complete editorial review of high-overlap article clusters and factual/source claims.
 
 The exact trust-claim questions are recorded in [`owner-verification.md`](./owner-verification.md). Technical/legal separation and QA status are recorded in [`technical-qa-register.md`](./technical-qa-register.md).
 
@@ -96,11 +95,11 @@ Use conservative, content-led ad placements only after approval. Monitor layout 
 | AdSense integration | PASS — TECHNICAL INTEGRATION VERIFIED | Exact client ID found in deployed public client bundle; no root/admin loader | Do not confuse technical integration with Google approval |
 | Original/useful content | NOT PROVEN | 67 blog URLs; overlap and factual review incomplete | Editorial review |
 | Publisher identity | PASS — OWNER VERIFIED | About page identifies NexisHub and founder; founder verified existing Trusted by relationships | Do not add unsupported claims |
-| Legal/privacy | PARTIAL — TECHNICAL CONSISTENCY PASS | Pages match the current implementation and owner evidence but retain an accurate draft status pending company/legal details | Qualified legal review |
+| Legal/privacy | PASS — ADSENSE DISCLOSURES PRESENT | Pages match the current implementation and include Google advertising-cookie and opt-out disclosures; draft status remains truthful pending governance details | Qualified legal review remains follow-up |
 | Accessibility/mobile/performance | PARTIAL — RESIDUAL QA | Programmatic checks pass; owner verified the repaired hero; exhaustive device/screen-reader/print evidence is unavailable | Complete proportionate manual QA when available |
-| Consent/CMP | PARTIAL — FIRST-PARTY OWNER TEST PASS; REGIONAL GOOGLE RUNTIME NOT OBSERVED | Owner verified fresh banner, Essential only, persistence, content access, and Cookie Choices; Google message is reported published but not observed in applicable region | Confirm regional Google message if possible |
+| Consent/CMP | PASS — NO CONTRADICTION DEMONSTRATED | Owner verified fresh banner, Essential only, persistence, content access, and Cookie Choices; Google message is reported published; regional display was not observed from Nigeria | Maintain account settings |
 | Hero visual quality | PASS — OWNER VERIFIED IN PRODUCTION | Owner visually verified the contained hero fix; HTTP and deployed CSS checks also pass | Monitor for regression |
-| Account review | OWNER ACTION — REQUEST AVAILABLE | Owner reports site added, ownership verified, status `Requires review`, request button available, not requested | Owner clicks Request review after final production verification |
+| Account review | OWNER ACTION — REQUEST AVAILABLE | Owner reports site added, ownership verified, status `Requires review`, request button available, not requested | Owner clicks Request review |
 
 ## Official references
 

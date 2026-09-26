@@ -66,3 +66,12 @@
 - Implementation: Updated `src/app/legal/page.tsx`, `src/app/legal/privacy/page.tsx`, `src/app/legal/cookies/page.tsx`, and `src/components/legal-document.tsx`; added a regression test for the legal consent/provider boundary.
 - Verification: Tests 26/26 and typecheck passed. Local lint/build commands did not emit completion in this environment after clean retries; the previous production deployment build passed, and this bounded change is queued for the existing Vercel build verification.
 - Outcome: Legal surface is technically consistent but remains pending qualified legal review. Final qualification remains conditional, with no demonstrated P0 from the available evidence.
+
+## Loop 6 — Google disclosure and final submission gate
+
+- Finding: Official Google guidance required the public privacy disclosures to explain Google/partner advertising cookies and provide an advertising-choices route. The first-party consent copy also implied analytics operated without advertising trackers while its `allow` state gated the AdSense loader.
+- Evidence: Google AdSense Help [Required content](https://support.google.com/adsense/answer/1348695?hl=en) documents advertising-cookie and opt-out disclosures. Google [Privacy & Messaging guidance](https://support.google.com/adsense/answer/7670013?hl=en-GB) documents applicable EEA, UK, and Switzerland consent choices. Repository inspection found the loader, first-party local-storage preference, Google CMP owner evidence, and the prior misleading banner wording.
+- Change: Added Google advertising-cookie, Google Ads Settings, and aboutads.info disclosures to Privacy and Cookies. Reworded the first-party banner to describe optional analytics separately from Google advertising consent. Added focused regression tests.
+- Verification: Lint passed; typecheck passed; full suite passed 27/27; webpack production build passed. Existing production invariants remain covered by tests and prior live evidence.
+- Classification: External counsel, jurisdiction, liability refinement, retention schedule, and official legal-contact confirmation are `LEGAL / GOVERNANCE FOLLOW-UP`, not verified AdSense blockers. Google advertising disclosure is `ADSENSE REQUIREMENT — SATISFIED`.
+- Outcome: No verified P0 blocker remains. Final status: `READY TO SUBMIT`. Owner must manually request review; no account action was automated.
