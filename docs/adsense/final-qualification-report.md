@@ -25,7 +25,7 @@ This is an evidence-based engineering and content-readiness assessment, not a pr
 - Crawlability: representative public routes returned 200 during the baseline crawl.
 - Canonicalization: `/research/search` had an incorrect homepage canonical in production baseline; live route metadata now supplies a self-canonical and `noindex,follow`.
 - ads.txt: technically verified in production.
-- AdSense loader: technically verified in the deployed public bundle; browser consent interaction remains to be manually verified.
+- AdSense loader: technically verified in the deployed public bundle; owner browser evidence confirms the first-party consent layer and Essential only path.
 - Build: local production webpack build passed after remediation.
 - Featured blog visual: the fix changes the text-bearing featured image from cropping to containment and removes its redundant accessible announcement.
 - Featured blog visual live check: blog HTTP 200, empty decorative alt present, deployed CSS contains the scoped `object-fit: contain` rule. The owner subsequently visually verified the repaired hero in production.
@@ -70,7 +70,7 @@ Advertising remains conservative: the authorized loader is consent-gated, but no
 - Vercel account/team: verified as `kellyxy110` / Kellyxy's projects.
 - Vercel project: existing `nexis-hub`; no replacement project created.
 - Production deployment: `READY`; existing `https://nexishub.vercel.app` alias reassigned to the new deployment.
-- Application deployment source: production deployment `dpl_3ks4ymg4QPNRJJZbE7asrRibried`, serving the hero fix from commit `22d8f33`.
+- Application deployment source: production deployment `dpl_AWpALAAc1Fxsfnnj9M7pY8SgZQYB`, serving the final legal/privacy gate from commit `6897b00`.
 - Live route verification: passed for robots, sitemap, search, homepage, blog, representative article, products, research, About, Contact, and legal routes.
 
 ## Remaining owner actions
@@ -93,10 +93,10 @@ Use conservative, content-led ad placements only after approval. Monitor layout 
 | Sitemap/indexability consistency | PASS | Live 83-URL sitemap excludes search utility; search is self-canonical/noindex | Monitor for regression |
 | ads.txt | PASS | Live HTTP 200 `text/plain`; exact row verified | Monitor AdSense account status |
 | AdSense integration | PASS — TECHNICAL INTEGRATION VERIFIED | Exact client ID found in deployed public client bundle; no root/admin loader | Do not confuse technical integration with Google approval |
-| Original/useful content | NOT PROVEN | 67 blog URLs; overlap and factual review incomplete | Editorial review |
+| Original/useful content | NOT PROVEN — NON-BLOCKING FOLLOW-UP | 67 blog URLs; overlap and factual review incomplete | Editorial review |
 | Publisher identity | PASS — OWNER VERIFIED | About page identifies NexisHub and founder; founder verified existing Trusted by relationships | Do not add unsupported claims |
 | Legal/privacy | PASS — ADSENSE DISCLOSURES PRESENT | Pages match the current implementation and include Google advertising-cookie and opt-out disclosures; draft status remains truthful pending governance details | Qualified legal review remains follow-up |
-| Accessibility/mobile/performance | PARTIAL — RESIDUAL QA | Programmatic checks pass; owner verified the repaired hero; exhaustive device/screen-reader/print evidence is unavailable | Complete proportionate manual QA when available |
+| Accessibility/mobile/performance | PARTIAL — RESIDUAL QA, NON-BLOCKING | Programmatic checks pass; owner verified the repaired hero; exhaustive device/screen-reader/print evidence is unavailable | Complete proportionate manual QA when available |
 | Consent/CMP | PASS — NO CONTRADICTION DEMONSTRATED | Owner verified fresh banner, Essential only, persistence, content access, and Cookie Choices; Google message is reported published; regional display was not observed from Nigeria | Maintain account settings |
 | Hero visual quality | PASS — OWNER VERIFIED IN PRODUCTION | Owner visually verified the contained hero fix; HTTP and deployed CSS checks also pass | Monitor for regression |
 | Account review | OWNER ACTION — REQUEST AVAILABLE | Owner reports site added, ownership verified, status `Requires review`, request button available, not requested | Owner clicks Request review |
@@ -106,7 +106,8 @@ Use conservative, content-led ad placements only after approval. Monitor layout 
 - [Google AdSense eligibility requirements](https://support.google.com/adsense/answer/9724)
 - [Google guidance for pages ready for AdSense](https://support.google.com/adsense/answer/7299563)
 - [Google ads.txt FAQs](https://support.google.com/adsense/answer/9785052)
-- [Google consent management requirements for publishers](https://support.google.com/adsense/answer/13554116)
+- [Google consent management requirements for publishers](https://support.google.com/adsense/answer/13554020)
+- [Google AdSense required privacy content](https://support.google.com/adsense/answer/1348695)
 - [Google AdSense Privacy & messaging setup](https://support.google.com/adsense/answer/7670013)
 - [Google robots.txt guidance](https://developers.google.com/crawling/docs/robots-txt/create-robots-txt)
 - [Google robots meta-tag guidance](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag)
