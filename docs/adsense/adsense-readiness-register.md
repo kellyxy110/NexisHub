@@ -1,6 +1,6 @@
 # AdSense Readiness Register
 
-Status as of 2026-09-25: `CONDITIONALLY READY — GOOGLE CMP/ACCOUNT AND BROWSER EVIDENCE REMAIN OWNER GATES`.
+Status as of 2026-09-26: `CONDITIONALLY READY — HERO FIX DEPLOYMENT AND CONSENT RECONCILIATION EVIDENCE PENDING`.
 
 | Area | Requirement | Evidence | Current status | Risk | Remediation / verification |
 |---|---|---|---|---|---|
@@ -16,7 +16,8 @@ Status as of 2026-09-25: `CONDITIONALLY READY — GOOGLE CMP/ACCOUNT AND BROWSER
 | legal/privacy | Accurate policy and consent behaviour | Pages exist, are technically consistent, and remain marked drafts | PARTIAL — TECHNICAL PASS, LEGAL REVIEW PENDING | P1 | External legal review and advertising/CMP account decisions remain separate |
 | contact | Working public contact path | Form route exists; delivery not independently proven | NOT PROVEN | P1 | Safe end-to-end test with approved webhook/configuration |
 | trust claims | “Trusted by” relationships are accurate | Founder explicitly confirmed Genshipyard and Truvyx relationships in Loop 3 | PASS — OWNER VERIFIED | P1 | Do not embellish beyond the existing names/links |
-| consent/CMP | Advertising consent is suitable for applicable traffic | Local consent banner gates the loader; no AdSense Privacy & messaging/CMP account evidence or browser interaction evidence is available | OWNER ACTION REQUIRED | P0 for personalized ads in applicable regions | Configure and verify Google Privacy & messaging or another certified TCF CMP before serving personalized ads |
+| consent/CMP | Advertising consent is suitable for applicable traffic | Owner reports Google Privacy & Messaging “NexisHub European Consent” is published for `nexishub.vercel.app`; interaction with the first-party banner and loader remains unverified | PASS — ACCOUNT CONFIGURATION REPORTED; RUNTIME RECONCILIATION PENDING | P0 only if serving personalised ads without valid signals | Verify one effective consent flow in a real browser; do not add a competing CMP |
 | mobile/accessibility | Usable page templates | Automated checks exist; no browser/device environment is available in this audit | PARTIAL — RESIDUAL MANUAL QA | P2 | Complete bounded browser QA when a real browser/device is available |
 | performance | Stable user experience after monetization | Live HTTP request sizes/timings exist; LCP/CLS/INP browser measurements are unavailable | PARTIAL — RESIDUAL MEASUREMENT | P2 | Measure representative pages in a browser-capable environment |
-| account review | Google review requested and ready | No account-level evidence | OWNER ACTION REQUIRED | High | Do not submit until technical and owner gates close |
+| hero visual quality | Featured editorial visual is contained and non-redundant | Owner observed cropped text in the featured blog card; bounded fix is implemented locally and awaits production verification | P1 — FIX IN PROGRESS | Visible production quality defect | Deploy and verify the featured card at representative widths |
+| account/site review | Google review requested and ready | Owner reports site added, ownership verified through ads.txt, status `Requires review`, and request button available; review not requested | OWNER ACTION — READY FOR MANUAL REQUEST AFTER FIX | High | Owner manually requests review after production fix verification |

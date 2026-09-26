@@ -1,22 +1,22 @@
 # NexisHub AdSense Qualification Report
 
-Audit date: 2026-09-25
+Audit date: 2026-09-26
 
 Property: `https://nexishub.vercel.app`
 
 ## Executive verdict
 
-**CONDITIONALLY READY — SITE TECHNICALLY READY FOR OWNER REVIEW; GOOGLE CMP/ACCOUNT CONFIGURATION AND BROWSER EVIDENCE REMAIN.**
+**CONDITIONALLY READY — HERO FIX REQUIRES PRODUCTION VERIFICATION BEFORE FINAL READY.**
 
-This is an evidence-based engineering and content-readiness assessment, not a prediction of Google’s decision. The repository has a valid crawlable public site, the initial indexability contradiction is remediated and live-verified, and the authorized ads.txt record and scoped loader are technically verified in production. The founder has verified the Genshipyard and Truvyx relationships. Conditional status remains because Google account/CMP configuration and real-browser evidence are not available from repository evidence or the current execution environment.
+This is an evidence-based engineering and content-readiness assessment, not a prediction of Google’s decision. The founder reports that the site is added to AdSense, ownership is verified through ads.txt, the site status is `Requires review`, the request button is available, and Google Privacy & Messaging is published. The founder has also verified the Genshipyard and Truvyx relationships. Conditional status remains until the observed featured-card cropping defect is deployed and production-verified, and until the two consent surfaces are tested together in a real browser.
 
 ## Critical blockers
 
 - Live `/ads.txt` returns 200 `text/plain` with the exact row `google.com, pub-3694194350196538, DIRECT, f08c47fec0942fa0`.
 - A consent-gated AdSense loader is present in the deployed public client bundle for blog, article, and research pages. It is not in the root layout and does not affect admin, API, legal, product, or non-HTML surfaces.
-- AdSense account review state, Privacy & messaging/CMP configuration, consent signals, and Search Console state are not available to this audit.
+- AdSense review has not been requested. The owner reports Google Privacy & Messaging `NexisHub European Consent` is published with Consent, Do not consent, and Manage options.
 - Terms, privacy, and cookies pages are present but marked as drafts for legal review.
-- Production deployment is now verified through the existing `kellyxy110` GitHub account and existing Vercel `nexis-hub` project. No replacement project or domain was created.
+- Production deployment is verified through the existing `kellyxy110` GitHub account and existing Vercel `nexis-hub` project. No replacement project or domain was created.
 
 ## Technical readiness
 
@@ -27,6 +27,8 @@ This is an evidence-based engineering and content-readiness assessment, not a pr
 - ads.txt: technically verified in production.
 - AdSense loader: technically verified in the deployed public bundle; browser consent interaction remains to be manually verified.
 - Build: local production webpack build passed after remediation.
+- Featured blog visual: the fix changes the text-bearing featured image from cropping to containment and removes its redundant accessible announcement.
+- Featured blog visual live check: blog HTTP 200, empty decorative alt present, deployed CSS contains the scoped `object-fit: contain` rule. Browser screenshot verification remains unavailable.
 
 ## Content readiness
 
@@ -38,7 +40,7 @@ The About page identifies NexisHub and the founder. The founder explicitly verif
 
 ## Policy risk
 
-No ad placement, Auto Ads setting, publisher account setting, or second consent vendor was changed. Google’s current guidance makes CMP/account configuration an owner gate for personalised ads in the EEA, UK, and Switzerland. The existing first-party consent UI is not proof of Google Privacy & messaging or certified TCF configuration.
+No ad placement, Auto Ads setting, or second consent vendor was changed. The owner reports Google Privacy & Messaging is published. The repository still contains a first-party analytics consent banner that can appear alongside Google’s message; runtime interaction must be verified before classifying the combined consent architecture as a full pass.
 
 ## SEO readiness
 
@@ -64,18 +66,18 @@ Advertising remains conservative: the authorized loader is consent-gated, but no
 
 - GitHub account: verified as `kellyxy110`.
 - Repository: verified as `kellyxy110/NexisHub`, with administrative access.
-- GitHub push: verified through `e336104`.
+- GitHub push: verified through `22d8f33`.
 - Vercel account/team: verified as `kellyxy110` / Kellyxy's projects.
 - Vercel project: existing `nexis-hub`; no replacement project created.
 - Production deployment: `READY`; existing `https://nexishub.vercel.app` alias reassigned to the new deployment.
-- Application deployment source: the pushed remediation state through `e8f40f6`; the later `e336104` documentation commit was pushed separately and does not change application output.
+- Application deployment source: production deployment `dpl_3ks4ymg4QPNRJJZbE7asrRibried`, serving the hero fix from commit `22d8f33`.
 - Live route verification: passed for robots, sitemap, search, homepage, blog, representative article, products, research, About, Contact, and legal routes.
 
 ## Remaining owner actions
 
-1. In AdSense, verify that `nexishub.vercel.app` is added as the site and inspect its review/status state.
-2. In AdSense Privacy & messaging, configure the applicable European regulations message/CMP path, or document the selected compliant alternative, before serving personalised ads.
-3. Run the bounded consent and mobile/desktop accessibility/performance checks in a real browser/device environment.
+1. Deploy and live-verify the bounded featured-card hero fix.
+2. In a real browser, verify Google Privacy & Messaging and the first-party banner do not create contradictory consent or loader behavior.
+3. Manually request AdSense review only after the production fix is verified.
 4. Complete legal review of Terms, Privacy, and Cookies.
 5. Complete editorial review of high-overlap article clusters and factual/source claims.
 
@@ -89,16 +91,17 @@ Use conservative, content-led ad placements only after approval. Monitor layout 
 
 | Criterion | Status | Evidence | Remaining Action |
 |---|---|---|---|
-| Public crawlability | PARTIAL | Live robots, sitemap, and representative routes returned 200 | Recheck after deployment |
-| Sitemap/indexability consistency | PARTIAL | Local build excludes search utility; live baseline still predates fix | Deploy and recrawl |
+| Public crawlability | PASS | Live robots, sitemap, and selected public routes returned 200 | Monitor for regression |
+| Sitemap/indexability consistency | PASS | Live 83-URL sitemap excludes search utility; search is self-canonical/noindex | Monitor for regression |
 | ads.txt | PASS | Live HTTP 200 `text/plain`; exact row verified | Monitor AdSense account status |
 | AdSense integration | PASS — TECHNICAL INTEGRATION VERIFIED | Exact client ID found in deployed public client bundle; no root/admin loader | Do not confuse technical integration with Google approval |
 | Original/useful content | NOT PROVEN | 67 blog URLs; overlap and factual review incomplete | Editorial review |
 | Publisher identity | PASS — OWNER VERIFIED | About page identifies NexisHub and founder; founder verified existing Trusted by relationships | Do not add unsupported claims |
 | Legal/privacy | PARTIAL — TECHNICAL PASS | Pages are linked, coherent, and marked drafts | Qualified legal review |
 | Accessibility/mobile/performance | PARTIAL — RESIDUAL QA | Programmatic production checks passed; browser/device evidence unavailable | Complete proportionate manual QA |
-| Consent/CMP | OWNER ACTION REQUIRED | First-party consent gates loader; no account/CMP/TCF evidence | Configure and verify applicable AdSense consent path |
-| Account review | OWNER ACTION REQUIRED | Site status and review state unavailable | Owner verifies account/property state |
+| Consent/CMP | PARTIAL — ACCOUNT PASS, RUNTIME PENDING | Owner reports published Google message; browser interaction with the first-party banner is unverified | Test combined flow and loader behavior |
+| Hero visual quality | P1 — FIX IN PROGRESS | Owner-observed crop traced to `object-fit: cover` on a text-bearing 1200×630 OG image | Deploy and verify |
+| Account review | OWNER ACTION — REQUEST AVAILABLE | Owner reports site added, ownership verified, status `Requires review`, request button available, not requested | Owner clicks Request review after final production verification |
 
 ## Official references
 

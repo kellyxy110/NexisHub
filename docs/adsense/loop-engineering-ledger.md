@@ -46,3 +46,13 @@
 - Change: Remove the `host` property and retain the wildcard rule plus canonical sitemap.
 - Verification: Production build passed; live robots returned 200 without `Host:` after deployment.
 - Outcome: Closed.
+
+## Loop 4 — Featured blog visual containment
+
+- Finding: The featured blog card repeats the article title in a generated OG image and crops meaningful image text at the observed desktop layout.
+- Evidence: Owner-supplied production observation; source trace found `src/app/blog/page.tsx`, generated `src/app/blog/[slug]/opengraph-image.tsx`, a 1200×630 text-bearing image, and `.blog-latest-card img { object-fit: cover; }` inside a taller/narrower grid column.
+- Root cause: `object-fit: cover` crops the text-bearing image. The visual also duplicates the semantic H2 title.
+- Blast radius: Blog landing featured card only. Article H1 and article visual rendering are unchanged.
+- Change: Use `object-fit: contain` with the existing dark background; use the existing mobile stack with a bounded aspect ratio; set the duplicated visual's alt text to empty.
+- Tests: Added a regression test; it failed before the fix and passed after it. Full suite now passes 25/25; lint, typecheck, and webpack build pass.
+- Live verification: Pending deployment.

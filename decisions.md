@@ -377,3 +377,17 @@ The founder explicitly verified that the existing `Trusted by` relationships for
 Production revalidation through `curl.exe` confirmed the homepage still displays the intended names and links. It also confirmed 83 sitemap URLs, no `/research/search` sitemap entry, healthy robots, exact ads.txt, and HTTP 200 for the selected public route sample.
 
 Google’s current AdSense guidance says personalised ads for EEA, UK, and Swiss traffic require a Google-certified TCF CMP; Google Privacy & messaging is the preferred account-native option to evaluate. NexisHub’s first-party analytics consent banner and consent-gated loader remain in place. No competing CMP was installed because repository code cannot prove the owner’s AdSense account configuration or the selected serving mode. Browser interaction, mobile, screen-reader, and Web Vitals evidence was not available in this environment and is not claimed.
+
+---
+
+### DEC-051 — Observed featured-card crop remediation
+
+**Status:** Implemented, deployed, and live HTTP-verified; visual browser proof remains unavailable
+
+The owner reported that the blog landing page featured card cropped meaningful text from the generated 1200×630 OG image. Source tracing identified the local cause: `.blog-latest-card img` used `object-fit: cover` inside a taller/narrower right grid column, while the image itself repeated the semantic article title.
+
+The bounded fix keeps the existing asset and visual identity, changes only that featured-card image to `object-fit: contain`, adds a responsive aspect ratio for the stacked layout, and uses an empty alt because the live H2 remains the primary accessible title. The article route and shared article visual were not changed.
+
+The fix is in commit `22d8f33`, deployed through the existing `nexis-hub` Vercel project, and the existing `nexishub.vercel.app` alias serves it. Local tests pass 25/25, lint/typecheck/build pass, and live checks confirm the blog markup and stylesheet. Browser screenshots at the requested widths remain unverified because no browser automation environment is available.
+
+The owner reports AdSense site addition, ownership verification, `Requires review` status, an available request button, and a published Google Privacy & Messaging message. The repository still contains a first-party analytics banner, so consent architecture remains `PARTIAL` until browser testing proves that the two systems do not produce sequential dialogs or contradictory loader behavior.

@@ -38,6 +38,8 @@ This is the canonical register. Historical status fragments remain in `decisions
 - [x] Revalidate Loop 3 production routes, robots, sitemap, and ads.txt
 - [ ] Configure and verify the applicable AdSense Privacy & messaging/CMP account path
 - [ ] Run real-browser consent, mobile, accessibility, print, and Web Vitals smoke checks
+- [x] Remediate the owner-observed blog featured-card crop and deploy the bounded fix
+- [ ] Verify Google Privacy & Messaging and first-party consent behavior together in a real browser
 - [ ] Add agent evaluation harness, typed tool registry, approval queue, and persistent run tracing
 
 ## External founder or professional actions
