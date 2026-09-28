@@ -74,7 +74,11 @@ test("Contact payload remains unchanged", async () => {
   process.env.FORM_WEBHOOK_TOKEN = configuredKey;
   const { requestInit } = await callContact(contactPayload());
   const body = JSON.parse(String(requestInit?.body));
-  assert.deepEqual(Object.keys(body).sort(), ["email", "kind", "message", "name", "submittedAt", "topic"]);
+  assert.deepEqual(Object.keys(body).sort(), ["email", "kind", "message", "name", "submission_id", "submittedAt", "topic"]);
+  assert.match(body.submission_id, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
+  assert.equal(body.submission_id.includes("contact@example.com"), false);
+  assert.equal(body.submission_id.includes("Example Contact"), false);
+  assert.equal(body.submission_id.includes("A sufficiently detailed"), false);
   assert.equal(body.kind, "contact");
   assert.equal(body.name, "Example Contact");
   assert.equal(body.email, "contact@example.com");
@@ -96,7 +100,11 @@ test("Studio payload remains unchanged", async () => {
     riskContext: "No special context.",
   });
   const body = JSON.parse(String(requestInit?.body));
-  assert.deepEqual(Object.keys(body).sort(), ["company", "companyWebsiteUrl", "email", "kind", "message", "name", "riskContext", "studioService", "submittedAt", "timeline", "topic"]);
+  assert.deepEqual(Object.keys(body).sort(), ["company", "companyWebsiteUrl", "email", "kind", "message", "name", "riskContext", "studioService", "submission_id", "submittedAt", "timeline", "topic"]);
+  assert.match(body.submission_id, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
+  assert.equal(body.submission_id.includes("founder@example.com"), false);
+  assert.equal(body.submission_id.includes("Example Founder"), false);
+  assert.equal(body.submission_id.includes("A sufficiently detailed"), false);
   assert.equal(body.kind, "studio_enquiry");
   assert.equal(body.topic, "studio");
 });
