@@ -29,7 +29,7 @@ export const nexishubWebsite = {
 export const nexishubFounder = {
   "@type": "Person",
   "@id": entityIds.founder,
-  name: "Ekeleme David Kelechi",
+  name: "Ekeleme Kelechi David",
   jobTitle: "Founder",
   url: `${siteBase}/about`,
   image: `${siteBase}/images/founder.jpeg`,
