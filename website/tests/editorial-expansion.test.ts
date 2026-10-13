@@ -100,3 +100,37 @@ test("all catalog articles have differentiated deep dives and article references
   const repeatedSubstantive = [...counts.entries()].filter(([paragraph, count]) => count > 1 && paragraph.split(/\s+/).length >= 20);
   assert.deepEqual(repeatedSubstantive, [], "long substantive deep-dive paragraphs must not be shared across catalog articles");
 });
+
+test("corrected editorial references remain attached to the intended articles", () => {
+  const expected = new Map([
+    ["reproducible-ai-research-study", "https://www.nationalacademies.org/read/21896"],
+    ["human-review-clinical-decision-support", "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/clinical-decision-support-software"],
+    ["research-citation-export-endpoint", "https://www.niso.org/publications/niso-rp-8-2008-jav"],
+  ]);
+  for (const [slug, url] of expected) {
+    const guide = getVisibilityGuide(slug);
+    assert.ok(guide);
+    assert.ok(guide.references.some((reference) => reference.url === url), `${slug} should retain its verified reference`);
+  }
+});
+
+test("catalog provenance remains explicit and unchanged", () => {
+  for (const post of editorialPosts) {
+    assert.equal(post.author, "NexisHub Editorial");
+    assert.equal(post.publishedDate, "2026-08-11");
+    assert.equal(post.updatedDate, "2026-08-11");
+  }
+});
+
+test("methodology case studies are clearly illustrative", () => {
+  const slugs = editorialPosts.filter((post) => post.category === "Case Studies").map((post) => post.slug);
+  assert.equal(slugs.length, 4);
+  for (const slug of slugs) {
+    const post = editorialPosts.find((item) => item.slug === slug);
+    const guide = getVisibilityGuide(slug);
+    assert.ok(post && guide);
+    const text = [post.title, post.description, guide.lead, ...(guide.deepDive ?? []).flatMap((section) => section.paragraphs), guide.future, ...guide.faq.flatMap((item) => [item.question, item.answer])].join(" ").toLowerCase();
+    assert.match(text, /illustrative/);
+    assert.ok(/not a completed|not evidence of [^.]*a completed|does not establish a completed/.test(text), `${slug} should reject completed-engagement interpretation`);
+  }
+});
