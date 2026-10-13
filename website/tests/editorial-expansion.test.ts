@@ -88,9 +88,15 @@ test("all catalog routes and related links remain intact", () => {
   }
 });
 
-test("unreviewed catalog records retain the generated default content", () => {
-  const guide = getVisibilityGuide("accessible-interfaces-without-javascript");
-  assert.ok(guide);
-  assert.ok((guide.deepDive ?? []).some((section) => section.title === "Define the problem before choosing the solution"));
-  assert.ok(!(guide.deepDive ?? []).some((section) => section.title === "Choose a delivery budget before a framework"));
+test("all catalog articles have differentiated deep dives and article references", () => {
+  const paragraphs = editorialPosts.flatMap((post) => {
+    const guide = getVisibilityGuide(post.slug);
+    assert.ok(guide, `${post.slug} should resolve`);
+    assert.ok(guide.references.length >= 2, `${post.slug} needs article-level references`);
+    return (guide.deepDive ?? []).flatMap((section) => section.paragraphs);
+  });
+  const counts = new Map<string, number>();
+  for (const paragraph of paragraphs) counts.set(paragraph, (counts.get(paragraph) ?? 0) + 1);
+  const repeatedSubstantive = [...counts.entries()].filter(([paragraph, count]) => count > 1 && paragraph.split(/\s+/).length >= 20);
+  assert.deepEqual(repeatedSubstantive, [], "long substantive deep-dive paragraphs must not be shared across catalog articles");
 });
