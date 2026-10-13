@@ -205,7 +205,288 @@ const buildCatalogOverride = (spec: CatalogContentSeed): EditorialGuideContent =
   references: [spec.reference, { label: "NexisHub research and editorial standards", url: "https://nexishub.vercel.app/research/ethics" }],
 });
 
-const generatedEditorialOverrides = Object.fromEntries(Object.entries(catalogContentSeeds).map(([slug, spec]) => [slug, buildCatalogOverride(spec)])) as Record<string, EditorialGuideContent>;
+const healthcareEditorialOverrides: Record<string, EditorialGuideContent> = {
+  "responsible-ai-primary-healthcare": {
+    deepDive: [
+      { title: "Separate the three levels of assistance", paragraphs: [
+        "Administrative assistance handles work such as appointment routing, document preparation, coding support, or queue summaries without making a clinical judgment. Clinician-facing decision support presents information, a calculation, or a possible next question to a qualified professional who can inspect the basis and decide what to do. Autonomous triage attempts to classify urgency or direct a person without a clinician making the immediate decision; that is a materially higher-risk design and should not be treated as an ordinary productivity feature.",
+        "A hypothetical primary-care intake tool might organise a patient-submitted reason for visit and highlight missing administrative fields. It should not quietly convert that summary into a diagnosis or a treatment instruction. The product brief should name the intended user, the decision the tool supports, the information it may use, and the requests that must be escalated outside the tool."
+      ] },
+      { title: "Make uncertainty and responsibility visible", paragraphs: [
+        "A useful interface shows the input date, source, missing fields, evidence or rule used, confidence limitations, and the point at which a person must review the result. A numerical score without context can look more authoritative than the underlying evidence. If the system cannot explain which information it used or cannot distinguish absent data from a negative finding, the output should be treated as incomplete rather than definitive.",
+        "Responsibility remains with the accountable healthcare professional and organisation operating the workflow. That does not mean adding a disclaimer after an unsafe design. It means giving the reviewer enough context, time, authority, and documentation to question the output, record a disagreement, and escalate a case when the workflow or data is outside its validated boundary."
+      ] },
+      { title: "Design escalation before deployment", paragraphs: [
+        "Define what happens when a case is urgent, ambiguous, outside the intended population, missing critical information, or affected by a system outage. Escalation may mean routing to an appropriate clinical team, pausing the automated step, or using an established non-AI process. The exact pathway is organisation-specific and requires clinical and operational approval.",
+        "A hypothetical queue assistant could mark a record as requiring human review when its source fields conflict or the request falls outside the supported service. It must not instruct a patient to delay care, and it must not imply that a non-escalated record is safe merely because the model returned a result. Test the queue, exception, audit, and downtime paths together."
+      ] },
+      { title: "Validate the workflow, not only the model", paragraphs: [
+        "Evaluation should cover representative inputs, missing and conflicting data, subgroup performance where appropriate, false reassurance, unsafe suggestions, privacy boundaries, override behaviour, and the effect on the real workflow. A model test in isolation cannot establish that a primary-care process is safe, useful, equitable, or legally appropriate.",
+        "Record the intended use, population, data conditions, version, evaluator, acceptance criteria, unresolved limitations, and change-control process. WHO guidance emphasises safety, transparency, accountability, and human well-being; those principles require evidence appropriate to the actual use case rather than a generic claim that the system is responsible."
+      ] },
+      { title: "Know when not to automate", paragraphs: [
+        "Postpone deployment when the organisation cannot identify an accountable owner, provide a reliable escalation route, protect the data, support the workflow, or evaluate the system in its intended context. A manual process with known limitations may be safer than an automated process whose uncertainty is hidden or whose outputs cannot be challenged.",
+        "This article is an educational design framework. It is not clinical validation, medical advice, a regulatory determination, or evidence that any product improves outcomes. Specialist clinical, safety, privacy, legal, and regulatory review remains necessary before real patient use."
+      ] },
+    ],
+    principles: [
+      { title: "Name the decision", detail: "Define the user, workflow, input, output, non-goals, and escalation owner before selecting a model." },
+      { title: "Keep humans accountable", detail: "A human review label is meaningful only when the reviewer has context, time, authority, and a way to disagree." },
+      { title: "Expose uncertainty", detail: "Show missing data, source evidence, scope limits, and unresolved ambiguity instead of hiding them behind a score." },
+      { title: "Validate the use case", detail: "Test the deployed workflow, population, failure modes, privacy controls, and change process—not only model accuracy." },
+      { title: "Pause when evidence is weak", detail: "A delayed or narrowed deployment is safer than an unvalidated clinical or triage claim." },
+    ],
+    workflow: [
+      { title: "Define the intended use", detail: "Write the task, user, population, setting, inputs, outputs, non-goals, and excluded requests." },
+      { title: "Map responsibility", detail: "Assign clinical, operational, privacy, safety, and technical owners for decisions and escalation." },
+      { title: "Specify the evidence", detail: "Identify the source, version, missing-data behaviour, uncertainty display, and review record required." },
+      { title: "Design the exception path", detail: "Cover urgency, ambiguity, conflicting records, unsupported populations, outage, and manual fallback." },
+      { title: "Evaluate with reviewers", detail: "Use representative scenarios and qualified reviewers to assess usefulness, disagreement, bias, and workflow burden." },
+      { title: "Approve a bounded pilot", detail: "Set entry criteria, monitoring, stop conditions, incident handling, and a clear prohibition on unsupported use." },
+      { title: "Review changes", detail: "Reassess the workflow when data, model, population, regulation, evidence, or risk changes." },
+    ],
+    pitfalls: [
+      { title: "Administrative output becomes clinical advice", detail: "A summary or routing aid must not be presented as diagnosis, treatment, or a final urgency decision." },
+      { title: "Human-in-the-loop theatre", detail: "A nominal reviewer cannot provide meaningful safety if the interface hides evidence or makes disagreement impractical." },
+      { title: "False reassurance", detail: "A missing alert or successful processing state is not proof that a patient is safe." },
+      { title: "Unbounded data collection", detail: "Collecting extra health information increases privacy and security exposure without proving better decisions." },
+      { title: "Outcome inflation", detail: "A design proposal, pilot observation, or model test is not evidence of clinical benefit." },
+    ],
+    measurement: [
+      "Record intended-use scenarios, missing-data cases, unsupported requests, escalation decisions, reviewer overrides, and unresolved incidents.",
+      "Separate technical measures from clinical, operational, equity, and patient-safety outcomes; each requires an appropriate method and reviewer.",
+      "Preserve model or rule version, data conditions, evaluator, date, acceptance criteria, and limitations for every material evaluation.",
+      "Stop or narrow the workflow when evidence, monitoring, staffing, privacy controls, or escalation capacity is insufficient."
+    ],
+    future: "Responsible primary-care AI will depend less on a universal model claim than on bounded uses, accountable workflows, evidence that matches the risk, and the ability to withdraw or revise a system when conditions change.",
+    takeaways: ["Separate administrative assistance, clinician-facing support, and autonomous triage.", "Make evidence, uncertainty, review authority, and escalation visible.", "Evaluate the real workflow and its exceptions.", "Do not infer clinical benefit from implementation evidence.", "Obtain specialist review before patient-facing or clinical use."],
+    faq: [
+      { question: "Is a clinician-facing draft the same as autonomous triage?", answer: "No. A draft can support a qualified review process; autonomous triage makes or influences an urgency decision without the same immediate human control and requires a different risk assessment." },
+      { question: "Does a human reviewer make an AI workflow clinically validated?", answer: "No. Meaningful review is one control. Validation still requires an appropriate use case, evidence, evaluation method, monitoring, and specialist oversight." },
+      { question: "When should a healthcare organisation postpone an AI workflow?", answer: "Postpone when ownership, escalation, data protection, evaluation, staffing, or a safe manual fallback is not ready for the intended use." },
+      { question: "Is this article medical advice?", answer: "No. It describes safety and governance questions for educational purposes and does not diagnose, treat, triage, or approve any clinical deployment." },
+    ],
+    references: [
+      { label: "WHO: Ethics and governance of artificial intelligence for health", url: "https://iris.who.int/bitstream/handle/10665/341996/9789240029200-eng.pdf" },
+      { label: "NIST: AI Risk Management Framework", url: "https://www.nist.gov/itl/ai-risk-management-framework" },
+      { label: "FDA: Clinical Decision Support Software", url: "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/clinical-decision-support-software" },
+      { label: "Nigeria Federal Ministry of Health: Nigeria Digital in Health Initiative", url: "https://health.gov.ng/fg-inaugurates-committee-on-digital-in-health-initiative/" },
+    ],
+  },
+  "healthcare-data-governance-ai": {
+    deepDive: [
+      { title: "Start with purpose and lawful basis", paragraphs: [
+        "Write the specific purpose before deciding which data to collect or reuse. Care delivery, administration, quality improvement, research, public-health work, and product development may have different governance questions. Consent is not interchangeable with every other lawful basis, and a consent screen does not by itself make a secondary use appropriate.",
+        "For a hypothetical clinic data project, the register should state what decision the data supports, whose data is involved, which fields are necessary, who may access them, how long they are retained, and what happens when the purpose ends. Nigerian legal applicability and sector obligations depend on the organisation, data, role, and jurisdiction; obtain jurisdiction-specific legal review rather than assuming a foreign framework governs the organisation."
+      ] },
+      { title: "Control access, provenance, and correction", paragraphs: [
+        "Access should follow role, purpose, minimum necessary data, and an auditable approval path. Separate operational users, analysts, developers, vendors, and model services. Record where a field came from, when it was collected, how it was transformed, and which downstream artefacts depend on it.",
+        "A governance process also needs a way to correct inaccurate information, propagate corrections where appropriate, and record why a correction was made. De-identification can reduce exposure but does not erase all re-identification or linkage risk. Treat it as a control requiring assessment, not as a guarantee."
+      ] },
+      { title: "Define retention, incident, and secondary-use rules", paragraphs: [
+        "Retention should be tied to purpose, operational need, legal requirements, and a documented deletion or review process. Incident response should identify who detects, contains, investigates, communicates, and learns from unauthorised access or data loss. Test these responsibilities before a system holds sensitive records.",
+        "Secondary use needs its own assessment of purpose, expectations, permissions, minimisation, safeguards, and re-identification risk. A dataset collected for care administration should not silently become a training corpus. If the new purpose cannot be justified and governed, do not reuse the data."
+      ] },
+      { title: "Treat cross-border processing as a real question", paragraphs: [
+        "Cloud hosting, support, analytics, model APIs, backups, and vendor access can place health data or access to it across jurisdictions. Record the locations, roles, transfer mechanism, contractual safeguards, onward access, incident responsibilities, and deletion path that apply to the proposed architecture.",
+        "Do not state that an international standard or foreign regulation automatically answers a Nigerian organisation's obligations. The organisation should obtain current Nigerian legal and sector review, identify any other applicable jurisdictions, and document the decision before transferring or exposing health data."
+      ] },
+      { title: "Make governance testable", paragraphs: [
+        "Walk one representative record from collection through access, transformation, model use, correction, export, retention review, and deletion. Test denied access, stale permissions, incorrect data, vendor failure, an incident report, and a request that exceeds the stated purpose.",
+        "NIST's Privacy Framework is a voluntary risk-management tool, not a legal approval. It can help organise governance questions, while the organisation remains responsible for identifying applicable law, policy, contracts, clinical obligations, and accountable decision-makers."
+      ] },
+    ],
+    principles: [
+      { title: "Purpose before collection", detail: "Define the decision and necessity before requesting or reusing health data." },
+      { title: "Access by role and need", detail: "Separate permissions for care, operations, analysis, development, vendors, and model services." },
+      { title: "Provenance remains visible", detail: "Track source, transformation, correction, downstream use, and accountable owner." },
+      { title: "Retention has an end", detail: "Set review, deletion, archival, and exception rules rather than retaining indefinitely." },
+      { title: "Jurisdiction requires review", detail: "Treat Nigerian applicability, sector rules, contracts, and cross-border processing as questions to verify." },
+    ],
+    workflow: [
+      { title: "Create the data register", detail: "Record purpose, fields, source, subjects, users, model boundary, retention, and owner." },
+      { title: "Assess necessity", detail: "Remove fields that do not support the defined purpose and document unavoidable sensitivity." },
+      { title: "Design access controls", detail: "Map roles, approvals, authentication, audit records, vendor access, and emergency handling." },
+      { title: "Document the data path", detail: "Trace collection, transformation, inference, export, correction, retention, and deletion." },
+      { title: "Review secondary use", detail: "Assess expectations, lawful basis, permissions, minimisation, safeguards, and re-identification risk." },
+      { title: "Plan incidents", detail: "Assign detection, containment, investigation, notification, remediation, and evidence owners." },
+      { title: "Obtain jurisdiction review", detail: "Confirm Nigerian and other applicable legal, regulatory, contractual, and sector requirements." },
+    ],
+    pitfalls: [
+      { title: "Consent as a universal answer", detail: "A consent record does not automatically justify every purpose, reuse, transfer, or model training activity." },
+      { title: "De-identification as erasure", detail: "Linkage, small groups, auxiliary data, and access patterns can preserve risk." },
+      { title: "Unbounded retention", detail: "Keeping data because it may be useful later creates purpose, access, and incident exposure." },
+      { title: "Invisible vendor access", detail: "A model, support provider, backup, or analytics service can change the data boundary even when the interface does not." },
+      { title: "Framework equals compliance", detail: "NIST and other frameworks organise risk; they do not provide jurisdiction-specific legal approval." },
+    ],
+    measurement: [
+      "Measure access approvals, denied attempts, stale permissions, correction completion, retention exceptions, incident response time, and unresolved data lineage gaps.",
+      "Review whether each field has a current purpose, owner, source, retention rule, and documented downstream use.",
+      "Test one record end to end in a controlled environment without exposing real patient data in development or editorial examples.",
+      "Record jurisdiction, vendor, transfer, and contractual assumptions separately from technical control evidence."
+    ],
+    future: "Healthcare data governance will need continuous review as systems, vendors, jurisdictions, interoperability standards, and secondary uses change; the durable asset is a traceable purpose-to-control record.",
+    takeaways: ["Define purpose before collecting or reusing data.", "Separate consent from other lawful-basis questions.", "Make access, provenance, correction, retention, and incidents testable.", "Treat cross-border processing as a verified architecture and legal question.", "Do not turn a framework into a compliance claim."],
+    faq: [
+      { question: "Is consent always required for healthcare data processing?", answer: "The answer depends on the purpose, organisation, jurisdiction, role, and applicable law. Consent is one governance question, not a universal substitute for legal and sector review." },
+      { question: "Does de-identified data have no privacy risk?", answer: "No. Re-identification and linkage risk depend on the data, context, auxiliary information, access, and controls." },
+      { question: "Can an international framework determine Nigerian compliance?", answer: "No. It may provide useful risk-management structure, but Nigerian legal, regulatory, contractual, and sector applicability requires current jurisdiction-specific review." },
+      { question: "What is the first practical governance test?", answer: "Trace a representative record from collection through access, correction, downstream use, retention review, and deletion while checking permissions and ownership." },
+    ],
+    references: [
+      { label: "NIST: Privacy Framework", url: "https://www.nist.gov/privacy-framework" },
+      { label: "NIST: Using Privacy Framework 1.1", url: "https://www.nist.gov/privacy-framework/using-privacy-framework-11" },
+      { label: "Nigeria Data Protection Commission: NDP Act 2023", url: "https://www.ndpc.gov.ng/ndp-act-2023/" },
+      { label: "Nigeria Federal Ministry of Health: Nigeria Digital in Health Initiative", url: "https://health.gov.ng/fg-inaugurates-committee-on-digital-in-health-initiative/" },
+    ],
+  },
+  "human-review-clinical-decision-support": {
+    deepDive: [
+      { title: "Make review an independent action", paragraphs: [
+        "A reviewer is not independent merely because a person clicks an approval button. The reviewer needs the relevant inputs, source evidence, system limitations, time to inspect the result, authority to reject or defer it, and a record of the reasoning or disagreement. The workflow should make investigation possible rather than making acceptance the only convenient path.",
+        "A hypothetical decision-support panel might show a possible documentation issue alongside the source fields and the rule or evidence used. The example does not prescribe a patient action. It illustrates that a qualified professional must decide whether the information is relevant, incomplete, or unsuitable for the current context."
+      ] },
+      { title: "Show evidence and uncertainty together", paragraphs: [
+        "Evidence visibility means more than displaying a confidence number. Show the source, time, missingness, population or setting limits, version, and meaningful reasons the output may not apply. When the system cannot expose enough information for independent review, narrow the use or route the decision through a safer process.",
+        "FDA clinical decision support guidance is relevant to understanding how software functions may be considered, but it is not a Nigerian regulatory determination and does not approve a particular product. The organisation must assess its own intended use, jurisdiction, risk, and applicable oversight."
+      ] },
+      { title: "Design disagreement and escalation", paragraphs: [
+        "A reviewer should be able to reject, edit, defer, request more information, and escalate without losing the underlying evidence. Capture the disagreement category and route it to the appropriate safety or clinical owner. Do not punish a reviewer for declining an uncertain suggestion or turn an override count into a simplistic performance score.",
+        "Hypothetical scenario: a system highlights a record for review, but the clinician sees that a recent result is missing and the patient context is not represented. The clinician marks the output incomplete, follows the organisation's established review process, and records the missing evidence. The article does not direct treatment or say what the patient should do."
+      ] },
+      { title: "Control automation bias and alert fatigue", paragraphs: [
+        "Automation bias grows when an output appears authoritative, arrives before the evidence, or is difficult to challenge. Alert fatigue grows when alerts are frequent, poorly prioritised, or disconnected from an action the reviewer can take. Evaluate whether the reviewer notices, understands, investigates, and can safely dismiss or escalate an alert.",
+        "Useful tests include silent failures, conflicting inputs, repeated low-value alerts, missing evidence, delayed data, and a service outage. Review workload and workflow timing as safety factors. A technically accurate output can still be unsafe if the surrounding process makes review superficial."
+      ] },
+      { title: "Set boundaries for deployment", paragraphs: [
+        "Do not present human review as a substitute for clinical validation, governance, training, monitoring, or regulatory assessment. Define the intended users, setting, population, data, supported decisions, excluded decisions, stop conditions, incident process, and change-control owner before deployment.",
+        "Postpone or narrow implementation when reviewers lack authority, evidence is not inspectable, escalation is unavailable, records cannot be audited, or the organisation cannot evaluate the workflow in context. Human responsibility is a design requirement, not a decorative disclaimer."
+      ] },
+    ],
+    principles: [
+      { title: "Review must be independent", detail: "The reviewer needs context, time, authority, evidence, and a real ability to disagree." },
+      { title: "Evidence before confidence", detail: "Show sources, missingness, version, scope, and limitations rather than relying on a score." },
+      { title: "Disagreement is a safety signal", detail: "Capture overrides, deferrals, missing evidence, and escalation without treating them as failures to suppress." },
+      { title: "Design for workload", detail: "Alert quality includes priority, frequency, timing, actionability, and the burden on reviewers." },
+      { title: "Bound the intended use", detail: "Define supported and excluded decisions, users, populations, stop conditions, and change ownership." },
+    ],
+    workflow: [
+      { title: "Define the supported decision", detail: "Name the decision, user, context, input, output, exclusions, and responsibility boundary." },
+      { title: "Expose the evidence", detail: "Show source, date, missing data, version, uncertainty, scope, and relevant limitations." },
+      { title: "Provide review actions", detail: "Support accept, reject, edit, defer, request information, and escalate with reasons." },
+      { title: "Test disagreement", detail: "Use conflicting, incomplete, stale, out-of-scope, and unavailable inputs in review exercises." },
+      { title: "Measure workload", detail: "Observe notice, comprehension, investigation, override, alert burden, and escalation behaviour." },
+      { title: "Approve a bounded evaluation", detail: "Set reviewers, evidence thresholds, stop conditions, incident handling, and monitoring before use." },
+      { title: "Reassess changes", detail: "Review the workflow when model, data, population, interface, evidence, or regulation changes." },
+    ],
+    pitfalls: [
+      { title: "Confirmation-click review", detail: "A reviewer who cannot inspect or reject an output is not providing meaningful independent review." },
+      { title: "Confidence without context", detail: "A score cannot explain missing data, applicability, evidence quality, or the consequence of error." },
+      { title: "Override suppression", detail: "Treating disagreement as noise hides the exact cases that may reveal a safety or scope problem." },
+      { title: "Alert volume as safety", detail: "More alerts can reduce attention when they are not prioritised and actionable." },
+      { title: "Foreign guidance as approval", detail: "FDA material can inform analysis but does not decide Nigerian applicability or approve a deployment." },
+    ],
+    measurement: [
+      "Record reviewer context, evidence visibility, time available, decision, disagreement, escalation, missing information, and system version.",
+      "Separate model or rule performance from reviewer workload, alert burden, override quality, incident findings, and clinical outcomes.",
+      "Test whether reviewers can identify unsupported or incomplete outputs without relying on the system's confidence presentation.",
+      "Use stop conditions when evidence cannot be inspected, reviewers lack authority, or escalation and audit paths fail."
+    ],
+    future: "Clinical decision support should become more accountable as evidence, interfaces, models, and regulation evolve; independent review, traceable disagreement, and bounded intended use remain the durable controls.",
+    takeaways: ["Make human review an independent action.", "Expose evidence, missingness, uncertainty, and scope.", "Support disagreement, deferral, and escalation.", "Measure alert burden and reviewer workload.", "Do not treat guidance as approval or human review as validation."],
+    faq: [
+      { question: "What makes clinical review meaningful?", answer: "The reviewer needs relevant context, inspectable evidence, adequate time, authority to disagree, and a safe way to defer or escalate." },
+      { question: "Is a confidence score enough evidence?", answer: "No. Confidence does not replace source information, missingness, applicability, version, limitations, or an appropriate evaluation." },
+      { question: "What should happen when a reviewer disagrees?", answer: "The workflow should support rejection or deferral, capture the reason and evidence gap, and route the issue through the organisation's approved escalation process." },
+      { question: "Does this article approve a clinical decision-support product?", answer: "No. It is an educational safety framework and not clinical validation, medical advice, regulatory approval, or a deployment recommendation." },
+    ],
+    references: [
+      { label: "FDA: Clinical Decision Support Software", url: "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/clinical-decision-support-software" },
+      { label: "WHO: Ethics and governance of artificial intelligence for health", url: "https://iris.who.int/bitstream/handle/10665/341996/9789240029200-eng.pdf" },
+      { label: "NIST: AI Risk Management Framework", url: "https://www.nist.gov/itl/ai-risk-management-framework" },
+      { label: "Nigeria Federal Ministry of Health: Digital health and ICT responsibilities", url: "https://health.gov.ng/ict/" },
+    ],
+  },
+  "digital-health-readiness-framework": {
+    deepDive: [
+      { title: "Assess the organisation, not just the software", paragraphs: [
+        "Digital-health readiness is the ability to operate a change safely and usefully in a real organisation. Assess infrastructure, power and connectivity, workflow fit, workforce capability, interoperability, governance, privacy, support, procurement, safety, and evaluation ownership together. A product demo can show what software does; it cannot show whether the organisation can sustain it.",
+        "Use a readiness record with one row per dimension: current evidence, target condition, accountable owner, dependency, risk, and decision. Mark unknowns as unknowns. Do not convert an incomplete assessment into a readiness score that looks precise."
+      ] },
+      { title: "Require evidence for each dimension", paragraphs: [
+        "Infrastructure evidence may include tested connectivity, device coverage, backup power, support capacity, and recovery arrangements. Workforce evidence may include role-based training, supervision, workload, and a plan for staff turnover. Interoperability evidence should identify standards, data definitions, interfaces, ownership, and how errors are reconciled.",
+        "Governance and privacy evidence should identify purpose, access, retention, correction, incident response, vendor boundaries, and jurisdiction review. Safety evidence should define the affected workflow, human responsibility, escalation, monitoring, and stop conditions. These are assessment questions, not claims that a named organisation has already met them."
+      ] },
+      { title: "Map critical dependencies and postponement conditions", paragraphs: [
+        "A proposed digital-health change may depend on reliable identity, data quality, staffing, procurement, integration, training, clinical ownership, support, or legal review. Record dependencies explicitly and identify which one blocks a safe pilot. A dependency that is merely assumed will usually appear later as an operational or safety incident.",
+        "Postpone or narrow implementation when the organisation cannot protect the data, support the workflow, train the responsible people, reconcile records, provide a manual fallback, evaluate the intended use, or respond to incidents. Postponement is an evidence-based decision, not a failure of ambition."
+      ] },
+      { title: "Use a staged and reversible pilot", paragraphs: [
+        "A hypothetical readiness exercise could begin with a non-production workflow using synthetic or appropriately governed data, a small group of trained users, explicit success and stop criteria, and a review date. The exercise should test the operating conditions rather than imply that a pilot proves population-level benefit.",
+        "WHO's digital-health strategy emphasises context, equity, interoperability, privacy, security, sustainability, and evidence. Apply those dimensions to the organisation's setting, including local infrastructure and workforce conditions, instead of copying a foreign implementation assumption."
+      ] },
+      { title: "Do not call the framework certification", paragraphs: [
+        "A readiness framework structures questions and decisions; it does not certify an organisation, product, facility, service, clinical outcome, security posture, or legal compliance. A completed checklist is not independent assurance. Record who reviewed the evidence, what remains uncertain, and which specialist approvals are still required.",
+        "This article is educational and hypothetical. It does not describe a completed implementation, claim Nigerian government endorsement, provide medical advice, or establish that any digital-health intervention is ready for deployment."
+      ] },
+    ],
+    principles: [
+      { title: "Evidence per dimension", detail: "Infrastructure, people, workflow, interoperability, governance, privacy, support, safety, and evaluation each need evidence." },
+      { title: "Dependencies before optimism", detail: "Name the conditions that must hold before a pilot or rollout can be safe." },
+      { title: "Local context matters", detail: "Assess connectivity, power, workforce, language, access, policy, and support in the intended setting." },
+      { title: "Pilot reversibly", detail: "Use bounded scope, governed data, trained users, stop criteria, fallback, and review dates." },
+      { title: "Framework is not certification", detail: "A structured assessment does not certify safety, compliance, effectiveness, or readiness." },
+    ],
+    workflow: [
+      { title: "State the intended change", detail: "Name the users, workflow, population, benefit, non-goals, and decisions affected." },
+      { title: "Collect baseline evidence", detail: "Assess infrastructure, workforce, process, data, interoperability, governance, privacy, support, and safety." },
+      { title: "Map dependencies", detail: "Record owner, evidence, risk, prerequisite, contingency, and decision date for each dependency." },
+      { title: "Set postponement conditions", detail: "Define what must be true before a pilot and what would pause or stop it." },
+      { title: "Run a governed pilot", detail: "Use appropriate data, trained users, bounded scope, fallback, monitoring, and incident handling." },
+      { title: "Evaluate the real workflow", detail: "Review usability, safety, equity, data quality, workload, interoperability, and unresolved harm." },
+      { title: "Decide and maintain", detail: "Continue, narrow, pause, or stop based on evidence and assign ongoing ownership." },
+    ],
+    pitfalls: [
+      { title: "Software equals readiness", detail: "A functioning product does not establish infrastructure, staffing, governance, support, or safe use." },
+      { title: "Checklist without evidence", detail: "A completed box is not evidence unless its source, date, owner, and limitation are visible." },
+      { title: "Pilot without fallback", detail: "A workflow that cannot recover from outage, bad data, or staff absence is not ready for a safe pilot." },
+      { title: "Imported assumptions", detail: "Foreign regulatory, infrastructure, workforce, or implementation assumptions may not fit a Nigerian setting." },
+      { title: "Readiness as certification", detail: "A framework cannot certify clinical safety, legal compliance, security, or effectiveness." },
+    ],
+    measurement: [
+      "Track evidence completeness, dependency status, training coverage, support response, data-quality issues, interoperability failures, incidents, and pilot stop conditions.",
+      "Separate implementation readiness from safety, equity, user, operational, clinical, and population outcomes.",
+      "Record the setting, date, data conditions, reviewers, unresolved risks, and decision to continue, narrow, postpone, or stop.",
+      "Reassess when infrastructure, workforce, workflow, vendor, regulation, data, or intended use changes."
+    ],
+    future: "Digital-health readiness will remain contextual: the durable practice is an evidence record that connects local conditions, dependencies, human responsibility, safeguards, evaluation, and reversible decisions.",
+    takeaways: ["Assess the operating organisation, not just the product.", "Require evidence and owners for each readiness dimension.", "Name dependencies and conditions for postponement.", "Use governed, reversible pilots.", "Never present a framework as certification or clinical validation."],
+    faq: [
+      { question: "Does a readiness framework certify a digital-health organisation?", answer: "No. It structures evidence and decisions but does not certify an organisation, product, service, safety posture, legal compliance, or clinical outcome." },
+      { question: "What should block a pilot?", answer: "Examples include unsafe data handling, missing ownership, inadequate support or training, no fallback, unresolved interoperability, unavailable evaluation, or absent incident response." },
+      { question: "Should a Nigerian organisation copy an international readiness model?", answer: "Use relevant principles, but verify local infrastructure, workforce, policy, legal, sector, language, access, and support conditions before applying it." },
+      { question: "What is a useful first readiness artefact?", answer: "Create a dimension-by-dimension evidence register with owners, dependencies, risks, review dates, and explicit continue, narrow, postpone, or stop decisions." },
+    ],
+    references: [
+      { label: "WHO: Global strategy on digital health 2020–2025", url: "https://www.who.int/publications/b/57220" },
+      { label: "WHO: Digital health topic and strategy context", url: "https://www.who.int/health-topics/digital-health" },
+      { label: "NIST: AI Risk Management Framework", url: "https://www.nist.gov/itl/ai-risk-management-framework" },
+      { label: "Nigeria Federal Ministry of Health: Nigeria Digital in Health Initiative", url: "https://health.gov.ng/fg-inaugurates-committee-on-digital-in-health-initiative/" },
+    ],
+  },
+};
+
+const generatedEditorialOverrides = {
+  ...Object.fromEntries(Object.entries(catalogContentSeeds).map(([slug, spec]) => [slug, buildCatalogOverride(spec)])),
+  ...healthcareEditorialOverrides,
+} as Record<string, EditorialGuideContent>;
+
+const healthcareReadingTimes: Record<string, string> = {
+  "responsible-ai-primary-healthcare": "5 min read",
+  "healthcare-data-governance-ai": "4 min read",
+  "human-review-clinical-decision-support": "4 min read",
+  "digital-health-readiness-framework": "4 min read",
+};
 
 const seedRecords: EditorialSeed[] = seeds.flatMap(([, categoryTitle, cluster, entries, reference]) => entries.map(([slug, title, keyword, description, audience, focus]) => ({ slug, title, category: categoryTitle, cluster, keyword, description, audience, focus, related: [], reference: { label: categoryTitle + " official reference", url: reference } })));
 
@@ -214,7 +495,7 @@ const relatedByCategory = (seed: EditorialSeed) => seedRecords.filter((item) => 
 export const editorialPosts: readonly BlogPost[] = seedRecords.map((seed) => ({
   slug: seed.slug, title: seed.title, description: seed.description, targetKeyword: seed.keyword, category: seed.category,
   cluster: seed.cluster, difficulty: seed.category === "Research" || seed.category === "AI Infrastructure" ? "Advanced" : "Intermediate",
-  intent: "Informational", readingTime: "19 min read", author: "NexisHub Editorial", publishedDate: "2026-08-11", updatedDate: "2026-08-11",
+  intent: "Informational", readingTime: healthcareReadingTimes[seed.slug] ?? "19 min read", author: "NexisHub Editorial", publishedDate: "2026-08-11", updatedDate: "2026-08-11",
   tags: [seed.category, seed.keyword, "NexisHub Editorial"], featuredImage: `/blog/${seed.slug}/opengraph-image`, featuredImageAlt: `${seed.title}, a NexisHub editorial guide.`,
   seoTitle: seed.title, seoDescription: seed.description, canonicalPath: `/blog/${seed.slug}`, series: `${seed.category} desk`, readingLevel: "Technical practitioner", status: "Published",
   relatedSlugs: relatedByCategory(seed), siteNexisSource: seed.category === "AI Infrastructure" || seed.category === "Modern Web Engineering" ? "https://sitenexis.vercel.app/blog/complete-guide-to-ai-visibility" : undefined,

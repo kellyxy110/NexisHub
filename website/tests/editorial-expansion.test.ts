@@ -43,6 +43,21 @@ const genericSections = [
   "What would change the conclusion?",
 ];
 
+const healthcareSlugs = [
+  "responsible-ai-primary-healthcare",
+  "healthcare-data-governance-ai",
+  "human-review-clinical-decision-support",
+  "digital-health-readiness-framework",
+] as const;
+
+const healthcareReferenceDomains = [
+  "who.int",
+  "fda.gov",
+  "nist.gov",
+  "ndpc.gov.ng",
+  "health.gov.ng",
+];
+
 test("all remediated visibility guides bypass generic expansion", () => {
   assert.equal(completedSlugs.length, 19);
   for (const slug of completedSlugs) {
@@ -132,5 +147,37 @@ test("methodology case studies are clearly illustrative", () => {
     const text = [post.title, post.description, guide.lead, ...(guide.deepDive ?? []).flatMap((section) => section.paragraphs), guide.future, ...guide.faq.flatMap((item) => [item.question, item.answer])].join(" ").toLowerCase();
     assert.match(text, /illustrative/);
     assert.ok(/not a completed|not evidence of [^.]*a completed|does not establish a completed/.test(text), `${slug} should reject completed-engagement interpretation`);
+  }
+});
+
+test("healthcare guides use topic-specific content and evidence", () => {
+  const bodies = healthcareSlugs.map((slug) => {
+    const post = editorialPosts.find((item) => item.slug === slug);
+    const guide = getVisibilityGuide(slug);
+    assert.ok(post && guide, `${slug} should resolve`);
+    const sectionTitles = (guide.deepDive ?? []).map((section) => section.title);
+    assert.ok(sectionTitles.length >= 5, `${slug} should have healthcare-specific deep dives`);
+    for (const genericSection of ["Make the subject operational", "Verify the method", "Design for failure and limits"]) {
+      assert.ok(!sectionTitles.includes(genericSection), `${slug} contains generic section ${genericSection}`);
+    }
+    const references = guide.references.map((reference) => reference.url);
+    assert.ok(references.some((url) => healthcareReferenceDomains.some((domain) => url.includes(domain))), `${slug} needs an authoritative healthcare reference`);
+    const text = [post.title, post.description, guide.lead, ...(guide.deepDive ?? []).flatMap((section) => [section.title, ...section.paragraphs]), ...(guide.principles ?? []), ...(guide.workflow ?? []), ...(guide.pitfalls ?? []), ...(guide.measurement ?? []), guide.future, ...(guide.takeaways ?? []), ...guide.faq.flatMap((item) => [item.question, item.answer])].join(" ");
+    assert.doesNotMatch(text, /No optimization can guarantee selection or citation by an external system\./);
+    assert.ok(/hypothetical|illustrative|not clinical validation|not medical advice/i.test(text), `${slug} needs explicit educational limits`);
+    return text;
+  });
+  assert.equal(new Set(bodies).size, healthcareSlugs.length);
+});
+
+test("healthcare reading-time metadata matches rendered guide length", () => {
+  const expected = new Map([
+    ["responsible-ai-primary-healthcare", "5 min read"],
+    ["healthcare-data-governance-ai", "4 min read"],
+    ["human-review-clinical-decision-support", "4 min read"],
+    ["digital-health-readiness-framework", "4 min read"],
+  ]);
+  for (const [slug, readingTime] of expected) {
+    assert.equal(editorialPosts.find((post) => post.slug === slug)?.readingTime, readingTime);
   }
 });
