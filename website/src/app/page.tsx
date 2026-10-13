@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Arrow, Mark, SiteFooter, SiteHeader } from "@/components/site-chrome";
+import { entityIds, jsonLd, nexishubFounder, nexishubOrganization, nexishubWebsite } from "@/lib/structured-data";
 import { products } from "@/lib/products";
 
 const principles = [
@@ -19,15 +20,17 @@ function ProductLink({ href, name }: { href: string; name: string }) {
 export default function Home() {
   const schema = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "NexisHub",
-    description: "NexisHub builds intelligent software that helps people work, learn, create, organize, and make better decisions through AI.",
-    url: "https://nexishub.vercel.app",
+    "@graph": [
+      nexishubOrganization,
+      nexishubWebsite,
+      nexishubFounder,
+      { "@type": "WebPage", "@id": "https://nexishub.vercel.app/#webpage", url: "https://nexishub.vercel.app/", name: "NexisHub", isPartOf: { "@id": entityIds.website }, about: { "@id": entityIds.organization } },
+    ],
   };
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(schema) }} />
       <SiteHeader />
 
       <main>

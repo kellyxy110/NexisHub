@@ -10,7 +10,6 @@ export const ADSENSE_CLIENT_ID = "ca-pub-3694194350196538";
 export function AdSenseLoader() {
   useEffect(() => {
     const load = () => {
-      if (window.localStorage.getItem("nexishub-analytics-consent") !== "allow") return;
       if (document.querySelector(`script[data-nexishub-adsense="${ADSENSE_CLIENT_ID}"]`)) return;
       const script = document.createElement("script");
       script.async = true;

@@ -5,6 +5,7 @@ import { NewsletterForm } from "@/components/newsletter-form";
 import { Arrow, SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { firstPost as post } from "@/lib/posts";
 import { siteNexisLinks } from "@/lib/site-links";
+import { entityIds, jsonLd } from "@/lib/structured-data";
 
 const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://nexishub.vercel.app";
 
@@ -58,9 +59,9 @@ const articleSchema = {
   image: `${base}${post.featuredImage}`,
   datePublished: post.publishedDate,
   dateModified: post.updatedDate,
-  author: { "@type": "Organization", name: post.author, url: base },
-  publisher: { "@type": "Organization", name: "NexisHub", url: base },
-  mainEntityOfPage: `${base}${post.canonicalPath}`,
+  author: { "@type": "Organization", "@id": entityIds.editorial, name: post.author, url: `${base}/blog` },
+  publisher: { "@id": entityIds.organization },
+  mainEntityOfPage: { "@type": "WebPage", "@id": `${base}${post.canonicalPath}`, url: `${base}${post.canonicalPath}`, isPartOf: { "@id": entityIds.website } },
   articleSection: post.category,
   keywords: post.tags.join(", "),
   proficiencyLevel: post.readingLevel,
@@ -75,13 +76,11 @@ const breadcrumbSchema = {
   ],
 };
 const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) };
-const json = (value: object) => JSON.stringify(value).replace(/</g, "\\u003c");
-
 export default function AiSoftwareDevelopmentGuide() {
   return <><SiteHeader light /><main className="article-page">
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json(articleSchema) }} />
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json(breadcrumbSchema) }} />
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json(faqSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(articleSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(faqSchema) }} />
     <header className="article-hero"><div className="shell article-hero-inner">
       <nav className="article-breadcrumb" aria-label="Breadcrumb"><Link href="/">NexisHub</Link><span>/</span><Link href="/blog">Blog</Link><span>/</span><span>AI Software Development</span></nav>
       <p className="eyebrow"><span /> Cluster A · Pillar guide</p>

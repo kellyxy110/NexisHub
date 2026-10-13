@@ -8,10 +8,10 @@ import { Arrow, SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { dynamicGuidePosts, getPost } from "@/lib/posts";
 import { siteNexisLinks } from "@/lib/site-links";
 import { getVisibilityGuide } from "@/lib/visibility-content";
+import { entityIds, jsonLd } from "@/lib/structured-data";
 
 const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://nexishub.vercel.app";
 const aiDevelopmentPath = "/blog/complete-guide-ai-software-development";
-const json = (value: object) => JSON.stringify(value).replace(/</g, "\\u003c");
 const dateLabel = (value: string) => new Intl.DateTimeFormat("en", { dateStyle: "long", timeZone: "UTC" }).format(new Date(`${value}T00:00:00Z`));
 
 export const dynamicParams = false;
@@ -74,8 +74,8 @@ export default async function VisibilityArticlePage({ params }: { params: Promis
   const articleSchema = {
     "@context": "https://schema.org", "@type": "TechArticle", headline: post.title, description: post.description,
     image: `${base}${post.featuredImage}`, datePublished: post.publishedDate, dateModified: post.updatedDate,
-    author: { "@type": "Organization", name: post.author, url: base }, publisher: { "@type": "Organization", name: "NexisHub", url: base },
-    mainEntityOfPage: `${base}${post.canonicalPath}`, articleSection: post.category, keywords: post.tags.join(", "), proficiencyLevel: post.readingLevel,
+    author: { "@type": "Organization", "@id": entityIds.editorial, name: post.author, url: `${base}/blog` }, publisher: { "@id": entityIds.organization },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${base}${post.canonicalPath}`, url: `${base}${post.canonicalPath}`, isPartOf: { "@id": entityIds.website } }, articleSection: post.category, keywords: post.tags.join(", "), proficiencyLevel: post.readingLevel,
   };
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: base },
@@ -85,9 +85,9 @@ export default async function VisibilityArticlePage({ params }: { params: Promis
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: guide.faq.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) };
 
   return <><AdSenseLoader /><SiteHeader light /><main className="article-page">
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json(articleSchema) }} />
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json(breadcrumbSchema) }} />
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json(faqSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(articleSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(faqSchema) }} />
     <header className="article-hero"><div className="shell article-hero-inner">
       <nav className="article-breadcrumb" aria-label="Breadcrumb"><Link href="/">NexisHub</Link><span>/</span><Link href="/blog">Blog</Link><span>/</span><span>{post.category}</span></nav>
       <p className="eyebrow"><span /> Cluster {post.cluster} · {slug === "complete-guide-ai-visibility" ? "Pillar guide" : "Field guide"}</p>
