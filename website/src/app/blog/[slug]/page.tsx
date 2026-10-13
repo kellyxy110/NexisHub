@@ -9,6 +9,7 @@ import { dynamicGuidePosts, getPost } from "@/lib/posts";
 import { siteNexisLinks } from "@/lib/site-links";
 import { getVisibilityGuide } from "@/lib/visibility-content";
 import { entityIds, jsonLd } from "@/lib/structured-data";
+import { getArticleEditorialBoundary } from "@/lib/article-boundaries";
 
 const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://nexishub.vercel.app";
 const aiDevelopmentPath = "/blog/complete-guide-ai-software-development";
@@ -44,6 +45,7 @@ export default async function VisibilityArticlePage({ params }: { params: Promis
   const post = getPost(slug);
   const guide = getVisibilityGuide(slug);
   if (!post || !dynamicGuidePosts.some((item) => item.slug === post.slug) || !guide) notFound();
+  const editorialBoundary = getArticleEditorialBoundary(post.category);
 
   const related = (post.relatedSlugs ?? []).map(getPost).filter((item) => item !== undefined);
   const isEducation = post.cluster === "F";
@@ -102,7 +104,7 @@ export default async function VisibilityArticlePage({ params }: { params: Promis
         <p className="article-lead">{guide.lead}</p>
         <p>{isEducation ? <>This guide is part of the NexisHub education technology series. For the engineering discipline behind useful AI products, start with the <Link href={aiDevelopmentPath}>complete guide to AI software development</Link>.</> : isEditorial ? <>This guide is part of the NexisHub {post.category} desk. It connects practical engineering, research, and product decisions to the wider NexisHub platform.</> : <>This guide is part of the <Link href="/blog/complete-guide-ai-visibility">NexisHub AI visibility pillar</Link>. For the systems behind retrieval and generation, start with the <Link href={aiDevelopmentPath}>complete guide to AI software development</Link>.</>}</p>
 
-        <section id="overview"><h2>The operating idea</h2>{guide.overview.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<div className="article-callout"><strong>Editorial boundary</strong><p>NexisHub separates verified platform documentation, repeatable observation, and inference. No optimization can guarantee selection or citation by an external system.</p></div>{guide.deepDive?.map((section) => <div className="article-deep-dive" key={section.title}><h3>{section.title}</h3>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>)}</section>
+        <section id="overview"><h2>The operating idea</h2>{guide.overview.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<div className="article-callout"><strong>{editorialBoundary.label}</strong><p>{editorialBoundary.text}</p></div>{guide.deepDive?.map((section) => <div className="article-deep-dive" key={section.title}><h3>{section.title}</h3>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>)}</section>
 
         <section id="principles"><h2>Core principles</h2><ol className="article-steps">{guide.principles.map((point) => <li key={point.title}><b>{point.title}</b><span>{point.detail}</span></li>)}</ol></section>
 

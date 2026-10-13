@@ -3,6 +3,7 @@ import { test } from "node:test";
 import { editorialPosts } from "@/lib/editorial-catalog";
 import { getPost } from "@/lib/posts";
 import { getVisibilityGuide } from "@/lib/visibility-content";
+import { getArticleEditorialBoundary } from "@/lib/article-boundaries";
 
 const pilotSlugs = [
   "designing-fast-websites",
@@ -180,4 +181,17 @@ test("healthcare reading-time metadata matches rendered guide length", () => {
   for (const [slug, readingTime] of expected) {
     assert.equal(editorialPosts.find((post) => post.slug === slug)?.readingTime, readingTime);
   }
+});
+
+test("rendered article boundaries follow category", () => {
+  const healthcare = getArticleEditorialBoundary("Healthcare AI");
+  assert.equal(healthcare.label, "Healthcare educational boundary");
+  assert.match(healthcare.text, /not medical advice/);
+  assert.match(healthcare.text, /clinical validation/);
+  assert.match(healthcare.text, /Qualified clinical, privacy, legal, and regulatory review/);
+  assert.doesNotMatch(healthcare.text, /selection or citation by an external system/);
+
+  const visibility = getArticleEditorialBoundary("AI Visibility");
+  assert.equal(visibility.label, "Editorial boundary");
+  assert.match(visibility.text, /selection or citation by an external system/);
 });
