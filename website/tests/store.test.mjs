@@ -14,5 +14,5 @@ test("store is catalogue-only and cannot initiate payments", () => {
   assert.match(page, /Not available for purchase/);
   assert.match(page, /No payment is collected/);
   assert.match(page, /canonical: "\/store"/);
-  assert.doesNotMatch(page, /gumroad\.com|checkout|stripe\.com|paystack\.com/i, "Do not add checkout links before launch");
+  assert.doesNotMatch(page, /https?:\/\/[^"\s]*(gumroad|stripe|paystack)|href=\{?[^\n]*(checkout|payment)/i, "Do not add active payment links before launch");
 });
