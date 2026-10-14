@@ -82,7 +82,7 @@ export default function ProductsPage() {
         <section className="ecosystem-cta">
           <div className="shell ecosystem-cta-inner">
             <div><p className="kicker">Start with a flagship</p><h2>Explore the products shaping the NexisHub ecosystem.</h2></div>
-            <div><p>SiteNexis and Pnyx are flagship products built on the NexisHub foundation.</p><Link className="button" href="/products/sitenexis" data-analytics="products-explore-sitenexis">Explore SiteNexis <Arrow /></Link></div>
+            <div><p>SiteNexis and Pnyx are flagship products built on the NexisHub foundation.</p><Link className="button" href="/products/sitenexis" data-analytics="products-explore-sitenexis">Explore SiteNexis <Arrow /></Link><Link className="button button--ghost" href="/products/pnyx" data-analytics="products-view-pnyx-profile">Read the Pnyx profile <Arrow /></Link></div>
           </div>
         </section>
       </main>
