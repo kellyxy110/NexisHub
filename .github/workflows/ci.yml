@@ -1,3 +1,4 @@
+
 name: Website checks
 
 on:
@@ -5,9 +6,13 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
   verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     defaults:
       run:
         working-directory: website
@@ -19,6 +24,7 @@ jobs:
           cache: npm
           cache-dependency-path: website/package-lock.json
       - run: npm ci
+      - run: npm run prisma:generate
       - run: npm run typecheck
       - run: npm run lint
       - run: npm test

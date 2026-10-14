@@ -1,21 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-const consentKey = "nexishub-analytics-consent";
+import { analyticsConsentKey, isAnalyticsAllowed } from "@/lib/consent-policy";
 
 export function PrivacyControls() {
   const [open, setOpen] = useState(false);
-  useEffect(() => { const timer = window.setTimeout(() => setOpen(localStorage.getItem(consentKey) === null), 0); const show = () => setOpen(true); window.addEventListener("nexishub:privacy", show); return () => { window.clearTimeout(timer); window.removeEventListener("nexishub:privacy", show); }; }, []);
-  function choose(value: "allow" | "reject") { localStorage.setItem(consentKey, value); window.dispatchEvent(new CustomEvent("nexishub:consent", { detail: value })); setOpen(false); }
+  useEffect(() => { const timer = window.setTimeout(() => setOpen(localStorage.getItem(analyticsConsentKey) === null), 0); const show = () => setOpen(true); window.addEventListener("nexishub:privacy", show); return () => { window.clearTimeout(timer); window.removeEventListener("nexishub:privacy", show); }; }, []);
+  function choose(value: "allow" | "reject") { localStorage.setItem(analyticsConsentKey, value); window.dispatchEvent(new CustomEvent("nexishub:consent", { detail: value })); setOpen(false); }
   if (!open) return null;
-  return <aside className="privacy-banner" aria-label="Privacy choices"><div><strong>Your privacy, clearly handled.</strong><p>Essential storage remembers this choice. Optional analytics helps us understand page and CTA usage. Where applicable, Google Privacy &amp; Messaging handles separate advertising choices.</p></div><div><button onClick={() => choose("reject")}>Essential only</button><button className="privacy-allow" onClick={() => choose("allow")}>Allow analytics</button></div></aside>;
+  return <aside className="privacy-banner" aria-label="Privacy choices"><div><strong>Your privacy, clearly handled.</strong><p>Essential storage remembers this choice. Optional analytics helps us understand page and CTA usage. Google Privacy &amp; Messaging separately handles Google advertising consent where applicable; this choice does not grant or deny it.</p></div><div><button onClick={() => choose("reject")}>Essential only</button><button className="privacy-allow" onClick={() => choose("allow")}>Allow analytics</button></div></aside>;
 }
 
 export function AnalyticsTracker() {
   useEffect(() => {
     const sentDepths = new Set<number>();
-    const allowed = () => localStorage.getItem(consentKey) === "allow";
+    const allowed = () => isAnalyticsAllowed(localStorage.getItem(analyticsConsentKey));
     const send = (name: string, properties: Record<string, string | number> = {}) => { if (!allowed()) return; navigator.sendBeacon?.("/api/events", new Blob([JSON.stringify({ name, path: location.pathname, properties })], { type: "application/json" })); };
     const click = (event: MouseEvent) => { const target = (event.target as HTMLElement).closest<HTMLElement>("[data-analytics]"); if (target?.dataset.analytics) send("cta_click", { id: target.dataset.analytics }); };
     const seenProducts = new Set<string>();
@@ -28,3 +27,13 @@ export function AnalyticsTracker() {
 }
 
 export function PrivacyButton() { return <button className="privacy-button" onClick={() => window.dispatchEvent(new Event("nexishub:privacy"))}>Cookie choices</button>; }
+
+type GoogleFc = { callbackQueue?: Array<() => void>; showRevocationMessage?: () => void };
+
+export function GooglePrivacyButton() {
+  function openGoogleChoices() {
+    const googlefc = (window as Window & { googlefc?: GoogleFc }).googlefc;
+    if (googlefc?.callbackQueue && googlefc.showRevocationMessage) googlefc.callbackQueue.push(googlefc.showRevocationMessage);
+  }
+  return <button className="privacy-button" onClick={openGoogleChoices}>Google privacy choices</button>;
+}

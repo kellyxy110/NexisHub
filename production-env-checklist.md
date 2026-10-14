@@ -8,7 +8,7 @@ Add these as encrypted Vercel Production variables. Do not commit values.
 - `AUTH_SECRET` — generated random Auth.js secret
 - `NEXTAUTH_URL` — `https://nexishub.vercel.app`
 - `AUTH_EMAIL_FROM` — verified sender address
-- `RESEND_API_KEY` — Resend API key
+- `BREVO_API_KEY` — Brevo transactional email API key
 - `FOUNDER_EMAIL` — founder email to permit one-time bootstrap
 
 ## Readiness gates

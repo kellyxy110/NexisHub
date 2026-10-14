@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { siteNexisLinks } from "@/lib/site-links";
 import { NewsletterForm } from "@/components/newsletter-form";
-import { PrivacyButton } from "@/components/privacy-controls";
+import { GooglePrivacyButton, PrivacyButton } from "@/components/privacy-controls";
 
 export function Mark({ small = false }: { small?: boolean }) {
   return <span className={small ? "mark mark--small" : "mark"} aria-hidden="true"><svg viewBox="0 0 64 64"><defs><linearGradient id="nexis-gradient" x1="7" y1="7" x2="57" y2="57"><stop stopColor="#9b2cff"/><stop offset=".48" stopColor="#4c63ff"/><stop offset="1" stopColor="#00d9e8"/></linearGradient></defs><path d="M32 17v-8M45 24l8-5M45 40l8 5M32 47v8M19 40l-8 5M19 24l-8-5M32 17l13 7v16l-13 7-13-7V24z" fill="none" stroke="url(#nexis-gradient)" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="32" cy="7" r="5" fill="#a42cff"/><circle cx="55" cy="18" r="5" fill="#6472ff"/><circle cx="55" cy="46" r="5" fill="#00d9e8"/><circle cx="32" cy="57" r="5" fill="#159cf2"/><circle cx="9" cy="46" r="5" fill="#6541ff"/><circle cx="9" cy="18" r="5" fill="#902cff"/></svg></span>;
@@ -42,7 +42,7 @@ export function SiteFooter() {
         </div>
         <NewsletterForm />
       </div>
-      <div className="shell footer-bottom"><span>© 2026 NexisHub. All rights reserved.</span><div><Link href="/legal/privacy">Privacy</Link><Link href="/legal/terms">Terms</Link><Link href="/legal/cookies">Cookies</Link><PrivacyButton /></div></div>
+      <div className="shell footer-bottom"><span>© 2026 NexisHub. All rights reserved.</span><div><Link href="/legal/privacy">Privacy</Link><Link href="/legal/terms">Terms</Link><Link href="/legal/cookies">Cookies</Link><PrivacyButton /><GooglePrivacyButton /></div></div>
     </footer>
   );
 }

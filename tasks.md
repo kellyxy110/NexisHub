@@ -44,7 +44,7 @@ This is the canonical register. Historical status fragments remain in `decisions
 
 ## External founder or professional actions
 
-- [ ] Configure a verified Resend sender for `AUTH_EMAIL_FROM` and explicitly enable authentication email delivery
+- [ ] Configure a verified Brevo sender for `AUTH_EMAIL_FROM` and explicitly enable authentication email delivery
 - [ ] Request and click the real founder sign-in link for `kellyxy110@gmail.com`
 - [ ] Record founder verification and enable only founder-safe feature flags in Vercel
 - [ ] Obtain qualified legal review for Terms, Privacy, Cookies, NRI, and Studio documents

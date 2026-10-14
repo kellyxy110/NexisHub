@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Arrow, SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { siteNexisLinks } from "@/lib/site-links";
+import { entityIds, jsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "SiteNexis — AI Retrieval & Machine Trust Intelligence",
@@ -50,18 +51,20 @@ export default function SiteNexisPage() {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
+    "@id": "https://nexishub.vercel.app/products/sitenexis#product",
     name: "SiteNexis",
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
     description: "AI Retrieval and Machine Trust Intelligence platform.",
     url: siteNexisLinks.home,
+    creator: { "@id": entityIds.organization },
     brand: { "@type": "Brand", name: "NexisHub" },
     offers: pricing.map((plan) => ({ "@type": "Offer", name: plan.name, price: plan.price.replace("$", ""), priceCurrency: "USD" })),
   };
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(productSchema) }} />
       <SiteHeader />
       <main className="sn-page">
         <section className="sn-hero">

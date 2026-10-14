@@ -9,11 +9,12 @@ export function StudioEnquiryForm() {
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!enabled) return;
+    const form = event.currentTarget;
     setState("sending");
     try {
-      const form = new FormData(event.currentTarget);
-      const response = await fetch("/api/contact", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(Object.fromEntries(form)) });
-      if (response.ok) { event.currentTarget.reset(); setState("sent"); } else setState("error");
+      const formData = new FormData(form);
+      const response = await fetch("/api/contact", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(Object.fromEntries(formData)) });
+      if (response.ok) { form.reset(); setState("sent"); } else setState("error");
     } catch { setState("error"); }
   }
 

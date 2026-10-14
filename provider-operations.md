@@ -7,7 +7,7 @@
 - Supabase Storage through a server-only client boundary
 - Vercel deployment and encrypted environment variables
 - Sentry server/edge initialization, enabled only when a DSN is configured
-- Resend authentication email delivery, disabled by default
+- Brevo authentication email delivery, disabled by default
 - PostgreSQL audit persistence through Prisma
 
 ## Credential boundary
@@ -16,4 +16,4 @@ The supplied `db.prisma.io` URL is a Prisma Postgres credential, not a Supabase 
 
 ## Current readiness
 
-Code boundaries are implemented. Auth.js can only verify users after `DATABASE_URL`, `AUTH_EMAIL_FROM`, and an explicitly enabled Resend sender are configured. Supabase Storage and Sentry remain inactive until their server-only values are configured. Production email invitations and research-sensitive modules remain disabled.
+Code boundaries are implemented. Auth.js can only verify users after `DATABASE_URL`, `AUTH_EMAIL_FROM`, `BREVO_API_KEY`, and explicitly enabled authentication email delivery are configured. Supabase Storage and Sentry remain inactive until their server-only values are configured. Production email invitations and research-sensitive modules remain disabled.

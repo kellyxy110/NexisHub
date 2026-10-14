@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { buildFormWebhookRequest } from "../../../lib/form-webhook";
 
 type ContactPayload = { name?: string; email?: string; topic?: string; message?: string; companyWebsite?: string; company?: string; companyWebsiteUrl?: string; studioService?: string; timeline?: string; riskContext?: string };
 
@@ -18,7 +19,10 @@ export async function POST(request: Request) {
   if (!name || name.length > 100 || !email || !/^\S+@\S+\.\S+$/.test(email) || email.length > 200 || !message || message.length < 10 || message.length > 3000 || (!isStudio && !topics.has(payload.topic ?? "general")) || (isStudio && (!company || company.length > 150 || !studioServices.has(payload.studioService ?? "") || !timelines.has(payload.timeline ?? "") || (companyWebsiteUrl && companyWebsiteUrl.length > 300) || (riskContext && riskContext.length > 1200)))) return NextResponse.json({ error: "Invalid submission" }, { status: 400 });
   const endpoint = process.env.FORM_WEBHOOK_URL;
   if (!endpoint) return NextResponse.json({ error: "Form delivery is not configured" }, { status: 503 });
-  const response = await fetch(endpoint, { method: "POST", headers: { "content-type": "application/json", authorization: process.env.FORM_WEBHOOK_TOKEN ? `Bearer ${process.env.FORM_WEBHOOK_TOKEN}` : "" }, body: JSON.stringify({ kind: isStudio ? "studio_enquiry" : "contact", submittedAt: new Date().toISOString(), name, email, topic: payload.topic ?? "general", message, company, companyWebsiteUrl, studioService: payload.studioService, timeline: payload.timeline, riskContext }) });
+  const submissionId = crypto.randomUUID();
+  const webhookRequest = buildFormWebhookRequest({ submission_id: submissionId, kind: isStudio ? "studio_enquiry" : "contact", submittedAt: new Date().toISOString(), name, email, topic: payload.topic ?? "general", message, company, companyWebsiteUrl, studioService: payload.studioService, timeline: payload.timeline, riskContext });
+  if (!webhookRequest) return NextResponse.json({ error: "Form delivery is not configured" }, { status: 503 });
+  const response = await fetch(endpoint, webhookRequest);
   if (!response.ok) return NextResponse.json({ error: "Delivery failed" }, { status: 502 });
   return NextResponse.json({ ok: true });
 }

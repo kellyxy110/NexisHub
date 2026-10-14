@@ -71,7 +71,7 @@ The repository now includes a report-only editorial link monitor at `website/scr
 
 ### Administration infrastructure status
 
-The repository now includes a staged Auth.js, Prisma, Supabase PostgreSQL, Vercel, Sentry, Resend, and audit-persistence foundation. Database migration and smoke verification passed through Supavisor. Founder-safe administration remains gated until a real Auth.js founder session and security evidence are verified; sensitive research and operational modules remain independently disabled.
+The repository now includes a staged Auth.js, Prisma, Supabase PostgreSQL, Vercel, Sentry, Brevo, and audit-persistence foundation. Database migration and smoke verification passed through Supavisor. Founder-safe administration remains gated until a real Auth.js founder session and security evidence are verified; sensitive research and operational modules remain independently disabled.
 
 ### Administration store
 
@@ -95,7 +95,7 @@ The repository now has the requested staged feature-flag vocabulary and a fail-c
 
 ### Selected administration stack
 
-The repository now implements the approved Auth.js + Supabase PostgreSQL + Prisma + Supabase Storage + Vercel + Sentry + Resend stack. Auth.js and Prisma routes are present, the initial migration is generated and validated, and Resend sending remains disabled. Production database migration and founder bootstrap require Supabase credentials and Vercel configuration.
+The repository now implements the approved Auth.js + Supabase PostgreSQL + Prisma + Supabase Storage + Vercel + Sentry + Brevo stack. Auth.js and Prisma routes are present, the initial migration is generated and validated, and Brevo sending remains disabled. Production database migration and founder bootstrap require Supabase credentials and Vercel configuration.
 
 ### Supabase migration status
 
