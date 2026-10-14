@@ -246,7 +246,7 @@ A provider-neutral server-side authorization primitive now denies access when th
 
 **Status:** Implemented in code; production configuration pending
 
-Use Auth.js with passwordless email verification, Supabase PostgreSQL through Prisma 7 and the PostgreSQL adapter, Supabase Storage, Vercel encrypted environment variables, Sentry, Resend with sending disabled, and PostgreSQL audit persistence. Do not introduce a second authentication or database system.
+Use Auth.js with passwordless email verification, Supabase PostgreSQL through Prisma 7 and the PostgreSQL adapter, Supabase Storage, Vercel encrypted environment variables, Sentry, Brevo with sending disabled, and PostgreSQL audit persistence. Do not introduce a second authentication or database system.
 
 The supplied `db.prisma.io` credential is Prisma Postgres, not Supabase, and was deliberately not stored or used under the Supabase `DATABASE_URL` contract. A Supabase project connection string remains required.
 
@@ -267,7 +267,7 @@ Use Supavisor Session Pooler `aws-0-eu-central-1.pooler.supabase.com:5432` for P
 
 **Status:** Pending external configuration and founder sign-in
 
-The Supavisor migration, Prisma smoke test, TypeScript check, ESLint check, and READY Vercel deployment were verified. A founder session has not been claimed because Auth.js email delivery remains disabled and `AUTH_EMAIL_FROM` has not been configured with a verified Resend sender. The repository will not mark the founder verified, assign the founder role through the web flow, or enable founder-safe administration until the founder receives and clicks a real sign-in link and completes `/admin/bootstrap`.
+The Supavisor migration, Prisma smoke test, TypeScript check, ESLint check, and READY Vercel deployment were verified. A founder session has not been claimed because Auth.js email delivery remains disabled and `AUTH_EMAIL_FROM` has not been configured with a verified Brevo sender. The repository will not mark the founder verified, assign the founder role through the web flow, or enable founder-safe administration until the founder receives and clicks a real sign-in link and completes `/admin/bootstrap`.
 
 The database password remains outside source control. No password rotation is performed by this decision.
 

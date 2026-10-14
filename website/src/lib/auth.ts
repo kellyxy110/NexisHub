@@ -1,7 +1,13 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import type { NextAuthOptions } from "next-auth";
 import EmailProvider from "next-auth/providers/email";
+import { sendBrevoVerificationEmail } from "@/lib/brevo-email";
 import { getPrisma } from "@/lib/prisma";
+
+export async function sendAuthVerificationRequest({ identifier, url }: { identifier: string; url: string }) {
+  if (process.env.AUTH_EMAIL_ENABLED !== "true") throw new Error("Authentication email is disabled.");
+  await sendBrevoVerificationEmail({ from: process.env.AUTH_EMAIL_FROM ?? "", to: identifier, url });
+}
 
 export const authOptions: NextAuthOptions = {
   ...((process.env.DATABASE_URL || process.env.PRISMA_DATABASE_URL) ? { adapter: PrismaAdapter(getPrisma()) } : {}),
@@ -10,16 +16,9 @@ export const authOptions: NextAuthOptions = {
   providers: [
     EmailProvider({
       from: process.env.AUTH_EMAIL_FROM,
-      server: process.env.RESEND_API_KEY,
+      server: { host: "localhost", port: 25 },
       maxAge: 10 * 60,
-      async sendVerificationRequest({ identifier, url }) {
-        if (process.env.AUTH_EMAIL_ENABLED !== "true") throw new Error("Authentication email is disabled.");
-        if (!process.env.RESEND_API_KEY || !process.env.AUTH_EMAIL_FROM) throw new Error("Authentication email is not configured.");
-        const { Resend } = await import("resend");
-        const resend = new Resend(process.env.RESEND_API_KEY);
-        const result = await resend.emails.send({ from: process.env.AUTH_EMAIL_FROM, to: identifier, subject: "Your NexisHub sign-in link", html: `<p>Use this secure link to sign in to NexisHub administration:</p><p><a href="${url}">Sign in to NexisHub</a></p><p>This link expires in ten minutes.</p>` });
-        if (result.error) throw new Error("Authentication email delivery failed.");
-      },
+      sendVerificationRequest: sendAuthVerificationRequest,
     }),
   ],
   callbacks: {

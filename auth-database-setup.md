@@ -2,7 +2,7 @@
 
 ## Authentication
 
-Auth.js is implemented through the existing Next.js App Router at `/api/auth/[...nextauth]`. It uses passwordless email verification and the Prisma adapter. Resend delivery is intentionally disabled until `AUTH_EMAIL_ENABLED=true` is explicitly configured.
+Auth.js is implemented through the existing Next.js App Router at `/api/auth/[...nextauth]`. It uses passwordless email verification and the Prisma adapter. Brevo delivery is intentionally disabled until `AUTH_EMAIL_ENABLED=true` is explicitly configured.
 
 ## Database
 
