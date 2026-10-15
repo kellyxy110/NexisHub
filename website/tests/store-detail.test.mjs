@@ -26,9 +26,12 @@ test("detail routes are non-transactional and openly disclose planning status", 
   assert.doesNotMatch(detail, /href=["'`][^"'`]*(?:gumroad|checkout|stripe|paystack)/i);
 });
 
-test("store routes are included in sitemap", () => {
+test("unavailable resources are excluded from public discovery while in prelaunch", () => {
   assert.ok(existsSync("src/app/store/[slug]/page.tsx"));
   const sitemap = readFileSync("src/app/sitemap.ts", "utf8");
-  assert.match(sitemap, /plannedStoreResources/);
-  assert.match(sitemap, /\/store/);
+  const index = readFileSync("src/app/store/page.tsx", "utf8");
+  const detail = readFileSync("src/app/store/[slug]/page.tsx", "utf8");
+  assert.doesNotMatch(sitemap, /plannedStoreResources|\/store/);
+  assert.match(index, /robots: \{ index: false, follow: true \}/);
+  assert.match(detail, /robots: \{ index: false, follow: true \}/);
 });
