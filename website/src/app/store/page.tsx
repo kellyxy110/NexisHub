@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Store | NexisHub",
   description: "Discover the upcoming NexisHub digital resources and toolkits. Checkout is not yet available.",
   alternates: { canonical: "/store" },
+  robots: { index: false, follow: true },
 };
 
 export default function StorePage() {
