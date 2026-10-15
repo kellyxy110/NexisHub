@@ -21,3 +21,22 @@
 .closing a { margin-top: 18px; background: #fff; border-color: #fff; color: #111; }
 @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } .card { min-height: 285px; } .category { margin-top: 28px; } }
 @media (max-width: 600px) { .hero { padding: 145px 0 75px; } .catalogue { padding: 70px 0; } .card { padding: 24px; } }
+
+.detailsLink { margin-top: 15px; display: inline-block; align-self: flex-start; font-size: 13px; font-weight: 700; color: #263b9e; text-decoration: underline; text-underline-offset: 4px; }
+.detailsLink:hover, .backLink:hover, .breadcrumb a:hover { text-decoration-thickness: 2px; }
+.detailsLink:focus-visible, .backLink:focus-visible, .breadcrumb a:focus-visible { outline: 3px solid #415af2; outline-offset: 4px; border-radius: 2px; }
+.detailHero { padding: clamp(155px, 15vw, 215px) 0 85px; background: #f5f6fa; }
+.detailHero h1 { max-width: 900px; font-size: clamp(44px, 6vw, 82px); line-height: 1.03; letter-spacing: -.055em; }
+.breadcrumb { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: 13px; color: #59616d; margin-bottom: 58px; }
+.breadcrumb a { text-decoration: underline; text-underline-offset: 3px; }
+.detailBody { padding: 100px 0 115px; }
+.detailGrid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr); gap: clamp(35px, 7vw, 120px); }
+.detailGrid h2 { font-size: clamp(29px, 3.4vw, 43px); line-height: 1.12; letter-spacing: -.045em; }
+.detailGrid p, .detailGrid li { line-height: 1.75; color: #555d69; }
+.detailAside { background: #f7f8fa; border: 1px solid #e4e6ec; padding: clamp(25px, 4vw, 40px); border-radius: 18px; }
+.detailAside h2 { font-size: 21px; margin: 0 0 12px; }
+.detailAside h2:not(:first-child) { margin-top: 28px; }
+.detailAside ul { padding-left: 20px; }
+.detailAside li { margin-bottom: 7px; }
+.backLink { display: inline-block; font-weight: 700; margin-top: 52px; text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 760px) { .detailGrid { grid-template-columns: 1fr; } .detailHero { padding: 145px 0 75px; } .breadcrumb { margin-bottom: 34px; } .detailBody { padding: 65px 0 80px; } }
