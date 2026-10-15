@@ -20,6 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: resource.title,
     description: resource.summary,
+    robots: { index: false, follow: true },
     alternates: { canonical: `/store/${resource.slug}` },
   };
 }
