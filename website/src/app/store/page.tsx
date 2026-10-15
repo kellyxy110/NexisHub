@@ -2,30 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import styles from "./store.module.css";
+import { plannedStoreResources } from "@/lib/store-catalog";
 
 export const metadata: Metadata = {
   title: "Store | NexisHub",
   description: "Discover the upcoming NexisHub digital resources and toolkits. Checkout is not yet available.",
   alternates: { canonical: "/store" },
 };
-
-const plannedResources = [
-  {
-    title: "AI Visibility Toolkit",
-    category: "Search intelligence",
-    description: "A practical collection of checklists and worksheets for reviewing how a website communicates with search engines and AI systems.",
-  },
-  {
-    title: "Product Discovery Workbook",
-    category: "Product engineering",
-    description: "A structured guide for defining a problem, validating assumptions, and preparing a focused software product brief.",
-  },
-  {
-    title: "Learning Design Templates",
-    category: "Education",
-    description: "Planned templates for turning lessons into exploration, practice, assessment, and revision activities.",
-  },
-] as const;
 
 export default function StorePage() {
   return (
@@ -49,13 +32,14 @@ export default function StorePage() {
               <p>Descriptions are indicative. Contents, availability, pricing, and delivery providers will be confirmed before launch.</p>
             </div>
             <div className={styles.grid}>
-              {plannedResources.map((resource, index) => (
+              {plannedStoreResources.map((resource, index)) => (
                 <article className={styles.card} key={resource.title}>
                   <span className={styles.index}>0{index + 1} / Planned resource</span>
                   <p className={styles.category}>{resource.category}</p>
                   <h3>{resource.title}</h3>
-                  <p>{resource.description}</p>
+                  <p>{resource.summary}</p>
                   <span className={styles.availability}>Not available for purchase</span>
+                  <Link className={styles.detailsLink} href={`/store/${resource.slug}`}>View planned resource →</Link>
                 </article>
               ))}
             </div>
