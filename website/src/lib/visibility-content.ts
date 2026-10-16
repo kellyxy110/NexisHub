@@ -1,3 +1,4 @@
+import { releaseEditorialGuides } from "@/lib/release-editorial-2026-10";
 import { additionalVisibilityGuides } from "@/lib/additional-guides";
 import { editorialGuides } from "@/lib/editorial-catalog";
 
@@ -715,6 +716,6 @@ const expandShortGuide = (guide: VisibilityGuide): VisibilityGuide => {
 };
 
 export function getVisibilityGuide(slug: string) {
-  const guide = [...visibilityGuides, ...additionalVisibilityGuides, ...editorialGuides].find((item) => item.slug === slug);
+  const guide = [...visibilityGuides, ...additionalVisibilityGuides, ...editorialGuides, ...releaseEditorialGuides].find((item) => item.slug === slug);
   return guide ? expandShortGuide(guide) : undefined;
 }
