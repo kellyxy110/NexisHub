@@ -1,3 +1,4 @@
+import { releaseEditorialPosts } from "@/lib/release-editorial-2026-10";
 import { editorialPosts } from "@/lib/editorial-catalog";
 
 export type BlogPost = {
@@ -303,7 +304,7 @@ export const blogPosts: readonly BlogPost[] = [
   }),
 ] as const;
 
-export const allEditorialPosts: readonly BlogPost[] = [...blogPosts, ...editorialPosts];
+export const allEditorialPosts: readonly BlogPost[] = [...blogPosts, ...editorialPosts, ...releaseEditorialPosts];
 
 export const firstPost = allEditorialPosts[0];
 export const visibilityPosts = allEditorialPosts.filter((post) => post.cluster === "E");
