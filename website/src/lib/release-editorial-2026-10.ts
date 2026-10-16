@@ -163,6 +163,29 @@ export const releaseEditorialGuides: readonly VisibilityGuide[] = [
           "Output-file tracing determines which runtime dependencies are carried into server functions. In a monorepo, an override may be needed to include files outside the web application root. An unnecessary or incorrect override may also change paths relative to the packaging tool. Remove overrides only in an isolated test, then check whether any legitimate parent-directory dependencies remain available.",
           "When a route reads files with process.cwd() and parent-directory joins, compile success will not show whether those files exist in the deployed function. Validate that route separately, or redesign the dependency as bundled, explicit content with a defined source of truth."
         ]
+      },
+      {
+        "title": "Field report: NexisHub's October 2026 deployment failure",
+        "paragraphs": [
+          "In an October 2026 NexisHub release investigation, a Next.js 16.2.10 Git-triggered build successfully compiled and generated its routes, yet failed at the later deployment-output step. The error was: ENOENT: no such file or directory, lstat '/vercel/path0/.next/package.json'. This is a case from the NexisHub repository and Vercel deployment logs, not a benchmark for all Next.js applications.",
+          "The investigation retained the failing commit and created an isolated Preview branch. A Linux-generated prebuilt Preview deployed successfully, indicating that the source could produce an operable artifact in at least one path. Changing the remote build to Webpack alone produced a different error because the Prisma client had not been generated first. After adding `npm run prisma:generate`, the Webpack build compiled successfully but still failed with the original missing-file error during output deployment.",
+          "Next, the team removed `outputFileTracingRoot: process.cwd()` from next.config.ts only on the isolated branch while retaining the Prisma generation and Webpack command. A Git-triggered Preview reached READY. That result implicated the tracing override in this specific configuration; it did not prove that Webpack was necessary or that every application should remove its tracing root."
+        ]
+      },
+      {
+        "title": "What we actually verified after the deploy",
+        "paragraphs": [
+          "An HTTP HEAD request to the protected Preview homepage returned 200 and `x-robots-tag: noindex`. Thirteen other public routes returned 200, including a blog article, Store, Research, Privacy, robots.txt, and sitemap.xml. The dynamically rendered `/llms.txt` endpoint also returned 200. Those checks proved endpoint responses and indexing safeguards, not every user interaction.",
+          "The administration route initially returned HTTP 500. Runtime logs identified `[next-auth][error][NO_SECRET]`; the Preview environment lacked AUTH_SECRET. An independently generated secret scoped to the diagnostic branch fixed initialization without reusing Production credentials or enabling email login. After redeployment `/admin` returned 307 with location `/admin/sign-in`, and `/admin/sign-in` returned 200. Database-backed admin operations remained outside the validation scope.",
+          "The release branch then passed CI with Prisma generation, TypeScript, linting, tests, and a Webpack build. The application reached READY on the production Git commit. This sequence shows why build, deployment, HTTP, authentication, and privileged workflows require separate evidence. An unresolved operations-copilot file dependency remained a distinct follow-up risk."
+        ]
+      },
+      {
+        "title": "Reproduce the diagnostic without repeating our changes blindly",
+        "paragraphs": [
+          "Start by recording the first failing stage and the last successful stage. Next, check whether generated Prisma artifacts exist before invoking a build, inspect relevant ignore rules, and compare the repository root against runtime process.cwd() assumptions. Use a Preview-only branch and a fixed commit when testing file-tracing changes.",
+          "Do not automatically put credentials, database URLs, or production-only flags into a Preview just to make routes respond. A 307 to a sign-in page is often the correct outcome for an unauthenticated admin request. A read-only HTTP check cannot replace actual authorization tests. Document what was verified and what was deliberately not exercised."
+        ]
       }
     ],
     "principles": [
@@ -275,6 +298,22 @@ export const releaseEditorialGuides: readonly VisibilityGuide[] = [
         "paragraphs": [
           "Create a test matrix for first visit, accept, reject, customize, navigate, refresh, reopen settings, withdraw consent and change device or browser. Capture requests to vendor endpoints, cookie/storage entries, event dispatches and persistence at each transition.",
           "Separate deployment environments. Preview analytics and ad tags should not silently generate production traffic, and consent controls must not create a backdoor to external tracking during automated tests."
+        ]
+      },
+      {
+        "title": "NexisHub code inspection: where consent currently lives",
+        "paragraphs": [
+          "In the reviewed NexisHub frontend, the first-party choice is stored under `nexishub-analytics-consent`. The `PrivacyControls` component offers Essential only and Allow analytics; the `AnalyticsTracker` checks for an `allow` value before sending page-view, CTA click, product interaction, or scroll-depth events to `/api/events`. The footer exposes a Cookie choices control that opens the banner again.",
+          "The `AdSenseLoader` checks the same first-party analytics preference before injecting Google's ads script into the document. The website's Cookie Policy separately explains that Google Privacy & Messaging is intended to handle advertising decisions where applicable. This means the code-level trigger and the advertising-consent workflow are not identical. Treat the design as an implementation requiring real-world verification, not as proof of regulatory compliance.",
+          "These statements are based on an inspection of the repository's `privacy-controls.tsx` and `adsense-loader.tsx`. They do not establish the state of third-party cookies, the actual Google CMP message in every region, or whether every vendor request obeys consent after withdrawal."
+        ]
+      },
+      {
+        "title": "Acceptance test matrix for a consent implementation",
+        "paragraphs": [
+          "Test with a clean browser profile and preserve network evidence. Before any choice, record calls to `/api/events`, the Google advertising loader, and third-party domains. Choose Essential only, move between a blog article and a research page, refresh, and confirm that optional analytics and advertising requests remain gated according to the intended policy. Reopen Cookie choices and repeat with Allow analytics; check precisely which requests start and which category granted permission.",
+          "Next, revisit Cookie choices and withdraw optional analytics. Confirm that no new first-party analytics events are sent after the change. Check whether the Google script was already loaded: a client-side check that prevents adding a new script does not necessarily remove an existing script or revoke a vendor's prior consent state. Advertising consent must also be tested within the actual Google CMP flow, independently of the first-party setting.",
+          "Repeat the test on mobile, with keyboard-only navigation, and in each geographic region covered by your policy obligations. Screenshots of a banner are insufficient: attach timestamps, request logs, cookie/storage records, and the exact policy version. Where the browser behavior contradicts the published privacy language, correct the implementation or disclosure before requesting an advertising review."
         ]
       }
     ],
@@ -389,6 +428,22 @@ export const releaseEditorialGuides: readonly VisibilityGuide[] = [
           "Facts change. A customer may prefer email this month and telephone next month. A product may move from prototype to released. Preserve effective dates and source timestamps, then label older statements as superseded rather than presenting both as current.",
           "A memory response should be explainable: which source supplied it, whether it came from a user, observation or model inference, and what access checks were applied. When evidence is incomplete, the system should say so."
         ]
+      },
+      {
+        "title": "Worked example: a user preference collides with a business record",
+        "paragraphs": [
+          "Imagine a learning platform stores an authoritative enrollment record in PostgreSQL. A conversation summary says that the learner prefers to study on weekends. The enrollment record determines course access; the preference helps propose a study schedule. The preference must never silently change payment status, enrollments, marks, permissions, or other authoritative states. This is an illustrative design example, not a claim about an existing NexisHub customer.",
+          "A safe retrieval result includes the memory text, source type (user statement or model inference), capture time, scope, optional confidence, and a link to the authoritative record when one exists. If the learner later says that Saturday classes no longer work, the update should supersede the old preference while preserving the original record's audit history where justified.",
+          "An acceptance test asks the same question twice across two unrelated user accounts. The second account must receive no fragments, embeddings-derived summaries, or source links from the first account. This test should also cover caches, background jobs, exported reports, and vector search filters, not only the primary database query."
+        ]
+      },
+      {
+        "title": "A minimal permission-aware memory contract",
+        "paragraphs": [
+          "Define a memory envelope with subject ID, tenant ID, purpose, source reference, created and last-confirmed timestamps, expiration policy, data category, and whether the item is verified or inferred. Before retrieval, bind the request to the authenticated tenant. Before presentation, check that the user is permitted to see both the memory and its underlying source.",
+          "Use a write gate for high-consequence operations. A memory can suggest that a student is ready for the next mathematics topic, but only an approved assessment or teacher decision should update a formal mastery record. Similarly, a support summary can recommend an invoice follow-up but cannot mark an invoice paid. These controls reduce the chance that fluent text becomes an unearned source of truth.",
+          "Measure accuracy with contradiction tests, forgotten-data retrieval tests, and source-attribution coverage. A useful target is not simply more remembered facts: it is fewer repeated questions without an increase in stale, unauthorized, or fabricated context."
+        ]
       }
     ],
     "principles": [
@@ -501,6 +556,22 @@ export const releaseEditorialGuides: readonly VisibilityGuide[] = [
         "paragraphs": [
           "Before requesting an advertising review, verify substantive original content, accurate About and Contact information, understandable navigation and reachable legal disclosures. Check the exact review reason shown by the advertising provider; technical fixes do not automatically remove a content-quality decision.",
           "Keep maintenance evidence: accessibility findings, privacy-control journeys, uptime incidents, index coverage, editorial updates and owner decisions. This is a more defensible record than a green dashboard with no attached test cases."
+        ]
+      },
+      {
+        "title": "NexisHub acceptance evidence: ready is not a single status",
+        "paragraphs": [
+          "During NexisHub's October 2026 release, the Git-triggered Preview compiled successfully but initially could not publish its output. A later deployment reached READY and its static routes returned HTTP 200. Yet `/admin` still returned 500 until a Preview-only NextAuth signing secret was configured. After that change, the same unauthenticated route returned a safe 307 redirect. Each result belongs to a different acceptance layer.",
+          "A practical release record therefore contains at least four columns: the scope of the claim, test method, observed result, and remaining limitation. In the NexisHub example, 'homepage responds 200' was verified by an authenticated HEAD request. It did not verify mobile navigation, client-side interactions, database-backed administration, or a consent-withdrawal flow.",
+          "A fifth column records release identity. Use the commit SHA, hostname, environment, and time in every test report. NexisHub found that its AdSense-submitted hostname initially still pointed to an older Vercel deployment while another production alias showed new articles. The alias was later reassigned, and the submitted hostname's sitemap and new article routes were checked. This illustrates why a successful deploy and the correct public domain are separate concerns."
+        ]
+      },
+      {
+        "title": "An honest AdSense review gate",
+        "paragraphs": [
+          "In the NexisHub AdSense account, the stated reason for rejection was 'Low value content'. The response did not provide a numbered article count or a single technical error to fix. Publishing additional routes, passing CI, and serving ads.txt were necessary infrastructure facts but were not evidence that Google had accepted the site's editorial value.",
+          "A content reviewer should sample articles across topics and ask: does each page teach something specific from original work, provide a reproducible method, identify an intended reader, and link claims to appropriate evidence? Where dozens of articles repeat the same generic sections, reduce the repetition, improve the original analysis, or consider holding weaker pages out of the index pending editorial review.",
+          "Legal and privacy completeness remain independent blockers. NexisHub's reviewed legal pages were still explicitly labeled draft and disclosed pending entity, jurisdiction, retention, and legal-contact details. Those details require actual owner confirmation or qualified review rather than fabricated addresses or silently removed warnings. Only mark the internal review complete when these gates have been verified; AdSense approval remains Google's decision."
         ]
       }
     ],
