@@ -19,6 +19,14 @@ The four October 2026 guides have been expanded with NexisHub-specific, first-ha
 
 **Evidence boundaries:** internal deployment logs and observations are described as field notes, not statistically validated research, endorsement, third-party performance guarantees, or proof of legal compliance. Do not invent customers, revenue, traffic, reviews, corporate registrations, citations, or qualifications.
 
+## Confirmed low-value-content mechanism in the existing archive
+
+Repository inspection found `website/src/lib/editorial-catalog.ts` generating many published guides from a shared `seedRecords.map` template. Multiple distinct articles consequently begin with the near-identical sentence pattern: **"[Title] begins with a practical problem rather than a technology label."** Their overview, workflow, pitfalls, FAQ and measurement patterns are largely shared even when page titles differ.
+
+A small live sample on 2026-10-16 confirmed this wording in both `/blog/production-ai-infrastructure-components` and `/blog/designing-fast-websites`. The more substantive `/blog/complete-guide-ai-visibility` and `/blog/ai-in-education-practical-guide` did not start with that particular template wording. This is an evidence-backed editorial-quality concern, but we cannot attribute Google's decision solely to it.
+
+**Priority:** inventory every template-derived published page, assess each one's original examples and usefulness, then replace boilerplate with page-specific, original reporting or consolidate pages that do not merit distinct URLs. This should be done in reviewed batches, not by bulk rewriting a content model or indiscriminately marking everything noindex. The four October case-based articles are only an initial improvement; they do not cure repetition across the older archive.
+
 ## Remaining release and review blockers
 
 | Gate | Status | Required evidence before calling the AdSense remediation complete |
