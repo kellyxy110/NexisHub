@@ -74,7 +74,7 @@ const seeds = [
 
 const seedRecords: EditorialSeed[] = seeds.flatMap(([, categoryTitle, cluster, entries, reference]) => entries.map(([slug, title, keyword, description, audience, focus]) => ({ slug, title, category: categoryTitle, cluster, keyword, description, audience, focus, related: [], reference: { label: categoryTitle + " official reference", url: reference } })));
 
-const refreshedArchiveSlugs = new Set(["designing-fast-websites", "accessible-interfaces-without-javascript", "production-ai-infrastructure-components", "reliable-rag-systems", "modern-web-performance-core-metrics", "ai-observability-tracing"]);
+const refreshedArchiveSlugs = new Set(["designing-fast-websites", "accessible-interfaces-without-javascript", "production-ai-infrastructure-components", "reliable-rag-systems", "modern-web-performance-core-metrics", "ai-observability-tracing", "maintainable-frontend-systems", "secure-ai-application-deployment"]);
 
 const relatedByCategory = (seed: EditorialSeed) => seedRecords.filter((item) => item.category === seed.category && item.slug !== seed.slug).slice(0, 3).map((item) => item.slug);
 
