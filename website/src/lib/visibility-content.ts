@@ -718,5 +718,5 @@ const expandShortGuide = (guide: VisibilityGuide): VisibilityGuide => {
 
 export function getVisibilityGuide(slug: string) {
   const guide = [...archiveGuideUpgrades, ...visibilityGuides, ...additionalVisibilityGuides, ...editorialGuides, ...releaseEditorialGuides].find((item) => item.slug === slug);
-  return guide ? expandShortGuide(guide) : undefined;
+  return guide ? (archiveGuideUpgrades.some((item) => item.slug === slug) ? guide : expandShortGuide(guide)) : undefined;
 }
