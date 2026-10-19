@@ -12,6 +12,6 @@ export default function TermsPage() {
     <h2>5. External links</h2><p>Links to SiteNexis and other services lead to separately operated experiences. NexisHub is not responsible for unrelated third-party content or availability.</p>
     <h2>6. Availability and warranties</h2><p>The website is provided on an “as available” basis. Final warranty disclaimers and limitations must be adapted to the operator&apos;s verified jurisdiction by qualified legal counsel.</p>
     <h2>7. Liability</h2><p>Any limitation of liability is subject to applicable law. The operator&apos;s legal identity, governing law, dispute process, and enforceable liability language remain pending confirmation and review. No unverified statutory rights are waived by this draft.</p>
-    <h2>8. Contact</h2><p>Questions can be submitted through the NexisHub contact page. A reliable legal-notice and privacy-contact destination must be verified before these terms are finalized; visitors should not assume that a disabled form is a working legal-notice channel.</p>
+    <h2>8. Contact</h2><p>General and legal enquiries may be emailed to <a href="mailto:nexishub.company@gmail.com">nexishub.company@gmail.com</a>, the contact address supplied by the operator. Its suitability for formal legal notices, reliable delivery procedures, and a service address still need legal and operational review. The website contact form may be disabled.</p>
   </LegalDocument>;
 }
