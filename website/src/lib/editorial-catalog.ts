@@ -74,12 +74,14 @@ const seeds = [
 
 const seedRecords: EditorialSeed[] = seeds.flatMap(([, categoryTitle, cluster, entries, reference]) => entries.map(([slug, title, keyword, description, audience, focus]) => ({ slug, title, category: categoryTitle, cluster, keyword, description, audience, focus, related: [], reference: { label: categoryTitle + " official reference", url: reference } })));
 
+const refreshedArchiveSlugs = new Set(["designing-fast-websites", "accessible-interfaces-without-javascript", "production-ai-infrastructure-components", "reliable-rag-systems"]);
+
 const relatedByCategory = (seed: EditorialSeed) => seedRecords.filter((item) => item.category === seed.category && item.slug !== seed.slug).slice(0, 3).map((item) => item.slug);
 
 export const editorialPosts: readonly BlogPost[] = seedRecords.map((seed) => ({
   slug: seed.slug, title: seed.title, description: seed.description, targetKeyword: seed.keyword, category: seed.category,
   cluster: seed.cluster, difficulty: seed.category === "Research" || seed.category === "AI Infrastructure" ? "Advanced" : "Intermediate",
-  intent: "Informational", readingTime: "19 min read", author: "NexisHub Editorial", publishedDate: "2026-08-11", updatedDate: "2026-08-11",
+  intent: "Informational", readingTime: "19 min read", author: "NexisHub Editorial", publishedDate: "2026-08-11", updatedDate: refreshedArchiveSlugs.has(seed.slug) ? "2026-10-19" : "2026-08-11",
   tags: [seed.category, seed.keyword, "NexisHub Editorial"], featuredImage: `/blog/${seed.slug}/opengraph-image`, featuredImageAlt: `${seed.title}, a NexisHub editorial guide.`,
   seoTitle: seed.title, seoDescription: seed.description, canonicalPath: `/blog/${seed.slug}`, series: `${seed.category} desk`, readingLevel: "Technical practitioner", status: "Published",
   relatedSlugs: relatedByCategory(seed), siteNexisSource: seed.category === "AI Infrastructure" || seed.category === "Modern Web Engineering" ? "https://sitenexis.vercel.app/blog/complete-guide-to-ai-visibility" : undefined,
