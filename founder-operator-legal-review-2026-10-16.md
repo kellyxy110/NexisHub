@@ -7,7 +7,7 @@ Status: **Draft, unresolved items remain. Do not declare AdSense-ready or legall
 
 The owner confirms that NexisHub is still operated under a personal name, not a CAC-registered NexisHub company. Public About wording now describes NexisHub as a founder-operated technology brand. Privacy, Terms and Cookies avoid representing the brand as a separately registered Nigerian company.
 
-**Legal-name caveat:** The live About page already displayed the founder name as "Ekeleme David Kelechi"; the exact legal spelling and order has not yet been independently reconfirmed as the name for formal notices. Existing public profile presentation is not a substitute for a verified legal identity. Do not invent CAC registration, address, governing law or a legal contact.
+**Operator identity:** The founder has confirmed the name **Ekeleme Kelechi David** for public attribution. NexisHub remains a founder-operated brand and is not presented as a CAC-registered company. A verified legal-notice or privacy contact, jurisdictional disclosures, and professional legal review remain outstanding. Do not invent registration, an address, governing law or a contact channel.
 
 ## Source-reviewed consent state
 
