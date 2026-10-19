@@ -2,7 +2,7 @@
 
 Audit date: 2026-10-19
 Source: `website/src/lib/editorial-catalog.ts` seed records in repository.
-Review scope: 36 template-derived guides; 8 earlier unique revisions in `archive-guide-upgrades*.ts` and 4 additional unique rewrites on this release branch.
+Current repository scope (verified 2026-10-19): 36 template-derived guides; 12 topic-specific overrides already merged into `main`, with 24 remaining for individual quality review.
 
 **Classification is a work queue, not a quality verdict from Google.** A seed-derived page may still contain worthwhile guidance. No pages are deleted, redirected or given `noindex` in this phase.
 
@@ -53,12 +53,16 @@ The default generator produces introductory sentences, steps, frequently asked q
 
 For each page, record its primary visitor question, value that cannot be obtained from neighboring pages, original or worked examples, source validity, author qualification or reviewer, material-update date, and internal-link paths. Prioritize pages with high topical overlap and generic introductions. Hold individual pages for revision if they cannot be defended editorially. Consolidation requires a review of existing URLs, incoming links, canonical/redirect plans, and sitemap effects.
 
+## Reconciled founder identity and contact evidence (19 October 2026)
+
+The submitted hostname now publishes the operator name **Ekeleme Kelechi David** and the owner-supplied email **nexishub.company@gmail.com** on the Privacy, Terms and Contact pages. Vercel currently serves the latest Production deployment on `nexishub.vercel.app`. An email address being published does **not** confirm inbound delivery, retention, response handling, or suitability for formal legal notices.
+
 ## Privacy contact and consent gates
 
-The public Contact form is gated behind `NEXT_PUBLIC_FORMS_ENABLED` and presently describes delivery as being configured. Repository contact and footer components contain no independently verified public inbox for privacy requests. Do **not** publish the founder's personal address without their approval. An operational address needs owner confirmation, mailbox delivery test, documented handling/retention and updated legal disclosure.
+The public Contact form is gated behind `NEXT_PUBLIC_FORMS_ENABLED` and presently describes delivery as being configured. The owner-provided `nexishub.company@gmail.com` inbox is now published on Contact and legal pages, but delivery and privacy-rights response workflows have **not** been independently tested. Do not equate a visible email address with an operational or counsel-approved contact process.
 
 Browser walkthrough on 2026-10-19: Cookie choices opened on blog and article pages; Essential only and Allow analytics buttons both closed the panel and it could be reopened. The automated browser did not observe a banner appearing on the first visit. It could not directly inspect localStorage, DevTools network requests, vendor cookies, Google CMP regional messages, or revocation after an AdSense script had loaded. These require a clean-profile developer-tools audit. A navigation-only browser result is **not** consent compliance evidence.
 
 ## Release decision
 
-**Not AdSense resubmission-ready.** Await representative archive editorial quality review, working privacy-contact verification, network-level consent test and legal review. No invented owner details, policies or indexing changes have been applied.
+**Not AdSense resubmission-ready.** Await page-by-page review of the 24 remaining template-derived guides, verified inbound email handling, network-level consent/revocation tests, and formal legal review. Founder attribution and contact publication have progressed but do not close these gates. No invented owner details, policies or indexing changes have been applied.

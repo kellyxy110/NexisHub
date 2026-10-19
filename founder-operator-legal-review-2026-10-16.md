@@ -7,7 +7,7 @@ Status: **Draft, unresolved items remain. Do not declare AdSense-ready or legall
 
 The owner confirms that NexisHub is still operated under a personal name, not a CAC-registered NexisHub company. Public About wording now describes NexisHub as a founder-operated technology brand. Privacy, Terms and Cookies avoid representing the brand as a separately registered Nigerian company.
 
-**Operator identity:** The founder has confirmed the name **Ekeleme Kelechi David** for public attribution. NexisHub remains a founder-operated brand and is not presented as a CAC-registered company. A verified legal-notice or privacy contact, jurisdictional disclosures, and professional legal review remain outstanding. Do not invent registration, an address, governing law or a contact channel.
+**Operator identity:** The founder has confirmed the name **Ekeleme Kelechi David** for public attribution. NexisHub remains a founder-operated brand and is not presented as a CAC-registered company. The owner-supplied `nexishub.company@gmail.com` is now published on the public Contact and legal pages. Inbound mail delivery, privacy-request handling, formal legal-notice suitability, jurisdictional disclosures, and professional legal review remain unverified. Do not invent registration, a service address or governing law. The contact address is owner-provided but its operational suitability still requires testing.
 
 ## Source-reviewed consent state
 
@@ -29,7 +29,7 @@ The owner confirms that NexisHub is still operated under a personal name, not a 
 
 The older blog archive's `editorial-catalog.ts` generates multiple distinct URLs from shared boilerplate, such as "[Title] begins with a practical problem rather than a technology label." Live examples found in the modern-web-engineering and AI-infrastructure clusters. This is a documented originality risk relevant to Google's **Low value content** policy reason.
 
-**Next editorial batch**: inventory each generated article and examine its useful examples, direct experience, sources and overlap before changing its indexing status. Preserve existing links and avoid bulk deleting/noindex without individual evaluation. The four new October 2026 articles already include first-hand release evidence but do not alone remediate the older archive.
+**Next editorial batch**: inventory each generated article and examine its useful examples, direct experience, sources and overlap before changing its indexing status. Preserve existing links and avoid bulk deleting/noindex without individual evaluation. The four October 2026 articles already include first-hand release evidence. The current repository also contains 12 unique replacements among 36 template-derived guides, leaving 24 for per-page editorial review. The rewrite count is a source-code inventory, not Google's quality assessment.
 
 ## Release restrictions
 
