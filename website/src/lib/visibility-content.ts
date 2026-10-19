@@ -1,3 +1,4 @@
+import { archiveGuideUpgradesBatch4 } from "@/lib/archive-guide-upgrades-batch4";
 import { focusedGuides } from "@/lib/focused-guides-2026-10";
 import { archiveGuideUpgradesBatch3 } from "@/lib/archive-guide-upgrades-batch3";
 import { archiveGuideUpgradesBatch2 } from "@/lib/archive-guide-upgrades-batch2";
@@ -720,6 +721,6 @@ const expandShortGuide = (guide: VisibilityGuide): VisibilityGuide => {
 };
 
 export function getVisibilityGuide(slug: string) {
-  const guide = [...focusedGuides, ...archiveGuideUpgradesBatch3, ...archiveGuideUpgradesBatch2, ...archiveGuideUpgrades, ...visibilityGuides, ...additionalVisibilityGuides, ...editorialGuides, ...releaseEditorialGuides].find((item) => item.slug === slug);
-  return guide ? ([...focusedGuides, ...archiveGuideUpgradesBatch3, ...archiveGuideUpgradesBatch2, ...archiveGuideUpgrades].some((item) => item.slug === slug) ? guide : expandShortGuide(guide)) : undefined;
+  const guide = [...archiveGuideUpgradesBatch4, ...focusedGuides, ...archiveGuideUpgradesBatch3, ...archiveGuideUpgradesBatch2, ...archiveGuideUpgrades, ...visibilityGuides, ...additionalVisibilityGuides, ...editorialGuides, ...releaseEditorialGuides].find((item) => item.slug === slug);
+  return guide ? ([...archiveGuideUpgradesBatch4, ...focusedGuides, ...archiveGuideUpgradesBatch3, ...archiveGuideUpgradesBatch2, ...archiveGuideUpgrades].some((item) => item.slug === slug) ? guide : expandShortGuide(guide)) : undefined;
 }

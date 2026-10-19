@@ -2,7 +2,7 @@
 
 Audit date: 2026-10-19
 Source: `website/src/lib/editorial-catalog.ts` seed records in repository.
-Current repository scope (verified 2026-10-19): 36 template-derived guides; 12 topic-specific overrides already merged into `main`, with 24 remaining for individual quality review.
+Current repository scope (verified 2026-10-19): 36 template-derived guides; 12 topic-specific overrides previously merged into `main`, plus 2 developer-guide rewrites proposed on this branch (14 total if merged), with 22 remaining for individual quality review.
 
 **Classification is a work queue, not a quality verdict from Google.** A seed-derived page may still contain worthwhile guidance. No pages are deleted, redirected or given `noindex` in this phase.
 
@@ -41,15 +41,15 @@ Current repository scope (verified 2026-10-19): 36 template-derived guides; 12 t
 | [Building Products That Remain Maintainable After Launch](https://nexishub.vercel.app/blog/long-term-product-maintainability) | Template-derived, individual review required | Review utility; keep/rewrite/consolidate only after evidence |
 | [Product Engineering Versus Feature-Driven Development](https://nexishub.vercel.app/blog/product-engineering-vs-feature-development) | Template-derived, individual review required | Review utility; keep/rewrite/consolidate only after evidence |
 | [Building a Structured Blog with Next.js and TypeScript](https://nexishub.vercel.app/blog/nextjs-typescript-structured-blog) | Revised this batch | Verify new content and links in Preview |
-| [Adding JSON-LD Metadata to a Next.js Website](https://nexishub.vercel.app/blog/jsonld-metadata-nextjs) | Template-derived, individual review required | Review utility; keep/rewrite/consolidate only after evidence |
-| [Creating a Secure Contact Form with Server-Side Validation](https://nexishub.vercel.app/blog/secure-nextjs-contact-form) | Template-derived, individual review required | Review utility; keep/rewrite/consolidate only after evidence |
+| [Adding JSON-LD Metadata to a Next.js Website](https://nexishub.vercel.app/blog/jsonld-metadata-nextjs) | Revised in proposed batch 4 | Verify first-hand examples, source parity, Preview route, metadata and links |
+| [Creating a Secure Contact Form with Server-Side Validation](https://nexishub.vercel.app/blog/secure-nextjs-contact-form) | Revised in proposed batch 4 | Verify first-hand examples, source parity, Preview route, metadata and links |
 | [Building a Citation Export Endpoint for Research Publications](https://nexishub.vercel.app/blog/research-citation-export-endpoint) | Template-derived, individual review required | Review utility; keep/rewrite/consolidate only after evidence |
 
 ## Observed content-quality mechanism
 
 The default generator produces introductory sentences, steps, frequently asked questions and measurement guidance from a common template. This is a documented risk of near-duplicate editorial substance across different subjects. Existing unique rewrite modules override some generator entries in `getVisibilityGuide()`.
 
-## Review procedure for remaining 24 pages
+## Review procedure for remaining 22 pages (after proposed batch 4 merges)
 
 For each page, record its primary visitor question, value that cannot be obtained from neighboring pages, original or worked examples, source validity, author qualification or reviewer, material-update date, and internal-link paths. Prioritize pages with high topical overlap and generic introductions. Hold individual pages for revision if they cannot be defended editorially. Consolidation requires a review of existing URLs, incoming links, canonical/redirect plans, and sitemap effects.
 
