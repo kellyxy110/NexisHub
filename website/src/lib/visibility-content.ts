@@ -1,3 +1,4 @@
+import { archiveGuideUpgradesBatch2 } from "@/lib/archive-guide-upgrades-batch2";
 import { archiveGuideUpgrades } from "@/lib/archive-guide-upgrades";
 import { releaseEditorialGuides } from "@/lib/release-editorial-2026-10";
 import { additionalVisibilityGuides } from "@/lib/additional-guides";
@@ -717,6 +718,6 @@ const expandShortGuide = (guide: VisibilityGuide): VisibilityGuide => {
 };
 
 export function getVisibilityGuide(slug: string) {
-  const guide = [...archiveGuideUpgrades, ...visibilityGuides, ...additionalVisibilityGuides, ...editorialGuides, ...releaseEditorialGuides].find((item) => item.slug === slug);
-  return guide ? (archiveGuideUpgrades.some((item) => item.slug === slug) ? guide : expandShortGuide(guide)) : undefined;
+  const guide = [...archiveGuideUpgradesBatch2, ...archiveGuideUpgrades, ...visibilityGuides, ...additionalVisibilityGuides, ...editorialGuides, ...releaseEditorialGuides].find((item) => item.slug === slug);
+  return guide ? ([...archiveGuideUpgradesBatch2, ...archiveGuideUpgrades].some((item) => item.slug === slug) ? guide : expandShortGuide(guide)) : undefined;
 }
