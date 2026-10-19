@@ -7,7 +7,7 @@ Status: **Draft, unresolved items remain. Do not declare AdSense-ready or legall
 
 The owner confirms that NexisHub is still operated under a personal name, not a CAC-registered NexisHub company. Public About wording now describes NexisHub as a founder-operated technology brand. Privacy, Terms and Cookies avoid representing the brand as a separately registered Nigerian company.
 
-**Legal-name caveat:** The live About page already displayed the founder name as "Ekeleme David Kelechi"; the exact legal spelling and order has not yet been independently reconfirmed as the name for formal notices. Existing public profile presentation is not a substitute for a verified legal identity. Do not invent CAC registration, address, governing law or a legal contact.
+**Confirmed legal name (owner-provided, 19 October 2026):** Ekeleme Kelechi David. This is the name to display for the individual operator. No CAC registration, street address, governing-law provision, or legal contact has been verified; do not invent these details.
 
 ## Source-reviewed consent state
 
@@ -23,7 +23,7 @@ The owner confirms that NexisHub is still operated under a personal name, not a 
 3. Reopen Cookie choices, allow analytics and verify exactly which requests begin. Check separate Google CMP presentation and region-specific requirements.
 4. Return to Essential only. Verify no further first-party analytics events are sent. Check whether already-loaded Google advertising scripts/cookies remain active; do not represent the current implementation as complete revocation without proof.
 5. Test keyboard-only navigation, mobile controls, screen reader labels, contrast and focus.
-6. Verify a working privacy-contact destination and confirm business operator's formal name, retention periods, processors, operating jurisdiction, governing law and dispute provisions with legal review.
+6. Verify a working privacy-contact destination and retain the now-confirmed operator name and verify retention periods, processors, operating jurisdiction, governing law and dispute provisions with legal review.
 
 ## Content-quality mechanism
 
