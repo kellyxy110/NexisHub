@@ -419,3 +419,31 @@ footer { padding: 80px 0 30px; background: var(--ink); color: white; }.brand--fo
 .admin-module-list { border-top: 1px solid #eceef1; }.admin-module-list > div { display: flex; align-items: center; gap: 9px; min-height: 43px; border-bottom: 1px solid #eceef1; color: #444951; font-size: 12px; }.admin-module-dot { width: 6px; height: 6px; border-radius: 50%; }.admin-module-dot--blue { background: #4284f3; }.admin-module-dot--amber { background: #d99a28; }.admin-module-state { margin-left: auto; color: #a0a4ac; font-size: 10px; }
 .admin-auth-page { display: grid; min-height: 100vh; place-items: center; padding: 24px; background: radial-gradient(circle at 75% 15%, #dce8ff 0, transparent 30%), #0c0e12; }.admin-auth-card { width: min(100%, 510px); padding: 42px; border: 1px solid rgba(255,255,255,.12); border-radius: 22px; background: rgba(255,255,255,.97); box-shadow: 0 28px 90px rgba(0,0,0,.32); }.admin-brand--dark { color: var(--ink); }.admin-brand--dark small { color: #9499a3; }.admin-auth-copy { margin: 76px 0 38px; }.admin-auth-copy h1 { margin: 0 0 18px; font: 560 clamp(42px, 7vw, 68px)/.98 var(--font-geist); letter-spacing: -.07em; }.admin-auth-copy > p:last-child { max-width: 390px; margin: 0; color: #717680; font-size: 14px; line-height: 1.75; }.admin-auth-state, .admin-confirmation { display: flex; gap: 12px; padding: 16px; border: 1px solid #e7e9ed; border-radius: 12px; background: #f8f9fb; }.admin-auth-state strong, .admin-confirmation strong { font-size: 12px; }.admin-auth-state p, .admin-confirmation p { margin: 5px 0 0; color: #7c818a; font-size: 11px; line-height: 1.5; }.admin-state-dot { width: 8px; height: 8px; margin-top: 3px; border-radius: 50%; background: #df9e29; box-shadow: 0 0 0 5px #fff0cf; }.admin-state-dot--green { background: #1a9a76; box-shadow: 0 0 0 5px #d7f4eb; }.admin-auth-footnote { margin: 26px 0; color: #8a8f98; font-size: 11px; line-height: 1.6; }.admin-auth-footnote code { color: #465875; }.admin-text-link { color: #2f70d1; font-size: 11px; font-weight: 700; text-decoration: none; }.admin-confirmation { margin-bottom: 17px; }.admin-confirmation-number { color: #397ef1; font: 700 12px var(--font-geist); }.admin-primary-button { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 54px; margin: 18px 0 22px; padding: 0 19px; border: 0; border-radius: 10px; background: #12151b; color: white; cursor: pointer; font: 650 12px var(--font-inter); }.admin-primary-button:hover { background: #2d7ff9; }
 @media (max-width: 800px) { .admin-shell { display: block; }.admin-sidebar { min-height: auto; padding: 18px; }.admin-sidebar nav { display: flex; gap: 5px; margin-top: 24px; overflow-x: auto; }.admin-nav-label, .admin-back-link { display: none; }.admin-nav-link { flex: 0 0 auto; }.admin-content { width: min(100% - 34px, 680px); padding: 32px 0 55px; }.admin-topbar { display: block; }.admin-account { margin-top: 18px; }.admin-stats, .admin-grid { grid-template-columns: 1fr; }.admin-notice { align-items: flex-start; flex-wrap: wrap; }.admin-notice a { width: 100%; margin-left: 40px; }.admin-card-lede { min-height: 0; }.admin-auth-card { padding: 28px 23px; }.admin-auth-copy { margin-top: 60px; } }
+
+/* Research field-guide links: prevent unsized shared SVG arrows from expanding. */
+.research-learning-guides .research-grid article > a,
+.research-learning-guides .research-more a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.research-learning-guides .research-grid article > a {
+  margin-top: 15px;
+}
+.research-learning-guides .research-more {
+  margin: 28px 0 0;
+}
+.research-learning-guides .research-grid article > a svg,
+.research-learning-guides .research-more a svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
