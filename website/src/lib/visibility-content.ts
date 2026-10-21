@@ -121,6 +121,16 @@ const firstOriginalBatch: Record<string, NonNullable<VisibilityGuide["articleSpe
     measurement: ["Measure source coverage, extraction fidelity, retrieval relevance, evidence recall, groundedness, attribution correctness, freshness, latency, and permission compliance as separate dimensions.", "A hypothetical pipeline test may show a strong retrieved passage followed by an overconfident answer. That localizes a grounding or generation problem; it does not prove control of an external system's model or ranking."],
     future: "As retrieval systems call tools and combine sources, durable provenance and explicit permission boundaries matter more than optimizing one embedding or answer surface.",
   },
+  "adaptive-learning-student-analytics": {
+    workflow: [
+      { title: "Start with a teacher decision", detail: "Define whether the immediate question is reteaching, extending practice, grouping learners, checking access, or arranging a conversation. Do not begin with a ranking or a target score." },
+      { title: "Select the smallest useful signals", detail: "Use only signals that are relevant to the decision, such as attempts, task performance, completion patterns, or teacher observations. Document what each signal cannot explain." },
+      { title: "Show evidence and uncertainty", detail: "Present the observations behind a suggestion and distinguish missing data from low performance. Let teachers correct context, override a suggestion, and record why." },
+      { title: "Review support rather than automate judgment", detail: "Check whether the intervention was appropriate and whether the learner received useful support. Do not treat an analytics output as a diagnosis, placement decision, or proof of ability." },
+    ],
+    measurement: ["Measure whether recommendations are understandable, whether teachers accept or override them, which context is missing, and whether privacy or access incidents occur. Keep these process measures separate from learning outcomes.", "A hypothetical classroom review might find that incomplete device access looks like low practice activity. The correct response is to investigate the missing context before interpreting the pattern or changing a learner's pathway."],
+    future: "Responsible adaptive learning will remain a teacher-supported process: evidence can focus attention, but human context, privacy limits, and the learner's own experience must remain part of the decision.",
+  },
 };
 
 export const visibilityGuides: readonly VisibilityGuide[] = [
@@ -788,7 +798,7 @@ export const visibilityGuides: readonly VisibilityGuide[] = [
       { question: "Is adaptive learning the same as personalization?", answer: "Adaptive learning is one form of personalization, but useful personalization also includes teacher context and learner needs." },
       { question: "Should student analytics decide interventions automatically?", answer: "No. Analytics should support teacher decisions and make its evidence reviewable." },
       { question: "What is the biggest risk?", answer: "Over-interpreting limited data and treating students as scores rather than people." },
-    ], references: [{ label: "U.S. Department of Education: Artificial Intelligence and Future of Teaching and Learning", url: "https://tech.ed.gov/ai-future-of-teaching-and-learning/" }],
+    ], references: [{ label: "U.S. Department of Education: Artificial Intelligence and Future of Teaching and Learning", url: "https://tech.ed.gov/ai-future-of-teaching-and-learning/" }, { label: "UNESCO: Guidance for generative AI in education and research", url: "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research?hub=253682" }],
   },
 ] as const;
 
