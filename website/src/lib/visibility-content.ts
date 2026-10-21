@@ -28,12 +28,100 @@ export type VisibilityGuide = {
   takeaways: readonly string[];
   faq: readonly GuideFaq[];
   references: readonly { label: string; url: string }[];
+  articleSpecific?: {
+    workflow: readonly GuidePoint[];
+    measurement: readonly string[];
+    future: string;
+  };
 };
 
 const googleAi = { label: "Google Search: optimizing for generative AI features", url: "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide" };
 const googleStructured = { label: "Google Search: structured data introduction", url: "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data" };
 const googleRobots = { label: "Google Search: robots.txt introduction", url: "https://developers.google.com/search/docs/crawling-indexing/robots/intro" };
 const schema = { label: "Schema.org vocabulary", url: "https://schema.org/" };
+
+const firstOriginalBatch: Record<string, NonNullable<VisibilityGuide["articleSpecific"]>> = {
+  "ai-readable-website-architecture": {
+    workflow: [
+      { title: "Assign one owner to each subject", detail: "Create an inventory of products, concepts, research records, and support questions. Give each subject one canonical page and record which pages explain, compare, or apply it." },
+      { title: "Draw the reader path", detail: "For a representative question, follow ordinary links from the homepage or a durable hub to the answer. Record the anchor text, breadcrumb, heading, and canonical at each step." },
+      { title: "Test the unstyled document", detail: "Fetch the page without relying on client-only interaction. Confirm that the title, main heading, definitions, important links, and structured data agree about the subject." },
+      { title: "Repair one relationship at a time", detail: "When two pages compete, clarify their scopes or nominate a preferred destination. Do not add another page until the existing relationship is understandable." },
+    ],
+    measurement: ["For a fixed set of priority subjects, record canonical ownership, contextual inbound links, navigation reachability, title-to-heading agreement, and whether the main explanation is present in the server response.", "A hypothetical result is only a test case: if a product page is reachable from a hub but its heading describes a different service, the defect is an identity mismatch, not evidence that the whole site needs more pages."],
+    future: "As websites become sources for search and task-oriented agents, the durable advantage will be a graph whose ownership, scope, and evidence can be inspected by people and tools.",
+  },
+  "structured-data-ai-machine-trust": {
+    workflow: [
+      { title: "List visible facts first", detail: "Record the page's visible name, description, author, dates, publisher, image, relationships, and facts a reader can verify before choosing a Schema.org type." },
+      { title: "Choose the narrowest supported type", detail: "Select vocabulary that matches the page. Leave unsupported fields out instead of guessing values from examples." },
+      { title: "Generate from the same source", detail: "Build JSON-LD from the record that renders the page, then compare structured values with the visible heading, byline, dates, links, and canonical URL." },
+      { title: "Validate after meaningful edits", detail: "Run syntax and schema validation after changing the content model, then inspect rendered HTML for stale or contradictory values." },
+    ],
+    measurement: ["Track the percentage of sampled pages whose structured name, canonical, author, dates, publisher, and article type agree with visible HTML. Record validation errors separately from missing optional properties.", "A hypothetical test page can demonstrate the method: if JSON-LD says an article was modified on one date while the visible byline shows another, reconcile the source record before adding more markup."],
+    future: "Structured data remains most useful when it documents an already truthful page. It should be maintained as part of publishing, not treated as a substitute for clear writing or accountable authorship.",
+  },
+  "content-structure-ai-retrieval": {
+    workflow: [
+      { title: "Map the questions", detail: "Write distinct reader questions before drafting sections. Give each question one heading and decide what definition, example, source, and limitation it needs." },
+      { title: "Draft a self-contained section", detail: "Open with the subject and direct answer, explain the mechanism, then state when the advice changes. Do not rely on context elsewhere for essential meaning." },
+      { title: "Extract without the page", detail: "Copy a representative section into a plain document and check whether a reader can identify its topic, scope, evidence, and next action without the surrounding layout." },
+      { title: "Remove repetition by purpose", detail: "Keep a repeated definition only when the reader needs it again. Otherwise link to the canonical explanation and use the space for an example or limitation." },
+    ],
+    measurement: ["Review heading specificity, source proximity, unresolved pronouns, repeated paragraphs, and whether each priority question has a direct answer. Preserve examples that expose scope rather than padding word count.", "A hypothetical extraction check reveals a defect when a section says ‘it improves performance’ without naming the subject or measure, even if the full article makes the meaning obvious."],
+    future: "Documents that preserve meaning at the page, section, and passage level will be easier to read, maintain, cite, and reuse across changing retrieval interfaces.",
+  },
+  "technical-ai-crawlability-checklist": {
+    workflow: [
+      { title: "Declare the priority URL set", detail: "List pages that should be discoverable and record canonical, indexability, content owner, and important inbound links." },
+      { title: "Capture the anonymous response", detail: "Record status, redirects, content type, robots metadata, canonical, title, headings, main text, and response headers for each route." },
+      { title: "Trace the discovery path", detail: "Follow an ordinary HTML link from a hub or navigation page to the canonical route. Treat sitemap inclusion as supporting evidence, not a replacement for useful internal linking." },
+      { title: "Recheck after the repair", detail: "Repeat the request and compare exact before-and-after fields. Separate access, indexing, rendering, and editorial findings so each correction has a clear acceptance test." },
+    ],
+    measurement: ["Maintain a dated matrix of status codes, redirects, canonicals, robots directives, rendered-content presence, sitemap membership, and contextual inbound links. Group failures by cause rather than assigning one crawlability score.", "A hypothetical route returning HTTP 200 can still fail if its canonical points to another article or its main explanation appears only after a client event. Inspect the complete document."],
+    future: "Crawlability is a prerequisite for useful discovery, but it cannot make weak or duplicated content valuable. Reliable access and original explanation should remain separate release gates.",
+  },
+  "ai-visibility-vs-traditional-seo": {
+    workflow: [
+      { title: "Separate the questions", detail: "Record whether the review concerns ranked pages, retrieved passages, citations, or user actions. Treat each output as a separate observation rather than one visibility score." },
+      { title: "Keep the shared foundation", detail: "Check response stability, canonical URLs, useful internal links, clear headings, and accessible content before adding AI-specific measurements." },
+      { title: "Sample the passage", detail: "Choose a reader-important claim and record the section, source, date, and limitation that should survive extraction." },
+      { title: "Report provider context", detail: "Record product surface, query, date, location, and available search mode so one observation is not presented as a universal platform rule." },
+    ],
+    measurement: ["Use separate fields for search impressions, crawl and rendering observations, retrieved passages, citation presence, and downstream actions. Do not combine unlike outputs into a score that hides the failure stage.", "A hypothetical comparison is diagnostic only: a page can retain search traffic while a key passage is omitted because its local context is unclear. That does not prove a ranking change or provider-wide rule."],
+    future: "The durable strategy is to maintain the shared foundations of useful web publishing while documenting which AI-assisted outputs were actually observed and under what conditions.",
+  },
+  "internal-linking-ai-discovery": {
+    workflow: [
+      { title: "Name the relationship", detail: "For every important link, state whether the destination defines a concept, supports a claim, compares an option, or provides an implementation step." },
+      { title: "Choose the canonical destination", detail: "When pages discuss one subject, select the page that owns the definition and link applications back to it without duplicating the explanation." },
+      { title: "Test ordinary navigation", detail: "Follow links from a public hub with scripts disabled in the test plan. Record anchor text, destination status, canonical, heading, and whether the relationship is clear." },
+      { title: "Review for drift", detail: "After a page changes scope or moves, recheck inbound links and related articles. Remove links that imply a capability or relationship the destination does not support." },
+    ],
+    measurement: ["Measure contextual inbound links, anchor-to-heading agreement, orphan candidates, broken destinations, and competing canonical explanations for each priority subject.", "A hypothetical orphan finding is limited evidence: if a useful article appears only in a sitemap and not from a relevant hub, improve discovery before adding another article."],
+    future: "A maintained link graph helps readers and retrieval systems move from definition to evidence and application without forcing every page to repeat the same introduction.",
+  },
+  "create-citation-ready-content": {
+    workflow: [
+      { title: "Inventory material claims", detail: "Mark definitions, product capabilities, measurements, comparisons, and recommendations that a careful reader might reasonably want to verify." },
+      { title: "Attach the right evidence", detail: "Use primary documentation for technical behavior, a named method for internal observations, and a clear limitation when a source cannot support a broad conclusion." },
+      { title: "Make the claim local", detail: "Keep subject, scope, date, and relevant condition close to the statement so extraction does not turn a qualified observation into a guarantee." },
+      { title: "Review before publishing", detail: "Check that references resolve, support the exact claim, and are not repeated as independent evidence across several articles." },
+    ],
+    measurement: ["Track claim-to-source coverage, primary-source share, unresolved quantitative language, author and date visibility, broken references, and whether limitations are visible at the point of use.", "A hypothetical audit can expose false precision: a sentence claiming a percentage without method, period, or source should be narrowed or removed."],
+    future: "Citation readiness is an editorial maintenance practice: claims, sources, methods, limitations, and revision responsibility should change together when the underlying knowledge changes.",
+  },
+  "rag-search-content-discovery": {
+    workflow: [
+      { title: "Define the evidence path", detail: "For a representative question, record source URL, extracted text, retrieved passage, generated answer, and attribution separately." },
+      { title: "Test source fidelity", detail: "Compare the retrieved passage with the production page and check that headings, qualifiers, dates, and links survived extraction." },
+      { title: "Probe hard cases", detail: "Include stale content, conflicting pages, ambiguous terminology, permission boundaries, and questions for which the source should decline to answer." },
+      { title: "Inspect the final claim", detail: "Check whether the answer extends beyond the evidence or assigns a citation to the wrong page. Record the exact query and mode instead of generalizing from one response." },
+    ],
+    measurement: ["Measure source coverage, extraction fidelity, retrieval relevance, evidence recall, groundedness, attribution correctness, freshness, latency, and permission compliance as separate dimensions.", "A hypothetical pipeline test may show a strong retrieved passage followed by an overconfident answer. That localizes a grounding or generation problem; it does not prove control of an external system's model or ranking."],
+    future: "As retrieval systems call tools and combine sources, durable provenance and explicit permission boundaries matter more than optimizing one embedding or answer surface.",
+  },
+};
 
 export const visibilityGuides: readonly VisibilityGuide[] = [
   {
@@ -729,5 +817,6 @@ const expandShortGuide = (guide: VisibilityGuide): VisibilityGuide => {
 export function getVisibilityGuide(slug: string) {
   const originalGuides: readonly VisibilityGuide[] = [...originalEventGuides, saasOriginalGuide, citationOriginalGuide, launchOriginalGuide, discoveryOriginalGuide, ...originalProductPlanningGuides];
   const guide = [...originalGuides, ...archiveGuideUpgradesBatch4, ...focusedGuides, ...archiveGuideUpgradesBatch3, ...archiveGuideUpgradesBatch2, ...archiveGuideUpgrades, ...visibilityGuides, ...additionalVisibilityGuides, ...editorialGuides, ...releaseEditorialGuides].find((item) => item.slug === slug);
-  return guide ? ([...originalGuides, ...archiveGuideUpgradesBatch4, ...focusedGuides, ...archiveGuideUpgradesBatch3, ...archiveGuideUpgradesBatch2, ...archiveGuideUpgrades].some((item) => item.slug === slug) ? guide : expandShortGuide(guide)) : undefined;
+  const completeGuides = [...originalGuides, ...archiveGuideUpgradesBatch4, ...focusedGuides, ...archiveGuideUpgradesBatch3, ...archiveGuideUpgradesBatch2, ...archiveGuideUpgrades];
+  return guide ? { ...(completeGuides.some((item) => item.slug === slug) ? guide : expandShortGuide(guide)), articleSpecific: firstOriginalBatch[slug] } : undefined;
 }

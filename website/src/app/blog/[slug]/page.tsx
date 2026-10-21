@@ -47,6 +47,15 @@ export default async function VisibilityArticlePage({ params }: { params: Promis
 
   const related = (post.relatedSlugs ?? []).map(getPost).filter((item) => item !== undefined);
   const isEducation = post.cluster === "F";
+  const articleBoundary = post.category === "AI Visibility"
+    ? "NexisHub separates verified platform documentation, repeatable observation, and inference. No optimization can guarantee selection or citation by an external system."
+    : post.category === "Healthcare AI"
+      ? "This educational article is not medical, legal, or regulatory advice, and it does not claim clinical validation or replace qualified professional review."
+      : null;
+  const workflow = guide.articleSpecific?.workflow ?? guide.workflow;
+  const measurement = guide.articleSpecific?.measurement ?? guide.measurement;
+  const future = guide.articleSpecific?.future ?? guide.future;
+  const hasSpecificContent = Boolean(guide.articleSpecific);
   const isEditorial = post.cluster !== "E" && post.cluster !== "F";
   const productCta = isEditorial ? {
     label: "Nexis Studio",
@@ -102,17 +111,17 @@ export default async function VisibilityArticlePage({ params }: { params: Promis
         <p className="article-lead">{guide.lead}</p>
         <p>{isEducation ? <>This guide is part of the NexisHub education technology series. For the engineering discipline behind useful AI products, start with the <Link href={aiDevelopmentPath}>complete guide to AI software development</Link>.</> : isEditorial ? <>This guide is part of the NexisHub {post.category} desk. It connects practical engineering, research, and product decisions to the wider NexisHub platform.</> : <>This guide is part of the <Link href="/blog/complete-guide-ai-visibility">NexisHub AI visibility pillar</Link>. For the systems behind retrieval and generation, start with the <Link href={aiDevelopmentPath}>complete guide to AI software development</Link>.</>}</p>
 
-        <section id="overview"><h2>The operating idea</h2>{guide.overview.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<div className="article-callout"><strong>Editorial boundary</strong><p>NexisHub separates verified platform documentation, repeatable observation, and inference. No optimization can guarantee selection or citation by an external system.</p></div>{guide.deepDive?.map((section) => <div className="article-deep-dive" key={section.title}><h3>{section.title}</h3>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>)}</section>
+        <section id="overview"><h2>The operating idea</h2>{guide.overview.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{articleBoundary && <div className="article-callout"><strong>Editorial boundary</strong><p>{articleBoundary}</p></div>}{guide.deepDive?.map((section) => <div className="article-deep-dive" key={section.title}><h3>{section.title}</h3>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>)}</section>
 
         <section id="principles"><h2>Core principles</h2><ol className="article-steps">{guide.principles.map((point) => <li key={point.title}><b>{point.title}</b><span>{point.detail}</span></li>)}</ol></section>
 
-        <section id="workflow"><h2>A practical implementation workflow</h2><p>Apply the work in a controlled sequence. Keep a baseline, name an owner, and define the evidence that will show whether each step was completed.</p><ol className="article-steps">{guide.workflow.map((point, index) => <li key={point.title}><b>{index + 1}. {point.title}</b><span>{point.detail}</span></li>)}</ol></section>
+        <section id="workflow"><h2>A practical implementation workflow</h2>{!hasSpecificContent && <p>Apply the work in a controlled sequence. Keep a baseline, name an owner, and define the evidence that will show whether each step was completed.</p>}<ol className="article-steps">{workflow.map((point, index) => <li key={point.title}><b>{index + 1}. {point.title}</b><span>{point.detail}</span></li>)}</ol></section>
 
         <section id="pitfalls"><h2>Common mistakes</h2>{guide.pitfalls.map((point) => <div key={point.title}><h3>{point.title}</h3><p>{point.detail}</p></div>)}</section>
 
-        <section id="measurement"><h2>How to measure it responsibly</h2>{guide.measurement.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<div className="article-callout article-callout--dark"><strong>Evidence rule</strong><p>Keep observed outputs, diagnostic scores, inferred causes, and business outcomes in separate fields. A modelled score is not a citation, and correlation is not proof of cause.</p></div></section>
+        <section id="measurement"><h2>How to measure it responsibly</h2>{measurement.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{!hasSpecificContent && <div className="article-callout article-callout--dark"><strong>Evidence rule</strong><p>Keep observed outputs, diagnostic scores, inferred causes, and business outcomes in separate fields. A modelled score is not a citation, and correlation is not proof of cause.</p></div>}</section>
 
-        <section id="future"><h2>What comes next</h2><p>{guide.future}</p><p>The durable response is to build pages that are accessible, semantically explicit, useful outside their original layout, and backed by evidence a reader can inspect.</p></section>
+        <section id="future"><h2>What comes next</h2><p>{future}</p>{!hasSpecificContent && <p>The durable response is to build pages that are accessible, semantically explicit, useful outside their original layout, and backed by evidence a reader can inspect.</p>}</section>
 
         <section id="takeaways"><h2>Key takeaways</h2><div className="article-takeaways">{guide.takeaways.map((item, index) => <p key={item}><b>{String(index + 1).padStart(2, "0")}</b>{item}</p>)}</div></section>
 
