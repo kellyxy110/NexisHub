@@ -1,3 +1,4 @@
+import { originalEventGuides } from "@/lib/original-event-operations-guides";
 import { originalProductPlanningGuides } from "@/lib/original-product-planning-guides";
 import { saasOriginalGuide } from "@/lib/original-saas-architecture";
 import { citationOriginalGuide } from "@/lib/original-research-citation";
@@ -726,7 +727,7 @@ const expandShortGuide = (guide: VisibilityGuide): VisibilityGuide => {
 };
 
 export function getVisibilityGuide(slug: string) {
-  const originalGuides: readonly VisibilityGuide[] = [saasOriginalGuide, citationOriginalGuide, launchOriginalGuide, discoveryOriginalGuide, ...originalProductPlanningGuides];
+  const originalGuides: readonly VisibilityGuide[] = [...originalEventGuides, saasOriginalGuide, citationOriginalGuide, launchOriginalGuide, discoveryOriginalGuide, ...originalProductPlanningGuides];
   const guide = [...originalGuides, ...archiveGuideUpgradesBatch4, ...focusedGuides, ...archiveGuideUpgradesBatch3, ...archiveGuideUpgradesBatch2, ...archiveGuideUpgrades, ...visibilityGuides, ...additionalVisibilityGuides, ...editorialGuides, ...releaseEditorialGuides].find((item) => item.slug === slug);
   return guide ? ([...originalGuides, ...archiveGuideUpgradesBatch4, ...focusedGuides, ...archiveGuideUpgradesBatch3, ...archiveGuideUpgradesBatch2, ...archiveGuideUpgrades].some((item) => item.slug === slug) ? guide : expandShortGuide(guide)) : undefined;
 }
