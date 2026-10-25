@@ -1,3 +1,4 @@
+import { editorialId, organizationId, websiteId } from "@/lib/discovery";
 import { siteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -59,9 +60,10 @@ const articleSchema = {
   image: `${base}${post.featuredImage}`,
   datePublished: post.publishedDate,
   dateModified: post.updatedDate,
-  author: { "@type": "Organization", name: post.author, url: base },
-  publisher: { "@type": "Organization", name: "NexisHub", url: base },
-  mainEntityOfPage: `${base}${post.canonicalPath}`,
+  author: { "@type": "Organization", "@id": editorialId, name: post.author, url: `${base}/editorial-policy` },
+  publisher: { "@type": "Organization", "@id": organizationId, name: "NexisHub", url: base },
+  "@id": `${base}${post.canonicalPath}#article`, url: `${base}${post.canonicalPath}`, isPartOf: { "@id": websiteId },
+    mainEntityOfPage: `${base}${post.canonicalPath}`,
   articleSection: post.category,
   keywords: post.tags.join(", "),
   proficiencyLevel: post.readingLevel,
@@ -88,7 +90,7 @@ export default function AiSoftwareDevelopmentGuide() {
       <p className="eyebrow"><span /> Cluster A · Pillar guide</p>
       <h1>The Complete Guide to<br /><em>AI Software Development.</em></h1>
       <p className="article-deck">{post.description}</p>
-      <div className="article-byline"><span>By {post.author}</span><span>Published <time dateTime={post.publishedDate}>July 20, 2026</time></span><span>{post.readingTime}</span><span>Updated July 20, 2026</span></div>
+      <div className="article-byline"><span>By <Link href="/editorial-policy">{post.author}</Link></span><span>Published <time dateTime={post.publishedDate}>July 20, 2026</time></span><span>{post.readingTime}</span><span>Updated July 20, 2026</span></div>
     </div></header>
     <div className="shell article-visual"><Image src={post.featuredImage} alt={post.featuredImageAlt} width={1600} height={900} priority /></div>
     <div className="shell article-layout">

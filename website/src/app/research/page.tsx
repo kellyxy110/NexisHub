@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/discovery";
 import Link from "next/link";
 import { Arrow, SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { AdSenseLoader } from "@/components/adsense-loader";
@@ -6,7 +6,7 @@ import { researchAreas } from "@/lib/editorial";
 import { releaseEditorialPosts } from "@/lib/release-editorial-2026-10";
 import { siteNexisLinks } from "@/lib/site-links";
 
-export const metadata: Metadata = { title: "Research", description: "The NexisHub research agenda across artificial intelligence, search intelligence, education technology, HCI, automation, and knowledge systems.", alternates: { canonical: "/research" } };
+export const metadata = pageMetadata("AI Research, Working Papers and Engineering Guides", "Explore the NexisHub research agenda, pre-review working paper and practical engineering guides. Research status and evidence limits are stated explicitly.", "/research");
 
 export default function ResearchPage() {
   return <><AdSenseLoader /><SiteHeader light /><main className="research-page"><section className="research-hero"><div className="shell"><p className="kicker">NexisHub Research</p><h1>Understand deeply.<br /><span>Build responsibly.</span></h1><p>Research at NexisHub studies how intelligent systems can become more useful, explainable, and human-centered across the product ecosystem.</p><div className="research-status"><span>Research agenda</span><strong>Open</strong><span>Publication archive</span><strong>Awaiting first reviewed paper</strong></div></div></section>

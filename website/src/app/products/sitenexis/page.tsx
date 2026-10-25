@@ -1,18 +1,9 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/discovery";
 import Link from "next/link";
 import { Arrow, SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { siteNexisLinks } from "@/lib/site-links";
 
-export const metadata: Metadata = {
-  title: "SiteNexis — AI Retrieval & Machine Trust Intelligence",
-  description: "See how AI systems retrieve, interpret, trust, cite, and recommend your website with 16 intelligence agents and 12 explainable scores.",
-  alternates: { canonical: "/products/sitenexis" },
-  openGraph: {
-    title: "SiteNexis — The machine view of your website",
-    description: "AI retrieval and machine trust intelligence from NexisHub.",
-    url: "/products/sitenexis",
-  },
-};
+export const metadata = pageMetadata("SiteNexis: Search and AI Visibility Intelligence", "Explore SiteNexis, the NexisHub product for search evidence, machine readiness, AI visibility analysis and prioritised website improvements.", "/products/sitenexis");
 
 const layers = [
   ["Layer 1", "Technical foundation", "Crawlability, SEO signals, link topology, performance, robots, sitemaps, canonicals, and structured access."],
@@ -76,7 +67,7 @@ export default function SiteNexisPage() {
                 <a className="button button--sn" href={siteNexisLinks.audit} data-analytics="sitenexis-run-audit">Run free audit <Arrow /></a>
                 <a className="sn-text-link" href={siteNexisLinks.methodology}>Read the methodology <Arrow /></a>
               </div>
-              <div className="sn-proof"><span>Free</span><span>No account required</span><span>Results in about 60 seconds</span></div>
+              <div className="sn-proof"><span>Free</span><span>Check current access terms</span><span>Timing depends on audit scope</span></div>
             </div>
 
             <div className="sn-console" aria-label="Conceptual SiteNexis intelligence report">

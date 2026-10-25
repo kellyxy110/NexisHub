@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/discovery";
 import { LegalDocument } from "@/components/legal-document";
 
-export const metadata: Metadata = { title: "Cookie Policy", description: "Founder-operated NexisHub cookie and storage disclosure pending technical and legal review.", alternates: { canonical: "/legal/cookies" } };
+export const metadata = pageMetadata("Cookie Policy", "Founder-operated NexisHub cookie and storage disclosure pending technical and legal review.", "/legal/cookies");
 
 export default function CookiesPage() {
   return <LegalDocument title="Cookie Policy" summary="How storage and optional analytics are controlled on this website.">

@@ -1,13 +1,9 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/discovery";
 import Link from "next/link";
 import { StudioEnquiryForm } from "@/components/studio-enquiry-form";
 import { Arrow, Mark, SiteFooter, SiteHeader } from "@/components/site-chrome";
 
-export const metadata: Metadata = {
-  title: "Studio",
-  description: "NexisHub Studio designs, engineers, launches, and improves intelligent digital products.",
-  alternates: { canonical: "/studio" },
-};
+export const metadata = pageMetadata("Software Development and AI Product Studio", "NexisHub Studio offers product discovery, design, web engineering, AI integration and optimisation, with scope and acceptance criteria agreed before delivery.", "/studio");
 
 const services = [
   ["01", "Product discovery", "Turn a difficult business problem into a clear product opportunity, a defined audience, and a buildable first release."],

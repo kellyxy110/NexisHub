@@ -1,13 +1,9 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/discovery";
 import Link from "next/link";
 import { Arrow, Mark, SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { products } from "@/lib/products";
 
-export const metadata: Metadata = {
-  title: "Products",
-  description: "Explore the connected NexisHub product ecosystem, from AI visibility intelligence to education, events, learning, and care workflows.",
-  alternates: { canonical: "/products" },
-};
+export const metadata = pageMetadata("AI Products for Work, Education and Knowledge", "Explore SiteNexis, TeachNexis, EventNexis, Pnyx, LogicLand and CareBridge, with clear live and in-development product status.", "/products");
 
 function ProductAction({ href }: { href: string | null }) {
   if (!href) return <span className="directory-pending">Details will be shared when ready</span>;

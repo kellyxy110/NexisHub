@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/discovery";
 import Image from "next/image";
 import Link from "next/link";
 import { EditorialExplorer } from "@/components/editorial-explorer";
@@ -9,7 +9,7 @@ import { siteNexisLinks } from "@/lib/site-links";
 import { releaseEditorialPosts } from "@/lib/release-editorial-2026-10";
 import { allEditorialPosts, educationPosts, featuredVisibilityPost, visibilityPosts } from "@/lib/posts";
 
-export const metadata: Metadata = { title: "Blog", description: "NexisHub writing on AI development, machine visibility, modern web engineering, infrastructure, and human-first software.", alternates: { canonical: "/blog", types: { "application/rss+xml": "/feed.xml" } } };
+export const metadata = { ...pageMetadata("AI, Software Engineering and Search Visibility Blog", "Practical NexisHub guides on AI development, search visibility, education technology, infrastructure and reliable software, with sources and limitations.", "/blog"), alternates: { canonical: "/blog", types: { "application/rss+xml": "/feed.xml" } } };
 
 const blogSections = [
   { title: "AI visibility foundations", description: "Start with the concepts that separate machine discovery from traditional search.", posts: visibilityPosts.slice(0, 5) },

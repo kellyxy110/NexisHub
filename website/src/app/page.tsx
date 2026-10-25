@@ -1,6 +1,10 @@
+import { jsonLd, pageMetadata } from "@/lib/discovery";
+import { siteAnswers } from "@/lib/site-answers";
 import Link from "next/link";
 import { Arrow, Mark, SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { products } from "@/lib/products";
+
+export const metadata = { ...pageMetadata("NexisHub | AI Software, Research and Product Engineering", "NexisHub builds connected AI products and software infrastructure. Explore our products, engineering guides, research and product development Studio.", "/"), title: { absolute: "NexisHub | AI Software, Research and Product Engineering" } };
 
 const principles = [
   ["01", "Observe", "Start with the real problem, not the fashionable one."],
@@ -17,17 +21,11 @@ function ProductLink({ href, name }: { href: string; name: string }) {
 }
 
 export default function Home() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "NexisHub",
-    description: "NexisHub builds intelligent software that helps people work, learn, create, organize, and make better decisions through AI.",
-    url: "https://www.thenexishub.org",
-  };
+  const schema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: siteAnswers.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) };
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(schema) }} />
       <SiteHeader />
 
       <main>
@@ -100,6 +98,8 @@ export default function Home() {
             </div>
           </div></div>
         </section>
+
+        <section className="discovery-answers" aria-labelledby="nexishub-answers"><div className="shell"><p className="kicker">About the ecosystem</p><h2 id="nexishub-answers">NexisHub, explained.</h2><div className="article-faq">{siteAnswers.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer} <Link href={item.path}>{item.link}</Link></p></details>)}</div><p><Link href="/editorial-policy">How we publish, check sources and handle corrections</Link></p></div></section>
 
         <section className="closing-section"><div className="shell closing-inner"><Mark /><p className="kicker">Intelligence. Connection. Creation.</p><h2>We&apos;re building the foundation for better software.</h2><a className="button" href="#products">Explore the ecosystem <Arrow /></a></div></section>
       </main>
