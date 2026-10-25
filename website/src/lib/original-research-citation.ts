@@ -25,7 +25,7 @@ export const citationOriginalGuide: VisibilityGuide = {
       "title": "The APA-style string is not an official formatter",
       "paragraphs": [
         "The handler assembles an author string, year, title, version, document type, institution and canonical URL. This provides a convenient citation starting point. It does not implement every APA style requirement for surname initials, italics, capitalization or author-count rules, so users should see it as APA-style output pending formal format validation.",
-        "The source currently hardcodes the canonical `https://nexishub.vercel.app` hostname. That is the reviewed site address, but exporters should eventually draw the public canonical host from a controlled configuration, not from a Preview deployment URL. A durable citation must keep the intended version identifiable even when the website or framework changes."
+        "The source currently hardcodes the canonical `https://www.thenexishub.org` hostname. That is the reviewed site address, but exporters should eventually draw the public canonical host from a controlled configuration, not from a Preview deployment URL. A durable citation must keep the intended version identifiable even when the website or framework changes."
       ]
     },
     {
@@ -106,7 +106,7 @@ export const citationOriginalGuide: VisibilityGuide = {
   "references": [
     {
       "label": "NexisHub AI Visibility Index working paper",
-      "url": "https://nexishub.vercel.app/research/ai-visibility-index"
+      "url": "https://www.thenexishub.org/research/ai-visibility-index"
     },
     {
       "label": "Crossref DOI guidelines",

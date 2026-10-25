@@ -6,7 +6,7 @@ Add these as encrypted Vercel Production variables. Do not commit values.
 
 - `DATABASE_URL` — Supabase PostgreSQL runtime connection string
 - `AUTH_SECRET` — generated random Auth.js secret
-- `NEXTAUTH_URL` — `https://nexishub.vercel.app`
+- `NEXTAUTH_URL` — `https://www.thenexishub.org`
 - `AUTH_EMAIL_FROM` — verified sender address
 - `RESEND_API_KEY` — Resend API key
 - `FOUNDER_EMAIL` — founder email to permit one-time bootstrap

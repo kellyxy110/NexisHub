@@ -1,3 +1,4 @@
+import { siteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,7 +10,7 @@ import { dynamicGuidePosts, getPost } from "@/lib/posts";
 import { siteNexisLinks } from "@/lib/site-links";
 import { getVisibilityGuide } from "@/lib/visibility-content";
 
-const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://nexishub.vercel.app";
+const base = siteUrl;
 const aiDevelopmentPath = "/blog/complete-guide-ai-software-development";
 const json = (value: object) => JSON.stringify(value).replace(/</g, "\\u003c");
 const dateLabel = (value: string) => new Intl.DateTimeFormat("en", { dateStyle: "long", timeZone: "UTC" }).format(new Date(`${value}T00:00:00Z`));

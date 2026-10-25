@@ -1,29 +1,29 @@
 import { educationPosts, visibilityPosts } from "@/lib/posts";
 
-const visibilityGuides = visibilityPosts.map((post) => `- ${post.title}: https://nexishub.vercel.app${post.canonicalPath}`).join("\n");
-const educationGuides = educationPosts.map((post) => `- ${post.title}: https://nexishub.vercel.app${post.canonicalPath}`).join("\n");
+const visibilityGuides = visibilityPosts.map((post) => `- ${post.title}: https://www.thenexishub.org${post.canonicalPath}`).join("\n");
+const educationGuides = educationPosts.map((post) => `- ${post.title}: https://www.thenexishub.org${post.canonicalPath}`).join("\n");
 const content = `# NexisHub
 
 > NexisHub is an AI infrastructure company building connected intelligent software.
 
 ## Canonical pages
-- Home: https://nexishub.vercel.app/
-- Products: https://nexishub.vercel.app/products
-- SiteNexis: https://nexishub.vercel.app/products/sitenexis
-- Blog: https://nexishub.vercel.app/blog
-- Complete Guide to AI Software Development (2026): https://nexishub.vercel.app/blog/complete-guide-ai-software-development
+- Home: https://www.thenexishub.org/
+- Products: https://www.thenexishub.org/products
+- SiteNexis: https://www.thenexishub.org/products/sitenexis
+- Blog: https://www.thenexishub.org/blog
+- Complete Guide to AI Software Development (2026): https://www.thenexishub.org/blog/complete-guide-ai-software-development
 - AI Visibility and Machine Discovery guides:
 ${visibilityGuides}
 - Education Technology and TeachNexis guides:
 ${educationGuides}
-- Research: https://nexishub.vercel.app/research
-- About: https://nexishub.vercel.app/about
-- Contact: https://nexishub.vercel.app/contact
+- Research: https://www.thenexishub.org/research
+- About: https://www.thenexishub.org/about
+- Contact: https://www.thenexishub.org/contact
 
 ## Live products
-- SiteNexis application: https://sitenexis.vercel.app
-- SiteNexis methodology: https://sitenexis.vercel.app/methodology
-- SiteNexis documentation: https://sitenexis.vercel.app/docs
+- SiteNexis application: https://sitenexis.com
+- SiteNexis methodology: https://sitenexis.com/methodology
+- SiteNexis documentation: https://sitenexis.com/docs
 - TeachNexis: https://teachnexis.vercel.app
 - EventNexis: https://eventnexis.vercel.app
 

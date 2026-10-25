@@ -1,3 +1,4 @@
+import { siteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import { Geist, Inter } from "next/font/google";
 import "./globals.css";
@@ -7,7 +8,7 @@ const geist = Geist({ variable: "--font-geist", subsets: ["latin"], display: "sw
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nexishub.vercel.app"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "NexisHub — Intelligent Software, One Ecosystem",
     template: "%s — NexisHub",

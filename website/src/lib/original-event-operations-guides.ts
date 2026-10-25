@@ -122,7 +122,7 @@ export const originalEventGuides: readonly VisibilityGuide[] = [
       },
       {
         "label": "NexisHub launch verification field guide",
-        "url": "https://nexishub.vercel.app/blog/website-launch-readiness-evidence"
+        "url": "https://www.thenexishub.org/blog/website-launch-readiness-evidence"
       }
     ]
   },
@@ -246,7 +246,7 @@ export const originalEventGuides: readonly VisibilityGuide[] = [
       },
       {
         "label": "NexisHub event registration guide",
-        "url": "https://nexishub.vercel.app/blog/reliable-event-registration-checkin"
+        "url": "https://www.thenexishub.org/blog/reliable-event-registration-checkin"
       }
     ]
   }

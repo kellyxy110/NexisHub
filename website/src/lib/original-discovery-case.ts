@@ -114,7 +114,7 @@ export const discoveryOriginalGuide: VisibilityGuide = {
   "references": [
     {
       "label": "NexisHub AI Visibility Index working paper",
-      "url": "https://nexishub.vercel.app/research/ai-visibility-index"
+      "url": "https://www.thenexishub.org/research/ai-visibility-index"
     },
     {
       "label": "Google Search technical requirements",
@@ -122,7 +122,7 @@ export const discoveryOriginalGuide: VisibilityGuide = {
     },
     {
       "label": "NexisHub release incident",
-      "url": "https://nexishub.vercel.app/blog/vercel-nextjs-deployment-debugging"
+      "url": "https://www.thenexishub.org/blog/vercel-nextjs-deployment-debugging"
     }
   ]
 };

@@ -1,3 +1,4 @@
+import { siteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,7 +7,7 @@ import { Arrow, SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { firstPost as post } from "@/lib/posts";
 import { siteNexisLinks } from "@/lib/site-links";
 
-const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://nexishub.vercel.app";
+const base = siteUrl;
 
 export const metadata: Metadata = {
   title: post.seoTitle,
