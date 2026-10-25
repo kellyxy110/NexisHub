@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/discovery";
 import { LegalDocument } from "@/components/legal-document";
 
-export const metadata: Metadata = { title: "Privacy Policy", description: "Privacy notice and outstanding review items for the founder-operated NexisHub website.", alternates: { canonical: "/legal/privacy" } };
+export const metadata = pageMetadata("Privacy Policy", "Privacy notice and outstanding review items for the founder-operated NexisHub website.", "/legal/privacy");
 
 export default function PrivacyPage() {
   return <LegalDocument title="Privacy Policy" summary="How the founder-operated NexisHub website handles visitor information.">

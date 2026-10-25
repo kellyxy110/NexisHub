@@ -1,3 +1,4 @@
+import { identityGraph, jsonLd } from "@/lib/discovery";
 import { siteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import { Geist, Inter } from "next/font/google";
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   },
   description:
     "NexisHub builds connected AI products that help people work, learn, create, organize, and make better decisions.",
-  alternates: { canonical: "/" },
+  alternates: { types: { "application/rss+xml": "/feed.xml" } },
   manifest: "/manifest.webmanifest",
   openGraph: {
     title: "NexisHub — Intelligent Software, One Ecosystem",
@@ -25,13 +26,13 @@ export const metadata: Metadata = {
     siteName: "NexisHub",
     images: ["/opengraph-image"],
   },
-  robots: { index: true, follow: true },
+  robots: { index: true, follow: true, "max-image-preview": "large" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${geist.variable} ${inter.variable}`} suppressHydrationWarning>
-      <body>{children}<AnalyticsTracker /><PrivacyControls /></body>
+      <body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(identityGraph) }} />{children}<AnalyticsTracker /><PrivacyControls /></body>
     </html>
   );
 }

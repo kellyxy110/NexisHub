@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/discovery";
 import { LegalDocument } from "@/components/legal-document";
 
-export const metadata: Metadata = { title: "Terms of Use", description: "Founder-operated NexisHub website terms, pending legal review.", alternates: { canonical: "/legal/terms" } };
+export const metadata = pageMetadata("Terms of Use", "Founder-operated NexisHub website terms, pending legal review.", "/legal/terms");
 
 export default function TermsPage() {
   return <LegalDocument title="Terms of Use" summary="Terms for using the founder-operated NexisHub website.">

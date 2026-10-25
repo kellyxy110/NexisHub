@@ -38,7 +38,7 @@ export function SiteFooter() {
         <div className="footer-links">
           <div><strong>Products</strong><Link href="/products/sitenexis">SiteNexis</Link><Link href="/products">All products</Link></div>
           <div><strong>Company</strong><Link href="/about">About</Link><Link href="/studio">Studio</Link><Link href="/contact">Contact</Link><Link href="/legal">Legal</Link></div>
-          <div><strong>Resources</strong><Link href="/blog">Blog</Link><Link href="/research">Research</Link><a href={siteNexisLinks.docs}>SiteNexis docs</a></div>
+          <div><strong>Resources</strong><Link href="/blog">Blog</Link><Link href="/research">Research</Link><Link href="/editorial-policy">Editorial policy</Link><a href={siteNexisLinks.docs}>SiteNexis docs</a></div>
         </div>
         <NewsletterForm />
       </div>

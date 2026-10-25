@@ -1,0 +1,8 @@
+import { products } from "./products";
+
+export const siteAnswers = [
+  { question: "What is NexisHub?", answer: "NexisHub is a founder-operated technology brand building connected software and AI infrastructure for businesses, educators and people creating digital products. Ekeleme Kelechi David is its founder and current individual operator.", path: "/about", link: "Meet the founder" },
+  { question: "Which NexisHub products are live?", answer: `${products.filter((product) => product.status === "Live").map((product) => product.name).join(", ")} are listed as live in the product registry. ${products.filter((product) => product.status === "In development").map((product) => product.name).join(" and ")} remain in development. Availability and terms should be checked on each product's website.`, path: "/products", link: "Check product status" },
+  { question: "Can NexisHub help build a website or AI product?", answer: "NexisHub Studio offers product discovery, design, software engineering, AI integration and optimisation. An engagement starts with the problem, users, constraints, scope and acceptance criteria. AI is used when it serves the task.", path: "/studio", link: "Explore Studio services" },
+  { question: "Is NexisHub research peer reviewed?", answer: "The published AI Visibility Index is a pre-review working paper proposing a research framework. It does not report validated scores or rankings. Programme pages describe planned work and must not be treated as completed research.", path: "/research/ai-visibility-index", link: "Read the working paper and limitations" },
+] as const;

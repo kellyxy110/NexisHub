@@ -447,3 +447,10 @@ footer { padding: 80px 0 30px; background: var(--ink); color: white; }.brand--fo
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+/* Server-rendered answers use the established article FAQ treatment. */
+.discovery-answers { padding: 80px 0; background: #f7f8fb; color: #111827; }
+.discovery-answers h2 { margin: 12px 0 28px; font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: -0.04em; }
+.discovery-answers .article-faq { max-width: 900px; }
+.discovery-answers .article-faq p { max-width: 75ch; line-height: 1.7; }
+.discovery-answers a { text-decoration: underline; text-underline-offset: 3px; }

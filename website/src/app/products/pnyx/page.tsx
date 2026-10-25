@@ -1,12 +1,8 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/discovery";
 import Link from "next/link";
 import { Arrow, SiteFooter, SiteHeader } from "@/components/site-chrome";
 
-export const metadata: Metadata = {
-  title: "Pnyx | NexisHub",
-  description: "Pnyx is a technology knowledge network where technology conversations become organised knowledge.",
-  alternates: { canonical: "/products/pnyx" },
-};
+export const metadata = pageMetadata("Pnyx Technology Knowledge Network", "Read the public product record for Pnyx, a NexisHub technology knowledge network, including its live URL and the limits of the current profile.", "/products/pnyx");
 
 export default function PnyxPage() {
   const schema = { "@context": "https://schema.org", "@type": "SoftwareApplication", name: "Pnyx", applicationCategory: "Knowledge network", description: "Where technology conversations become organised knowledge.", url: "https://pnyx-psi.vercel.app", brand: { "@type": "Brand", name: "NexisHub" } };

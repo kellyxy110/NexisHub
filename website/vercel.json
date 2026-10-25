@@ -4,7 +4,8 @@
   "buildCommand": "npm run prisma:generate && npm run build:webpack",
   "git": {
     "deploymentEnabled": {
-      "fix/nexishub-domain-migration-20261025": false
+      "fix/nexishub-domain-migration-20261025": false,
+      "fix/search-discovery-20261025": false
     }
   }
 }

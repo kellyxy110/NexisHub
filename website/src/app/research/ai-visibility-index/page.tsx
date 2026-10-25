@@ -1,12 +1,8 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/discovery";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 
-export const metadata: Metadata = {
-  title: "AI Visibility Index: Research Framework",
-  description: "Nexis Research Institute working paper on machine discovery, retrieval, representation, and attribution.",
-  alternates: { canonical: "/research/ai-visibility-index" },
-};
+export const metadata = pageMetadata("AI Visibility Index: Research Framework", "Read the pre-review NRI working paper on machine discovery, retrieval, representation and attribution, including proposed methods and limitations.", "/research/ai-visibility-index");
 
 export default function AiVisibilityIndexPaper() {
   return <><SiteHeader light /><main className="article-page"><header className="article-hero"><div className="shell article-hero-inner">

@@ -1,37 +1,43 @@
-import { educationPosts, visibilityPosts } from "@/lib/posts";
+import { allEditorialPosts } from "@/lib/posts";
+import { products } from "@/lib/products";
+import { siteUrl } from "@/lib/site-url";
+import { siteNexisLinks } from "@/lib/site-links";
 
-const visibilityGuides = visibilityPosts.map((post) => `- ${post.title}: https://www.thenexishub.org${post.canonicalPath}`).join("\n");
-const educationGuides = educationPosts.map((post) => `- ${post.title}: https://www.thenexishub.org${post.canonicalPath}`).join("\n");
+const guides = allEditorialPosts.filter((post) => post.status === "Published").map((post) => `- ${post.title}: ${siteUrl}${post.canonicalPath}`).join("\n");
+const productRecords = products.map((product) => `- ${product.name} (${product.status}): ${product.href?.startsWith("/") ? siteUrl + product.href : product.href}`).join("\n");
 const content = `# NexisHub
 
-> NexisHub is an AI infrastructure company building connected intelligent software.
+> NexisHub is a founder-operated technology brand building connected software and AI infrastructure. Its canonical website is ${siteUrl}.
 
-## Canonical pages
-- Home: https://www.thenexishub.org/
-- Products: https://www.thenexishub.org/products
-- SiteNexis: https://www.thenexishub.org/products/sitenexis
-- Blog: https://www.thenexishub.org/blog
-- Complete Guide to AI Software Development (2026): https://www.thenexishub.org/blog/complete-guide-ai-software-development
-- AI Visibility and Machine Discovery guides:
-${visibilityGuides}
-- Education Technology and TeachNexis guides:
-${educationGuides}
-- Research: https://www.thenexishub.org/research
-- About: https://www.thenexishub.org/about
-- Contact: https://www.thenexishub.org/contact
+## Identity and publishing responsibility
+- About NexisHub and founder Ekeleme Kelechi David: ${siteUrl}/about
+- Editorial policy, AI assistance, sources and corrections: ${siteUrl}/editorial-policy
+- Contact: ${siteUrl}/contact
 
-## Live products
-- SiteNexis application: https://sitenexis.com
-- SiteNexis methodology: https://sitenexis.com/methodology
-- SiteNexis documentation: https://sitenexis.com/docs
-- TeachNexis: https://teachnexis.vercel.app
-- EventNexis: https://eventnexis.vercel.app
+## Products and services
+- Product registry and availability: ${siteUrl}/products
+- Software development and AI product Studio: ${siteUrl}/studio
+${productRecords}
+- SiteNexis application: ${siteNexisLinks.home}
+- SiteNexis methodology: ${siteNexisLinks.methodology}
+- SiteNexis documentation: ${siteNexisLinks.docs}
 
-## In-development product surfaces
-- LogicLand: https://logicland.vercel.app
-- CareBridge: https://carebridge-io.vercel.app
+## Research and evidence boundaries
+- Research overview: ${siteUrl}/research
+- AI Visibility Index pre-review working paper: ${siteUrl}/research/ai-visibility-index
+- Research FAQ: ${siteUrl}/research/faq
 
-SiteNexis, TeachNexis, and EventNexis are live NexisHub products. LogicLand and CareBridge have public in-development surfaces, but should not be represented as fully available launch products.
+The working paper proposes a framework; it does not publish validated rankings or empirical findings. Programme pages describe planned work, not completed studies. Blog guides are educational articles, not peer-reviewed papers. Illustrative examples and diagnostic scores are not measured customer outcomes.
+
+## Published guides
+- Blog and topic navigation: ${siteUrl}/blog
+- RSS feed: ${siteUrl}/feed.xml
+${guides}
+
+## Discovery
+- Sitemap: ${siteUrl}/sitemap.xml
+- Robots rules: ${siteUrl}/robots.txt
 `;
 
+// An optional plain-text navigation aid, not an indexing or citation guarantee.
 export function GET() { return new Response(content, { headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "public, max-age=3600" } }); }

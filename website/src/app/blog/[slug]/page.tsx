@@ -1,3 +1,4 @@
+import { editorialId, organizationId, websiteId } from "@/lib/discovery";
 import { siteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -75,8 +76,9 @@ export default async function VisibilityArticlePage({ params }: { params: Promis
   const articleSchema = {
     "@context": "https://schema.org", "@type": "TechArticle", headline: post.title, description: post.description,
     image: `${base}${post.featuredImage}`, datePublished: post.publishedDate, dateModified: post.updatedDate,
-    author: { "@type": "Organization", name: post.author, url: base }, publisher: { "@type": "Organization", name: "NexisHub", url: base },
-    mainEntityOfPage: `${base}${post.canonicalPath}`, articleSection: post.category, keywords: post.tags.join(", "), proficiencyLevel: post.readingLevel,
+    author: { "@type": "Organization", "@id": editorialId, name: post.author, url: `${base}/editorial-policy` }, publisher: { "@type": "Organization", "@id": organizationId, name: "NexisHub", url: base },
+    "@id": `${base}${post.canonicalPath}#article`, url: `${base}${post.canonicalPath}`, isPartOf: { "@id": websiteId },
+    mainEntityOfPage: `${base}${post.canonicalPath}`, articleSection: post.category, keywords: post.tags.join(", "), proficiencyLevel: post.readingLevel, abstract: guide.lead, citation: guide.references.map((reference) => reference.url),
   };
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: base },
@@ -94,7 +96,7 @@ export default async function VisibilityArticlePage({ params }: { params: Promis
       <p className="eyebrow"><span /> Cluster {post.cluster} · {slug === "complete-guide-ai-visibility" ? "Pillar guide" : "Field guide"}</p>
       <h1>{post.title}</h1>
       <p className="article-deck">{post.description}</p>
-      <div className="article-byline"><span>By {post.author}</span><span>Published <time dateTime={post.publishedDate}>{dateLabel(post.publishedDate)}</time></span><span>{post.readingTime}</span><span>Reviewed {dateLabel(post.updatedDate)}</span></div>
+      <div className="article-byline"><span>By <Link href="/editorial-policy">{post.author}</Link></span><span>Published <time dateTime={post.publishedDate}>{dateLabel(post.publishedDate)}</time></span><span>{post.readingTime}</span><span>Reviewed {dateLabel(post.updatedDate)}</span></div>
     </div></header>
     <div className="shell article-visual"><Image src={post.featuredImage} alt={post.featuredImageAlt} width={1200} height={630} priority unoptimized /></div>
     <div className="shell article-layout">
