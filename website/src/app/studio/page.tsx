@@ -37,7 +37,7 @@ export default function StudioPage() {
 
       <section className="studio-boundaries"><div className="shell studio-boundaries-grid"><div><p className="kicker">A useful boundary</p><h2>Technology is not the strategy.</h2></div><div><p>We do not begin with a preferred stack or a fashionable feature. We begin with the people, decisions, workflow, and constraints that define the product.</p><p>For AI work, that means identifying what the system should do, what it must not do, what evidence it can use, how its output will be evaluated, and where a person remains responsible.</p><Link className="inline-link" href="/contact">Discuss a product problem <Arrow /></Link></div></div></section>
 
-      <section className="studio-cta"><div className="shell studio-cta-inner"><Mark /><p className="kicker">NexisHub Studio</p><h2>Bring us the problem<br />before the solution.</h2><p className="studio-cta-copy">Share enough context for us to understand the product, the people, and the constraints.</p><StudioEnquiryForm /></div></section>
+      <section className="studio-cta" id="enquiry"><div className="shell studio-cta-inner"><Mark /><p className="kicker">NexisHub Studio</p><h2>Bring us the problem<br />before the solution.</h2><p className="studio-cta-copy">Share enough context for us to understand the product, the people, and the constraints.</p><p className="studio-cta-copy">You can also email <a href="mailto:nexishub.company@gmail.com">nexishub.company@gmail.com</a> with your goals, audience and current constraints.</p><StudioEnquiryForm /></div></section>
     </main>
     <SiteFooter />
   </>;

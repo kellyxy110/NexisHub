@@ -54,7 +54,7 @@ svg { display: block; }
 .eyebrow > span { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 5px rgba(45,127,249,.12); }
 h1, h2, h3, p { margin-top: 0; }
 .hero h1 { max-width: 830px; margin-bottom: 32px; font: 580 clamp(53px, 6vw, 92px)/.97 var(--font-geist), sans-serif; letter-spacing: -.068em; }
-.hero h1 em { color: rgba(255,255,255,.34); font-style: normal; font-weight: 450; }
+.hero h1 em { color: #b8c1d1; font-style: normal; font-weight: 450; }
 .hero-lede { max-width: 610px; margin-bottom: 38px; color: rgba(255,255,255,.62); font-size: clamp(16px, 1.3vw, 19px); line-height: 1.65; }
 .hero-actions { display: flex; gap: 12px; }
 .hero-actions .button:first-child { background: white; border-color: white; color: var(--ink); }
@@ -454,3 +454,21 @@ footer { padding: 80px 0 30px; background: var(--ink); color: white; }.brand--fo
 .discovery-answers .article-faq { max-width: 900px; }
 .discovery-answers .article-faq p { max-width: 75ch; line-height: 1.7; }
 .discovery-answers a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Homepage routes to services and published evidence. */
+.home-studio, .home-reading { padding: 90px 0; color: #111827; background: #fff; }
+.home-reading { background: #f3f5f8; }
+.home-reading h2 { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; letter-spacing: -.04em; margin: 16px 0 32px; }
+.home-service-grid, .home-reading-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-bottom: 36px; }
+.home-reading-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.home-service-grid article, .home-reading-grid article { padding: 26px; border: 1px solid #d8dee7; border-radius: 14px; }
+.home-service-grid h3, .home-reading-grid h3 { margin: 0 0 14px; font-size: 23px; line-height: 1.3; }
+.home-service-grid h3 a { display: flex; gap: 12px; align-items: center; }
+.home-service-grid svg { width: 20px; flex-shrink: 0; fill: none; stroke: currentColor; }
+.home-service-grid p, .home-reading-grid p { color: #465266; line-height: 1.7; }
+.home-reading-grid article > span { display: block; font-size: 12px; font-weight: 650; color: #465266; margin-bottom: 14px; }
+.privacy-options { display: grid; gap: 10px; margin-top: 14px; }
+.privacy-options label { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; line-height: 1.5; }
+.privacy-options input { margin-top: 3px; accent-color: #265bcc; width: 18px; height: 18px; flex-shrink: 0; }
+.privacy-banner > .privacy-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+@media (max-width: 720px) { .home-service-grid, .home-reading-grid { grid-template-columns: 1fr; }.home-studio, .home-reading { padding: 60px 0; }.privacy-banner { max-height: calc(100dvh - 24px); overflow-y: auto; } }

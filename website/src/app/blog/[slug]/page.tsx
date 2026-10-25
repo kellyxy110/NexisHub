@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { NewsletterForm } from "@/components/newsletter-form";
-import { AdSenseLoader } from "@/components/adsense-loader";
 import { Arrow, SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { dynamicGuidePosts, getPost } from "@/lib/posts";
 import { siteNexisLinks } from "@/lib/site-links";
@@ -87,7 +86,7 @@ export default async function VisibilityArticlePage({ params }: { params: Promis
   ] };
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: guide.faq.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) };
 
-  return <><AdSenseLoader /><SiteHeader light /><main className="article-page">
+  return <><SiteHeader light /><main className="article-page">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json(articleSchema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json(breadcrumbSchema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json(faqSchema) }} />

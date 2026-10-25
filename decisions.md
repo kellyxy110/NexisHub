@@ -391,3 +391,9 @@ The bounded fix keeps the existing asset and visual identity, changes only that 
 The fix is in commit `22d8f33`, deployed through the existing `nexis-hub` Vercel project, and the existing `nexishub.vercel.app` alias serves it. Local tests pass 25/25, lint/typecheck/build pass, and live checks confirm the blog markup and stylesheet. Browser screenshots at the requested widths remain unverified because no browser automation environment is available.
 
 The owner reports AdSense site addition, ownership verification, `Requires review` status, an available request button, and a published Google Privacy & Messaging message. The repository still contains a first-party analytics banner, so consent architecture remains `PARTIAL` until browser testing proves that the two systems do not produce sequential dialogs or contradictory loader behavior.
+
+## 2026-10-25: Public platform claims and independent advertising loading
+
+Shared identity and infrastructure remain the architectural direction. Public pages must distinguish that direction from verified integrations; the current NexisHub admin authentication does not prove universal SSO. Owner-approved product statuses are retained with a public-availability explanation.
+
+Advertising loading requires a new independent default-off preference. Analytics permission cannot authorize AdSense loading. The local preference does not substitute for Google's regional advertising-consent decisions. Vendor loading is restricted to known published editorial routes, and withdrawal or departure from those routes unloads vendor code by reload.

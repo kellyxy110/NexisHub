@@ -11,9 +11,10 @@ export function StudioEnquiryForm() {
     if (!enabled) return;
     setState("sending");
     try {
-      const form = new FormData(event.currentTarget);
+      const formElement = event.currentTarget;
+      const form = new FormData(formElement);
       const response = await fetch("/api/contact", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(Object.fromEntries(form)) });
-      if (response.ok) { event.currentTarget.reset(); setState("sent"); } else setState("error");
+      if (response.ok) { formElement.reset(); setState("sent"); } else setState("error");
     } catch { setState("error"); }
   }
 

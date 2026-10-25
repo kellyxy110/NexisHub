@@ -1,38 +1,39 @@
 # NexisHub Roadmap Status
 
-Updated: 2026-07-28
+Updated: 2026-10-25
 
-## Completed repository modules
+## Verified deployed foundation
 
-- NexisHub marketing site, blog, legal draft surfaces, Studio route, Studio enquiry flow, and founder profile.
-- NRI founder-led governance model, publication lifecycle, review templates, pilot templates, permissions register, research search, programme registry, and 30 programme pages.
-- AI Visibility Index Version 0.1 pre-review working paper.
-- Research page discovery links, sitemap entries, print stylesheet, and structured metadata.
-- Product directory with six products, including Pnyx as a flagship product.
+- Canonical domain: https://www.thenexishub.org. Legacy production hostname redirects preserve paths and queries.
+- Domain ownership verified in Search Console. Sitemap processed with 94 discovered URLs; homepage indexing requested. Indexing, rankings and AI citations are not guaranteed or established by submission.
+- Discovery release (#37): per-page metadata and canonical URLs, identity graphs, editorial policy, visible FAQs, genuine 404s and unfinished-page noindex controls. HTTP audit passes all 94 sitemap destinations.
+- Analytics release (#38): dedicated GA4 property, fresh analytics consent, sanitized public page views, duplicate prevention and withdrawal/unload. Realtime received the test session and two page views.
+- AdSense: new domain verified, ads.txt Authorized, European consent message published for the new domain, review requested. Account remains Getting ready; approval is pending.
 
-## Current flagship products
+## Current landing and consent correction batch
 
-- SiteNexis: AI visibility intelligence
-- Pnyx: Technology knowledge network
+- Clarify SiteNexis sign-in destination and describe shared infrastructure as a direction rather than verified universal SSO.
+- Explain that Live means public availability and does not certify every workflow as production-ready. Retain owner-approved product registry statuses.
+- Add Studio service links, a project-enquiry destination with email fallback, three published guides and the pre-review working paper.
+- Separate default-off advertising loading permission from analytics. Explicit published-route allowlist, withdrawal/unload, preview/private exclusions and duplicate prevention.
+- Replace only HTTP-verified legacy SiteNexis links. Remove an optional related-reading link whose replacement returned 404.
+- Fix form success handling so an asynchronous response does not access a cleared event.currentTarget.
 
-## In progress or awaiting repository follow-up
+## Product scope and outstanding evidence
 
-- Pnyx product profile and additional verified product documentation.
-- Manual mobile, keyboard, screen-reader, reduced-motion, and print QA.
-- Research publication database and authenticated administration workflow.
-- Citation export fields and downloadable publication assets.
-- More complete structured metadata for product and research collections.
-- Editorial maintenance records and automated link/source review.
+- SiteNexis and Pnyx remain the flagship products. TeachNexis and EventNexis are listed Live by owner decision. LogicLand and CareBridge remain In development.
+- Public availability does not establish application-wide auth, payment, data, security or release readiness. Validate each product in its own repository.
+- Universal NexisAuth/SSO, shared billing and complete cross-product integration remain unverified. Do not market them as available to every user.
+- Studio/contact/newsletter delivery must be verified through the delivery service and recipient acceptance; UI/API success alone is insufficient. Email remains a visible alternative.
+- Regional Google CMP/TCF signals, downstream rejection and consent withdrawal still need a covered-region runtime test. The local advertising loading choice is not personalized-ad consent.
+- Privacy, Cookies and Terms remain drafts. Operational retention/deletion, formal contact details and qualified legal review are outstanding.
+- Editorial overlap and source quality need article-level review. Technical discovery checks do not establish AdSense content acceptance.
+- Mobile, keyboard, screen-reader, reduced-motion and performance acceptance remain scoped validation tasks; a desktop screenshot cannot prove them.
+- NRI reviewer appointments, pilot permissions/data collection, analysis and publication approval remain human governance tasks. Version 0.1 is a pre-review framework, not validated rankings.
 
-## Pending human action
+## Next verification milestones
 
-- External legal counsel review.
-- NRI technical, methodology, and ethics reviewer appointments.
-- Studio leadership appointments beyond the Founding Director.
-- Portfolio permissions.
-- Pilot contacts, invitations, consent, data collection, analysis, and adjudication.
-- Publication approval for any reviewed NRI Version 1.0 release.
-
-## Deployment state
-
-The latest Pnyx change is committed locally but deployment is intentionally paused. GitHub authentication and Vercel project access require correction before push or production deployment.
+1. Verify landing service/reading links, independent consent combinations and withdrawal in production after this batch passes checks.
+2. Validate actual lead delivery with an agreed test recipient and evidence of receipt.
+3. Finish editorial and regional advertising-consent verification; retain pending statuses until demonstrated.
+4. Review Search Console indexing and GA4 enquiries/product visits once sufficient real data exists. Do not repeatedly resubmit the same URLs or AdSense review.

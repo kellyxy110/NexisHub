@@ -2,9 +2,13 @@ import { jsonLd, pageMetadata } from "@/lib/discovery";
 import { siteAnswers } from "@/lib/site-answers";
 import Link from "next/link";
 import { Arrow, Mark, SiteFooter, SiteHeader } from "@/components/site-chrome";
+import { getPost } from "@/lib/posts";
+import { services } from "@/lib/studio-services";
 import { products } from "@/lib/products";
 
 export const metadata = { ...pageMetadata("NexisHub | AI Software, Research and Product Engineering", "NexisHub builds connected AI products and software infrastructure. Explore our products, engineering guides, research and product development Studio.", "/"), title: { absolute: "NexisHub | AI Software, Research and Product Engineering" } };
+
+const featuredPosts = ["complete-guide-ai-software-development", "complete-guide-ai-visibility", "measure-ai-visibility"].map(getPost).filter((post) => post !== undefined);
 
 const principles = [
   ["01", "Observe", "Start with the real problem, not the fashionable one."],
@@ -34,15 +38,15 @@ export default function Home() {
           <div className="shell hero-inner">
             <div className="hero-copy">
               <p className="eyebrow"><span /> Intelligent software, one ecosystem</p>
-              <h1>Building intelligence<br /><em>into what comes next.</em></h1>
-              <p className="hero-lede">NexisHub creates connected AI products that help people work, learn, create, organize, and make better decisions.</p>
+              <h1>AI products.<br /><em>Software built for real work.</em></h1>
+              <p className="hero-lede">Explore software for search visibility, teaching and events. Work with NexisHub Studio to design, build or improve your own digital product.</p>
               <div className="hero-actions"><a className="button" href="#products" data-analytics="home-explore-products">Explore products <Arrow /></a><Link className="button button--ghost" href="/products/sitenexis" data-analytics="home-see-sitenexis">See SiteNexis</Link></div>
             </div>
 
             <div className="orbit" aria-label="NexisHub connected product ecosystem">
               <div className="orbit-ring orbit-ring--outer" /><div className="orbit-ring orbit-ring--inner" />
               <div className="orbit-lines" aria-hidden="true"><span className="line line--one" /><span className="line line--two" /><span className="line line--three" /><span className="line line--four" /><span className="line line--five" /></div>
-              <div className="orbit-center"><Mark /><strong>NexisHub</strong><small>Shared intelligence</small></div>
+              <div className="orbit-center"><Mark /><strong>NexisHub</strong><small>Shared AI direction</small></div>
               {products.map((product, index) => <div className={`orbit-node orbit-node--${index + 1} accent-${product.accent}`} key={product.name}><i /><span>{product.name}</span></div>)}
             </div>
           </div>
@@ -53,7 +57,7 @@ export default function Home() {
 
         <section className="products-section" id="products">
           <div className="shell">
-            <div className="section-heading"><div><p className="kicker">The ecosystem</p><h2>Focused products.<br />Connected by design.</h2></div><p>Every product solves a distinct problem while sharing the same intelligence, design language, and quality bar.</p></div>
+            <div className="section-heading"><div><p className="kicker">The ecosystem</p><h2>Focused products.<br />Connected by design.</h2></div><p>Each product serves a different audience. Live means a public product is available; it does not certify every feature as production-ready. Check each product’s scope and terms before use.</p></div>
             <div className="product-list">
               {products.map((product, index) => (
                 <article className={`product-row accent-${product.accent}`} key={product.name} data-product={product.name}>
@@ -69,12 +73,12 @@ export default function Home() {
 
         <section className="platform-section" id="platform">
           <div className="shell platform-grid">
-            <div className="platform-copy"><p className="kicker kicker--light">The shared foundation</p><h2>Infrastructure that gets smarter with every product.</h2><p>Identity, intelligence, analytics, and design are shared at the platform level. Teams get focused software without fragmented accounts or disconnected experiences.</p><Link className="inline-link" href="/about">Why we build this way <Arrow /></Link></div>
-            <div className="platform-visual" aria-label="Shared platform layers">
-              <div className="platform-core"><Mark small /><span>Nexis platform</span></div>
-              <div className="platform-layer layer--one"><span>NexisAI</span><small>Shared intelligence</small></div>
-              <div className="platform-layer layer--two"><span>NexisAuth</span><small>One identity</small></div>
-              <div className="platform-layer layer--three"><span>Analytics</span><small>One event language</small></div>
+            <div className="platform-copy"><p className="kicker kicker--light">Our platform direction</p><h2>Build strong foundations.<br />Reuse what works.</h2><p>We are working toward shared identity, AI services, analytics and design across NexisHub products. Integration varies by product. A single account across every product is not currently promised.</p><Link className="inline-link" href="/about">Why we build this way <Arrow /></Link></div>
+            <div className="platform-visual" aria-label="Planned shared platform layers">
+              <div className="platform-core"><Mark small /><span>Platform roadmap</span></div>
+              <div className="platform-layer layer--one"><span>NexisAI</span><small>Shared AI direction</small></div>
+              <div className="platform-layer layer--two"><span>NexisAuth</span><small>Shared identity planned</small></div>
+              <div className="platform-layer layer--three"><span>Analytics</span><small>Common measurement goal</small></div>
               <div className="platform-layer layer--four"><span>Design system</span><small>One quality bar</small></div>
             </div>
           </div>
@@ -98,6 +102,18 @@ export default function Home() {
             </div>
           </div></div>
         </section>
+
+        <section className="home-studio" aria-labelledby="home-studio-title"><div className="shell">
+          <div className="section-heading"><div><p className="kicker">NexisHub Studio</p><h2 id="home-studio-title">Have a problem<br />worth building for?</h2></div><p>Start with your users, current workflow and constraints. We can help scope a first release or improve software you already run.</p></div>
+          <div className="home-service-grid">{services.map((service) => <article key={service.slug}><h3><Link href={`/studio/${service.slug}`}>{service.name} <Arrow /></Link></h3><p>{service.summary}</p></article>)}</div>
+          <Link className="button" href="/studio#enquiry" data-analytics="home-start-project">Start a project <Arrow /></Link>
+        </div></section>
+
+        <section className="home-reading" aria-labelledby="home-reading-title"><div className="shell"><p className="kicker">Engineering, evidence and research</p><h2 id="home-reading-title">Read how we think<br />through the work.</h2>
+          <div className="home-reading-grid">{featuredPosts.map((post) => <article key={post.slug}><span>Practical guide</span><h3><Link href={`/blog/${post.slug}`}>{post.title}</Link></h3><p>{post.description}</p><Link className="inline-link" href={`/blog/${post.slug}`} data-analytics={`home-read-${post.slug}`}>Read the guide <Arrow /></Link></article>)}
+          <article><span>Pre-review working paper</span><h3><Link href="/research/ai-visibility-index">AI Visibility Index, version 0.1</Link></h3><p>A proposed research framework with stated methods and limitations. It does not report validated scores or rankings.</p><Link className="inline-link" href="/research/ai-visibility-index" data-analytics="home-read-working-paper">Read the working paper <Arrow /></Link></article></div>
+          <Link className="inline-link" href="/blog">Browse all guides <Arrow /></Link>
+        </div></section>
 
         <section className="discovery-answers" aria-labelledby="nexishub-answers"><div className="shell"><p className="kicker">About the ecosystem</p><h2 id="nexishub-answers">NexisHub, explained.</h2><div className="article-faq">{siteAnswers.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer} <Link href={item.path}>{item.link}</Link></p></details>)}</div><p><Link href="/editorial-policy">How we publish, check sources and handle corrections</Link></p></div></section>
 
