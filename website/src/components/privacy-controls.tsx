@@ -1,15 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { analyticsConsentVersion, analyticsConsentVersionKey } from "@/lib/google-analytics";
 
 const consentKey = "nexishub-analytics-consent";
 
 export function PrivacyControls() {
   const [open, setOpen] = useState(false);
-  useEffect(() => { const timer = window.setTimeout(() => setOpen(localStorage.getItem(consentKey) === null), 0); const show = () => setOpen(true); window.addEventListener("nexishub:privacy", show); return () => { window.clearTimeout(timer); window.removeEventListener("nexishub:privacy", show); }; }, []);
-  function choose(value: "allow" | "reject") { localStorage.setItem(consentKey, value); window.dispatchEvent(new CustomEvent("nexishub:consent", { detail: value })); setOpen(false); }
+  useEffect(() => { const timer = window.setTimeout(() => setOpen(localStorage.getItem(consentKey) === null || localStorage.getItem(analyticsConsentVersionKey) !== analyticsConsentVersion), 0); const show = () => setOpen(true); window.addEventListener("nexishub:privacy", show); return () => { window.clearTimeout(timer); window.removeEventListener("nexishub:privacy", show); }; }, []);
+  function choose(value: "allow" | "reject") { localStorage.setItem(consentKey, value); localStorage.setItem(analyticsConsentVersionKey, analyticsConsentVersion); window.dispatchEvent(new CustomEvent("nexishub:consent", { detail: value })); setOpen(false); }
   if (!open) return null;
-  return <aside className="privacy-banner" aria-label="Privacy choices"><div><strong>Your privacy, clearly handled.</strong><p>Essential storage remembers this choice. Optional analytics helps us understand page and CTA usage. Where applicable, Google Privacy &amp; Messaging handles separate advertising choices.</p></div><div><button onClick={() => choose("reject")}>Essential only</button><button className="privacy-allow" onClick={() => choose("allow")}>Allow analytics</button></div></aside>;
+  return <aside className="privacy-banner" aria-label="Privacy choices"><div><strong>Your privacy, clearly handled.</strong><p>Essential storage remembers this choice. Optional first-party analytics and Google Analytics help us understand page and CTA usage. Withdrawing analytics reloads the page to stop the loaded analytics code. Where applicable, Google Privacy &amp; Messaging handles separate advertising choices.</p></div><div><button onClick={() => choose("reject")}>Essential only</button><button className="privacy-allow" onClick={() => choose("allow")}>Allow analytics</button></div></aside>;
 }
 
 export function AnalyticsTracker() {

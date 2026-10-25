@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from "@/components/google-analytics";
 import { identityGraph, jsonLd } from "@/lib/discovery";
 import { siteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${geist.variable} ${inter.variable}`} suppressHydrationWarning>
-      <body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(identityGraph) }} />{children}<AnalyticsTracker /><PrivacyControls /></body>
+      <body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(identityGraph) }} />{children}<AnalyticsTracker /><GoogleAnalytics /><PrivacyControls /></body>
     </html>
   );
 }
