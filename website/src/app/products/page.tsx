@@ -20,10 +20,10 @@ export default function ProductsPage() {
           <div className="shell products-hero-grid">
             <div>
               <p className="kicker">The NexisHub ecosystem</p>
-              <h1>Independent products.<br /><span>One intelligent foundation.</span></h1>
+              <h1>Independent products.<br /><span>A shared platform direction.</span></h1>
             </div>
             <div className="products-hero-note">
-              <p>Each NexisHub product focuses on a real problem. Underneath, they share intelligence, identity, analytics, and a common design language.</p>
+              <p>Each product focuses on a real problem. Shared identity, AI services, analytics and design are platform goals; integration varies by product.</p>
               <a href="#explore">Explore the ecosystem <span aria-hidden="true">↓</span></a>
             </div>
           </div>
@@ -33,9 +33,9 @@ export default function ProductsPage() {
           <div className="ecosystem-halo" aria-hidden="true" />
           <div className="shell ecosystem-stage-inner">
             <div className="ecosystem-intro">
-              <p className="kicker kicker--light">Built once. Reused everywhere.</p>
-              <h2>Connected below the surface.</h2>
-              <p>Products remain focused while the platform handles what should never be rebuilt five times.</p>
+              <p className="kicker kicker--light">The platform direction</p>
+              <h2>Building toward common foundations.</h2>
+              <p>Products remain focused while we develop reusable infrastructure. A single account across all products is not currently promised.</p>
             </div>
 
             <div className="ecosystem-map" aria-label="Six products connected to the NexisHub platform">
@@ -50,15 +50,15 @@ export default function ProductsPage() {
               ))}
             </div>
 
-            <div className="ecosystem-foundation" aria-label="Shared platform capabilities">
-              <span>Shared intelligence</span><span>One identity</span><span>Unified analytics</span><span>Common design system</span>
+            <div className="ecosystem-foundation" aria-label="Planned shared platform capabilities">
+              <span>Shared intelligence</span><span>Shared identity planned</span><span>Common analytics goal</span><span>Common design system</span>
             </div>
           </div>
         </section>
 
         <section className="product-directory">
           <div className="shell">
-            <div className="directory-heading"><p className="kicker">Six products across the NexisHub ecosystem</p><h2>Built around the people<br />who use them.</h2></div>
+            <div className="directory-heading"><p className="kicker">Six products across the NexisHub ecosystem</p><h2>Built around the people<br />who use them.</h2><p>Live indicates a publicly available product, not a certification of every feature or production workflow. Check product-specific scope, availability and terms before use.</p></div>
             <div className="directory-list">
               {products.map((product, index) => (
                 <article className={`directory-item accent-${product.accent}`} key={product.name} data-product={product.name}>

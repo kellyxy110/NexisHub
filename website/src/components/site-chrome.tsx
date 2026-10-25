@@ -20,7 +20,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
         <nav className="desktop-nav" aria-label="Primary navigation">
           <Link href="/products">Products</Link><Link href="/#platform">Platform</Link><Link href="/studio">Studio</Link><Link href="/research">Research</Link><Link href="/blog">Blog</Link><Link href="/about">Company</Link>
         </nav>
-        <div className="nav-actions"><a className="text-link" href={siteNexisLinks.login}>Sign in</a><a className="button button--small" href={siteNexisLinks.audit} data-analytics="sitenexis-start-free">Run free audit <Arrow /></a></div>
+        <div className="nav-actions"><a className="text-link" href={siteNexisLinks.login}>SiteNexis sign in</a><a className="button button--small" href={siteNexisLinks.audit} data-analytics="sitenexis-start-free">Run free audit <Arrow /></a></div>
         <details className="mobile-nav">
           <summary aria-label="Open navigation"><span /><span /></summary>
           <nav aria-label="Mobile navigation"><Link href="/products">Products</Link><Link href="/#platform">Platform</Link><Link href="/studio">Studio</Link><Link href="/research">Research</Link><Link href="/blog">Blog</Link><Link href="/about">Company</Link><a href={siteNexisLinks.audit} data-analytics="sitenexis-start-free-mobile">Run free audit</a></nav>

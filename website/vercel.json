@@ -6,7 +6,8 @@
     "deploymentEnabled": {
       "fix/nexishub-domain-migration-20261025": false,
       "fix/search-discovery-20261025": false,
-      "feat/consent-ga4-20261025": false
+      "feat/consent-ga4-20261025": false,
+      "fix/landing-consent-gaps-20261025": false
     }
   }
 }

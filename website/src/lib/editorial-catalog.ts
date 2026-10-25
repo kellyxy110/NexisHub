@@ -85,7 +85,7 @@ export const editorialPosts: readonly BlogPost[] = seedRecords.map((seed) => ({
   intent: "Informational", readingTime: "19 min read", author: "NexisHub Editorial", publishedDate: "2026-08-11", updatedDate: (refreshedArchiveSlugs.has(seed.slug) || individuallyRewrittenSlugs.has(seed.slug)) ? "2026-10-19" : "2026-08-11",
   tags: [seed.category, seed.keyword, "NexisHub Editorial"], featuredImage: `/blog/${seed.slug}/opengraph-image`, featuredImageAlt: `${seed.title}, a NexisHub editorial guide.`,
   seoTitle: seed.title, seoDescription: seed.description, canonicalPath: `/blog/${seed.slug}`, series: `${seed.category} desk`, readingLevel: "Technical practitioner", status: "Published",
-  relatedSlugs: relatedByCategory(seed), siteNexisSource: seed.category === "AI Infrastructure" || seed.category === "Modern Web Engineering" ? "https://sitenexis.vercel.app/blog/complete-guide-to-ai-visibility" : undefined,
+  relatedSlugs: relatedByCategory(seed), siteNexisSource: undefined,
 }));
 
 const guidePoint = (title: string, detail: string) => ({ title, detail });

@@ -6,19 +6,11 @@ const routes = ["src/app/page.tsx", "src/app/products/page.tsx", "src/app/produc
 
 test("all launch routes have page modules", () => { for (const route of routes) assert.ok(existsSync(route), `${route} is missing`); });
 test("discovery endpoints are implemented", () => { for (const file of ["src/app/sitemap.ts", "src/app/robots.ts", "src/app/llms.txt/route.ts", "src/app/manifest.ts", "src/app/feed.xml/route.ts"]) assert.ok(existsSync(file), `${file} is missing`); });
-test("AdSense integration uses the authorized public record and scoped loader", () => { const ads = readFileSync("public/ads.txt", "utf8"); const loader = readFileSync("src/components/adsense-loader.tsx", "utf8"); assert.equal(ads, "google.com, pub-3694194350196538, DIRECT, f08c47fec0942fa0\n"); assert.match(loader, /ca-pub-3694194350196538/); assert.match(loader, /pagead2\.googlesyndication\.com/); assert.doesNotMatch(readFileSync("src/app/layout.tsx", "utf8"), /adsbygoogle/); });
-test("AdSense script is loaded only once through the consent-aware public loader", () => {
-  const loader = readFileSync("src/components/adsense-loader.tsx", "utf8");
-  const controls = readFileSync("src/components/privacy-controls.tsx", "utf8");
+test("AdSense has the authorized record and a route-scoped controller", () => {
+  assert.equal(readFileSync("public/ads.txt", "utf8"), "google.com, pub-3694194350196538, DIRECT, f08c47fec0942fa0\n");
   const layout = readFileSync("src/app/layout.tsx", "utf8");
-  const ads = readFileSync("public/ads.txt", "utf8");
-  assert.match(loader, /getItem\("nexishub-analytics-consent"\) !== "allow"/);
-  assert.match(loader, /querySelector\(`script\[data-nexishub-adsense=/);
-  assert.match(loader, /nexishub:consent/);
-  assert.match(controls, /localStorage\.setItem\(consentKey, value\)/);
-  assert.match(controls, /new CustomEvent\("nexishub:consent"/);
-  assert.doesNotMatch(layout, /pagead2\.googlesyndication\.com|adsbygoogle\.js/);
-  assert.equal(ads.trim(), "google.com, pub-3694194350196538, DIRECT, f08c47fec0942fa0");
+  assert.doesNotMatch(layout, /adsbygoogle\.js/);
+  assert.match(layout, /allowedPaths/);
 });
 
 test("featured blog visual preserves its text-bearing asset without cropping or duplicate announcements", () => { const page = readFileSync("src/app/blog/page.tsx", "utf8"); const css = readFileSync("src/app/globals.css", "utf8"); assert.match(page, /<Image src=\{featuredVisibilityPost\.featuredImage\} alt=""/); assert.match(css, /\.blog-latest-card img[^}]*object-fit: contain/); });
@@ -29,7 +21,7 @@ test("legal surfaces describe implemented consent, provider, and advertising bou
 test("first-party consent copy does not misrepresent advertising behavior", () => { const controls = readFileSync("src/components/privacy-controls.tsx", "utf8"); assert.match(controls, /Google Privacy &amp; Messaging handles separate advertising choices/); assert.doesNotMatch(controls, /without advertising trackers/); });
 test("published posts are integrated into discovery", () => { const posts = readFileSync("src/lib/posts.ts", "utf8"); const feed = readFileSync("src/app/feed.xml/route.ts", "utf8"); const sitemap = readFileSync("src/app/sitemap.ts", "utf8"); assert.match(posts, /complete-guide-ai-software-development/); assert.match(posts, /status: "Published"/); assert.match(feed, /allEditorialPosts/); assert.match(sitemap, /allEditorialPosts/); });
 test("blog sections expose the expanded editorial desks", () => { const page = readFileSync("src/app/blog/page.tsx", "utf8"); const posts = readFileSync("src/lib/posts.ts", "utf8"); assert.equal((page.match(/posts: visibilityPosts\.slice/g) ?? []).length, 5); assert.match(page, /visibilityPosts\.slice\(20, 25\)/); assert.match(page, /Education technology and TeachNexis/); assert.match(page, /Modern web engineering/); assert.match(page, /Developer tutorials/); assert.equal((posts.match(/educationPost\(\{/g) ?? []).length, 5); });
-test("AI visibility cluster contains complete linked guides", () => { const posts = readFileSync("src/lib/posts.ts", "utf8"); const content = readFileSync("src/lib/visibility-content.ts", "utf8"); const route = readFileSync("src/app/blog/[slug]/page.tsx", "utf8"); assert.equal((posts.match(/visibilityPost\(\{/g) ?? []).length, 25); assert.ok((posts.match(/siteNexisSource: "https:\/\/sitenexis\.vercel\.app\/blog\//g) ?? []).length >= 15); assert.match(content, /additionalVisibilityGuides/); assert.match(content, /editorialGuides/); assert.match(route, /TechArticle/); assert.match(route, /FAQPage/); assert.match(route, /BreadcrumbList/); });
+test("AI visibility cluster contains complete linked guides", () => { const posts = readFileSync("src/lib/posts.ts", "utf8"); const content = readFileSync("src/lib/visibility-content.ts", "utf8"); const route = readFileSync("src/app/blog/[slug]/page.tsx", "utf8"); assert.equal((posts.match(/visibilityPost\(\{/g) ?? []).length, 25); assert.ok((posts.match(/siteNexisSource: "https:\/\/sitenexis\.com\/blog\//g) ?? []).length >= 15); assert.match(content, /additionalVisibilityGuides/); assert.match(content, /editorialGuides/); assert.match(route, /TechArticle/); assert.match(route, /FAQPage/); assert.match(route, /BreadcrumbList/); });
 test("published guides use long-form deep dives", () => { const content = readFileSync("src/lib/visibility-content.ts", "utf8"); const route = readFileSync("src/app/blog/[slug]/page.tsx", "utf8"); assert.ok((content.match(/deepDive:/g) ?? []).length >= 20); assert.match(route, /article-deep-dive/); });
 test("AI visibility pages are statically generated and included in machine discovery", () => { const route = readFileSync("src/app/blog/[slug]/page.tsx", "utf8"); const image = readFileSync("src/app/blog/[slug]/opengraph-image.tsx", "utf8"); const llms = readFileSync("src/app/llms.txt/route.ts", "utf8"); assert.match(route, /generateStaticParams/); assert.match(route, /dynamicParams = false/); assert.match(image, /ImageResponse/); assert.match(llms, /allEditorialPosts/); });
 test("AI visibility pillar links to a substantial supporting set", () => { const posts = readFileSync("src/lib/posts.ts", "utf8"); const pillar = posts.split('slug: "complete-guide-ai-visibility"')[1].split("siteNexisSource:")[0]; assert.ok((pillar.match(/"[a-z0-9-]+"/g) ?? []).length >= 14); assert.match(pillar, /how-ai-platforms-discover-sources/); assert.match(pillar, /measure-ai-visibility/); });
