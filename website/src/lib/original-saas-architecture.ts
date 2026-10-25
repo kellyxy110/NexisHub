@@ -107,7 +107,7 @@ export const saasOriginalGuide: VisibilityGuide = {
     },
     {
       "label": "NexisHub deployment report",
-      "url": "https://nexishub.vercel.app/blog/vercel-nextjs-deployment-debugging"
+      "url": "https://www.thenexishub.org/blog/vercel-nextjs-deployment-debugging"
     }
   ]
 };

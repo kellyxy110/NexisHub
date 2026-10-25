@@ -123,7 +123,7 @@ export const originalProductPlanningGuides: readonly VisibilityGuide[] = [
       },
       {
         "label": "NexisHub AI software development guide",
-        "url": "https://nexishub.vercel.app/blog/complete-guide-ai-software-development"
+        "url": "https://www.thenexishub.org/blog/complete-guide-ai-software-development"
       }
     ]
   },
@@ -247,7 +247,7 @@ export const originalProductPlanningGuides: readonly VisibilityGuide[] = [
       },
       {
         "label": "NexisHub deployment field report",
-        "url": "https://nexishub.vercel.app/blog/vercel-nextjs-deployment-debugging"
+        "url": "https://www.thenexishub.org/blog/vercel-nextjs-deployment-debugging"
       }
     ]
   },
@@ -371,7 +371,7 @@ export const originalProductPlanningGuides: readonly VisibilityGuide[] = [
       },
       {
         "label": "NexisHub evidence-based launch guide",
-        "url": "https://nexishub.vercel.app/blog/website-launch-readiness-evidence"
+        "url": "https://www.thenexishub.org/blog/website-launch-readiness-evidence"
       }
     ]
   }

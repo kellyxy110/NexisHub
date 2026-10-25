@@ -140,5 +140,5 @@ export const editorialGuides: readonly VisibilityGuide[] = seedRecords.map((seed
     { question: "How much of the process can be automated?", answer: "Automate repeatable work only after the workflow and failure boundaries are clear. Keep accountable human review where errors could affect safety, privacy, learning, research integrity, or client obligations." },
     { question: "When should the guide be updated?", answer: "Review it when relevant documentation, product assumptions, legal requirements, user evidence, or operational conditions change. Record material revisions rather than silently replacing the original position." },
   ],
-  references: [seed.reference, { label: "NexisHub research and editorial standards", url: "https://nexishub.vercel.app/research/ethics" }],
+  references: [seed.reference, { label: "NexisHub research and editorial standards", url: "https://www.thenexishub.org/research/ethics" }],
 }));

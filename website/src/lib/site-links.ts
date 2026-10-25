@@ -1,10 +1,10 @@
 export const siteNexisLinks = {
-  home: "https://sitenexis.vercel.app",
-  audit: "https://sitenexis.vercel.app",
-  signup: "https://sitenexis.vercel.app/signup",
-  login: "https://sitenexis.vercel.app/login",
-  pricing: "https://sitenexis.vercel.app/pricing",
-  methodology: "https://sitenexis.vercel.app/methodology",
-  docs: "https://sitenexis.vercel.app/docs",
-  contact: "https://sitenexis.vercel.app/contact",
+  home: "https://sitenexis.com",
+  audit: "https://sitenexis.com",
+  signup: "https://sitenexis.com/signup",
+  login: "https://sitenexis.com/login",
+  pricing: "https://sitenexis.com/pricing",
+  methodology: "https://sitenexis.com/methodology",
+  docs: "https://sitenexis.com/docs",
+  contact: "https://sitenexis.com/contact",
 } as const;
