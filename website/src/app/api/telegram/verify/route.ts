@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { verifyTelegramInitData } from "@/lib/telegram/verify-init-data";
+import { verifyTelegramInitData } from "../../../../lib/telegram/verify-init-data";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
