@@ -1,4 +1,4 @@
-import { verifyTelegramInitData } from "./verify-init-data";
+import { verifyTelegramInitData } from "./verify-init-data.ts";
 
 export type TelegramVerificationResult = {
   status: number;
