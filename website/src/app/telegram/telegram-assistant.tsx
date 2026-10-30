@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 type Answer = { question: string; answer: string; href: string; label: string };
 
@@ -11,7 +12,7 @@ export function TelegramAssistant({ answers }: { answers: readonly Answer[] }) {
   return (
     <section className="tg-assistant" aria-label="NexisHub help assistant">
       <button type="button" className="tg-assistant-toggle" aria-expanded={open} aria-controls="tg-assistant-panel" onClick={() => setOpen(!open)}>
-        <span aria-hidden="true">✦</span> {open ? "Close assistant" : "Ask NexisHub"}
+        <Image className="tg-assistant-logo" src="/nexishub-logo.jpeg" width={28} height={28} alt="" aria-hidden="true" /> {open ? "Close assistant" : "Ask NexisHub"}
       </button>
       {open && <div className="tg-assistant-panel" id="tg-assistant-panel">
         <div className="tg-assistant-heading"><strong>NexisHub Assistant</strong><span>Source-backed answers · Preview</span></div>
