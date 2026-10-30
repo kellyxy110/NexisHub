@@ -10,3 +10,10 @@
 .tg-assistant-logo{display:block;width:28px;height:28px;flex-shrink:0;border-radius:8px;object-fit:cover;background:#080e20;border:1px solid #ffffff44}
 
 .tg-chat-messages{display:grid;gap:11px;margin:15px 0;max-height:360px;overflow-y:auto;overscroll-behavior:contain}.tg-chat-message{max-width:94%;padding:12px 14px;border-radius:14px;background:#eef4fc;color:#173356}.tg-chat-user{margin-left:auto;background:#2167e5;color:#fff}.tg-chat-message p{margin:0;font-size:13px;line-height:1.6;overflow-wrap:anywhere}.tg-chat-message a{display:inline-block;margin-top:9px;font-size:12px;font-weight:800;color:#1557c4;text-decoration:underline}.tg-chat-form{margin-top:16px}.tg-chat-form label{display:block;font-size:12px;font-weight:800;color:#314666;margin-bottom:7px}.tg-chat-input-row{display:flex;gap:8px}.tg-chat-input-row input{flex:1;min-width:0;min-height:48px;border:1px solid #bacbe3;border-radius:11px;background:#fff;color:#102748;font-size:14px;padding:10px 12px}.tg-chat-input-row button{min-height:48px;padding:0 16px;border:0;border-radius:11px;background:#2469e9;color:#fff;font-weight:800;cursor:pointer}.tg-chat-input-row button:disabled{opacity:.5;cursor:not-allowed}.tg-chat-clear{border:0;background:transparent;color:#285caa;text-decoration:underline;font-size:12px;padding:10px 0;cursor:pointer}
+
+/* Keep the app header clear of Telegram's floating Close and menu controls. */
+.tg-page .tg-shell{padding-top:calc(84px + env(safe-area-inset-top,0px));scroll-padding-top:100px}
+.tg-page .tg-topbar{min-height:56px}
+.tg-page .tg-chat-form{scroll-margin-top:112px}
+.tg-page .tg-chat-input-row input{font-size:16px}
+@media(min-width:650px){.tg-page .tg-shell{padding-top:calc(84px + env(safe-area-inset-top,0px))}}
