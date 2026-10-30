@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import "./telegram.css";
 import { TelegramAssistant } from "./telegram-assistant";
+import { TelegramWebAppBridge } from "./telegram-webapp-bridge";
 import { siteAnswers } from "@/lib/site-answers";
 
 export const metadata = {
@@ -20,6 +21,7 @@ const destinations = [
 export default function TelegramLanding() {
   return (
     <main className="tg-page">
+      <TelegramWebAppBridge />
       <div className="tg-shell">
         <header className="tg-topbar">
           <Link href="/" className="tg-identity" aria-label="NexisHub home">
