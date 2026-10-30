@@ -1,0 +1,46 @@
+name: Telegram route verification
+
+on:
+  push:
+    branches:
+      - feature/nexishub-telegram-miniapp
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src/website
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: src/website/package-lock.json
+      - name: Check route exists in checked-out source
+        run: |
+          test -f src/app/telegram/page.tsx
+          test -f src/lib/telegram/verify-init-data.ts
+      - name: Install
+        run: npm ci
+      - name: Generate Prisma client
+        run: npm run prisma:generate
+      - name: Build
+        run: npm run build:webpack
+      - name: Assert Telegram route is included in Next.js manifest
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const manifest = JSON.parse(fs.readFileSync('.next/server/app-paths-manifest.json', 'utf8'));
+          const matches = Object.keys(manifest).filter((key) => key === '/telegram/page' || key === '/telegram');
+          if (!matches.length) {
+            console.error('FAIL: /telegram missing from Next.js app paths manifest');
+            process.exit(1);
+          }
+          console.log('PASS: Telegram route found:', matches.join(', '));
+          NODE
