@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import Script from "next/script";
 
 type TelegramWebApp = {
   ready?: () => void;
@@ -16,12 +16,12 @@ declare global {
 }
 
 /**
- * Progressive enhancement for Telegram's in-app WebView.
- * No initData is read, persisted, transmitted or treated as authentication.
- * The normal browser experience remains unchanged.
+ * Official Telegram Mini App bridge. Loading the SDK is necessary because
+ * Telegram's WebApp interface is not guaranteed to exist without its script.
+ * This does not read, send or trust initData and does not authenticate users.
  */
 export function TelegramWebAppBridge() {
-  useEffect(() => {
+  function initialize() {
     const webApp = window.Telegram?.WebApp;
     if (!webApp) return;
     try {
@@ -30,8 +30,15 @@ export function TelegramWebAppBridge() {
       webApp.setHeaderColor?.("#ffffff");
       webApp.setBackgroundColor?.("#ffffff");
     } catch {
-      // Telegram bridge methods are optional across client versions.
+      // Older clients may not support optional bridge methods.
     }
-  }, []);
-  return null;
+  }
+
+  return (
+    <Script
+      src="https://telegram.org/js/telegram-web-app.js"
+      strategy="afterInteractive"
+      onLoad={initialize}
+    />
+  );
 }
