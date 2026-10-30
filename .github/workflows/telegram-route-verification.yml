@@ -14,14 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: src/website
+        working-directory: website
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
           cache: npm
-          cache-dependency-path: src/website/package-lock.json
+          cache-dependency-path: website/package-lock.json
       - name: Check route exists in checked-out source
         run: |
           test -f src/app/telegram/page.tsx
