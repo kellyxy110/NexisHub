@@ -15,12 +15,12 @@ export function TelegramAssistant({ answers }: { answers: readonly Answer[] }) {
       </button>
       {open && <div className="tg-assistant-panel" id="tg-assistant-panel">
         <div className="tg-assistant-heading"><strong>NexisHub Assistant</strong><span>Source-backed answers · Preview</span></div>
-        <p className="tg-assistant-intro">Choose a question to see an answer from NexisHub's published information.</p>
+        <p className="tg-assistant-intro">Choose a question to see an answer from NexisHub&apos;s published information.</p>
         <div className="tg-assistant-questions">
           {answers.map((item, i) => <button key={item.question} type="button" aria-pressed={selected === i} onClick={() => setSelected(i)}>{item.question}</button>)}
         </div>
         {selected !== null && <div className="tg-assistant-answer" aria-live="polite"><p>{answers[selected].answer}</p><Link href={answers[selected].href}>{answers[selected].label} ↗</Link></div>}
-        <p className="tg-assistant-disclaimer">Answers are taken from NexisHub's current site content. This preview does not support free-form AI chat or Telegram account access. Do not enter sensitive information.</p>
+        <p className="tg-assistant-disclaimer">Answers are taken from NexisHub&apos;s current site content. This preview does not support free-form AI chat or Telegram account access. Do not enter sensitive information.</p>
       </div>}
     </section>
   );
