@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import "./telegram.css";
+import { TelegramAssistant } from "./telegram-assistant";
 
 export const metadata = {
   title: "NexisHub on Telegram",
@@ -44,6 +45,7 @@ export default function TelegramLanding() {
             ))}
           </nav>
         </section>
+        <TelegramAssistant />
         <footer className="tg-footer"><span>NexisHub · Telegram preview</span><p>Telegram sign-in and account linking are not yet enabled. This preview does not request credentials or bot tokens.</p></footer>
       </div>
     </main>
