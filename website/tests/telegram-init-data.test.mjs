@@ -39,3 +39,18 @@ test("rejects invalid hash and missing token", () => {
   assert.throws(() => verifyTelegramInitData(input, "different-token", { nowSeconds: NOW }));
   assert.throws(() => verifyTelegramInitData(input, "", { nowSeconds: NOW }));
 });
+
+test("accepts ordinally sorted Telegram fields including punctuation", () => {
+  const input = signedData({ auth_date: String(NOW), zeta: "last", a_b: "underscore", aB: "camel" });
+  assert.equal(verifyTelegramInitData(input, TOKEN, { nowSeconds: NOW }).get("a_b"), "underscore");
+});
+
+test("rejects duplicate hash and missing auth_date", () => {
+  const input = signedData({ auth_date: String(NOW) });
+  assert.throws(() => verifyTelegramInitData(input + "&hash=" + "0".repeat(64), TOKEN, { nowSeconds: NOW }));
+  assert.throws(() => verifyTelegramInitData(signedData({ query_id: "AA-test" }), TOKEN, { nowSeconds: NOW }));
+});
+
+test("rejects oversized signed payloads", () => {
+  assert.throws(() => verifyTelegramInitData("x".repeat(8193), TOKEN, { nowSeconds: NOW }));
+});
