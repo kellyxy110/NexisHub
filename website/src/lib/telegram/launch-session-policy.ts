@@ -26,6 +26,7 @@ export async function createVerifiedTelegramLaunchSession(
     return { ok: false, error: "not_configured" };
   }
   const now = options.nowSeconds ?? Math.floor(Date.now() / 1000);
+  if (!Number.isSafeInteger(now) || now < 0) return { ok: false, error: "invalid_launch" };
   let userId: string;
   try {
     const verified = verifyTelegramInitData(initData, options.botToken, { nowSeconds: now });
