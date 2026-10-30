@@ -26,7 +26,7 @@ export function verifyTelegramInitData(
     throw new Error("Duplicate Telegram authentication fields");
   }
   const checkString = entries
-    .sort(([a], [b]) => a.localeCompare(b, "en"))
+    .sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0))
     .map(([key, value]) => `${key}=${value}`)
     .join("\n");
   const secret = createHmac("sha256", "WebAppData").update(botToken).digest();
