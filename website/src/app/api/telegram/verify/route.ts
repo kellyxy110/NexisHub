@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { verifyTelegramInitData } from "../../../../lib/telegram/verify-init-data";
+import { verifyTelegramLaunch } from "../../../../lib/telegram/verify-launch";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -12,13 +12,6 @@ export const dynamic = "force-dynamic";
  */
 export async function POST(request: Request) {
   const headers = { "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff" };
-  if (process.env.TELEGRAM_MINIAPP_AUTH_ENABLED !== "true") {
-    return NextResponse.json({ verified: false, error: "not_enabled" }, { status: 503, headers });
-  }
-  const token = process.env.TELEGRAM_MINIAPP_BOT_TOKEN;
-  if (!token) {
-    return NextResponse.json({ verified: false, error: "not_configured" }, { status: 503, headers });
-  }
   if (!request.headers.get("content-type")?.toLowerCase().startsWith("application/json")) {
     return NextResponse.json({ verified: false, error: "invalid_content_type" }, { status: 415, headers });
   }
@@ -38,10 +31,9 @@ export async function POST(request: Request) {
   if (typeof initData !== "string") {
     return NextResponse.json({ verified: false, error: "invalid_request" }, { status: 400, headers });
   }
-  try {
-    verifyTelegramInitData(initData, token);
-    return NextResponse.json({ verified: true }, { headers });
-  } catch {
-    return NextResponse.json({ verified: false, error: "invalid_signature_or_expired" }, { status: 401, headers });
-  }
+  const result = verifyTelegramLaunch(initData, {
+    enabled: process.env.TELEGRAM_MINIAPP_AUTH_ENABLED === "true",
+    botToken: process.env.TELEGRAM_MINIAPP_BOT_TOKEN,
+  });
+  return NextResponse.json(result.body, { status: result.status, headers });
 }
