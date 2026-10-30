@@ -28,3 +28,14 @@ test("finds research answer from explicit research wording", () => {
 test("does not match NexisHub name alone to an arbitrary answer", () => {
   assert.equal(findTelegramAnswer("NexisHub", answers), null);
 });
+
+
+test("normalizes plural website wording to the published Studio answer", () => {
+  assert.equal(findTelegramAnswer("Do you build websites?", answers)?.href, "/studio");
+});
+
+test("normalizes offerings to product without fabricating unrelated answers", () => {
+  const productAnswers = [{ question: "Which products are live?", answer: "Check the product registry.", href: "/products", label: "Products" }];
+  assert.equal(findTelegramAnswer("What offerings are available?", productAnswers)?.href, "/products");
+  assert.equal(findTelegramAnswer("Tell me about space travel", productAnswers), null);
+});
