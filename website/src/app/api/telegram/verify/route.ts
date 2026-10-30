@@ -12,6 +12,9 @@ export const dynamic = "force-dynamic";
  */
 export async function POST(request: Request) {
   const headers = { "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff" };
+  if (process.env.TELEGRAM_MINIAPP_AUTH_ENABLED !== "true") {
+    return NextResponse.json({ verified: false, error: "not_enabled" }, { status: 503, headers });
+  }
   if (!request.headers.get("content-type")?.toLowerCase().startsWith("application/json")) {
     return NextResponse.json({ verified: false, error: "invalid_content_type" }, { status: 415, headers });
   }
