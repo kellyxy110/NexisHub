@@ -36,3 +36,14 @@ test("fails closed when session persistence fails", async () => {
   const store = { reserveOnce: async () => true, createSession: async () => { throw new Error("database down"); } };
   assert.deepEqual(await createVerifiedTelegramLaunchSession(signedData(), { botToken, sessionSecret, store, nowSeconds: now }), { ok: false, error: "session_unavailable" });
 });
+
+test("rejects invalid time without reserving a launch", async () => {
+  let touched = false;
+  const store = {
+    reserveOnce: async () => { touched = true; return true; },
+    createSession: async () => { touched = true; return true; },
+  };
+  const result = await createVerifiedTelegramLaunchSession(signedData(), { botToken, sessionSecret, store, nowSeconds: Number.NaN });
+  assert.deepEqual(result, { ok: false, error: "invalid_launch" });
+  assert.equal(touched, false);
+});
