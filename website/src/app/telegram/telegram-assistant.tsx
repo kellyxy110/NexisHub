@@ -41,6 +41,7 @@ export function TelegramAssistant({ answers }: { answers: readonly TelegramAnswe
           {answers.map((item, i) => <button key={item.question} type="button" aria-pressed={selected === i} onClick={() => { setSelected(i); ask(item.question); }}>{item.question}</button>)}
         </div>
         <div className="tg-chat-messages" role="log" aria-live="polite" aria-label="Conversation">
+          {messages.length === 0 && <p className="tg-chat-empty">No question yet. Choose a prompt or ask about NexisHub&apos;s published products and services.</p>}
           {messages.map((message, i) => <div key={i} className={`tg-chat-message tg-chat-${message.role}`}><p>{message.text}</p>{message.source && <Link href={message.source.href}>{message.source.label} ↗</Link>}</div>)}
         </div>
         <form className="tg-chat-form" onSubmit={submit}>

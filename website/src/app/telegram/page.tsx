@@ -21,7 +21,7 @@ const destinations = [
 export default function TelegramLanding() {
   return (
     <main className="tg-page">
-      <TelegramWebAppBridge />
+      <TelegramWebAppBridge authEnabled={process.env.TELEGRAM_MINIAPP_AUTH_ENABLED === "true"} />
       <div className="tg-shell">
         <header className="tg-topbar">
           <Link href="/" className="tg-identity" aria-label="NexisHub home">
@@ -49,7 +49,7 @@ export default function TelegramLanding() {
           </nav>
         </section>
         <TelegramAssistant answers={siteAnswers.map((entry) => ({ question: entry.question, answer: entry.answer, href: entry.path, label: entry.link }))} />
-        <footer className="tg-footer"><span>NexisHub · Telegram preview</span><p>Telegram sign-in and account linking are not yet enabled. This preview does not request credentials or bot tokens.</p></footer>
+        <footer className="tg-footer"><span>NexisHub · Telegram preview</span><p>Telegram sign-in is available only when enabled and verified by the server. Account linking is not yet enabled.</p></footer>
       </div>
     </main>
   );
