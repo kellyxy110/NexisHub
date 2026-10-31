@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { siteUrl } from "./site-url";
+import { siteUrl } from "./site-url.ts";
 
 export const organizationId = `${siteUrl}/#organization`;
 export const websiteId = `${siteUrl}/#website`;

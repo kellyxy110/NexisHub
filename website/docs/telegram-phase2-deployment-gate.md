@@ -25,3 +25,29 @@ Scope: `feature/telegram-phase2-secure-identity-20261030`, PR #43. **Do not enab
 - There is no production-enabled account linking or AI model answer endpoint.
 - The database retention cleanup and rate limiter are not implemented.
 - A successful Vercel preview build is not proof of working authentication.
+
+## Database-independent interface work
+
+The Mini App shell can be exercised without Telegram authentication or PostgreSQL. The
+Telegram bridge calls the official SDK's `ready()` and `expand()` methods when available,
+tracks `themeChanged` and `viewportChanged`, and applies Telegram's light/dark scheme and
+safe-area viewport values to the page. Outside Telegram, the page remains a read-only public
+preview and reports that account tools are unavailable; it does not treat browser state as
+authenticated identity. Header/background color calls are guarded with Telegram's documented
+6.1 capability check so older SDK clients do not receive unsupported-method warnings.
+
+The public assistant is local keyword retrieval over the approved public answer set. It has
+an honest loading state, an empty conversation state, keyboard-visible controls, reduced-motion
+support and session-only messages. No assistant conversation, feedback, or personal data is
+stored. This interface work does not establish real Android, iOS, or desktop Telegram-client
+compatibility; those remain manual acceptance checks.
+
+## Database contingency
+
+Do not point this branch at production. The preferred temporary route remains repair and
+verification of the existing isolated Prisma Postgres integration because it preserves the
+repository's migration and adapter path. A local or disposable Docker PostgreSQL instance can
+be used for migration rehearsal only after explicit approval, with a separately generated
+connection string and an unmistakable test-only environment variable. It must not replace the
+isolated hosted verification or be allowed to flow into Vercel configuration. No alternative
+database was provisioned by this interface pass.
