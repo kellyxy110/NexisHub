@@ -186,3 +186,22 @@ model PublicationEvent {
   @@index([publicationId, createdAt])
   @@index([eventType, createdAt])
 }
+
+model TelegramLaunchReplay {
+  key       String   @id
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([expiresAt])
+}
+
+model TelegramAuthSession {
+  key            String    @id
+  telegramUserId String
+  expiresAt      DateTime
+  revokedAt      DateTime?
+  createdAt      DateTime  @default(now())
+
+  @@index([telegramUserId, expiresAt])
+  @@index([expiresAt])
+}
