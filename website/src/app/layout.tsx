@@ -1,7 +1,4 @@
 import { AdSenseLoader } from "@/components/adsense-loader";
-import { SiteHelpAssistant } from "@/components/site-help-assistant";
-import "@/components/site-help-assistant.css";
-import { siteAnswers } from "@/lib/site-answers";
 import { allEditorialPosts } from "@/lib/posts";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { identityGraph, jsonLd } from "@/lib/discovery";
@@ -38,7 +35,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${geist.variable} ${inter.variable}`} suppressHydrationWarning>
-      <body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(identityGraph) }} />{children}<AnalyticsTracker /><GoogleAnalytics /><AdSenseLoader allowedPaths={["/blog", "/research", ...allEditorialPosts.map((post) => `/blog/${post.slug}`)]} /><PrivacyControls />{process.env.VERCEL_ENV === "preview" && process.env.NEXISHUB_ASSISTANT_PREVIEW_ENABLED === "true" && <SiteHelpAssistant answers={siteAnswers.map((entry) => ({ question: entry.question, answer: entry.answer, href: entry.path, label: entry.link }))} />}</body>
+      <body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(identityGraph) }} />{children}<AnalyticsTracker /><GoogleAnalytics /><AdSenseLoader allowedPaths={["/blog", "/research", ...allEditorialPosts.map((post) => `/blog/${post.slug}`)]} /><PrivacyControls /></body>
     </html>
   );
 }
