@@ -3,6 +3,7 @@ import { getPrisma } from "../../../../lib/prisma";
 import { createPrismaTelegramSessionStore } from "../../../../lib/telegram/prisma-session-store";
 import { createVerifiedTelegramLaunchSession } from "../../../../lib/telegram/launch-session-policy";
 import { telegramSessionCookie } from "../../../../lib/telegram/session-cookie";
+import { allowTelegramAuthAttempt } from "../../../../lib/telegram/auth-rate-limit";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -42,9 +43,16 @@ export async function POST(request: Request) {
     return NextResponse.json({ authenticated: false, error: "not_configured" }, { status: 503, headers });
   }
   try {
+    // Trust only the platform-controlled forwarding header on Vercel.
+    // Other hosts must supply an audited equivalent before enabling authentication.
+    const networkKey = process.env.VERCEL === "1" ? request.headers.get("x-vercel-forwarded-for")?.split(",")[0]?.trim() : null;
+    const db = getPrisma();
+    if (!networkKey || !await allowTelegramAuthAttempt(db as unknown as Parameters<typeof allowTelegramAuthAttempt>[0], networkKey, sessionSecret)) {
+      return NextResponse.json({ authenticated: false, error: "rate_limited_or_unavailable" }, { status: 429, headers });
+    }
     const now = Math.floor(Date.now() / 1000);
     const result = await createVerifiedTelegramLaunchSession(initData, {
-      botToken, sessionSecret, store: createPrismaTelegramSessionStore(getPrisma()), nowSeconds: now,
+      botToken, sessionSecret, store: createPrismaTelegramSessionStore(db), nowSeconds: now,
     });
     if (!result.ok) {
       const status = result.error === "invalid_launch" ? 401 : result.error === "replayed_or_unavailable" ? 409 : 503;
