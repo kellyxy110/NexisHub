@@ -205,3 +205,13 @@ model TelegramAuthSession {
   @@index([telegramUserId, expiresAt])
   @@index([expiresAt])
 }
+
+model TelegramAuthRateLimit {
+  key         String
+  windowStart DateTime
+  count       Int      @default(1)
+  expiresAt   DateTime
+
+  @@id([key, windowStart])
+  @@index([expiresAt])
+}
