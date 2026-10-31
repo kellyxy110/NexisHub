@@ -30,3 +30,11 @@ Status: investigation and preview only. No production authorization.
 - Tests: pending.
 - Protected preview: pending.
 - Production: untouched.
+
+## Recovered source evidence (2026-10-31)
+- The current `main` branch already contains `website/src/app/telegram/telegram-assistant.tsx`, `telegram-retrieval.ts`, and `telegram.css`. The Telegram landing route mounts `TelegramAssistant` with `siteAnswers` mapped to published source links.
+- The Telegram assistant is **not** the earlier site-wide knowledge assistant. It uses deterministic browser-only keyword retrieval, has no Groq dependency, retains chat state only in React memory, and links to sources. Do not misrepresent it as the full earlier chatbot.
+- The Telegram assistant is embedded in `/telegram` only. The production homepage and root layout do not mount it, explaining why a visitor to `/` cannot see it.
+- The current `main` branch AdSense controller is present and explicitly checks production hostname, editorial-path allowlist, and advertising consent.
+- **Decision gate:** first determine whether the intended restoration is the earlier site-wide assistant or a shared presentation of the Telegram retrieval assistant. Do not mount the Telegram component globally without reviewing CSS isolation, accessibility, source freshness and editorial/AdSense interactions.
+- No production modifications and no code restoration have occurred in this branch.
