@@ -38,3 +38,9 @@ Status: investigation and preview only. No production authorization.
 - The current `main` branch AdSense controller is present and explicitly checks production hostname, editorial-path allowlist, and advertising consent.
 - **Decision gate:** first determine whether the intended restoration is the earlier site-wide assistant or a shared presentation of the Telegram retrieval assistant. Do not mount the Telegram component globally without reviewing CSS isolation, accessibility, source freshness and editorial/AdSense interactions.
 - No production modifications and no code restoration have occurred in this branch.
+
+## Original assistant recovery evidence (2026-10-31)
+- Historical Vercel deployment `dpl_9v4zmbCXc3vxdGUqLJsNSszRhhBE` is READY and has a CLI-uploaded source tree, including original `public-knowledge-assistant.tsx`, `lib/knowledge-assistant.ts`, `lib/public-knowledge.ts`, `lib/groq-answer.ts`, and `app/api/knowledge/route.ts`.
+- File-content retrieval through the connected deployment interface returns truncated base64 (literal `...[truncated]` suffix), preventing lossless reconstruction. **Do not commit partial decoded files or claim the original assistant is restored.**
+- The temporary Telegram-derived site widget has been unmounted in this branch. Its prior preview deployment is now superseded. Restore the historical source through an untruncated archive or local Vercel CLI source, then reconcile imports and tests before another preview.
+- AdSense-related source files and production configuration remain outside the change scope.
