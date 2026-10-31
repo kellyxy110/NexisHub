@@ -1,0 +1,32 @@
+# NexisHub chatbot restoration: AdSense safety gate
+
+Status: investigation and preview only. No production authorization.
+
+## Verified baseline (2026-10-31)
+- Production project: `nexis-hub`, production branch `main`.
+- Telegram authentication project is separate: `nexishub-telegram-auth-test`.
+- Production `website/src/app/layout.tsx` mounts AdSenseLoader, AnalyticsTracker, GoogleAnalytics and PrivacyControls; it does not mount a chatbot.
+- Production `website/src/app/page.tsx` does not mount a chatbot.
+- `website/src/lib/advertising-consent.ts` restricts vendor loading to www.thenexishub.org, explicit editorial allowlist, and advertising opt-in.
+- Live `/ads.txt` contains Google publisher pub-3694194350196538; `/robots.txt` allows public paths and declares the sitemap.
+- Assistant implementation previously existed in a protected preview, but its current source, feature gates, and tests must be recovered and verified before any restoration. Do not invent or replace with an unverified chatbot.
+
+## Non-negotiable constraints
+1. Do not modify `website/src/components/adsense-loader.tsx`, `website/src/lib/advertising-consent.ts`, `website/src/app/layout.tsx` advertising behavior, `ads.txt`, robots, sitemap, canonical metadata, or privacy/consent controls for chatbot convenience.
+2. Do not alter production Vercel environment variables, deployment aliases, domain mappings, AdSense account settings, or submit an AdSense review.
+3. Assistant API routes must be non-indexable, protect against prompt injection and disclosure, and use only vetted public source material. No claims that a preview feature is live.
+4. No new paid dependencies or mandatory API services. Groq answers must remain optional and server-only; retrieval-only fallback must work.
+5. Preserve existing site content, editorial pages, navigation, and accessibility. Test 375/390px mobile and desktop.
+6. Before implementation, locate the earlier assistant implementation from repository history or verified preview, inventory its components/routes/configuration, and produce a gap analysis.
+7. Before deployment, run relevant tests, TypeScript, lint, build, accessibility and smoke checks. Compare changed files against the protected AdSense list and reject any advertising or indexing regressions.
+8. Deploy only to a protected preview and verify `X-Robots-Tag: noindex` on preview, assistant API endpoints and any private session content.
+9. No merge, production deployment or enabling chatbot on production without separate explicit authorization.
+
+## Current certification
+- Branch isolation: established.
+- AdSense baseline: inspected, not changed.
+- Original assistant source recovery: pending.
+- Implementation: pending.
+- Tests: pending.
+- Protected preview: pending.
+- Production: untouched.
