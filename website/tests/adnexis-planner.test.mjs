@@ -78,3 +78,21 @@ test("uses goal-specific measurement without promising sales", () => {
   assert.ok(visits.tracking.includes("Tagged link clicks"));
   assert.ok(!awareness.tracking.includes("Guaranteed sales"));
 });
+
+test("the plan includes the truthful evidence passport for each publisher", () => {
+  const plan = createAdvertisingPlan({
+    ...base,
+    channels: [{
+      name: "Channel with externally claimed evidence",
+      placementPrice: 15_000,
+      averagePostViews: 2_000,
+      evidence: {
+        origin: "third-party-material",
+        reference: "Report supplied by advertiser",
+        observedOn: "2026-11-01",
+      },
+    }],
+  });
+  assert.equal(plan.channels[0].passport.verifiedByNexisHub, false);
+  assert.match(plan.channels[0].passport.status, /unverified|older/i);
+});
