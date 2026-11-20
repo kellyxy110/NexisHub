@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import type { EvidenceOrigin } from "@/lib/adnexis-evidence";
 import {
   createAdvertisingPlan,
   type CampaignCurrency,
@@ -9,7 +10,7 @@ import {
   type CampaignPlan,
 } from "@/lib/adnexis-planner";
 
-type EditableChannel = { name: string; price: string; views: string };
+type EditableChannel = { name: string; price: string; views: string; evidenceOrigin: EvidenceOrigin; evidenceReference: string; evidenceObservedOn: string };
 
 const money = (value: number, currency: CampaignCurrency) =>
   new Intl.NumberFormat("en-NG", { style: "currency", currency, maximumFractionDigits: 2 }).format(value);
@@ -49,6 +50,7 @@ export function AdvertisingPlanner() {
           name: channel.name,
           placementPrice: channel.price.trim() === "" ? null : Number(channel.price),
           averagePostViews: channel.views.trim() === "" ? null : Number(channel.views),
+          evidence: { origin: channel.evidenceOrigin, reference: channel.evidenceReference, observedOn: channel.evidenceObservedOn },
         })),
       };
       setPlan(createAdvertisingPlan(draft));
@@ -127,9 +129,26 @@ export function AdvertisingPlanner() {
                   <input id={`adnx-views-${index}`} type="number" min="0" max="1000000000" step="1" value={channel.views} onChange={(event) => editChannel(index, "views", event.target.value)} placeholder="Unknown" />
                 </div>
               </div>
+              <div className="adnx-evidence-entry">
+                <strong>Publisher Evidence Passport</strong>
+                <p className="adnx-hint">You supply the evidence details. NexisHub does not open, inspect or verify the reference.</p>
+                <label htmlFor={"adnx-evidence-origin-" + index}>Where did the evidence come from?</label>
+                <select id={"adnx-evidence-origin-" + index} value={channel.evidenceOrigin} onChange={(event) => editChannel(index, "evidenceOrigin", event.target.value)}>
+                  <option value="none">No evidence available</option>
+                  <option value="publisher-claim">Publisher&apos;s own statement</option>
+                  <option value="public-posts">Public posts or channel statistics</option>
+                  <option value="third-party-material">Third-party material</option>
+                </select>
+                {channel.evidenceOrigin !== "none" && <>
+                  <label htmlFor={"adnx-evidence-reference-" + index}>Reference or source description (not checked)</label>
+                  <input id={"adnx-evidence-reference-" + index} maxLength={240} value={channel.evidenceReference} onChange={(event) => editChannel(index, "evidenceReference", event.target.value)} placeholder="Public post URL or screenshot description" />
+                  <label htmlFor={"adnx-evidence-date-" + index}>Date the evidence was observed</label>
+                  <input id={"adnx-evidence-date-" + index} type="date" value={channel.evidenceObservedOn} onChange={(event) => editChannel(index, "evidenceObservedOn", event.target.value)} />
+                </>}
+              </div>
             </section>
           ))}
-          {channels.length < 3 && <button className="adnx-add" type="button" onClick={() => { setChannels((current) => [...current, { name: "", price: "", views: "" }]); invalidate(); }}>+ Add a publisher offer</button>}
+          {channels.length < 3 && <button className="adnx-add" type="button" onClick={() => { setChannels((current) => [...current, { name: "", price: "", views: "", evidenceOrigin: "none", evidenceReference: "", evidenceObservedOn: "" }]); invalidate(); }}>+ Add a publisher offer</button>}
         </fieldset>
         {error && <p className="adnx-error" role="alert">{error}</p>}
         <button className="adnx-submit" type="submit">Prepare campaign plan</button>
@@ -150,6 +169,15 @@ export function AdvertisingPlanner() {
               <p>Entered average views: {channel.averagePostViews === null ? "Unknown" : channel.averagePostViews.toLocaleString("en")}</p>
               <p>Calculated cost / 1,000 stated views: {channel.estimatedCostPerThousandViews === null ? "Not calculable" : money(channel.estimatedCostPerThousandViews, currency)}</p>
               <ul>{channel.notes.map((note) => <li key={note}>{note}</li>)}</ul>
+              <section className="adnx-passport" aria-label={"Publisher evidence passport for " + channel.name}>
+                <h4>Publisher Evidence Passport</h4>
+                <p>Evidence status: <strong>{channel.passport.status}</strong></p>
+                <p>Reported source: {channel.passport.sourceLabel}</p>
+                {channel.passport.observedOn && <p>Source observation date: {channel.passport.observedOn}</p>}
+                {channel.passport.reference && <p>Reference (not checked): <span className="adnx-reference">{channel.passport.reference}</span></p>}
+                <p>Verification by NexisHub: <strong>Not performed</strong></p>
+                <ul>{channel.passport.notes.map((note) => <li key={note}>{note}</li>)}</ul>
+              </section>
             </div>
           ))}
         </>}
@@ -163,7 +191,7 @@ export function AdvertisingPlanner() {
         <h3>Important limitations</h3>
         <ul>{plan.warnings.map((item) => <li key={item}>{item}</li>)}</ul>
       </section>}
-      <p className="adnx-privacy">Private session-only preview. Inputs stay in this browser page's memory and clear on refresh. No channel data is fetched, stored or independently verified.</p>
+      <p className="adnx-privacy">Private session-only preview. Inputs stay in this browser page&apos;s memory and clear on refresh. No channel data is fetched, stored or independently verified.</p>
     </div>
   );
 }
