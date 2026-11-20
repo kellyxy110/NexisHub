@@ -19,6 +19,11 @@ export default function AdvertisingPreviewPage() {
           <Link href="/telegram">← Back to NexisHub on Telegram</Link>
         </nav>
         <AdvertisingPlanner />
+        <section className="adnx-result" aria-label="AdNexis publisher onboarding preview">
+          <h2>Own a public Telegram channel?</h2>
+          <p>Prepare a local publisher review packet and see which evidence is needed before any future listing. This does not register or verify your channel.</p>
+          <p><Link href="/telegram/advertising/publisher">Prepare publisher review packet</Link></p>
+        </section>
       </div>
     </main>
   );
