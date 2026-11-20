@@ -16,6 +16,7 @@ const destinations = [
   { label: "NexisHub Studio", href: "/studio", description: "Websites, intelligent software and digital solutions.", number: "02" },
   { label: "Research & insights", href: "/research", description: "Explore our research and practical guides.", number: "03" },
   { label: "Contact NexisHub", href: "/contact", description: "Ask about a project or a partnership.", number: "04" },
+  { label: "AdNexis campaign planner (preview)", href: "/telegram/advertising", description: "Plan an ad, compare your own offers and review evidence gaps. No payments or bookings.", number: "05" },
 ];
 
 export default function TelegramLanding() {
