@@ -138,7 +138,7 @@ export function PublisherIntakePreview() {
             setPacket(null);
           }}>
             <option value="none">No evidence available</option>
-            <option value="publisher-claim">Publisher's own statement</option>
+            <option value="publisher-claim">Publisher&apos;s own statement</option>
             <option value="public-posts">Public channel posts or statistics</option>
             <option value="third-party-material">Third-party report or material</option>
           </select>
