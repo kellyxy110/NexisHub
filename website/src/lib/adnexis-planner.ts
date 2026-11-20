@@ -2,6 +2,8 @@
  * AdNexis preview: deterministic, session-only planning.
  * Does not fetch publishers, validate Telegram channels, post ads, or process payments.
  */
+import { evaluatePublisherEvidence, type PublisherEvidenceInput, type PublisherEvidencePassport } from "./adnexis-evidence";
+
 export type CampaignGoal = "awareness" | "website-visits" | "enquiries";
 export type CampaignCurrency = "NGN" | "USD";
 
@@ -9,6 +11,7 @@ export type ChannelEstimate = {
   name: string;
   placementPrice: number | null;
   averagePostViews: number | null;
+  evidence?: PublisherEvidenceInput;
 };
 
 export type CampaignDraft = {
@@ -24,6 +27,7 @@ export type CampaignDraft = {
 export type ChannelAssessment = ChannelEstimate & {
   estimatedCostPerThousandViews: number | null;
   notes: string[];
+  passport: PublisherEvidencePassport;
 };
 
 export type CampaignPlan = {
@@ -95,7 +99,8 @@ export function createAdvertisingPlan(draft: CampaignDraft): CampaignPlan {
       ? (item.placementPrice * 1_000) / item.averagePostViews
       : null;
 
-    return { ...item, name, estimatedCostPerThousandViews: costPerThousand, notes };
+    const passport = evaluatePublisherEvidence(item.evidence);
+    return { ...item, name, estimatedCostPerThousandViews: costPerThousand, notes, passport };
   });
 
   const warnings = [
