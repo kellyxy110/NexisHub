@@ -20,6 +20,10 @@ Sources reviewed 2026-11-20:
 - Publisher due-diligence questions, goal-specific metrics and campaign brief suitable for manual copy.
 - Isolated `/telegram/advertising` route, `noindex`, linked as **preview** from the existing `/telegram` route.
 - Pure deterministic planner with tests.
+- Publisher Evidence Passport for each manually entered offer, distinguishing publisher claims, incomplete references, outdated evidence and external material.
+- Evidence origin, manually entered reference and observation date. References are displayed as plain text and are never fetched or checked.
+- Every passport explicitly states that NexisHub has NOT verified it. No fabricated trust scores, subscribers or conversions.
+- Evidence older than 30 days prompts a review question; age is NOT a measure of truth.
 
 ## Explicit exclusions
 
@@ -38,7 +42,7 @@ The page is not the public launch. Do not merge, deploy or switch the official T
 
 ## Next research questions
 
-- Which real publishers would consent to provide listings and current metrics?
+- Which real publishers would consent to listings and independent evidence checking, and which reviewer would have authority to mark evidence verified?
 - How will independently verified delivery and attribution differ from self-reported statistics?
 - What publisher authenticity checks can be implemented without invasive permissions?
 - What are the actual operating costs, fraud exposure, dispute-management requirements and jurisdictional obligations for a marketplace?
