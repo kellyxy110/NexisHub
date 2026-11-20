@@ -32,7 +32,7 @@ export function AdvertisingPlanner() {
   }
 
   function editChannel(index: number, field: keyof EditableChannel, value: string) {
-    setChannels((current) => current.map((channel, i) => i === index ? { ...channel, [field]: value } : channel));
+    setChannels((current) => current.map((channel, i) => i !== index ? channel : field === "evidenceOrigin" && value === "none" ? { ...channel, evidenceOrigin: "none", evidenceReference: "", evidenceObservedOn: "" } : { ...channel, [field]: value }));
     invalidate();
   }
 
