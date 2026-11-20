@@ -34,7 +34,7 @@ test("all gates yield internal preview-only destinations in More", () => {
   ]);
   assert.ok(entries.every((item) => item.section === "More" && item.isPreview === true));
   assert.ok(entries.every((item) => item.href.startsWith("/telegram/")));
-  assert.ok(entries.every((item) => !/verified channel|guaranteed|automatic booking/i.test(item.description)));
+  assert.ok(entries.every((item) => !/\b(?:verified channel|guaranteed|automatic booking)\b/i.test(item.description)));
 });
 
 test("menu contract cannot be mutated by a host rendering it", () => {
