@@ -6,7 +6,7 @@ import "../advertising.css";
 import "./publisher.css";
 
 export const metadata = {
-  title: "AdNexis Publisher Intake · Offline Preview",
+  title: "NexisReach Publisher Intake · Offline Preview",
   description: "Prepare an unverified public Telegram channel review packet locally. No submission or publication.",
   robots: { index: false, follow: false },
 };
@@ -16,7 +16,7 @@ export default function PublisherOnboardingPreview() {
     <main className="tg-page">
       <TelegramWebAppBridge />
       <div className="tg-shell">
-        <nav className="adnx-back" aria-label="Publisher preview navigation">
+        <nav className="nxr-back" aria-label="Publisher preview navigation">
           <Link href="/telegram/advertising">← Back to advertising planner</Link>
         </nav>
         <PublisherIntakePreview />

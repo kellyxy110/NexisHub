@@ -3,8 +3,8 @@ import { test } from "node:test";
 import { readFileSync } from "node:fs";
 import { tsImport } from "tsx/esm/api";
 
-const { getAdNexisMoreEntries } = await tsImport(
-  "../src/lib/adnexis-telegram-integration.ts",
+const { getNexisReachMoreEntries } = await tsImport(
+  "../src/lib/nexisreach-telegram-integration.ts",
   import.meta.url,
 );
 
@@ -15,19 +15,19 @@ const certified = {
 };
 
 test("integration is off by default and never changes the existing tab shell", () => {
-  assert.deepEqual(getAdNexisMoreEntries(), []);
+  assert.deepEqual(getNexisReachMoreEntries(), []);
   const legacyLanding = readFileSync(new URL("../src/app/telegram/page.tsx", import.meta.url), "utf8");
-  assert.doesNotMatch(legacyLanding, /AdNexis campaign planner \(preview\)/);
+  assert.doesNotMatch(legacyLanding, /NexisReach campaign planner \(preview\)/);
 });
 
-test("missing any explicit release gate keeps AdNexis out of More", () => {
+test("missing any explicit release gate keeps NexisReach out of More", () => {
   for (const key of Object.keys(certified)) {
-    assert.deepEqual(getAdNexisMoreEntries({ ...certified, [key]: false }), []);
+    assert.deepEqual(getNexisReachMoreEntries({ ...certified, [key]: false }), []);
   }
 });
 
 test("all gates yield internal preview-only destinations in More", () => {
-  const entries = getAdNexisMoreEntries(certified);
+  const entries = getNexisReachMoreEntries(certified);
   assert.deepEqual(entries.map((item) => item.href), [
     "/telegram/advertising",
     "/telegram/advertising/publisher",
@@ -38,7 +38,7 @@ test("all gates yield internal preview-only destinations in More", () => {
 });
 
 test("menu contract cannot be mutated by a host rendering it", () => {
-  const entries = getAdNexisMoreEntries(certified);
+  const entries = getNexisReachMoreEntries(certified);
   assert.equal(Object.isFrozen(entries), true);
   assert.ok(entries.every((item) => Object.isFrozen(item)));
 });

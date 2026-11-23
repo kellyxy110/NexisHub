@@ -1,8 +1,8 @@
 /**
- * AdNexis preview: deterministic, session-only planning.
+ * NexisReach preview: deterministic, session-only planning.
  * Does not fetch publishers, validate Telegram channels, post ads, or process payments.
  */
-import { evaluatePublisherEvidence, type PublisherEvidenceInput, type PublisherEvidencePassport } from "./adnexis-evidence";
+import { evaluatePublisherEvidence, type PublisherEvidenceInput, type PublisherEvidencePassport } from "./nexisreach-evidence";
 
 export type CampaignGoal = "awareness" | "website-visits" | "enquiries";
 export type CampaignCurrency = "NGN" | "USD";

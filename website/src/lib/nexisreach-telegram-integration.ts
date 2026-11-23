@@ -6,14 +6,14 @@
  * The five-tab host must import it only after its source has been captured
  * and all explicit preview integration gates have been satisfied.
  */
-export type AdNexisIntegrationGate = Readonly<{
+export type NexisReachIntegrationGate = Readonly<{
   approvedForTestPreview: boolean;
   baselineSourceVerified: boolean;
   telegramClientCertified: boolean;
 }>;
 
-export type AdNexisMenuEntry = Readonly<{
-  id: "adnexis-planner" | "adnexis-publisher-preview";
+export type NexisReachMenuEntry = Readonly<{
+  id: "nexisreach-planner" | "nexisreach-publisher-preview";
   title: string;
   description: string;
   href: "/telegram/advertising" | "/telegram/advertising/publisher";
@@ -21,17 +21,17 @@ export type AdNexisMenuEntry = Readonly<{
   isPreview: true;
 }>;
 
-const previewMenu: readonly AdNexisMenuEntry[] = Object.freeze([
+const previewMenu: readonly NexisReachMenuEntry[] = Object.freeze([
   Object.freeze({
-    id: "adnexis-planner",
-    title: "AdNexis campaign planner",
+    id: "nexisreach-planner",
+    title: "NexisReach campaign planner",
     description: "Plan a campaign and compare offers you entered. No bookings or payments.",
     href: "/telegram/advertising",
     section: "More",
     isPreview: true,
   }),
   Object.freeze({
-    id: "adnexis-publisher-preview",
+    id: "nexisreach-publisher-preview",
     title: "Publisher review packet",
     description: "Prepare a local unverified channel profile. No registration or public listing.",
     href: "/telegram/advertising/publisher",
@@ -45,13 +45,13 @@ const previewMenu: readonly AdNexisMenuEntry[] = Object.freeze([
  * Host application owns navigation, BackButton, safe areas, focus, and
  * any eventual route mounting. This is NOT a deployment authorization.
  */
-export function getAdNexisMoreEntries(
-  gate: AdNexisIntegrationGate = {
+export function getNexisReachMoreEntries(
+  gate: NexisReachIntegrationGate = {
     approvedForTestPreview: false,
     baselineSourceVerified: false,
     telegramClientCertified: false,
   },
-): readonly AdNexisMenuEntry[] {
+): readonly NexisReachMenuEntry[] {
   return gate.approvedForTestPreview && gate.baselineSourceVerified && gate.telegramClientCertified
     ? previewMenu
     : [];

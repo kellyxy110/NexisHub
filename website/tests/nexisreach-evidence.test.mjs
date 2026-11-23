@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { tsImport } from "tsx/esm/api";
 
-const { evaluatePublisherEvidence } = await tsImport("../src/lib/adnexis-evidence.ts", import.meta.url);
+const { evaluatePublisherEvidence } = await tsImport("../src/lib/nexisreach-evidence.ts", import.meta.url);
 const now = new Date("2026-11-20T09:00:00Z");
 
 test("unknown publisher evidence is never described as verified", () => {

@@ -1,10 +1,10 @@
-# AdNexis: isolated read-only campaign planner (preview)
+# NexisReach: isolated read-only campaign planner (preview)
 
 Status: **implementation candidate for review only**. It is not a marketplace, payment service, live advertising product or certified Telegram release.
 
 ## Why this scope
 
-Adstail publicly describes a channel catalogue, AI categorisation, campaign scheduling, payment reserve, creative checks and channel statistics. These are **not** confirmed Adstail gaps. AdNexis should differentiate through clear evidence provenance, transparent budget planning, practical risk questions and carefully scoped assistance for smaller businesses, including naira budgeting.
+Adstail publicly describes a channel catalogue, AI categorisation, campaign scheduling, payment reserve, creative checks and channel statistics. These are **not** confirmed Adstail gaps. NexisReach should differentiate through clear evidence provenance, transparent budget planning, practical risk questions and carefully scoped assistance for smaller businesses, including naira budgeting.
 
 Sources reviewed 2026-11-20:
 - https://adstail.com/

@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { tsImport } from "tsx/esm/api";
 
-const { createAdvertisingPlan } = await tsImport("../src/lib/adnexis-planner.ts", import.meta.url);
+const { createAdvertisingPlan } = await tsImport("../src/lib/nexisreach-planner.ts", import.meta.url);
 
 const base = {
   product: "NexisHub Studio",

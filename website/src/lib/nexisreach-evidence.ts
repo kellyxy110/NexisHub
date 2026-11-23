@@ -1,5 +1,5 @@
 /**
- * Publisher Evidence Passport for the read-only AdNexis campaign planner.
+ * Publisher Evidence Passport for the read-only NexisReach campaign planner.
  * Source details are user entered. No channel is checked or certified.
  */
 export type EvidenceOrigin = "none" | "publisher-claim" | "public-posts" | "third-party-material";
