@@ -5,8 +5,8 @@ import {
   createPublisherReviewPacket,
   type PublisherIntake,
   type PublisherReviewPacket,
-} from "@/lib/adnexis-publisher";
-import type { EvidenceOrigin } from "@/lib/adnexis-evidence";
+} from "@/lib/nexisreach-publisher";
+import type { EvidenceOrigin } from "@/lib/nexisreach-evidence";
 
 const initial: PublisherIntake = {
   channel: "",
@@ -71,19 +71,19 @@ export function PublisherIntakePreview() {
   }
 
   return (
-    <section className="adnx-publisher" aria-label="AdNexis publisher onboarding draft">
-      <header className="adnx-intro">
-        <p className="adnx-eyebrow">AdNexis · phase 2 · offline preview</p>
+    <section className="nxr-publisher" aria-label="NexisReach publisher onboarding draft">
+      <header className="nxr-intro">
+        <p className="nxr-eyebrow">NexisReach · phase 2 · offline preview</p>
         <h1>Prepare your publisher profile.</h1>
         <p>Create a local review packet for a public Telegram channel. This does not register your channel, validate ownership, publish a listing or request bot permissions.</p>
       </header>
 
-      <form className="adnx-form" onSubmit={submit}>
+      <form className="nxr-form" onSubmit={submit}>
         <fieldset>
           <legend>01 · Public channel identity</legend>
           <label htmlFor="publisher-channel">Public channel username or URL</label>
           <input id="publisher-channel" required maxLength={64} value={draft.channel} onChange={(e) => update("channel", e.target.value)} placeholder="@examplechannel or https://t.me/examplechannel" />
-          <p className="adnx-hint">Only public t.me usernames. Do not enter private invite links, passwords or bot tokens.</p>
+          <p className="nxr-hint">Only public t.me usernames. Do not enter private invite links, passwords or bot tokens.</p>
 
           <label htmlFor="publisher-name">Public display name</label>
           <input id="publisher-name" required minLength={3} maxLength={100} value={draft.displayName} onChange={(e) => update("displayName", e.target.value)} placeholder="Name shown in the channel" />
@@ -106,12 +106,12 @@ export function PublisherIntakePreview() {
 
           <label htmlFor="publisher-contact">Public contact username (optional)</label>
           <input id="publisher-contact" maxLength={64} value={draft.contactHandle} onChange={(e) => update("contactHandle", e.target.value)} placeholder="@publiccontact" />
-          <p className="adnx-hint">Only add a username you want to include in your own offline review packet.</p>
+          <p className="nxr-hint">Only add a username you want to include in your own offline review packet.</p>
         </fieldset>
 
         <fieldset>
           <legend>02 · Advertising offer</legend>
-          <div className="adnx-two">
+          <div className="nxr-two">
             <div>
               <label htmlFor="publisher-currency">Currency</label>
               <select id="publisher-currency" value={draft.currency} onChange={(e) => update("currency", e.target.value as PublisherIntake["currency"])}>
@@ -126,7 +126,7 @@ export function PublisherIntakePreview() {
           </div>
           <label htmlFor="publisher-views">Claimed average post views (optional)</label>
           <input id="publisher-views" type="number" min="0" max="1000000000" step="1" value={viewText} onChange={(e) => { setViewText(e.target.value); setPacket(null); }} placeholder="Not provided" />
-          <p className="adnx-hint">Numbers are publisher-supplied claims, not verified audience statistics. No commission or income is calculated.</p>
+          <p className="nxr-hint">Numbers are publisher-supplied claims, not verified audience statistics. No commission or income is calculated.</p>
         </fieldset>
 
         <fieldset>
@@ -152,22 +152,22 @@ export function PublisherIntakePreview() {
 
         <fieldset>
           <legend>04 · Permission and expectations</legend>
-          <label className="adnx-publisher-check">
+          <label className="nxr-publisher-check">
             <input type="checkbox" required checked={draft.permissionToPrepareReviewPacket} onChange={(e) => update("permissionToPrepareReviewPacket", e.target.checked)} />
             I agree to prepare a local review packet using the information I entered.
           </label>
-          <label className="adnx-publisher-check">
+          <label className="nxr-publisher-check">
             <input type="checkbox" checked={draft.consentToFutureListing} onChange={(e) => update("consentToFutureListing", e.target.checked)} />
             If a verified onboarding service becomes available, I would like to be considered for a future public listing. This checkbox does not publish anything.
           </label>
-          <p className="adnx-hint">Nothing is submitted or stored. A future public listing would require a new authenticated review and consent process.</p>
+          <p className="nxr-hint">Nothing is submitted or stored. A future public listing would require a new authenticated review and consent process.</p>
         </fieldset>
-        {error && <p role="alert" className="adnx-error">{error}</p>}
-        <button className="adnx-submit" type="submit">Prepare local review packet</button>
+        {error && <p role="alert" className="nxr-error">{error}</p>}
+        <button className="nxr-submit" type="submit">Prepare local review packet</button>
       </form>
 
-      {packet && <section className="adnx-result" aria-label="Local draft review packet" aria-live="polite">
-        <p className="adnx-eyebrow">Draft generated, not submitted</p>
+      {packet && <section className="nxr-result" aria-label="Local draft review packet" aria-live="polite">
+        <p className="nxr-eyebrow">Draft generated, not submitted</p>
         <h2>{packet.displayName}</h2>
         <p>Public channel: {packet.channelUrl}</p>
         <p><strong>Evidence status:</strong> {packet.evidence.status}</p>
@@ -178,12 +178,12 @@ export function PublisherIntakePreview() {
         <h3>Important safeguards</h3>
         <ul>{packet.safeguards.map((item) => <li key={item}>{item}</li>)}</ul>
         <h3>Copyable offline review packet</h3>
-        <p className="adnx-hint">If sharing this draft with someone, review the information first. The button copies it only to your device clipboard.</p>
-        <button className="adnx-add" type="button" onClick={copyPacket}>Copy draft packet</button>
-        {copyStatus && <p role="status" className="adnx-hint">{copyStatus}</p>}
-        <textarea className="adnx-publisher-json" aria-label="Draft publisher review packet" rows={10} readOnly value={JSON.stringify(packet, null, 2)} />
+        <p className="nxr-hint">If sharing this draft with someone, review the information first. The button copies it only to your device clipboard.</p>
+        <button className="nxr-add" type="button" onClick={copyPacket}>Copy draft packet</button>
+        {copyStatus && <p role="status" className="nxr-hint">{copyStatus}</p>}
+        <textarea className="nxr-publisher-json" aria-label="Draft publisher review packet" rows={10} readOnly value={JSON.stringify(packet, null, 2)} />
       </section>}
-      <p className="adnx-privacy">Session-only prototype. Refreshing clears everything. No server submission, database write, Telegram login, bot permission request, payment or independently verified publisher profile is created.</p>
+      <p className="nxr-privacy">Session-only prototype. Refreshing clears everything. No server submission, database write, Telegram login, bot permission request, payment or independently verified publisher profile is created.</p>
     </section>
   );
 }

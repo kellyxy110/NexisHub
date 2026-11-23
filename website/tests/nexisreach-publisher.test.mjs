@@ -3,7 +3,7 @@ import { test } from "node:test";
 import { tsImport } from "tsx/esm/api";
 
 const { createPublisherReviewPacket, normaliseTelegramChannel, rehearsePublisherReview } =
-  await tsImport("../src/lib/adnexis-publisher.ts", import.meta.url);
+  await tsImport("../src/lib/nexisreach-publisher.ts", import.meta.url);
 
 const asOf = new Date("2026-11-20T10:00:00Z");
 const base = {

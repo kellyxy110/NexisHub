@@ -1,17 +1,17 @@
-# AdNexis Phase 2: publisher intake and controlled review foundation
+# NexisReach Phase 2: publisher intake and controlled review foundation
 
 Status: **isolated source-level preview, not certified, not a marketplace or public publisher onboarding service**.
 Date: 2026-11-20.
 
 ## Reconciliation evidence
 
-- AdNexis Phase 1 lives in draft PR #45 on branch `feature/adnexis-read-only-planner-20261120` at commit `a64a8bb2dbf17df34f0271a4355eb35ca8c60708` when Phase 2 was branched.
+- NexisReach Phase 1 lives in draft PR #45 on branch `feature/adnexis-read-only-planner-20261120` at commit `a64a8bb2dbf17df34f0271a4355eb35ca8c60708` when Phase 2 was branched.
 - Phase 1 CI run 44712496346 passed types, lint, unit tests, production build and discovery verification.
 - The public `main` branch's latest inspected commit is `f2f9e7fa2f729836bbd203941d9b05db9f3cd814` (2026-10-30), and the public Telegram page is the earlier basic landing.
 - Prior independently managed T-UI-3 test target: `@NexisHubPhase2TestBot`, expected URL `https://nexishub-telegram-miniapp-public-test-5ylkc4s67.vercel.app/telegram`.
 - Prior T-UI-3 navigation target: **Home, Explore, Navigator, Insights, More**; Activity sits under More. Preserve Telegram BackButton, browser fallback, focus restoration, internal shell and safe areas.
 - Prior newer test work referenced `fix/telegram-navigation-recovery-20261107` and commit `f42b678220ad88e0b37f16dea9264866c263ebfb`; this commit and branch were **not accessible** in the connected public NexisHub repository on 2026-11-20.
-- The connected Vercel project `nexis-hub` contains auto-generated previews of AdNexis, but the exact T-UI-3 test URL could not be resolved through the available account and public website lookup.
+- The connected Vercel project `nexis-hub` contains auto-generated previews of NexisReach, but the exact T-UI-3 test URL could not be resolved through the available account and public website lookup.
 - **Reconciliation conclusion:** the source of the newer T-UI-3 preview has not been established. Do NOT integrate Phase 2 into the newer shell or update BotFather until its source and actual deployed commit are verified. The Phase 2 route is isolated under the existing Phase 1 preview.
 
 ## Included in Phase 2 source

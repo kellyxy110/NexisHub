@@ -1,14 +1,14 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import type { EvidenceOrigin } from "@/lib/adnexis-evidence";
+import type { EvidenceOrigin } from "@/lib/nexisreach-evidence";
 import {
   createAdvertisingPlan,
   type CampaignCurrency,
   type CampaignDraft,
   type CampaignGoal,
   type CampaignPlan,
-} from "@/lib/adnexis-planner";
+} from "@/lib/nexisreach-planner";
 
 type EditableChannel = { name: string; price: string; views: string; evidenceOrigin: EvidenceOrigin; evidenceReference: string; evidenceObservedOn: string };
 
@@ -63,26 +63,26 @@ export function AdvertisingPlanner() {
 
   return (
     <div className="adnx">
-      <header className="adnx-intro">
-        <p className="adnx-eyebrow">AdNexis · private planning preview</p>
+      <header className="nxr-intro">
+        <p className="nxr-eyebrow">NexisReach · private planning preview</p>
         <h1>Plan before you pay.</h1>
         <p>Describe your campaign, review publisher questions and compare manually supplied offers. No account, payment, ad posting or channel access is involved.</p>
       </header>
 
-      <form onSubmit={submit} className="adnx-form">
+      <form onSubmit={submit} className="nxr-form">
         <fieldset>
           <legend>01 · Campaign goal</legend>
-          <label htmlFor="adnx-product">What are you promoting?</label>
-          <input id="adnx-product" required minLength={3} maxLength={160} value={product} onChange={(event) => { setProduct(event.target.value); invalidate(); }} placeholder="e.g. my school software" />
+          <label htmlFor="nxr-product">What are you promoting?</label>
+          <input id="nxr-product" required minLength={3} maxLength={160} value={product} onChange={(event) => { setProduct(event.target.value); invalidate(); }} placeholder="e.g. my school software" />
 
-          <label htmlFor="adnx-audience">Who should see it?</label>
-          <input id="adnx-audience" required minLength={3} maxLength={160} value={audience} onChange={(event) => { setAudience(event.target.value); invalidate(); }} placeholder="e.g. private school owners" />
+          <label htmlFor="nxr-audience">Who should see it?</label>
+          <input id="nxr-audience" required minLength={3} maxLength={160} value={audience} onChange={(event) => { setAudience(event.target.value); invalidate(); }} placeholder="e.g. private school owners" />
 
-          <label htmlFor="adnx-region">Target market</label>
-          <input id="adnx-region" required minLength={3} maxLength={100} value={region} onChange={(event) => { setRegion(event.target.value); invalidate(); }} />
+          <label htmlFor="nxr-region">Target market</label>
+          <input id="nxr-region" required minLength={3} maxLength={100} value={region} onChange={(event) => { setRegion(event.target.value); invalidate(); }} />
 
-          <label htmlFor="adnx-goal">What would count as success?</label>
-          <select id="adnx-goal" value={goal} onChange={(event) => { setGoal(event.target.value as CampaignGoal); invalidate(); }}>
+          <label htmlFor="nxr-goal">What would count as success?</label>
+          <select id="nxr-goal" value={goal} onChange={(event) => { setGoal(event.target.value as CampaignGoal); invalidate(); }}>
             <option value="awareness">Relevant awareness</option>
             <option value="website-visits">Website visitors</option>
             <option value="enquiries">Qualified enquiries</option>
@@ -91,90 +91,90 @@ export function AdvertisingPlanner() {
 
         <fieldset>
           <legend>02 · Spending limit</legend>
-          <p className="adnx-hint">This is a maximum budget for planning, not a payment request.</p>
-          <div className="adnx-two">
+          <p className="nxr-hint">This is a maximum budget for planning, not a payment request.</p>
+          <div className="nxr-two">
             <div>
-              <label htmlFor="adnx-currency">Currency</label>
-              <select id="adnx-currency" value={currency} onChange={(event) => { setCurrency(event.target.value as CampaignCurrency); invalidate(); }}>
+              <label htmlFor="nxr-currency">Currency</label>
+              <select id="nxr-currency" value={currency} onChange={(event) => { setCurrency(event.target.value as CampaignCurrency); invalidate(); }}>
                 <option value="NGN">NGN (₦)</option>
                 <option value="USD">USD ($)</option>
               </select>
             </div>
             <div>
-              <label htmlFor="adnx-budget">Total budget</label>
-              <input id="adnx-budget" type="number" min="1" max="1000000000" step="1" required value={budget} onChange={(event) => { setBudget(event.target.value); invalidate(); }} />
+              <label htmlFor="nxr-budget">Total budget</label>
+              <input id="nxr-budget" type="number" min="1" max="1000000000" step="1" required value={budget} onChange={(event) => { setBudget(event.target.value); invalidate(); }} />
             </div>
           </div>
-          <p className="adnx-hint">No exchange-rate conversion, platform fees or promised return is calculated.</p>
+          <p className="nxr-hint">No exchange-rate conversion, platform fees or promised return is calculated.</p>
         </fieldset>
 
         <fieldset>
           <legend>03 · Compare possible channels (optional)</legend>
-          <p className="adnx-hint">Enter up to three offers you found yourself. These are not verified listings or recommendations by NexisHub.</p>
+          <p className="nxr-hint">Enter up to three offers you found yourself. These are not verified listings or recommendations by NexisHub.</p>
           {channels.map((channel, index) => (
-            <section className="adnx-channel" key={index} aria-label={`Publisher offer ${index + 1}`}>
-              <div className="adnx-channel-head">
+            <section className="nxr-channel" key={index} aria-label={`Publisher offer ${index + 1}`}>
+              <div className="nxr-channel-head">
                 <strong>Offer {index + 1}</strong>
-                <button type="button" className="adnx-remove" onClick={() => { setChannels((current) => current.filter((_, i) => i !== index)); invalidate(); }}>Remove</button>
+                <button type="button" className="nxr-remove" onClick={() => { setChannels((current) => current.filter((_, i) => i !== index)); invalidate(); }}>Remove</button>
               </div>
-              <label htmlFor={`adnx-name-${index}`}>Channel or placement name</label>
-              <input id={`adnx-name-${index}`} required maxLength={100} minLength={3} value={channel.name} onChange={(event) => editChannel(index, "name", event.target.value)} placeholder="Publisher supplied by you" />
-              <div className="adnx-two">
+              <label htmlFor={`nxr-name-${index}`}>Channel or placement name</label>
+              <input id={`nxr-name-${index}`} required maxLength={100} minLength={3} value={channel.name} onChange={(event) => editChannel(index, "name", event.target.value)} placeholder="Publisher supplied by you" />
+              <div className="nxr-two">
                 <div>
-                  <label htmlFor={`adnx-price-${index}`}>Quoted price</label>
-                  <input id={`adnx-price-${index}`} type="number" min="0" max="1000000000" step="1" value={channel.price} onChange={(event) => editChannel(index, "price", event.target.value)} placeholder="Unknown" />
+                  <label htmlFor={`nxr-price-${index}`}>Quoted price</label>
+                  <input id={`nxr-price-${index}`} type="number" min="0" max="1000000000" step="1" value={channel.price} onChange={(event) => editChannel(index, "price", event.target.value)} placeholder="Unknown" />
                 </div>
                 <div>
-                  <label htmlFor={`adnx-views-${index}`}>Average post views</label>
-                  <input id={`adnx-views-${index}`} type="number" min="0" max="1000000000" step="1" value={channel.views} onChange={(event) => editChannel(index, "views", event.target.value)} placeholder="Unknown" />
+                  <label htmlFor={`nxr-views-${index}`}>Average post views</label>
+                  <input id={`nxr-views-${index}`} type="number" min="0" max="1000000000" step="1" value={channel.views} onChange={(event) => editChannel(index, "views", event.target.value)} placeholder="Unknown" />
                 </div>
               </div>
-              <div className="adnx-evidence-entry">
+              <div className="nxr-evidence-entry">
                 <strong>Publisher Evidence Passport</strong>
-                <p className="adnx-hint">You supply the evidence details. NexisHub does not open, inspect or verify the reference.</p>
-                <label htmlFor={"adnx-evidence-origin-" + index}>Where did the evidence come from?</label>
-                <select id={"adnx-evidence-origin-" + index} value={channel.evidenceOrigin} onChange={(event) => editChannel(index, "evidenceOrigin", event.target.value)}>
+                <p className="nxr-hint">You supply the evidence details. NexisHub does not open, inspect or verify the reference.</p>
+                <label htmlFor={"nxr-evidence-origin-" + index}>Where did the evidence come from?</label>
+                <select id={"nxr-evidence-origin-" + index} value={channel.evidenceOrigin} onChange={(event) => editChannel(index, "evidenceOrigin", event.target.value)}>
                   <option value="none">No evidence available</option>
                   <option value="publisher-claim">Publisher&apos;s own statement</option>
                   <option value="public-posts">Public posts or channel statistics</option>
                   <option value="third-party-material">Third-party material</option>
                 </select>
                 {channel.evidenceOrigin !== "none" && <>
-                  <label htmlFor={"adnx-evidence-reference-" + index}>Reference or source description (not checked)</label>
-                  <input id={"adnx-evidence-reference-" + index} maxLength={240} value={channel.evidenceReference} onChange={(event) => editChannel(index, "evidenceReference", event.target.value)} placeholder="Public post URL or screenshot description" />
-                  <label htmlFor={"adnx-evidence-date-" + index}>Date the evidence was observed</label>
-                  <input id={"adnx-evidence-date-" + index} type="date" value={channel.evidenceObservedOn} onChange={(event) => editChannel(index, "evidenceObservedOn", event.target.value)} />
+                  <label htmlFor={"nxr-evidence-reference-" + index}>Reference or source description (not checked)</label>
+                  <input id={"nxr-evidence-reference-" + index} maxLength={240} value={channel.evidenceReference} onChange={(event) => editChannel(index, "evidenceReference", event.target.value)} placeholder="Public post URL or screenshot description" />
+                  <label htmlFor={"nxr-evidence-date-" + index}>Date the evidence was observed</label>
+                  <input id={"nxr-evidence-date-" + index} type="date" value={channel.evidenceObservedOn} onChange={(event) => editChannel(index, "evidenceObservedOn", event.target.value)} />
                 </>}
               </div>
             </section>
           ))}
-          {channels.length < 3 && <button className="adnx-add" type="button" onClick={() => { setChannels((current) => [...current, { name: "", price: "", views: "", evidenceOrigin: "none", evidenceReference: "", evidenceObservedOn: "" }]); invalidate(); }}>+ Add a publisher offer</button>}
+          {channels.length < 3 && <button className="nxr-add" type="button" onClick={() => { setChannels((current) => [...current, { name: "", price: "", views: "", evidenceOrigin: "none", evidenceReference: "", evidenceObservedOn: "" }]); invalidate(); }}>+ Add a publisher offer</button>}
         </fieldset>
-        {error && <p className="adnx-error" role="alert">{error}</p>}
-        <button className="adnx-submit" type="submit">Prepare campaign plan</button>
+        {error && <p className="nxr-error" role="alert">{error}</p>}
+        <button className="nxr-submit" type="submit">Prepare campaign plan</button>
       </form>
 
-      {plan && <section className="adnx-result" aria-live="polite" aria-label="Generated planning brief">
-        <p className="adnx-eyebrow">Read-only planning output</p>
+      {plan && <section className="nxr-result" aria-live="polite" aria-label="Generated planning brief">
+        <p className="nxr-eyebrow">Read-only planning output</p>
         <h2>Your campaign brief</h2>
         <textarea aria-label="Campaign brief you can select and copy" rows={5} readOnly value={plan.brief} />
 
         {plan.channels.length > 0 && <>
           <h3>Offer comparison</h3>
-          <p className="adnx-hint">All prices and view counts were entered by you. Estimated cost per 1,000 views is arithmetic only, not evidence of delivery or audience quality.</p>
+          <p className="nxr-hint">All prices and view counts were entered by you. Estimated cost per 1,000 views is arithmetic only, not evidence of delivery or audience quality.</p>
           {plan.channels.map((channel) => (
-            <div className="adnx-assessment" key={channel.name}>
+            <div className="nxr-assessment" key={channel.name}>
               <strong>{channel.name}</strong>
               <p>Quoted price: {channel.placementPrice === null ? "Unknown" : money(channel.placementPrice, currency)}</p>
               <p>Entered average views: {channel.averagePostViews === null ? "Unknown" : channel.averagePostViews.toLocaleString("en")}</p>
               <p>Calculated cost / 1,000 stated views: {channel.estimatedCostPerThousandViews === null ? "Not calculable" : money(channel.estimatedCostPerThousandViews, currency)}</p>
               <ul>{channel.notes.map((note) => <li key={note}>{note}</li>)}</ul>
-              <section className="adnx-passport" aria-label={"Publisher evidence passport for " + channel.name}>
+              <section className="nxr-passport" aria-label={"Publisher evidence passport for " + channel.name}>
                 <h4>Publisher Evidence Passport</h4>
                 <p>Evidence status: <strong>{channel.passport.status}</strong></p>
                 <p>Reported source: {channel.passport.sourceLabel}</p>
                 {channel.passport.observedOn && <p>Source observation date: {channel.passport.observedOn}</p>}
-                {channel.passport.reference && <p>Reference (not checked): <span className="adnx-reference">{channel.passport.reference}</span></p>}
+                {channel.passport.reference && <p>Reference (not checked): <span className="nxr-reference">{channel.passport.reference}</span></p>}
                 <p>Verification by NexisHub: <strong>Not performed</strong></p>
                 <ul>{channel.passport.notes.map((note) => <li key={note}>{note}</li>)}</ul>
               </section>
@@ -191,7 +191,7 @@ export function AdvertisingPlanner() {
         <h3>Important limitations</h3>
         <ul>{plan.warnings.map((item) => <li key={item}>{item}</li>)}</ul>
       </section>}
-      <p className="adnx-privacy">Private session-only preview. Inputs stay in this browser page&apos;s memory and clear on refresh. No channel data is fetched, stored or independently verified.</p>
+      <p className="nxr-privacy">Private session-only preview. Inputs stay in this browser page&apos;s memory and clear on refresh. No channel data is fetched, stored or independently verified.</p>
     </div>
   );
 }

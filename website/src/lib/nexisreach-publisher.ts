@@ -1,8 +1,8 @@
 /**
- * Phase 2 AdNexis: local-only publisher intake and review-packet preparation.
+ * Phase 2 NexisReach: local-only publisher intake and review-packet preparation.
  * No account is created, data submitted, channel verified or listing published.
  */
-import { evaluatePublisherEvidence, type EvidenceOrigin, type PublisherEvidencePassport } from "./adnexis-evidence";
+import { evaluatePublisherEvidence, type EvidenceOrigin, type PublisherEvidencePassport } from "./nexisreach-evidence";
 
 export type PublisherCategory = "technology" | "education" | "business" | "events" | "local-services" | "general";
 export type PublisherCurrency = "NGN" | "USD";
